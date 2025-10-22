@@ -331,11 +331,6 @@ footer {
   font-size: 1rem;
 }
 
-/* ===== 한국식 쌈 상세박스 텍스트 색상 ===== */
-#ssamDetailBox p[data-lang]{
-  color: #000 !important;
-}
-
 /* ===== 가마솥 상세박스 디자인 개선 ===== */
 #gamasotDetailBox p[data-lang] {
   color: #fff;                /* 본문은 흰색 */
@@ -513,12 +508,83 @@ body.fade-in footer {
   z-index: 2;
 }
 
+/* ===== 한국식 쌈 상세박스 (밝은 흰색 텍스트 버전) ===== */
+#ssamDetailBox {
+  background-image: url("images/쌈.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  border: 2px solid #555;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  padding: 35px;
+  text-align: center;
+  max-width: 900px;
+  margin: 30px auto;
+  position: relative;
+}
+
+/* 제목 강조 */
+#ssamDetailBox strong {
+  color: #ffffff; /* 제목 강조 */
+  font-size: 1.3rem;
+  text-shadow: 0 0 8px rgba(255, 183, 0, 0.7);
+}
+
+/* 본문 텍스트 (완전 흰색) */
+#ssamDetailBox p {
+  color: #ffffff !important; /* 완전한 흰색 */
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.9;
+  text-shadow:
+    0 0 10px rgba(255, 180, 50, 0.6),
+    0 0 20px rgba(255, 120, 0, 0.4),
+    0 2px 4px rgba(0,0,0,0.6);
+} 
+
+/* 닫기 버튼 */
+#ssamDetailBox .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  color: #ffb700;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 2;
+}
+#ssamDetailBox .close-btn:hover {
+  transform: scale(1.2);
+}
+
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
+  /* ✅ 언어 선택 박스 버튼 정렬 수정 */
+  .modal-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3열 → 2열로 변경 */
+    gap: 10px;
+    justify-items: center; /* 버튼 중앙 정렬 */
+  }
+
   .modal-buttons button {
     padding: 20px 0;  
     font-size: 1.2rem;
     min-width: 100px;
+    width: 100%;
+    max-width: 140px; /* ✅ 화면 밖으로 나가지 않게 제한 */
+  }
+
+  /* ✅ 모달 전체 크기 조정 */
+  .modal-content {
+    width: 90%;
+    max-width: 360px;
+    margin: 10% auto;
+    text-align: center;
   }
 
   .menu-btn {
@@ -545,12 +611,15 @@ body.fade-in footer {
   .hero p {
     font-size: 1em;
   }
-}
+
+  /* ✅ 사이드메뉴 1열 */
   .side-grid {
-    grid-template-columns: 1fr; /* 모바일에서는 1열 */
+    grid-template-columns: 1fr;
   }
 
+  /* ✅ 이미지 크기 자동 조정 */
   .usage-image img {
     max-width: 100%;
   }
+}
 
