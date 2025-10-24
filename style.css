@@ -612,6 +612,14 @@ footer a:hover {
   text-shadow: 0 0 6px rgba(255, 235, 59, 0.6);
 }
 
+/* ===== 상세박스 전체 글씨색 통일 ===== */
+#menuDetailBox p[data-lang="en"],
+#sideDetailBox p[data-lang="en"],
+#usageDetailBox p[data-lang="en"],
+#courseTipBox p[data-lang="en"]{
+  color: #000 !important;   /* 모든 상세박스 글씨를 검정색으로 */
+}
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
   /* ✅ 언어 선택 박스 버튼 정렬 수정 */
