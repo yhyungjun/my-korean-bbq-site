@@ -325,6 +325,13 @@ footer {
   padding: 20px;
 }
 
+/* ===== 푸터 글씨 크기 강조 ===== */
+footer p {
+  font-size: 1.3rem;  /* 기본 1rem → 1.3rem으로 확대 */
+  font-weight: bold;  /* 굵게 강조 */
+  letter-spacing: 0.5px; /* 글자 간격 살짝 띄워 안정감 */
+}
+
 footer a {
   color: #fff;
   text-decoration: underline;
