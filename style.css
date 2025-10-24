@@ -332,6 +332,42 @@ footer p {
   letter-spacing: 0.5px; /* 글자 간격 살짝 띄워 안정감 */
 }
 
+/* ===== 푸터 다국어 스타일 공통 ===== */
+footer {
+  background: #d50000;
+  color: #fff;
+  padding: 25px 15px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* 브랜드명 강조 */
+.footer-brand {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* 지점명 */
+.footer-branches {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.footer-branches a {
+  color: #fff;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+.footer-branches a:hover {
+  color: #ffb700;
+  text-shadow: 0 0 6px rgba(255, 183, 0, 0.6);
+}
+
 footer a {
   color: #fff;
   text-decoration: underline;
