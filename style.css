@@ -355,14 +355,14 @@ footer a:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 20px;
+  gap: 12px;
   margin-bottom: 25px;
 }
 
 .menu-buttons.double-row div[data-lang] {
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 12px;
 }
 
 .menu-buttons.double-row .menu-btn {
