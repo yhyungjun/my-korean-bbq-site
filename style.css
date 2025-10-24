@@ -620,6 +620,15 @@ footer a:hover {
   color: #000 !important;   /* 모든 상세박스 글씨를 검정색으로 */
 }
 
+/* ===== 영어 볼드체 제거 및 전체 글씨 두께 통일 ===== */
+body,
+p,
+h1, h2, h3, h4, h5, h6,
+button {
+  font-weight: 500 !important;  /* 기존 Bold를 강제로 덮어쓰기 */
+  font-family: "Noto Sans", "Noto Sans KR", Arial, sans-serif !important;
+}
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
   /* ✅ 언어 선택 박스 버튼 정렬 수정 */
