@@ -600,6 +600,17 @@ body.fade-in footer {
   transform: scale(1.2);
 }
 
+/* ===== 푸터 링크 hover 효과 ===== */
+footer a {
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffeb3b; /* 노란색 포인트 */
+  text-decoration-color: #ffeb3b; /* 밑줄 색상 변경 */
+  transform: scale(1.08); /* 살짝 확대 */
+  text-shadow: 0 0 6px rgba(255, 235, 59, 0.6);
+}
 
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
