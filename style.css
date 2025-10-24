@@ -295,6 +295,16 @@ footer {
   padding: 20px;
 }
 
+footer a {
+  color: #fff;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #ffb700; /* 노란색 포인트 */
+}
+
 /* ===== 이용방법 & 코스별 이용팁 버튼 한 줄 정렬 ===== */
 .menu-buttons.double-row {
   display: flex;
