@@ -20,63 +20,45 @@
 </head>
 <body>
 
-  <!-- Hero -->
-  <section class="hero">
-  <!-- 🇰🇷 한국어 -->
-    <h1 data-lang="ko">강남 돼지상회 무한리필</h1>
-    <p data-lang="ko">돼지상회는 사랑입니다. 눈치보지 말고 맘껏 먹자!</p>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-title">
+    <img src="images/logo-transparent.png" alt="강남 돼지상회 로고" class="hero-logo-inline">
 
-    <!-- 🇺🇸 영어 -->
-    <h1 data-lang="en" style="display:none;">Gangnam Pig Market Unlimited Refill</h1>
-    <p data-lang="en" style="display:none;">Pig Market is love. Don’t hold back, eat as much as you want!</p>
+    <div class="hero-texts">
+      <h1 data-lang="ko">강남 돼지상회 무한리필</h1>
+      <h1 data-lang="en" style="display:none;">Gangnam Pig Market Unlimited Refill</h1>
+      <h1 data-lang="zh" style="display:none;">江南猪肉商会 自助无限续</h1>
+      <h1 data-lang="ja" style="display:none;">江南 豚市場 無限リフィル</h1>
+      <h1 data-lang="vi" style="display:none;">Gangnam Thịt Heo Buffet Không Giới Hạn</h1>
+      <h1 data-lang="th" style="display:none;">ร้านหมูแกงนัม บุฟเฟต์ไม่อั้น</h1>
+      <h1 data-lang="ph" style="display:none;">Gangnam Pig Market Unlimited Refill</h1>
+      <h1 data-lang="fr" style="display:none;">Gangnam Boucherie Porc Buffet à volonté</h1>
+      <h1 data-lang="es" style="display:none;">Gangnam Mercado de Cerdo Buffet Libre</h1>
+      <h1 data-lang="pt" style="display:none;">Gangnam Mercado de Porco Rodízio</h1>
+      <h1 data-lang="ar" style="display:none;">سوق لحم الخنزير غانغنام - بوفيه مفتوح</h1>
+      <h1 data-lang="ru" style="display:none;">Гангнам Свиной рынок безлимитный буфет</h1>
+      <h1 data-lang="tr" style="display:none;">Gangnam Domuz Pazarı Sınırsız Büfe</h1>
 
-    <!-- 🇨🇳 중국어 -->
-    <h1 data-lang="zh" style="display:none;">江南猪肉商会 自助无限续 弘大直营店</h1>
-    <p data-lang="zh" style="display:none;">猪肉商会就是爱。不要拘束，尽情吃吧！</p>
+      <p data-lang="ko">돼지상회는 사랑입니다. 눈치보지말고 맘껏먹자!</p>
+      <p data-lang="en" style="display:none;">Pig Market is love. Don’t hold back, eat as much as you want!</p>
+      <p data-lang="zh" style="display:none;">猪肉商会就是爱。不要拘束，尽情吃吧！</p>
+      <p data-lang="ja" style="display:none;">豚市場は愛です。気にせず思う存分食べよう！</p>
+      <p data-lang="vi" style="display:none;">Thịt Heo là tình yêu. Đừng ngại, hãy ăn thật no!</p>
+      <p data-lang="th" style="display:none;">ร้านหมูคือความรัก กินให้อิ่มไม่ต้องเกรงใจ!</p>
+      <p data-lang="ph" style="display:none;">Ang Pig Market ay pagmamahal. Kumain ka hanggang gusto mo!</p>
+      <p data-lang="fr" style="display:none;">La Boucherie Porc, c’est l’amour. Mange à volonté!</p>
+      <p data-lang="es" style="display:none;">El Mercado de Cerdo es amor. ¡Come todo lo que quieras!</p>
+      <p data-lang="pt" style="display:none;">O Mercado de Porco é amor. Coma à vontade!</p>
+      <p data-lang="ar" style="display:none;">سوق لحم الخنزير هو الحب. كل حتى تشبع!</p>
+      <p data-lang="ru" style="display:none;">Свиной рынок — это любовь. Ешь сколько хочешь!</p>
+      <p data-lang="tr" style="display:none;">Domuz Pazarı aşktır. Çekinme, istediğin kadar ye!</p>
+    </div>
+  </div>
 
-    <!-- 🇯🇵 일본어 -->
-    <h1 data-lang="ja" style="display:none;">江南 豚市場 無限リフィル 弘大直営店</h1>
-    <p data-lang="ja" style="display:none;">豚市場は愛です。気にせず思う存分食べよう！</p>
+  <button class="menu-btn" onclick="openLangModal()">Change Language</button>
+</section>
 
-    <!-- 🇻🇳 베트남어 -->
-    <h1 data-lang="vi" style="display:none;">Gangnam Thịt Heo Buffet Không Giới Hạn Chi Nhánh Trực Tiếp Hongdae</h1>
-    <p data-lang="vi" style="display:none;">Thịt Heo là tình yêu. Đừng ngại, hãy ăn thật no!</p>
-
-    <!-- 🇹🇭 태국어 -->
-    <h1 data-lang="th" style="display:none;">ร้านหมูย่างกังนัม สาขาฮงแด</h1>
-    <p data-lang="th" style="display:none;">หมูย่างกังนัมคือความรัก กินให้เต็มที่ไม่ต้องเกรงใจ!</p>
-
-    <!-- 🇵🇭 필리핀어 -->
-    <h1 data-lang="ph" style="display:none;">Gangnam Pork House Unlimited Refill - Hongdae Branch</h1>
-    <p data-lang="ph" style="display:none;">Ang Pig Market ay pag-ibig. Huwag mahiyâ—kumain ka nang marami!</p>
-
-    <!-- 🇫🇷 프랑스어 -->
-    <h1 data-lang="fr" style="display:none;">Gangnam Boucherie Porc Buffet à volonté Succursale directe Hongdae</h1>
-    <p data-lang="fr" style="display:none;">Boucherie Porc, c’est l’amour. Ne te retiens pas, mange à volonté !</p>
-
-    <!-- 🇪🇸 스페인어 -->
-    <h1 data-lang="es" style="display:none;">Gangnam Mercado de Cerdo Buffet Libre Sucursal Directa Hongdae</h1>
-    <p data-lang="es" style="display:none;">Mercado de Cerdo es amor. ¡No te detengas, come todo lo que quieras!</p>
-
-    <!-- 🇵🇹 포르투갈어 -->
-    <h1 data-lang="pt" style="display:none;">Gangnam Mercado de Porco Rodízio Filial Direta Hongdae</h1>
-    <p data-lang="pt" style="display:none;">Mercado de Porco é amor. Não se contenha, coma à vontade!</p>
-
-    <!-- 🇸🇦 아랍어 -->
-    <h1 data-lang="ar" style="display:none;">سوق لحم الخنزير غانغنام - بوفيه مفتوح فرع مباشر في هونغداي</h1>
-    <p data-lang="ar" style="display:none;">سوق لحم الخنزير هو الحب. لا تتردد، كل حتى تشبع!</p>
-
-    <!-- 🇷🇺 러시아어 -->
-    <h1 data-lang="ru" style="display:none;">Гангнам Свиной рынок безлимитный буфет Прямой филиал Хондэ</h1>
-    <p data-lang="ru" style="display:none;">Свиной рынок — это любовь. Не стесняйся, ешь сколько хочешь!</p>
-
-    <!-- 🇹🇷 튀르키예어 -->
-    <h1 data-lang="tr" style="display:none;">Gangnam Domuz Pazarı Sınırsız Büfe Hongdae Doğrudan Şube</h1>
-    <p data-lang="tr" style="display:none;">Domuz Pazarı aşktır. Çekinme, istediğin kadar ye!</p>
-
-    <!-- 🌐 언어 변경 버튼 -->
-    <button class="menu-btn" onclick="openLangModal()">Change Language</button>
-  </section>
 
 
   <!-- 메뉴 소개 -->

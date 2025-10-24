@@ -10,19 +10,49 @@ body {
 
 /* 히어로 섹션 */
 .hero {
-  background-color: #d50000; /* 🔥 이미지와 동일한 강한 빨강색 */
+  background-color: #d50000; /* 🔥 기존 강한 빨강 유지 */
   color: white;
   padding: 50px 20px;
+  text-align: center;
 }
 
-.hero h1 {
+.hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* 로고와 텍스트 간 여백 */
+  flex-wrap: wrap; /* 모바일에서는 자동 줄바꿈 */
+}
+
+.hero-logo-inline {
+  width: 120px;
+  height: auto;
+  border-radius: 15px; /* 살짝 둥글게 */
+}
+
+.hero-texts h1 {
   margin: 0;
-  font-size: 2.5em;
+  font-size: 2.5em; /* 기존 스타일 유지 */
+  color: white;
 }
 
-.hero p {
+.hero-texts p {
   margin: 10px 0 20px;
   font-size: 1.2em;
+  color: #fff;
+}
+
+/* 반응형 (모바일용) */
+@media (max-width: 768px) {
+  .hero-title {
+    flex-direction: column;
+  }
+  .hero-logo-inline {
+    width: 100px;
+  }
+  .hero-texts h1 {
+    font-size: 2em;
+  }
 }
 
 /* 버튼 기본 스타일 */

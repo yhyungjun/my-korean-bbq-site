@@ -96,8 +96,9 @@ function showMenuDetail(menu) {
   }
 
   // ✅ F코스
-  else if (menu === "F") {
+  else if (menu === "F" || menu === "Full") {
     content = `
+      <p data-lang="ko"><strong class="course-label">Full</strong> 코스 무한리필<br>1인 23,900원<br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈+음료수무제한+공기밥무제한+냉면무제한</p>
       <p data-lang="en" style="display:none;"><strong class="course-label">Full</strong> Course Unlimited Refill<br>₩23,900 per person<br>Pork belly + Soy-marinated boneless chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork belly + Honeycomb pork skin + Pork bulgogi + Beef intestine + Assorted vegetable wraps + Unlimited drinks + Unlimited rice + Unlimited cold noodles</p>
       <p data-lang="zh" style="display:none;"><strong class="course-label">全</strong>套餐 无限续<br>每人 23,900韩元<br>五花肉 + 酱油无骨鸡 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包 + 饮料无限 + 米饭无限 + 冷面无限</p>
       <p data-lang="ja" style="display:none;">フルコース 無限リフィル<br>1人 23,900ウォン<br>サムギョプサル + 醤油チキン + 豚肩ロース + 牛バラ肉 + 豚トロ + ハラミ + 薄切りサムギョプサル + 豚皮（ハチの巣）+ 豚プルコギ + 牛ホルモン + 野菜サム + 飲み物飲み放題 + ご飯無限 + 冷麺食べ放題</p>
