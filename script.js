@@ -65,6 +65,8 @@ function showMenuDetail(menu) {
       <p data-lang="zh" style="display:none;"><strong class="course-label">A</strong> 猪肉拼盘 无限续<br>每人 17,900韩元<br>五花肉 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包</p>
       <p data-lang="ja" style="display:none;"><strong class="course-label">A</strong> 豚盛り合わせ 無限リフィル<br>1人 17,900ウォン<br>サムギョプサル + 豚肩ロース + 牛バラ肉 + 豚トロ + ハラミ + 薄切りサムギョプサル + 豚皮（ハチの巣）+ 豚プルコギ + 牛ホルモン + 野菜サム</p>
       <p data-lang="vi" style="display:none;"><strong class="course-label">A</strong> Suất Buffet Thịt Heo Không Giới Hạn<br>17,900 KRW/người<br>Ba chỉ + Thịt cổ + Ức bò + Má heo + Thăn sườn + Ba chỉ thái mỏng + Da heo tổ ong + Bulgogi heo + Lòng bò + Rau cuốn</p>
+      <p data-lang="th" style="display:none;"><strong class="course-label">A</strong> เซ็ตหมูรวมเติมไม่อั้น<br>คนละ 17,900 วอน<br>หมูสามชั้น + คอหมู + เนื้ออกวัว + คอหมูอบ + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ</p>
+      <p data-lang="ph" style="display:none;"><strong class="course-label">A</strong> Unlimited Pork Set<br>₩17,900 bawat tao<br>Pork belly + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork + Pork skin + Pork bulgogi + Beef intestine + Mixed vegetable wraps</p>
       <p data-lang="fr" style="display:none;"><strong class="course-label">A</strong> Assortiment de Porc à volonté<br>17 900₩ par personne<br>Poitrine + Échine + Poitrine de bœuf + Joue de porc + Hampe + Poitrine fine + Couenne en nid d’abeille + Bulgogi de porc + Tripes de bœuf + Légumes</p>
       <p data-lang="es" style="display:none;"><strong class="course-label">A</strong> Surtido de Cerdo Ilimitado<br>17,900₩ por persona<br>Panceta + Cuello + Falda de res + Papada + Entraña + Panceta fina + Piel panal + Bulgogi de cerdo + Intestino de res + Verduras</p>
       <p data-lang="pt" style="display:none;"><strong class="course-label">A</strong> Rodízio de Porco Variado<br>₩17.900 por pessoa<br>Barriga + Pescoço + Peito bovino + Bochecha + Fraldinha + Panceta fina + Pele em favo + Bulgogi de porco + Intestino bovino + Vegetais</p>
@@ -82,6 +84,8 @@ function showMenuDetail(menu) {
       <p data-lang="zh" style="display:none;"><strong class="course-label">B</strong> 猪肉拼盘+酱油鸡 无限续<br>每人 19,900韩元<br>五花肉+酱油鸡+颈肉+牛胸肉+猪颊肉+横膈膜+薄切五花肉+猪皮+烤肉+牛肠+蔬菜</p>
       <p data-lang="ja" style="display:none;"><strong class="course-label">B</strong> 豚盛り合わせ+醤油チキン 無限リフィル<br>1人 19,900ウォン<br>サムギョプサル+醤油チキン+肩ロース+牛バラ+豚トロ+ハラミ+薄切り+皮+プルコギ+ホルモン+野菜</p>
       <p data-lang="vi" style="display:none;"><strong class="course-label">B</strong> Suất Thịt Heo + Gà Xì Dầu Không Giới Hạn<br>19,900 KRW/người<br>Ba chỉ + Gà xì dầu + Cổ + Ức bò + Má + Thăn + Ba chỉ mỏng + Da + Bulgogi + Lòng + Rau</p>
+      <p data-lang="th" style="display:none;"><strong class="course-label">B</strong> หมูรวม + ไก่ซอสถั่วเหลือง เติมไม่อั้น<br>คนละ 19,900 วอน<br>หมูสามชั้น + ไก่ซอสถั่วเหลือง + คอหมู + เนื้อวัว + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ</p>
+      <p data-lang="ph" style="display:none;"><strong class="course-label">B</strong> Unlimited Pork + Soy Chicken Set<br>₩19,900 bawat tao<br>Pork belly + Soy-marinated chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin pork belly + Pork skin + Pork bulgogi + Beef intestine + Veggie wraps</p>
       <p data-lang="fr" style="display:none;"><strong class="course-label">B</strong> Porc + Poulet soja à volonté<br>19 900₩ pp<br>Poitrine + Poulet soja + Échine + Poitrine bœuf + Joue + Hampe + Fine poitrine + Peau + Bulgogi + Tripes + Légumes</p>
       <p data-lang="es" style="display:none;"><strong class="course-label">B</strong> Cerdo + Pollo soja Ilimitado<br>19,900₩ pp<br>Panceta + Pollo soja + Cuello + Falda + Papada + Entraña + Panceta fina + Piel + Bulgogi + Intestino + Verduras</p>
       <p data-lang="pt" style="display:none;"><strong class="course-label">B</strong> Porco + Frango molho soja Rodízio<br>₩19.900 pp<br>Barriga + Frango soja + Pescoço + Peito boi + Bochecha + Fraldinha + Panceta fina + Pele + Bulgogi + Intestino + Vegetais</p>
@@ -99,6 +103,8 @@ function showMenuDetail(menu) {
       <p data-lang="zh" style="display:none;"><strong class="course-label">全</strong>套餐 无限续<br>每人 23,900韩元<br>五花肉 + 酱油无骨鸡 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包 + 饮料无限 + 米饭无限 + 冷面无限</p>
       <p data-lang="ja" style="display:none;">フルコース 無限リフィル<br>1人 23,900ウォン<br>サムギョプサル + 醤油チキン + 豚肩ロース + 牛バラ肉 + 豚トロ + ハラミ + 薄切りサムギョプサル + 豚皮（ハチの巣）+ 豚プルコギ + 牛ホルモン + 野菜サム + 飲み物飲み放題 + ご飯無限 + 冷麺食べ放題</p>
       <p data-lang="vi" style="display:none;"><strong class="course-label">Full</strong> Buffet Không Giới Hạn<br>23,900 KRW/người<br>Ba chỉ + Gà xì dầu + Thịt cổ + Ức bò + Má heo + Thăn sườn + Ba chỉ thái mỏng + Da heo tổ ong + Bulgogi heo + Lòng bò + Rau cuốn + Nước uống không giới hạn + Cơm không giới hạn + Mì lạnh không giới hạn</p>
+      <p data-lang="th" style="display:none;"><strong class="course-label">Full</strong> คอร์สบุฟเฟ่ต์เต็มรูปแบบ<br>คนละ 23,900 วอน<br>หมูสามชั้น + ไก่ซอสถั่วเหลือง + คอหมู + เนื้อวัว + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ + เครื่องดื่มไม่อั้น + ข้าวไม่อั้น + บะหมี่เย็นไม่อั้น</p>
+      <p data-lang="ph" style="display:none;"><strong class="course-label">Full</strong> Unlimited Full Course<br>₩23,900 bawat tao<br>Pork belly + Soy chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin pork + Pork skin + Pork bulgogi + Beef intestine + Veggies + Unlimited drinks + Rice + Cold noodles</p>
       <p data-lang="fr" style="display:none;">Formule <strong class="course-label">Complète</strong> à volonté<br>23 900₩ par personne<br>Porc, poulet sauce soja, échine, poitrine de bœuf, joue, hampe, poitrine fine, couenne, bulgogi, tripes, légumes, boissons illimitées, riz illimité, nouilles froides illimitées</p>
       <p data-lang="es" style="display:none;">Curso <strong class="course-label">Completo</strong> Ilimitado<br>23,900₩ por persona<br>Cerdo, pollo en salsa de soja, cuello, falda, papada, entraña, panceta fina, piel panal, bulgogi, intestino, vegetales, bebidas ilimitadas, arroz ilimitado, fideos fríos ilimitados</p>
       <p data-lang="pt" style="display:none;">Curso <strong class="course-label">Completo</strong> Rodízio<br>₩23.900 por pessoa<br>Barriga de porco, frango ao molho de soja, pescoço, peito, bochecha, fraldinha, pele em favo, bulgogi, tripas, legumes, bebidas, arroz e macarrão frio ilimitados</p>
@@ -107,7 +113,6 @@ function showMenuDetail(menu) {
       <p data-lang="tr" style="display:none;"><strong class="course-label">Tam</strong> Kurs Sınırsız<br>Kişi başı ₩23.900<br>Domuz eti, soya soslu tavuk, boyun, dana göğüs, yanak, diyafram, ince dilimlenmiş domuz eti, deri, bulgogi, bağırsak, sebze, içecek, pilav ve soğuk erişte sınırsız</p>
     `;
   }
-
 
   detailBox.innerHTML = content;
   detailBox.style.display = "block";
@@ -189,6 +194,30 @@ function showSideDetail() {
       Soju 5.500 KRW<br>
       Bia 6.000 KRW<br>
       Cheongha / Soju hoa quả 6.500 KRW
+    </p>
+
+    <p data-lang="th" style="display:none;">
+      บะหมี่เย็น 4,500 วอน<br>
+      ข้าวเปล่า (เติมไม่อั้นเมื่อสั่งทุกคน) 1,000 วอน<br>
+      เครื่องดื่มกระป๋อง 2,500 วอน<br>
+      เครื่องดื่มไม่อั้น (สั่งทุกคน) 2,500 วอน/คน<br>
+      ราเม็งฮันกัง 1,500 วอน<br>
+      ซุปเต้าเจี้ยว 2,000 วอน<br>
+      โซจู 5,500 วอน<br>
+      เบียร์ 6,000 วอน<br>
+      ชองฮา / โซจูผลไม้ 6,500 วอน
+    </p>
+
+    <p data-lang="ph" style="display:none;">
+      Hamheung cold noodles (spicy / mild) ₩4,500<br>
+      Steamed rice (unlimited if everyone orders) ₩1,000<br>
+      Soft drink (can) ₩2,500<br>
+      Unlimited drinks (requires all members) ₩2,500 each<br>
+      Hangang ramen ₩1,500<br>
+      Soybean stew ₩2,000<br>
+      Soju ₩5,500<br>
+      Beer ₩6,000<br>
+      Cheongha / Fruit soju ₩6,500
     </p>
 
     <!-- Français -->
@@ -302,69 +331,119 @@ function showUsageDetail() {
     <p data-lang="ko">
       물, 앞접시 → 창가쪽 냉장고<br>
       숟가락 및 젓가락, 냅킨 → 테이블 옆 서랍<br>
-      고기, 야채, 야채접시, 반찬, 집게 등 → 셀프바
+      고기, 야채, 야채접시, 반찬, 물티슈, 집게 등 → 셀프바<br>
+      <br>
+      모두 셀프로 이용가능!
     </p>
 
+    <!-- 🇺🇸 영어 -->
     <p data-lang="en" style="display:none;">
       Water and small plates → Refrigerator by the window<br>
       Spoons, chopsticks, and napkins → Drawer beside the table<br>
-      Meat, vegetables, side dishes, tongs, etc. → Self-bar
+      Meat, vegetables, dishes, side dishes, wet tissues, tongs, etc. → Self bar<br>
+      <br>
+      Everything is self-service!
     </p>
 
+    <!-- 🇨🇳 중국어 -->
     <p data-lang="zh" style="display:none;">
-      水和小盘 → 窗边的冰箱<br>
-      勺子、筷子、餐巾纸 → 桌子旁边的抽屉<br>
-      肉类、蔬菜、蔬菜盘、小菜、夹子等 → 自助区
+      水、小盘子 → 窗边冰箱<br>
+      勺子、筷子、餐巾纸 → 桌子旁抽屉<br>
+      肉、蔬菜、蔬菜盘、小菜、湿巾、夹子等 → 自助吧<br>
+      <br>
+      一切都可自助取用！
     </p>
 
+    <!-- 🇯🇵 일본어 -->
     <p data-lang="ja" style="display:none;">
-      水と取り皿 → 窓際の冷蔵庫<br>
+      水、小皿 → 窓際の冷蔵庫<br>
       スプーン・箸・ナプキン → テーブル横の引き出し<br>
-      肉・野菜・野菜皿・おかず・トングなど → セルフバー
+      肉・野菜・野菜皿・おかず・おしぼり・トングなど → セルフバー<br>
+      <br>
+      すべてセルフサービスです！
     </p>
 
+    <!-- 🇻🇳 베트남어 -->
     <p data-lang="vi" style="display:none;">
-      Nước và đĩa nhỏ → Tủ lạnh cạnh cửa sổ<br>
-      Muỗng, đũa và khăn giấy → Ngăn kéo cạnh bàn<br>
-      Thịt, rau, đĩa rau, món phụ, kẹp, v.v. → Quầy tự phục vụ
+      Nước, đĩa nhỏ → Tủ lạnh cạnh cửa sổ<br>
+      Muỗng, đũa và khăn giấy → Ngăn kéo bên bàn<br>
+      Thịt, rau, đĩa rau, món phụ, khăn ướt, kẹp, v.v. → Quầy tự phục vụ<br>
+      <br>
+      Tất cả đều tự phục vụ!
     </p>
 
+    <!-- 🇹🇭 태국어 -->
+    <p data-lang="th" style="display:none;">
+      น้ำและจานเล็ก → ตู้เย็นริมหน้าต่าง<br>
+      ช้อน ตะเกียบ และกระดาษทิชชู → ลิ้นชักข้างโต๊ะ<br>
+      เนื้อ ผัก จานผัก กับข้าว ทิชชูเปียก คีมคีบ ฯลฯ → บาร์บริการตัวเอง<br>
+      <br>
+      ทุกอย่างสามารถใช้ได้ด้วยตนเอง!
+    </p>
+
+    <!-- 🇵🇭 필리핀어 -->
+    <p data-lang="ph" style="display:none;">
+      Tubig at maliit na plato → Refrigerator sa tabi ng bintana<br>
+      Kutsara, tinidor, at tissue → Drawer sa tabi ng mesa<br>
+      Karne, gulay, side dish, basang tissue, sipit, at iba pa → Self bar<br>
+      <br>
+      Lahat ay self-service!
+    </p>
+
+    <!-- 🇫🇷 프랑스어 -->
     <p data-lang="fr" style="display:none;">
       Eau et petites assiettes → Réfrigérateur près de la fenêtre<br>
       Cuillères, baguettes et serviettes → Tiroir à côté de la table<br>
-      Viande, légumes, plats d’accompagnement, pinces, etc. → Bar libre-service
+      Viande, légumes, plats, accompagnements, lingettes, pinces, etc. → Bar en libre-service<br>
+      <br>
+      Tout est en libre-service !
     </p>
 
+    <!-- 🇪🇸 스페인어 -->
     <p data-lang="es" style="display:none;">
       Agua y platos pequeños → Refrigerador junto a la ventana<br>
       Cucharas, palillos y servilletas → Cajón al lado de la mesa<br>
-      Carne, verduras, guarniciones, pinzas, etc. → Barra de autoservicio
+      Carne, verduras, platos, guarniciones, toallitas, pinzas, etc. → Barra de autoservicio<br>
+      <br>
+      ¡Todo es autoservicio!
     </p>
 
+    <!-- 🇵🇹 포르투갈어 -->
     <p data-lang="pt" style="display:none;">
-      Água e pratinhos → Geladeira perto da janela<br>
+      Água e pratinhos → Geladeira ao lado da janela<br>
       Colheres, hashis e guardanapos → Gaveta ao lado da mesa<br>
-      Carnes, vegetais, acompanhamentos, pegadores etc. → Balcão self-service
+      Carne, vegetais, acompanhamentos, guardanapos úmidos, pinças, etc. → Bar de autoatendimento<br>
+      <br>
+      Tudo é autoatendimento!
     </p>
 
+    <!-- 🇸🇦 아랍어 -->
     <p data-lang="ar" style="display:none;">
       الماء والأطباق الصغيرة → الثلاجة بجانب النافذة<br>
       الملاعق والعيدان والمناديل → الدرج بجانب الطاولة<br>
-      اللحم والخضروات والأطباق الجانبية والملقط وغيرها → منطقة الخدمة الذاتية
+      اللحم، الخضروات، الأطباق الجانبية، المناديل المبللة، الملاقط، إلخ → بار الخدمة الذاتية<br>
+      <br>
+      كل شيء بخدمة ذاتية!
     </p>
 
+    <!-- 🇷🇺 러시아어 -->
     <p data-lang="ru" style="display:none;">
       Вода и маленькие тарелки → Холодильник у окна<br>
       Ложки, палочки и салфетки → Ящик рядом со столом<br>
-      Мясо, овощи, гарниры, щипцы и т. д. → Зона самообслуживания
+      Мясо, овощи, гарниры, влажные салфетки, щипцы и т.д. → Зона самообслуживания<br>
+      <br>
+      Всё в формате самообслуживания!
     </p>
 
+    <!-- 🇹🇷 튀르키예어 -->
     <p data-lang="tr" style="display:none;">
-      Su ve küçük tabaklar → Pencere yanındaki buzdolabı<br>
-      Kaşıklar, çubuklar ve peçeteler → Masanın yanındaki çekmece<br>
-      Et, sebze, garnitürler, maşalar vb. → Self-servis alanı
+      Su ve küçük tabaklar → Pencere kenarındaki buzdolabı<br>
+      Kaşık, çubuk ve peçeteler → Masanın yanındaki çekmece<br>
+      Et, sebzeler, yan yemekler, ıslak mendil, maşa vb. → Self-servis barı<br>
+      <br>
+      Her şey self-servistir!
     </p>
-  `;
+      `;
 
   usageBox.style.display = "block";
   setTimeout(() => usageBox.classList.add("show"), 10);
@@ -442,6 +521,32 @@ function showCourseTips() {
      <strong>Suất Full</strong>: Bao gồm suất A + gà + cơm, mì lạnh và nước uống không giới hạn.<br>
      <em>Mẹo</em>: Nhấn chuông bàn để yêu cầu thêm gà, mì lạnh, hoặc nước uống.<br>
      (Mì lạnh → Mul-naengmyeon / Bibim-naengmyeon, Nước → Cola / Zero Cola / Sprite)
+   </p>
+
+   <p data-lang="th" style="display:none;">
+     <strong>คอร์ส A</strong>: สามารถเลือกเนื้อ ผัก และซอสต่างๆ ได้ไม่จำกัด<br>
+     <em>เคล็ดลับ</em>: ใช้เขียงสำหรับเนื้อ จานผักสำหรับผัก และจานเล็กสำหรับกับข้าว<br><br>
+
+     <strong>คอร์ส B</strong>: คอร์ส A พร้อมไก่ซอสถั่วเหลืองไม่อั้น<br>
+     <em>เคล็ดลับ</em>: กดกริ่งเรียกพนักงานเพื่อขอรีฟิลไก่<br>
+     ใช้เขียงสำหรับเนื้อ จานผักสำหรับผัก และจานเล็กสำหรับกับข้าว<br><br>
+
+     <strong>คอร์ส Full</strong>: รวมเนื้อ ไก่ ข้าว บะหมี่เย็น และเครื่องดื่มไม่จำกัด<br>
+     <em>เคล็ดลับ</em>: ใช้กริ่งเรียกพนักงานเมื่ออยากรีฟิลไก่ บะหมี่ หรือเครื่องดื่ม<br>
+     (บะหมี่เย็น: แบบน้ำ/แบบเผ็ด, เครื่องดื่ม: โคล่า/โคล่าไม่มีน้ำตาล/ไซเดอร์)
+   </p>
+
+   <p data-lang="ph" style="display:none;">
+     <strong>A Course</strong>: Maaaring kumuha ng karne, gulay, at iba't ibang sawsawan<br>
+     <em>Tip</em>: Gumamit ng chopping board para sa karne, plato ng gulay para sa gulay, at maliit na plato para sa side dish.<br><br>
+
+     <strong>B Course</strong>: Katulad ng A Course ngunit may unlimited soy chicken<br>
+     <em>Tip</em>: Gamitin ang table bell para humingi ng refill ng chicken sa staff.<br>
+     Gumamit ng chopping board, plato ng gulay, at maliit na plato tulad ng A Course.<br><br>
+
+     <strong>Full Course</strong>: May kasamang unlimited chicken, rice, cold noodles, at inumin<br>
+     <em>Tip</em>: I-ring ang bell para sa refill ng chicken, noodles, o inumin.<br>
+     (Cold noodles: may sabaw o maanghang / Inumin: cola, zero cola, o sprite)
    </p>
 
    <p data-lang="fr" style="display:none;">
@@ -535,7 +640,7 @@ function showGamasotDetail() {
     </div>
     
     <p data-lang="ko">
-      <strong>가마솥뚜껑의 유래와 특징</strong><br><br>
+      <strong>가마솥의 유래와 특징</strong><br><br>
       가마솥은 삼국시대 이전(약 2,000년 전)부터 사용된 것으로 추정되며,
       무쇠로 만든 가마솥은 삼국시대 후기(약 1,400년 전)부터 서민들에게 보급되었습니다.<br><br>
       무쇠는 열전도율이 낮아 천천히 달궈지지만, 열이 쉽게 식지 않고 오래 유지됩니다.
@@ -576,6 +681,22 @@ function showGamasotDetail() {
       Phiên bản bằng gang trở nên phổ biến trong dân chúng khoảng 1.400 năm trước.<br><br>
       Gang dẫn nhiệt chậm nhưng giữ nhiệt lâu, tỏa nhiệt đều nên thịt chín ngon và đồng đều.<br><br>
       Gamasot là dụng cụ nấu ăn truyền thống của Hàn Quốc, đồng thời là biểu tượng của gia đình và văn hóa cộng đồng.
+    </p>
+
+    <p data-lang="th" style="display:none;">
+      <strong>ที่มาของหม้อเหล็ก (กามาซ็อต)</strong><br><br>
+      หม้อเหล็กถูกใช้ในเกาหลีตั้งแต่ก่อนยุคสามก๊ก (ราว 2,000 ปีก่อน)<br>
+      หม้อเหล็กหล่อเริ่มแพร่หลายในหมู่ชาวบ้านราว 1,400 ปีก่อน<br><br>
+      หม้อเหล็กรักษาความร้อนได้ดี ทำให้อาหารสุกทั่วถึงและอร่อย<br>
+      จึงเป็นสัญลักษณ์ของครอบครัวและวัฒนธรรมการกินร่วมกันในเกาหลี
+    </p>
+
+    <p data-lang="ph" style="display:none;">
+      <strong>Pinagmulan ng “Gamasot” (Iron Pot)</strong><br><br>
+      Ginagamit sa Korea bago pa ang panahon ng Three Kingdoms (mahigit 2,000 taon na ang nakaraan).<br>
+      Ang cast iron pot ay naging karaniwan sa mga tao mga 1,400 taon na ang nakalipas.<br><br>
+      Mabagal itong uminit ngunit matagal ding mananatiling mainit, kaya pantay ang pagkaluto ng karne.<br>
+      Isa itong simbolo ng pamilya at pagkakaisa sa kulturang Koreano.
     </p>
 
     <p data-lang="fr" style="display:none;">
@@ -694,6 +815,22 @@ function showSsamDetail() {
       Đặt thịt nướng đã chấm dầu mè hoặc bột đậu lên rau, thêm tương ssamjang và ăn.<br>
       Cũng có thể chấm thịt với nhiều loại sốt khác nhau, đặt lên rau và ăn kèm hành trộn, kimchi, tỏi nướng hoặc giá đỗ tùy sở thích.<br><br>
       Nếu muốn thưởng thức vị thịt nguyên bản, hãy chấm thịt với muối.
+    </p>
+
+    <p data-lang="th" style="display:none;">
+      <strong>ซัม (쌈) คืออะไร?</strong><br>
+      คือการห่ออาหารตามใจชอบของคุณ!<br><br>
+      วางเนื้อที่จิ้มซอสน้ำมันงาหรือผงถั่วบนผัก แล้วใส่ซัมจัง (ซอสถั่วหมัก)<br>
+      สามารถเพิ่มหัวหอมดอง กิมจิ กระเทียมย่าง หรือถั่วงอกได้ตามชอบ<br><br>
+      ถ้าอยากลิ้มรสเนื้อแท้ๆ แนะนำให้จิ้มเกลือเพียงเล็กน้อย
+    </p>
+
+    <p data-lang="ph" style="display:none;">
+      <strong>Ano ang “Ssam”?</strong><br>
+      Ito ay paraan ng pagkain na ikaw ang bumubuo ng perpektong kagat!<br><br>
+      Ilagay ang karne sa dahon ng gulay, lagyan ng sesame oil o soybean powder, at ng ssamjang (spicy soybean paste).<br>
+      Maaari mong dagdagan ng kimchi, bean sprouts, o bawang ayon sa panlasa.<br><br>
+      Kung gusto mo maramdaman ang tunay na lasa ng karne, simpleng asin lang ang kailangan.
     </p>
 
     <p data-lang="fr" style="display:none;">
