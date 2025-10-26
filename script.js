@@ -60,57 +60,57 @@ function showMenuDetail(menu) {
   // ✅ A코스
   if (menu === "A") {
     content = `
-      <p data-lang="ko"><strong class="course-label">A</strong> 돼지모듬 무한 리필<br>1인 17,900원<br>삼겹살+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈</p>
-      <p data-lang="en" style="display:none;"><strong class="course-label">A</strong> Pork Assortment Unlimited Refill<br>₩17,900 per person<br>Pork belly + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork belly + Honeycomb pork skin + Pork bulgogi + Beef intestine + Assorted vegetable wraps</p>
-      <p data-lang="zh" style="display:none;"><strong class="course-label">A</strong> 猪肉拼盘 无限续<br>每人 17,900韩元<br>五花肉 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包</p>
-      <p data-lang="ja" style="display:none;"><strong class="course-label">A</strong> 豚盛り合わせ 無限リフィル<br>1人 17,900ウォン<br>サムギョプサル + 豚肩ロース + 牛バラ肉 + 豚トロ + ハラミ + 薄切りサムギョプサル + 豚皮（ハチの巣）+ 豚プルコギ + 牛ホルモン + 野菜サム</p>
-      <p data-lang="vi" style="display:none;"><strong class="course-label">A</strong> Suất Buffet Thịt Heo Không Giới Hạn<br>17,900 KRW/người<br>Ba chỉ + Thịt cổ + Ức bò + Má heo + Thăn sườn + Ba chỉ thái mỏng + Da heo tổ ong + Bulgogi heo + Lòng bò + Rau cuốn</p>
-      <p data-lang="th" style="display:none;"><strong class="course-label">A</strong> เซ็ตหมูรวมเติมไม่อั้น<br>คนละ 17,900 วอน<br>หมูสามชั้น + คอหมู + เนื้ออกวัว + คอหมูอบ + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ</p>
-      <p data-lang="ph" style="display:none;"><strong class="course-label">A</strong> Unlimited Pork Set<br>₩17,900 bawat tao<br>Pork belly + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork + Pork skin + Pork bulgogi + Beef intestine + Mixed vegetable wraps</p>
-      <p data-lang="fr" style="display:none;"><strong class="course-label">A</strong> Assortiment de Porc à volonté<br>17 900₩ par personne<br>Poitrine + Échine + Poitrine de bœuf + Joue de porc + Hampe + Poitrine fine + Couenne en nid d’abeille + Bulgogi de porc + Tripes de bœuf + Légumes</p>
-      <p data-lang="es" style="display:none;"><strong class="course-label">A</strong> Surtido de Cerdo Ilimitado<br>17,900₩ por persona<br>Panceta + Cuello + Falda de res + Papada + Entraña + Panceta fina + Piel panal + Bulgogi de cerdo + Intestino de res + Verduras</p>
-      <p data-lang="pt" style="display:none;"><strong class="course-label">A</strong> Rodízio de Porco Variado<br>₩17.900 por pessoa<br>Barriga + Pescoço + Peito bovino + Bochecha + Fraldinha + Panceta fina + Pele em favo + Bulgogi de porco + Intestino bovino + Vegetais</p>
-      <p data-lang="ar" style="display:none;"><strong class="course-label">A</strong> تشكيلة لحم خنزير مفتوحة<br>17,900₩ للشخص<br>بطن + رقبة + صدر بقر + خدود + لحم الحجاب + بطن رفيع + جلد خنزير مشبك + بولغوغي + أمعاء + خضروات</p>
-      <p data-lang="ru" style="display:none;"><strong class="course-label">A</strong> Ассорти из свинины безлимит<br>17,900₩ за чел<br>Самгёпсаль + Шея + Грудинка + Щёки + Диафрагма + Тонкий самгёпсаль + Свиная кожа + Булгоги + Кишки + Овощи</p>
-      <p data-lang="tr" style="display:none;"><strong class="course-label">A</strong> Domuz Karışık Sınırsız<br>Kişi ₩17.900<br>Domuz göbeği + Boyun + Dana göğüs + Yanak + Diyafram + İnce göbek + Domuz derisi + Bulgogi + Bağırsak + Sebzeler</p>
+      <p data-lang="ko"><strong class="course-label">A</strong> 돼지모듬 무한 리필<br>1인 <span class="price">17,900원</span><br>삼겹살+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈</p>
+      <p data-lang="en" style="display:none;"><strong class="course-label">A</strong> Pork Assortment Unlimited Refill<br><span class="price">₩17,900</span> per person<br>Pork belly + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork belly + Honeycomb pork skin + Pork bulgogi + Beef intestine + Assorted vegetable wraps</p>
+      <p data-lang="zh" style="display:none;"><strong class="course-label">A</strong> 猪肉拼盘 无限续<br>每人 <span class="price">17,900韩元</span><br>五花肉 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包</p>
+      <p data-lang="ja" style="display:none;"><strong class="course-label">A</strong> 豚盛り合わせ 無限リフィル<br>1人 <span class="price">17,900ウォン</span><br>サムギョプサル + 豚肩ロース + 牛バラ肉 + 豚トロ + ハラミ + 薄切りサムギョプサル + 豚皮（ハチの巣）+ 豚プルコギ + 牛ホルモン + 野菜サム</p>
+      <p data-lang="vi" style="display:none;"><strong class="course-label">A</strong> Suất Buffet Thịt Heo Không Giới Hạn<br><span class="price">17,900 KRW</span>/người<br>Ba chỉ + Thịt cổ + Ức bò + Má heo + Thăn sườn + Ba chỉ thái mỏng + Da heo tổ ong + Bulgogi heo + Lòng bò + Rau cuốn</p>
+      <p data-lang="th" style="display:none;"><strong class="course-label">A</strong> เซ็ตหมูรวมเติมไม่อั้น<br>คนละ <span class="price">17,900 วอน</span><br>หมูสามชั้น + คอหมู + เนื้ออกวัว + คอหมูอบ + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ</p>
+      <p data-lang="ph" style="display:none;"><strong class="course-label">A</strong> Unlimited Pork Set<br><span class="price">₩17,900</span> bawat tao<br>Pork belly + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork + Pork skin + Pork bulgogi + Beef intestine + Mixed vegetable wraps</p>
+      <p data-lang="fr" style="display:none;"><strong class="course-label">A</strong> Assortiment de Porc à volonté<br><span class="price">17 900₩</span></span> par personne<br>Poitrine + Échine + Poitrine de bœuf + Joue de porc + Hampe + Poitrine fine + Couenne en nid d’abeille + Bulgogi de porc + Tripes de bœuf + Légumes</p>
+      <p data-lang="es" style="display:none;"><strong class="course-label">A</strong> Surtido de Cerdo Ilimitado<br><span class="price">17,900₩</span> por persona<br>Panceta + Cuello + Falda de res + Papada + Entraña + Panceta fina + Piel panal + Bulgogi de cerdo + Intestino de res + Verduras</p>
+      <p data-lang="pt" style="display:none;"><strong class="course-label">A</strong> Rodízio de Porco Variado<br><span class="price">₩17.900</span> por pessoa<br>Barriga + Pescoço + Peito bovino + Bochecha + Fraldinha + Panceta fina + Pele em favo + Bulgogi de porco + Intestino bovino + Vegetais</p>
+      <p data-lang="ar" style="display:none;"><strong class="course-label">A</strong> تشكيلة لحم خنزير مفتوحة<br><span class="price">17,900₩</span> للشخص<br>بطن + رقبة + صدر بقر + خدود + لحم الحجاب + بطن رفيع + جلد خنزير مشبك + بولغوغي + أمعاء + خضروات</p>
+      <p data-lang="ru" style="display:none;"><strong class="course-label">A</strong> Ассорти из свинины безлимит<br><span class="price">17,900₩</span> за чел<br>Самгёпсаль + Шея + Грудинка + Щёки + Диафрагма + Тонкий самгёпсаль + Свиная кожа + Булгоги + Кишки + Овощи</p>
+      <p data-lang="tr" style="display:none;"><strong class="course-label">A</strong> Domuz Karışık Sınırsız<br>Kişi <span class="price">₩17.900</span> <br>Domuz göbeği + Boyun + Dana göğüs + Yanak + Diyafram + İnce göbek + Domuz derisi + Bulgogi + Bağırsak + Sebzeler</p>
     `;
   }
 
   // ✅ B코스
   else if (menu === "B") {
     content = `
-      <p data-lang="ko"><strong class="course-label">B</strong> 돼지모듬+간장순살치킨 무한리필<br>1인 19,900원<br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈</p>
-      <p data-lang="en" style="display:none;"><strong class="course-label">B</strong> Pork Assortment + Soy Chicken Unlimited<br>₩19,900 per person<br>Pork belly + Soy-marinated chicken + Neck + Beef brisket + Jowl + Skirt + Thin belly + Skin + Bulgogi + Intestine + Vegetables</p>
-      <p data-lang="zh" style="display:none;"><strong class="course-label">B</strong> 猪肉拼盘+酱油鸡 无限续<br>每人 19,900韩元<br>五花肉+酱油鸡+颈肉+牛胸肉+猪颊肉+横膈膜+薄切五花肉+猪皮+烤肉+牛肠+蔬菜</p>
-      <p data-lang="ja" style="display:none;"><strong class="course-label">B</strong> 豚盛り合わせ+醤油チキン 無限リフィル<br>1人 19,900ウォン<br>サムギョプサル+醤油チキン+肩ロース+牛バラ+豚トロ+ハラミ+薄切り+皮+プルコギ+ホルモン+野菜</p>
-      <p data-lang="vi" style="display:none;"><strong class="course-label">B</strong> Suất Thịt Heo + Gà Xì Dầu Không Giới Hạn<br>19,900 KRW/người<br>Ba chỉ + Gà xì dầu + Cổ + Ức bò + Má + Thăn + Ba chỉ mỏng + Da + Bulgogi + Lòng + Rau</p>
-      <p data-lang="th" style="display:none;"><strong class="course-label">B</strong> หมูรวม + ไก่ซอสถั่วเหลือง เติมไม่อั้น<br>คนละ 19,900 วอน<br>หมูสามชั้น + ไก่ซอสถั่วเหลือง + คอหมู + เนื้อวัว + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ</p>
-      <p data-lang="ph" style="display:none;"><strong class="course-label">B</strong> Unlimited Pork + Soy Chicken Set<br>₩19,900 bawat tao<br>Pork belly + Soy-marinated chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin pork belly + Pork skin + Pork bulgogi + Beef intestine + Veggie wraps</p>
-      <p data-lang="fr" style="display:none;"><strong class="course-label">B</strong> Porc + Poulet soja à volonté<br>19 900₩ pp<br>Poitrine + Poulet soja + Échine + Poitrine bœuf + Joue + Hampe + Fine poitrine + Peau + Bulgogi + Tripes + Légumes</p>
-      <p data-lang="es" style="display:none;"><strong class="course-label">B</strong> Cerdo + Pollo soja Ilimitado<br>19,900₩ pp<br>Panceta + Pollo soja + Cuello + Falda + Papada + Entraña + Panceta fina + Piel + Bulgogi + Intestino + Verduras</p>
-      <p data-lang="pt" style="display:none;"><strong class="course-label">B</strong> Porco + Frango molho soja Rodízio<br>₩19.900 pp<br>Barriga + Frango soja + Pescoço + Peito boi + Bochecha + Fraldinha + Panceta fina + Pele + Bulgogi + Intestino + Vegetais</p>
-      <p data-lang="ar" style="display:none;"><strong class="course-label">B</strong> خنزير+دجاج صويا مفتوح<br>19,900₩ للشخص<br>بطن + دجاج صويا + رقبة + صدر بقر + خدود + لحم الحجاب + بطن رفيع + جلد + بولغوغي + أمعاء + خضار</p>
-      <p data-lang="ru" style="display:none;"><strong class="course-label">B</strong> Свинина+Соевый курица безлимит<br>19,900₩ чел<br>Самгёпсаль + Курица соя + Шея + Грудинка + Щёки + Диафрагма + Тонкий самгёпсаль + Кожа + Булгоги + Кишки + Овощи</p>
-      <p data-lang="tr" style="display:none;"><strong class="course-label">B</strong> Domuz+Soya Tavuk Sınırsız<br>₩19.900 kişi<br>Göbek + Soya tavuk + Boyun + Dana göğüs + Yanak + Diyafram + İnce göbek + Deri + Bulgogi + Bağırsak + Sebze</p>
+      <p data-lang="ko"><strong class="course-label">B</strong> 돼지모듬+간장순살치킨 무한리필<br>1인 <span class="price">19,900원</span><br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈</p>
+      <p data-lang="en" style="display:none;"><strong class="course-label">B</strong> Pork Assortment + Soy Chicken Unlimited<br><span class="price">₩19,900</span> per person<br>Pork belly + Soy-marinated chicken + Neck + Beef brisket + Jowl + Skirt + Thin belly + Skin + Bulgogi + Intestine + Vegetables</p>
+      <p data-lang="zh" style="display:none;"><strong class="course-label">B</strong> 猪肉拼盘+酱油鸡 无限续<br>每人 <span class="price">19,900韩元</span><br>五花肉+酱油鸡+颈肉+牛胸肉+猪颊肉+横膈膜+薄切五花肉+猪皮+烤肉+牛肠+蔬菜</p>
+      <p data-lang="ja" style="display:none;"><strong class="course-label">B</strong> 豚盛り合わせ+醤油チキン 無限リフィル<br>1人 <span class="price">19,900ウォン</span><br>サムギョプサル+醤油チキン+肩ロース+牛バラ+豚トロ+ハラミ+薄切り+皮+プルコギ+ホルモン+野菜</p>
+      <p data-lang="vi" style="display:none;"><strong class="course-label">B</strong> Suất Thịt Heo + Gà Xì Dầu Không Giới Hạn<br><span class="price">19,900 KRW</span>/người<br>Ba chỉ + Gà xì dầu + Cổ + Ức bò + Má + Thăn + Ba chỉ mỏng + Da + Bulgogi + Lòng + Rau</p>
+      <p data-lang="th" style="display:none;"><strong class="course-label">B</strong> หมูรวม + ไก่ซอสถั่วเหลือง เติมไม่อั้น<br>คนละ <span class="price">19,900 วอน</span><br>หมูสามชั้น + ไก่ซอสถั่วเหลือง + คอหมู + เนื้อวัว + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ</p>
+      <p data-lang="ph" style="display:none;"><strong class="course-label">B</strong> Unlimited Pork + Soy Chicken Set<br><span class="price">₩19,900</span> bawat tao<br>Pork belly + Soy-marinated chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin pork belly + Pork skin + Pork bulgogi + Beef intestine + Veggie wraps</p>
+      <p data-lang="fr" style="display:none;"><strong class="course-label">B</strong> Porc + Poulet soja à volonté<br><span class="price">19 900₩</span> par personne<br>Poitrine + Poulet soja + Échine + Poitrine bœuf + Joue + Hampe + Fine poitrine + Peau + Bulgogi + Tripes + Légumes</p>
+      <p data-lang="es" style="display:none;"><strong class="course-label">B</strong> Cerdo + Pollo soja Ilimitado<br><span class="price">19,900₩</span> por persona<br>Panceta + Pollo soja + Cuello + Falda + Papada + Entraña + Panceta fina + Piel + Bulgogi + Intestino + Verduras</p>
+      <p data-lang="pt" style="display:none;"><strong class="course-label">B</strong> Porco + Frango molho soja Rodízio<br><span class="price">₩19.900</span> por pessoa<br>Barriga + Frango soja + Pescoço + Peito boi + Bochecha + Fraldinha + Panceta fina + Pele + Bulgogi + Intestino + Vegetais</p>
+      <p data-lang="ar" style="display:none;"><strong class="course-label">B</strong> خنزير+دجاج صويا مفتوح<br><span class="price">19,900₩</span> للشخص<br>بطن + دجاج صويا + رقبة + صدر بقر + خدود + لحم الحجاب + بطن رفيع + جلد + بولغوغي + أمعاء + خضار</p>
+      <p data-lang="ru" style="display:none;"><strong class="course-label">B</strong> Свинина+Соевый курица безлимит<br><span class="price">19,900₩</span> чел<br>Самгёпсаль + Курица соя + Шея + Грудинка + Щёки + Диафрагма + Тонкий самгёпсаль + Кожа + Булгоги + Кишки + Овощи</p>
+      <p data-lang="tr" style="display:none;"><strong class="course-label">B</strong> Domuz+Soya Tavuk Sınırsız<br><span class="price">₩19.900</span> kişi<br>Göbek + Soya tavuk + Boyun + Dana göğüs + Yanak + Diyafram + İnce göbek + Deri + Bulgogi + Bağırsak + Sebze</p>
     `;
   }
 
   // ✅ F코스
   else if (menu === "F" || menu === "Full") {
     content = `
-      <p data-lang="ko"><strong class="course-label">Full</strong> 코스 무한리필<br>1인 23,900원<br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈+음료수<span class="unlimited">무제한</span>+공기밥<span class="unlimited">무제한</span>+냉면<span class="unlimited">무제한</span>
-      <p data-lang="en" style="display:none;"><strong class="course-label">Full</strong> Course Unlimited Refill<br>₩23,900 per person<br>Pork belly + Soy-marinated boneless chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork belly + Honeycomb pork skin + Pork bulgogi + Beef intestine + Assorted vegetable wraps + <span class="unlimited">Unlimited</span> drinks + <span class="unlimited">Unlimited</span> rice + <span class="unlimited">Unlimited</span> cold noodles</p>
-      <p data-lang="zh" style="display:none;"><strong class="course-label">全</strong>套餐 无限续<br>每人 23,900韩元<br>五花肉 + 酱油无骨鸡 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包 + 饮料<span class="unlimited">无限</span> + 米饭<span class="unlimited">无限</span> + 冷面<span class="unlimited">无限</span></p>
-      <p data-lang="ja" style="display:none;">フルコース 無限リフィル<br>1人 23,900ウォン<br>サムギョプサル + 醤油チキン + 豚肩ロース + 牛バラ肉 + 豚トロ + ハラミ + 薄切りサムギョプサル + 豚皮（ハチの巣）+ 豚プルコギ + 牛ホルモン + 野菜サム + 飲み物<span class="unlimited">飲み放題</span> + ご飯<span class="unlimited">無制限</span> + 冷麺<span class="unlimited">食べ放題</span></p>
-      <p data-lang="vi" style="display:none;"><strong class="course-label">Full</strong> Buffet Không Giới Hạn<br>23,900 KRW/người<br>Ba chỉ + Gà xì dầu + Thịt cổ + Ức bò + Má heo + Thăn sườn + Ba chỉ thái mỏng + Da heo tổ ong + Bulgogi heo + Lòng bò + Rau cuốn + Nước uống <span class="unlimited">không giới hạn</span> + Cơm <span class="unlimited">không giới hạn</span> + Mì lạnh <span class="unlimited">không giới hạn</span></p>
-      <p data-lang="th" style="display:none;"><strong class="course-label">Full</strong> คอร์สบุฟเฟ่ต์เต็มรูปแบบ<br>คนละ 23,900 วอน<br>หมูสามชั้น + ไก่ซอสถั่วเหลือง + คอหมู + เนื้อวัว + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ + เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> + ข้าว<span class="unlimited">ไม่อั้น</span> + บะหมี่เย็น<span class="unlimited">ไม่อั้น</span>
-      <p data-lang="ph" style="display:none;"><strong class="course-label">Full</strong> Unlimited Full Course<br>₩23,900 bawat tao<br>Pork belly + Soy chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin pork + Pork skin + Pork bulgogi + Beef intestine + Veggies + <span class="unlimited">Unlimited</span> drinks + <span class="unlimited">Unlimited</span> rice + <span class="unlimited">Unlimited</span> cold noodles</p>
-      <p data-lang="fr" style="display:none;">Formule <strong class="course-label">Complète</strong> à volonté<br>23 900₩ par personne<br>Porc + poulet sauce soja + échine + poitrine de bœuf + joue + hampe + poitrine fine + couenne + bulgogi + tripes + légumes + boissons <span class="unlimited">illimitées</span> + riz <span class="unlimited">illimité</span> + nouilles froides <span class="unlimited">illimitées</span></p>
-      <p data-lang="es" style="display:none;">Curso <strong class="course-label">Completo</strong> Ilimitado<br>23,900₩ por persona<br>Cerdo + pollo en salsa de soja + cuello + falda + papada + entraña + panceta fina + piel panal + bulgogi + intestino + vegetales + bebidas <span class="unlimited">ilimitadas</span> + arroz <span class="unlimited">ilimitado</span> + fideos fríos <span class="unlimited">ilimitados</span></p>
-      <p data-lang="pt" style="display:none;">Curso <strong class="course-label">Completo</strong> Rodízio<br>₩23.900 por pessoa<br>Barriga de porco + frango ao molho de soja + pescoço + peito + bochecha + fraldinha + pele em favo + bulgogi + tripas + legumes + bebidas <span class="unlimited">ilimitados</span>+ arroz <span class="unlimited">ilimitados</span> + macarrão frio <span class="unlimited">ilimitados</span></p>
-      <p data-lang="ar" style="display:none; direction: rtl;"><strong>بوفيه كامل</strong>غير محدود<br>23,900₩ للشخص<br>لحم خنزير + دجاج صويا + رقبة + صدر + جلد + بولغوغي + أمعاء + خضار +    مشروبات <span class="unlimited">غير محدودة</span> + أرز <span class="unlimited">غير محدود</span> + نودلز باردة <span class="unlimited">غير محدودة</span></p>
-      <p data-lang="ru" style="display:none;">Полный <strong class="course-label">курс</strong> безлимит<br>23,900₩ за человека<br>Свинина + курица в соевом соусе + шея + грудинка + щека + диафрагма + тонко нарезанная свинина + кожа + булгоги + кишки + овощи + Напитки <span class="unlimited">безлимит</span> + Рис <span class="unlimited">безлимит</span> + Холодная лапша <span class="unlimited">безлимит</span></p>
-      <p data-lang="tr" style="display:none;"><strong class="course-label">Tam</strong> Kurs Sınırsız<br>Kişi başı ₩23.900<br>Domuz eti + soya soslu tavuk + boyun + dana göğüs + yanak + diyafram + ince dilimlenmiş domuz eti + deri + bulgogi + bağırsak + sebze + İçecekler <span class="unlimited">sınırsız</span> + Pilav <span class="unlimited">sınırsız</span> + Soğuk erişte <span class="unlimited">sınırsız</span></p>
+      <p data-lang="ko"><strong class="course-label">Full</strong> 코스 무한리필<br>1인 <span class="price">23,900원</span><br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈+음료수<span class="unlimited">무제한</span>+공기밥<span class="unlimited">무제한</span>+냉면<span class="unlimited">무제한</span>
+      <p data-lang="en" style="display:none;"><strong class="course-label">Full</strong> Course Unlimited Refill<br><span class="price">₩23,900</span> per person<br>Pork belly + Soy-marinated boneless chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork belly + Honeycomb pork skin + Pork bulgogi + Beef intestine + Assorted vegetable wraps + <span class="unlimited">Unlimited</span> drinks + <span class="unlimited">Unlimited</span> rice + <span class="unlimited">Unlimited</span> cold noodles</p>
+      <p data-lang="zh" style="display:none;"><strong class="course-label">全</strong>套餐 无限续<br>每人 <span class="price">23,900韩元</span><br>五花肉 + 酱油无骨鸡 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包 + 饮料<span class="unlimited">无限</span> + 米饭<span class="unlimited">无限</span> + 冷面<span class="unlimited">无限</span></p>
+      <p data-lang="ja" style="display:none;">フルコース 無限リフィル<br>1人 <span class="price">23,900ウォン</span><br>サムギョプサル + 醤油チキン + 豚肩ロース + 牛バラ肉 + 豚トロ + ハラミ + 薄切りサムギョプサル + 豚皮（ハチの巣）+ 豚プルコギ + 牛ホルモン + 野菜サム + 飲み物<span class="unlimited">飲み放題</span> + ご飯<span class="unlimited">無制限</span> + 冷麺<span class="unlimited">食べ放題</span></p>
+      <p data-lang="vi" style="display:none;"><strong class="course-label">Full</strong> Buffet Không Giới Hạn<br><span class="price">23,900 KRW</span>/người<br>Ba chỉ + Gà xì dầu + Thịt cổ + Ức bò + Má heo + Thăn sườn + Ba chỉ thái mỏng + Da heo tổ ong + Bulgogi heo + Lòng bò + Rau cuốn + Nước uống <span class="unlimited">không giới hạn</span> + Cơm <span class="unlimited">không giới hạn</span> + Mì lạnh <span class="unlimited">không giới hạn</span></p>
+      <p data-lang="th" style="display:none;"><strong class="course-label">Full</strong> คอร์สบุฟเฟ่ต์เต็มรูปแบบ<br>คนละ <span class="price">23,900 วอน</span><br>หมูสามชั้น + ไก่ซอสถั่วเหลือง + คอหมู + เนื้อวัว + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ + เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> + ข้าว<span class="unlimited">ไม่อั้น</span> + บะหมี่เย็น<span class="unlimited">ไม่อั้น</span>
+      <p data-lang="ph" style="display:none;"><strong class="course-label">Full</strong> Unlimited Full Course<br><span class="price">₩23,900</span> bawat tao<br>Pork belly + Soy chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin pork + Pork skin + Pork bulgogi + Beef intestine + Veggies + <span class="unlimited">Unlimited</span> drinks + <span class="unlimited">Unlimited</span> rice + <span class="unlimited">Unlimited</span> cold noodles</p>
+      <p data-lang="fr" style="display:none;">Formule <strong class="course-label">Complète</strong> à volonté<br><span class="price">23 900₩</span> par personne<br>Porc + poulet sauce soja + échine + poitrine de bœuf + joue + hampe + poitrine fine + couenne + bulgogi + tripes + légumes + boissons <span class="unlimited">illimitées</span> + riz <span class="unlimited">illimité</span> + nouilles froides <span class="unlimited">illimitées</span></p>
+      <p data-lang="es" style="display:none;">Curso <strong class="course-label">Completo</strong> Ilimitado<br><span class="price">23,900₩</span> por persona<br>Cerdo + pollo en salsa de soja + cuello + falda + papada + entraña + panceta fina + piel panal + bulgogi + intestino + vegetales + bebidas <span class="unlimited">ilimitadas</span> + arroz <span class="unlimited">ilimitado</span> + fideos fríos <span class="unlimited">ilimitados</span></p>
+      <p data-lang="pt" style="display:none;">Curso <strong class="course-label">Completo</strong> Rodízio<br><span class="price">₩23.900</span> por pessoa<br>Barriga de porco + frango ao molho de soja + pescoço + peito + bochecha + fraldinha + pele em favo + bulgogi + tripas + legumes + bebidas <span class="unlimited">ilimitados</span>+ arroz <span class="unlimited">ilimitados</span> + macarrão frio <span class="unlimited">ilimitados</span></p>
+      <p data-lang="ar" style="display:none; direction: rtl;"><strong>بوفيه كامل</strong>غير محدود<br><span class="price">23,900₩</span> للشخص<br>لحم خنزير + دجاج صويا + رقبة + صدر + جلد + بولغوغي + أمعاء + خضار +    مشروبات <span class="unlimited">غير محدودة</span> + أرز <span class="unlimited">غير محدود</span> + نودلز باردة <span class="unlimited">غير محدودة</span></p>
+      <p data-lang="ru" style="display:none;">Полный <strong class="course-label">курс</strong> безлимит<br><span class="price">23,900₩</span> за человека<br>Свинина + курица в соевом соусе + шея + грудинка + щека + диафрагма + тонко нарезанная свинина + кожа + булгоги + кишки + овощи + Напитки <span class="unlimited">безлимит</span> + Рис <span class="unlimited">безлимит</span> + Холодная лапша <span class="unlimited">безлимит</span></p>
+      <p data-lang="tr" style="display:none;"><strong class="course-label">Tam</strong> Kurs Sınırsız<br>Kişi başı <span class="price">₩23.900</span><br>Domuz eti + soya soslu tavuk + boyun + dana göğüs + yanak + diyafram + ince dilimlenmiş domuz eti + deri + bulgogi + bağırsak + sebze + İçecekler <span class="unlimited">sınırsız</span> + Pilav <span class="unlimited">sınırsız</span> + Soğuk erişte <span class="unlimited">sınırsız</span></p>
     `;
   }
 
@@ -134,139 +134,139 @@ function showSideDetail() {
     <!-- 한국어 -->
     <p data-lang="ko">
       <strong>사이드메뉴</strong><br>
-      함흥냉면 <span class="small-note">(물냉면/비빔냉면)</span> 4,500원<br>
-      공기밥 <span class="small-note">(전인원 주문시 <span class="unlimited">무제한</span>)</span> 1,000원<br>
-      음료수 <span class="small-note">(캔음료)</span> 2,500원<br>
-      음료수 <span class="unlimited">무제한</span> <span class="small-note">(전인원 주문 필요)</span> 1인 2,500원<br>
-      한강라면 1,500원<br>
-      된장찌개 2,000원<br>
-      소주 5,500원<br>
-      맥주 6,000원<br>
-      청하 / 과일소주 6,500원
+      함흥냉면 <span class="small-note">(물냉면/비빔냉면)</span> <span class="price">4,500원</span><br>
+      공기밥 <span class="small-note">(전인원 주문시 <span class="unlimited">무제한</span>)</span> <span class="price">1,000원</span><br>
+      음료수 <span class="small-note">(캔음료)</span> <span class="price">2,500원</span><br>
+      음료수 <span class="unlimited">무제한</span> <span class="small-note">(전인원 주문 필요)</span> 1인 <span class="price">2,500원</span><br>
+      한강라면 <span class="price">1,500원</span><br>
+      된장찌개 <span class="price">2,000원</span><br>
+      소주 <span class="price">5,500원</span><br>
+      맥주 <span class="price">6,000원</span><br>
+      청하 / 과일소주 <span class="price">6,500원</span>
     </p>
 
     <!-- English -->
     <p data-lang="en" style="display:none;">
       <strong>Side Menu</strong><br>
-      Cold noodles <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> 4,500 KRW<br>
-      White rice <span class="small-note">(<span class="unlimited">Unlimited</span> if ordered for all)</span> 1,000 KRW<br>
-      Beverage <span class="small-note">(Canned drink)</span> 2,500 KRW<br>
-      <span class="unlimited">Unlimited</span> beverage <span class="small-note">(All must order)</span> 2,500 KRW per person<br>
-      Hangang ramen 1,500 KRW<br>
-      Doenjang stew 2,000 KRW<br>
-      Soju 5,500 KRW<br>
-      Beer 6,000 KRW<br>
-      Cheongha / Fruit Soju 6,500 KRW
+      Cold noodles <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">4,500 KRW</span><br>
+      White rice <span class="small-note">(<span class="unlimited">Unlimited</span> if ordered for all)</span> <span class="price">1,000 KRW</span><br>
+      Beverage <span class="small-note">(Canned drink)</span> <span class="price">2,500 KRW</span><br>
+      <span class="unlimited">Unlimited</span> beverage <span class="small-note">(All must order)</span> <span class="price">2,500 KRW</span> per person<br>
+      Hangang ramen <span class="price">1,500 KRW</span><br>
+      Doenjang stew <span class="price">2,000 KRW</span><br>
+      Soju <span class="price">5,500 KRW</span><br>
+      Beer <span class="price">6,000 KRW</span><br>
+      Cheongha / Fruit Soju <span class="price">6,500 KRW</span>
     </p>
 
     <!-- 中文 -->
     <p data-lang="zh" style="display:none;">
       <strong>配菜菜单</strong><br>
-      咸兴冷面 <span class="small-note">(水冷面/拌冷面)</span> 4,500韩元<br>
-      白米饭 <span class="small-note">(全员点单时<span class="unlimited">无限</span>续)</span> 1,000韩元<br>
-      饮料 <span class="small-note">(罐装)</span> 2,500韩元<br>
-      饮料<span class="unlimited">无限</span> <span class="small-note">(需全员点单)</span> 每人 2,500韩元<br>
-      汉江拉面 1,500韩元<br>
-      大酱汤 2,000韩元<br>
-      烧酒 5,500韩元<br>
-      啤酒 6,000韩元<br>
-      清河 / 水果烧酒 6,500韩元
+      咸兴冷面 <span class="small-note">(水冷面/拌冷面)</span> <span class="price">4,500韩元</span><br>
+      白米饭 <span class="small-note">(全员点单时<span class="unlimited">无限</span>续)</span> <span class="price">1,000韩元</span><br>
+      饮料 <span class="small-note">(罐装)</span> <span class="price">2,500韩元</span><br>
+      饮料<span class="unlimited">无限</span> <span class="small-note">(需全员点单)</span> 每人 <span class="price">2,500韩元</span><br>
+      汉江拉面 <span class="price">1,500韩元</span><br>
+      大酱汤 <span class="price">2,000韩元</span><br>
+      烧酒 <span class="price">5,500韩元</span><br>
+      啤酒 <span class="price">6,000韩元</span><br>
+      清河 / 水果烧酒 <span class="price">6,500韩元</span>
     </p>
 
     <!-- 日本語 -->
     <p data-lang="ja" style="display:none;">
       <strong>サイドメニュー</strong><br>
-      咸興冷麺 <span class="small-note">(水冷麺/ビビン冷麺)</span> 4,500ウォン<br>
-      白ご飯 <span class="small-note">(全員注文時<span class="unlimited">無制限</span>)</span> 1,000ウォン<br>
-      飲み物 <span class="small-note">(缶ドリンク)</span> 2,500ウォン<br>
-      ドリンク<span class="unlimited">飲み放題</span> <span class="small-note">(全員注文必須)</span> 1人 2,500ウォン<br>
-      漢江ラーメン 1,500ウォン<br>
-      テンジャンチゲ 2,000ウォン<br>
-      ソジュ 5,500ウォン<br>
-      ビール 6,000ウォン<br>
-      チョンハ / フルーツソジュ 6,500ウォン
+      咸興冷麺 <span class="small-note">(水冷麺/ビビン冷麺)</span> <span class="price">4,500ウォン</span><br>
+      白ご飯 <span class="small-note">(全員注文時<span class="unlimited">無制限</span>)</span> <span class="price">1,000ウォン</span><br>
+      飲み物 <span class="small-note">(缶ドリンク)</span> <span class="price">2,500ウォン</span><br>
+      ドリンク<span class="unlimited">飲み放題</span> <span class="small-note">(全員注文必須)</span> 1人 <span class="price">2,500ウォン</span><br>
+      漢江ラーメン <span class="price">1,500ウォン</span><br>
+      テンジャンチゲ <span class="price">2,000ウォン</span><br>
+      ソジュ <span class="price">5,500ウォン</span><br>
+      ビール <span class="price">6,000ウォン</span><br>
+      チョンハ / フルーツソジュ <span class="price">6,500ウォン</span>
     </p>
 
     <!-- Tiếng Việt -->
     <p data-lang="vi" style="display:none;">
       <strong>Thực đơn phụ</strong><br>
-      Mì lạnh <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> 4.500 KRW<br>
-      Cơm trắng <span class="small-note">(khi gọi cho cả bàn <span class="unlimited">không giới hạn</span>)</span> 1.000 KRW<br>
-      Nước giải khát <span class="small-note">(Lon)</span> 2.500 KRW<br>
-      Nước giải khát <span class="unlimited">không giới hạn</span> <span class="small-note">(Cả bàn phải gọi)</span> 2.500 KRW/người<br>
-      Mì ramen Hangang 1.500 KRW<br>
-      Canh tương đậu (Doenjang) 2.000 KRW<br>
-      Soju 5.500 KRW<br>
-      Bia 6.000 KRW<br>
-      Cheongha / Soju hoa quả 6.500 KRW
+      Mì lạnh <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">4.500 KRW</span><br>
+      Cơm trắng <span class="small-note">(khi gọi cho cả bàn <span class="unlimited">không giới hạn</span>)</span> <span class="price">1.000 KRW</span><br>
+      Nước giải khát <span class="small-note">(Lon)</span> <span class="price">2.500 KRW</span><br>
+      Nước giải khát <span class="unlimited">không giới hạn</span> <span class="small-note">(Cả bàn phải gọi)</span> <span class="price">2.500 KRW</span>/người<br>
+      Mì ramen Hangang <span class="price">1.500 KRW</span><br>
+      Canh tương đậu (Doenjang) <span class="price">2.000 KRW</span><br>
+      Soju <span class="price">5.500 KRW</span><br>
+      Bia <span class="price">6.000 KRW</span><br>
+      Cheongha / Soju hoa quả <span class="price">6.500 KRW</span>
     </p>
 
     <p data-lang="th" style="display:none;">
       <strong>เมนูข้างเคียง</strong><br>
-      บะหมี่เย็น 4,500 วอน<br>
-      ข้าวเปล่า <span class="small-note">(ถ้าสั่งทั้งโต๊ะ<span class="unlimited">ไม่อั้น</span>)</span> 1,000 วอน<br>
-      เครื่องดื่มกระป๋อง 2,500 วอน<br>
-      เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> <span class="small-note">(สั่งทุกคน)</span> 2,500 วอน/คน<br>
-      ราเม็งฮันกัง 1,500 วอน<br>
-      ซุปเต้าเจี้ยว 2,000 วอน<br>
-      โซจู 5,500 วอน<br>
-      เบียร์ 6,000 วอน<br>
-      ชองฮา / โซจูผลไม้ 6,500 วอน
+      บะหมี่เย็น <span class="price">4,500 วอน</span><br>
+      ข้าวเปล่า <span class="small-note">(ถ้าสั่งทั้งโต๊ะ<span class="unlimited">ไม่อั้น</span>)</span> <span class="price">1,000 วอน</span><br>
+      เครื่องดื่มกระป๋อง <span class="price">2,500 วอน</span><br>
+      เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> <span class="small-note">(สั่งทุกคน)</span> <span class="price">2,500 วอน</span>/คน<br>
+      ราเม็งฮันกัง <span class="price">1,500 วอน</span><br>
+      ซุปเต้าเจี้ยว <span class="price">2,000 วอน</span><br>
+      โซจู <span class="price">5,500 วอน</span><br>
+      เบียร์ <span class="price">6,000 วอน</span><br>
+      ชองฮา / โซจูผลไม้ <span class="price">6,500 วอน</span>
     </p>
 
     <p data-lang="ph" style="display:none;">
       <strong>Side Menu</strong><br>
-      Hamheung cold noodles <span class="small-note">(spicy / mild)</span> ₩4,500<br>
-      Steamed rice <span class="small-note">(<span class="unlimited">Unlimited</span> if everyone orders)</span> ₩1,000<br>
-      Soft drink <span class="small-note">(can)</span> ₩2,500<br>
-      <span class="unlimited">Unlimited</span> drinks <span class="small-note">(requires all members)</span> ₩2,500 each<br>
-      Hangang ramen ₩1,500<br>
-      Soybean stew ₩2,000<br>
-      Soju ₩5,500<br>
-      Beer ₩6,000<br>
-      Cheongha / Fruit soju ₩6,500
+      Hamheung cold noodles <span class="small-note">(spicy / mild)</span> <span class="price">₩4,500</span><br>
+      Steamed rice <span class="small-note">(<span class="unlimited">Unlimited</span> if everyone orders)</span> <span class="price">₩1,000</span><br>
+      Soft drink <span class="small-note">(can)</span> <span class="price">₩2,500</span><br>
+      <span class="unlimited">Unlimited</span> drinks <span class="small-note">(requires all members)</span> <span class="price">₩2,500</span> each<br>
+      Hangang ramen <span class="price">₩1,500</span><br>
+      Soybean stew <span class="price">₩2,000</span><br>
+      Soju <span class="price">₩5,500</span><br>
+      Beer <span class="price">₩6,000</span><br>
+      Cheongha / Fruit soju <span class="price">₩6,500</span>
     </p>
 
     <!-- Français -->
     <p data-lang="fr" style="display:none;">
       <strong>Menu d’accompagnement</strong><br>
-      Nouilles froides <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> 4 500₩<br>
-      Riz blanc <span class="small-note">(<span class="unlimited">à volonté</span> si commandé pour tous)</span> 1 000₩<br>
-      Boisson <span class="small-note">(canette)</span> 2 500₩<br>
-      Boissons <span class="unlimited">à volonté</span> <span class="small-note">(commande pour tous requise)</span> 2 500₩/pers.<br>
-      Ramen Hangang 1 500₩<br>
-      Ragoût de pâte de soja (Doenjang) 2 000₩<br>
-      Soju 5 500₩<br>
-      Bière 6 000₩<br>
-      Cheongha / Soju fruité 6 500₩
+      Nouilles froides <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">4 500₩</span><br>
+      Riz blanc <span class="small-note">(<span class="unlimited">à volonté</span> si commandé pour tous)</span> <span class="price">1 000₩</span><br>
+      Boisson <span class="small-note">(canette)</span> <span class="price">2 500₩</span><br>
+      Boissons <span class="unlimited">à volonté</span> <span class="small-note">(commande pour tous requise)</span> <span class="price">2 500₩</span>/pers.<br>
+      Ramen Hangang <span class="price">1 500₩</span><br>
+      Ragoût de pâte de soja (Doenjang) <span class="price">2 000₩</span><br>
+      Soju <span class="price">5 500₩</span><br>
+      Bière <span class="price">6 000₩</span><br>
+      Cheongha / Soju fruité <span class="price">6 500₩</span>
     </p>
 
     <!-- Español -->
     <p data-lang="es" style="display:none;">
       <strong>Menú lateral</strong><br>
-      Fideos fríos <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> 4,500₩<br>
-      Arroz blanco <span class="small-note">(para todos <span class="unlimited">sin límite</span>)</span> 1,000₩<br>
-      Bebida <span class="small-note">(Lata)</span> 2,500₩<br>
-      Bebida <span class="unlimited">sin límite</span> <span class="small-note">(Todos deben pedir)</span> 2,500₩ por persona<br>
-      Ramen Hangang 1,500₩<br>
-      Guiso de pasta de soja (Doenjang) 2,000₩<br>
-      Soju 5,500₩<br>
-      Cerveza 6,000₩<br>
-      Cheongha / Soju de frutas 6,500₩
+      Fideos fríos <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">4,500₩</span><br>
+      Arroz blanco <span class="small-note">(para todos <span class="unlimited">sin límite</span>)</span> <span class="price">1,000₩</span><br>
+      Bebida <span class="small-note">(Lata)</span> <span class="price">2,500₩</span><br>
+      Bebida <span class="unlimited">sin límite</span> <span class="small-note">(Todos deben pedir)</span> <span class="price">2,500₩</span> por persona<br>
+      Ramen Hangang <span class="price">1,500₩</span><br>
+      Guiso de pasta de soja (Doenjang) <span class="price">2,000₩</span><br>
+      Soju <span class="price">5,500₩</span><br>
+      Cerveza <span class="price">6,000₩</span><br>
+      Cheongha / Soju de frutas <span class="price">6,500₩</span>
     </p>
 
     <!-- Português -->
     <p data-lang="pt" style="display:none;">
       <strong>Menu Lateral</strong><br>
-      Macarrão frio <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> ₩4.500<br>
-      Arroz branco <span class="small-note">(<span class="unlimited">Ilimitado</span> se pedido para todos)</span> ₩1.000<br>
-      Bebida <span class="small-note">(lata)</span> ₩2.500<br>
-      Bebida <span class="unlimited">ilimitado</span> <span class="small-note">(todos devem pedir)</span> ₩2.500 por pessoa<br>
-      Lámen Hangang ₩1.500<br>
-      Ensopado de pasta de soja (Doenjang) ₩2.000<br>
-      Soju ₩5.500<br>
-      Cerveja ₩6.000<br>
-      Cheongha / Soju de frutas ₩6.500
+      Macarrão frio <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">₩4.500</span><br>
+      Arroz branco <span class="small-note">(<span class="unlimited">Ilimitado</span> se pedido para todos)</span> <span class="price">₩1.000</span><br>
+      Bebida <span class="small-note">(lata)</span> <span class="price">₩2.500</span><br>
+      Bebida <span class="unlimited">ilimitado</span> <span class="small-note">(todos devem pedir)</span> <span class="price">₩2.500</span> por pessoa<br>
+      Lámen Hangang <span class="price">₩1.500</span><br>
+      Ensopado de pasta de soja (Doenjang) <span class="price">₩2.000</span><br>
+      Soju <span class="price">₩5.500</span><br>
+      Cerveja <span class="price">₩6.000</span><br>
+      Cheongha / Soju de frutas <span class="price">₩6.500</span>
     </p>
 
     <!-- العربية -->
@@ -286,29 +286,29 @@ function showSideDetail() {
     <!-- Русский -->
     <p data-lang="ru" style="display:none;">
       <strong>Сайд-меню</strong><br>
-      Холодная лапша <span class="small-note">(Муль-нэнмён / Пибим-нэнмён)</span> 4,500₩<br>
-      Белый рис <span class="small-note">(<span class="unlimited">безлимит</span> при заказе для всех)</span> 1,000₩<br>
-      Напиток <span class="small-note">(банка)</span> 2,500₩<br>
-      <span class="unlimited">Безлимитные</span> напитки <span class="small-note">(при заказе для всех)</span> 2,500₩/чел<br>
-      Рамен Ханган 1,500₩<br>
-      Соевый суп (Тэнджан-чиге) 2,000₩<br>
-      Соджу 5,500₩<br>
-      Пиво 6,000₩<br>
-      Чхонха / фруктовое соджу 6,500₩
+      Холодная лапша <span class="small-note">(Муль-нэнмён / Пибим-нэнмён)</span> <span class="price">4,500₩</span><br>
+      Белый рис <span class="small-note">(<span class="unlimited">безлимит</span> при заказе для всех)</span> <span class="price">1,000₩</span><br>
+      Напиток <span class="small-note">(банка)</span> <span class="price">2,500₩</span><br>
+      <span class="unlimited">Безлимитные</span> напитки <span class="small-note">(при заказе для всех)</span> <span class="price">2,500₩</span>/чел<br>
+      Рамен Ханган <span class="price">1,500₩</span><br>
+      Соевый суп (Тэнджан-чиге) <span class="price">2,000₩</span><br>
+      Соджу <span class="price">5,500₩</span><br>
+      Пиво <span class="price">6,000₩</span><br>
+      Чхонха / фруктовое соджу <span class="price">6,500₩</span>
     </p>
 
     <!-- Türkçe -->
     <p data-lang="tr" style="display:none;">
       <strong>Yan Menü</strong><br>
-      Soğuk erişte <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> ₩4.500<br>
-      Beyaz pirinç <span class="small-note">(Herkes sipariş ederse <span class="unlimited">sınırsız</span>)</span> ₩1.000<br>
-      İçecek <span class="small-note">(Kutu)</span> ₩2.500<br>
-      <span class="unlimited">Sınırsız</span> içecek <span class="small-note">(Herkes sipariş etmeli)</span> Kişi başı ₩2.500<br>
-      Hangang ramen ₩1.500<br>
-      Soya ezmesi güveci (Doenjang jjigae) ₩2.000<br>
-      Soju ₩5.500<br>
-      Bira ₩6.000<br>
-      Cheongha / Meyveli Soju ₩6.500
+      Soğuk erişte <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">₩4.500</span><br>
+      Beyaz pirinç <span class="small-note">(Herkes sipariş ederse <span class="unlimited">sınırsız</span>)</span> <span class="price">₩1.000</span><br>
+      İçecek <span class="small-note">(Kutu)</span> <span class="price">₩2.500</span><br>
+      <span class="unlimited">Sınırsız</span> içecek <span class="small-note">(Herkes sipariş etmeli)</span> Kişi başı <span class="price">₩2.500</span><br>
+      Hangang ramen <span class="price">₩1.500</span><br>
+      Soya ezmesi güveci (Doenjang jjigae) <span class="price">₩2.000</span><br>
+      Soju <span class="price">₩5.500</span><br>
+      Bira <span class="price">₩6.000</span><br>
+      Cheongha / Meyveli Soju <span class="price">₩6.500</span>
     </p>
   `;
 
