@@ -672,6 +672,11 @@ button {
   font-family: "Noto Sans", "Noto Sans KR", Arial, sans-serif !important;
 }
 
+.unlimited {
+  color: #d50000;   /* 🔴 진한 빨강 */
+  font-weight: bold;
+}
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
   /* ✅ 언어 선택 박스 버튼 정렬 수정 */
