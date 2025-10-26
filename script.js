@@ -333,7 +333,7 @@ function showUsageDetail() {
       숟가락 및 젓가락, 냅킨 → <strong>테이블 옆 서랍</strong><br>
       고기, 야채, 야채접시, 반찬, 물티슈, 집게 등 → <strong>셀프바</strong><br>
       <br>
-      <strong>모두 셀프로 이용가능!</strong>
+      <strong>셀프로 이용가능!</strong>
     </p>
 
     <!-- 🇺🇸 영어 -->
