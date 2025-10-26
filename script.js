@@ -133,7 +133,7 @@ function showSideDetail() {
   let content = `
     <!-- 한국어 -->
     <p data-lang="ko">
-      <strong>사이드메뉴</strong><br>
+      <span class="menu-subtitle">사이드메뉴</span><br>
       함흥냉면 <span class="small-note">(물냉면/비빔냉면)</span> <span class="price">4,500원</span><br>
       공기밥 <span class="small-note">(전인원 주문시 <span class="unlimited">무제한</span>)</span> <span class="price">1,000원</span><br>
       음료수 <span class="small-note">(캔음료)</span> <span class="price">2,500원</span><br>
@@ -147,7 +147,7 @@ function showSideDetail() {
 
     <!-- English -->
     <p data-lang="en" style="display:none;">
-      <strong>Side Menu</strong><br>
+      <span class="menu-subtitle">Side Menu</span><br>
       Cold noodles <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">4,500 KRW</span><br>
       White rice <span class="small-note">(<span class="unlimited">Unlimited</span> if ordered for all)</span> <span class="price">1,000 KRW</span><br>
       Beverage <span class="small-note">(Canned drink)</span> <span class="price">2,500 KRW</span><br>
@@ -161,7 +161,7 @@ function showSideDetail() {
 
     <!-- 中文 -->
     <p data-lang="zh" style="display:none;">
-      <strong>配菜菜单</strong><br>
+      <span class="menu-subtitle">配菜菜单</span><br>
       咸兴冷面 <span class="small-note">(水冷面/拌冷面)</span> <span class="price">4,500韩元</span><br>
       白米饭 <span class="small-note">(全员点单时<span class="unlimited">无限</span>续)</span> <span class="price">1,000韩元</span><br>
       饮料 <span class="small-note">(罐装)</span> <span class="price">2,500韩元</span><br>
@@ -175,7 +175,7 @@ function showSideDetail() {
 
     <!-- 日本語 -->
     <p data-lang="ja" style="display:none;">
-      <strong>サイドメニュー</strong><br>
+      <span class="menu-subtitle">サイドメニュー</span><br>
       咸興冷麺 <span class="small-note">(水冷麺/ビビン冷麺)</span> <span class="price">4,500ウォン</span><br>
       白ご飯 <span class="small-note">(全員注文時<span class="unlimited">無制限</span>)</span> <span class="price">1,000ウォン</span><br>
       飲み物 <span class="small-note">(缶ドリンク)</span> <span class="price">2,500ウォン</span><br>
@@ -189,7 +189,7 @@ function showSideDetail() {
 
     <!-- Tiếng Việt -->
     <p data-lang="vi" style="display:none;">
-      <strong>Thực đơn phụ</strong><br>
+      <span class="menu-subtitle">Thực đơn phụ</span><br>
       Mì lạnh <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">4.500 KRW</span><br>
       Cơm trắng <span class="small-note">(khi gọi cho cả bàn <span class="unlimited">không giới hạn</span>)</span> <span class="price">1.000 KRW</span><br>
       Nước giải khát <span class="small-note">(Lon)</span> <span class="price">2.500 KRW</span><br>
@@ -202,7 +202,7 @@ function showSideDetail() {
     </p>
 
     <p data-lang="th" style="display:none;">
-      <strong>เมนูข้างเคียง</strong><br>
+      <span class="menu-subtitle">เมนูข้างเคียง</span><br>
       บะหมี่เย็น <span class="price">4,500 วอน</span><br>
       ข้าวเปล่า <span class="small-note">(ถ้าสั่งทั้งโต๊ะ<span class="unlimited">ไม่อั้น</span>)</span> <span class="price">1,000 วอน</span><br>
       เครื่องดื่มกระป๋อง <span class="price">2,500 วอน</span><br>
@@ -215,7 +215,7 @@ function showSideDetail() {
     </p>
 
     <p data-lang="ph" style="display:none;">
-      <strong>Side Menu</strong><br>
+      <span class="menu-subtitle">Side Menu</span><br>
       Hamheung cold noodles <span class="small-note">(spicy / mild)</span> <span class="price">₩4,500</span><br>
       Steamed rice <span class="small-note">(<span class="unlimited">Unlimited</span> if everyone orders)</span> <span class="price">₩1,000</span><br>
       Soft drink <span class="small-note">(can)</span> <span class="price">₩2,500</span><br>
@@ -229,7 +229,7 @@ function showSideDetail() {
 
     <!-- Français -->
     <p data-lang="fr" style="display:none;">
-      <strong>Menu d’accompagnement</strong><br>
+      <span class="menu-subtitle">Menu d’accompagnement</span><br>
       Nouilles froides <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">4 500₩</span><br>
       Riz blanc <span class="small-note">(<span class="unlimited">à volonté</span> si commandé pour tous)</span> <span class="price">1 000₩</span><br>
       Boisson <span class="small-note">(canette)</span> <span class="price">2 500₩</span><br>
@@ -243,7 +243,7 @@ function showSideDetail() {
 
     <!-- Español -->
     <p data-lang="es" style="display:none;">
-      <strong>Menú lateral</strong><br>
+      <span class="menu-subtitle">Menú lateral</span><br>
       Fideos fríos <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">4,500₩</span><br>
       Arroz blanco <span class="small-note">(para todos <span class="unlimited">sin límite</span>)</span> <span class="price">1,000₩</span><br>
       Bebida <span class="small-note">(Lata)</span> <span class="price">2,500₩</span><br>
@@ -257,7 +257,7 @@ function showSideDetail() {
 
     <!-- Português -->
     <p data-lang="pt" style="display:none;">
-      <strong>Menu Lateral</strong><br>
+      <span class="menu-subtitle">Menu Lateral</span><br>
       Macarrão frio <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">₩4.500</span><br>
       Arroz branco <span class="small-note">(<span class="unlimited">Ilimitado</span> se pedido para todos)</span> <span class="price">₩1.000</span><br>
       Bebida <span class="small-note">(lata)</span> <span class="price">₩2.500</span><br>
@@ -271,7 +271,7 @@ function showSideDetail() {
 
     <!-- العربية -->
     <p data-lang="ar" style="display:none;">
-      <strong>قائمة الجوانب</strong><br>
+      <span class="menu-subtitle">قائمة الجوانب</span><br>
       نودلز باردة (مول نينغميون / بيبيم نينغميون) 4,500₩<br>
       أرز أبيض (لكل الطاولة <span class="unlimited">غير محدود</span>) 1,000₩<br>
       مشروب (معلب) 2,500₩<br>
@@ -285,7 +285,7 @@ function showSideDetail() {
 
     <!-- Русский -->
     <p data-lang="ru" style="display:none;">
-      <strong>Сайд-меню</strong><br>
+      <span class="menu-subtitle">Сайд-меню</span><br>
       Холодная лапша <span class="small-note">(Муль-нэнмён / Пибим-нэнмён)</span> <span class="price">4,500₩</span><br>
       Белый рис <span class="small-note">(<span class="unlimited">безлимит</span> при заказе для всех)</span> <span class="price">1,000₩</span><br>
       Напиток <span class="small-note">(банка)</span> <span class="price">2,500₩</span><br>
@@ -299,7 +299,7 @@ function showSideDetail() {
 
     <!-- Türkçe -->
     <p data-lang="tr" style="display:none;">
-      <strong>Yan Menü</strong><br>
+      <span class="menu-subtitle">Yan Menü</span><br>
       Soğuk erişte <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">₩4.500</span><br>
       Beyaz pirinç <span class="small-note">(Herkes sipariş ederse <span class="unlimited">sınırsız</span>)</span> <span class="price">₩1.000</span><br>
       İçecek <span class="small-note">(Kutu)</span> <span class="price">₩2.500</span><br>
