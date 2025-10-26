@@ -133,6 +133,7 @@ function showSideDetail() {
   let content = `
     <!-- 한국어 -->
     <p data-lang="ko">
+      <strong>사이드메뉴</strong><br>
       함흥냉면 (물냉면/비빔냉면) 4,500원<br>
       공기밥 (전인원 주문시 무제한) 1,000원<br>
       음료수 (캔음료) 2,500원<br>
@@ -146,6 +147,7 @@ function showSideDetail() {
 
     <!-- English -->
     <p data-lang="en" style="display:none;">
+      <strong>Side Menu</strong><br>
       Cold noodles (Mul-naengmyeon / Bibim-naengmyeon) 4,500 KRW<br>
       White rice (Unlimited if ordered for all) 1,000 KRW<br>
       Beverage (Canned drink) 2,500 KRW<br>
@@ -159,6 +161,7 @@ function showSideDetail() {
 
     <!-- 中文 -->
     <p data-lang="zh" style="display:none;">
+      <strong>配菜菜单</strong><br>
       咸兴冷面 (水冷面/拌冷面) 4,500韩元<br>
       白米饭 (全员点单时无限续) 1,000韩元<br>
       饮料 (罐装) 2,500韩元<br>
@@ -172,6 +175,7 @@ function showSideDetail() {
 
     <!-- 日本語 -->
     <p data-lang="ja" style="display:none;">
+      <strong>サイドメニュー</strong><br>
       咸興冷麺 (水冷麺/ビビン冷麺) 4,500ウォン<br>
       白ご飯 (全員注文時無制限) 1,000ウォン<br>
       飲み物 (缶ドリンク) 2,500ウォン<br>
@@ -185,6 +189,7 @@ function showSideDetail() {
 
     <!-- Tiếng Việt -->
     <p data-lang="vi" style="display:none;">
+      <strong>Thực đơn phụ</strong><br>
       Mì lạnh (Mul-naengmyeon / Bibim-naengmyeon) 4.500 KRW<br>
       Cơm trắng (Không giới hạn nếu gọi cho cả bàn) 1.000 KRW<br>
       Nước giải khát (Lon) 2.500 KRW<br>
@@ -197,6 +202,7 @@ function showSideDetail() {
     </p>
 
     <p data-lang="th" style="display:none;">
+      <strong>เมนูข้างเคียง</strong><br>
       บะหมี่เย็น 4,500 วอน<br>
       ข้าวเปล่า (เติมไม่อั้นเมื่อสั่งทุกคน) 1,000 วอน<br>
       เครื่องดื่มกระป๋อง 2,500 วอน<br>
@@ -209,6 +215,7 @@ function showSideDetail() {
     </p>
 
     <p data-lang="ph" style="display:none;">
+      <strong>Side Menu</strong><br>
       Hamheung cold noodles (spicy / mild) ₩4,500<br>
       Steamed rice (unlimited if everyone orders) ₩1,000<br>
       Soft drink (can) ₩2,500<br>
@@ -222,6 +229,7 @@ function showSideDetail() {
 
     <!-- Français -->
     <p data-lang="fr" style="display:none;">
+      <strong>Menu d’accompagnement</strong><br>
       Nouilles froides (Mul-naengmyeon / Bibim-naengmyeon) 4 500₩<br>
       Riz blanc (à volonté si commandé pour tous) 1 000₩<br>
       Boisson (canette) 2 500₩<br>
@@ -235,6 +243,7 @@ function showSideDetail() {
 
     <!-- Español -->
     <p data-lang="es" style="display:none;">
+      <strong>Menú lateral</strong><br>
       Fideos fríos (Mul-naengmyeon / Bibim-naengmyeon) 4,500₩<br>
       Arroz blanco (Ilimitado si se pide para todos) 1,000₩<br>
       Bebida (Lata) 2,500₩<br>
@@ -248,6 +257,7 @@ function showSideDetail() {
 
     <!-- Português -->
     <p data-lang="pt" style="display:none;">
+      <strong>Menu Lateral</strong><br>
       Macarrão frio (Mul-naengmyeon / Bibim-naengmyeon) ₩4.500<br>
       Arroz branco (Ilimitado se pedido para todos) ₩1.000<br>
       Bebida (lata) ₩2.500<br>
@@ -261,6 +271,7 @@ function showSideDetail() {
 
     <!-- العربية -->
     <p data-lang="ar" style="display:none;">
+      <strong>قائمة الجوانب</strong><br>
       نودلز باردة (مول نينغميون / بيبيم نينغميون) 4,500₩<br>
       أرز أبيض (غير محدود إذا طلبه الجميع) 1,000₩<br>
       مشروب (معلب) 2,500₩<br>
@@ -274,6 +285,7 @@ function showSideDetail() {
 
     <!-- Русский -->
     <p data-lang="ru" style="display:none;">
+      <strong>Сайд-меню</strong><br>
       Холодная лапша (Муль-нэнмён / Пибим-нэнмён) 4,500₩<br>
       Белый рис (безлимит при заказе для всех) 1,000₩<br>
       Напиток (банка) 2,500₩<br>
@@ -287,6 +299,7 @@ function showSideDetail() {
 
     <!-- Türkçe -->
     <p data-lang="tr" style="display:none;">
+      <strong>Yan Menü</strong><br>
       Soğuk erişte (Mul-naengmyeon / Bibim-naengmyeon) ₩4.500<br>
       Beyaz pirinç (Herkes sipariş ederse sınırsız) ₩1.000<br>
       İçecek (Kutu) ₩2.500<br>
