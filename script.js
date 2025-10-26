@@ -329,92 +329,92 @@ function showUsageDetail() {
 
   usageBox.innerHTML = `
     <p data-lang="ko">
-      물, 앞접시 → 창가쪽 냉장고<br>
-      숟가락 및 젓가락, 냅킨 → 테이블 옆 서랍<br>
-      고기, 야채, 야채접시, 반찬, 물티슈, 집게 등 → 셀프바<br>
+      물, 앞접시 → <strong>창가쪽 냉장고</strong><br>
+      숟가락 및 젓가락, 냅킨 → <strong>테이블 옆 서랍</strong><br>
+      고기, 야채, 야채접시, 반찬, 물티슈, 집게 등 → <strong>셀프바</strong><br>
       <br>
-      모두 셀프로 이용가능!
+      <strong>모두 셀프로 이용가능!</strong>
     </p>
 
     <!-- 🇺🇸 영어 -->
     <p data-lang="en" style="display:none;">
-      Water and small plates → Refrigerator by the window<br>
-      Spoons, chopsticks, and napkins → Drawer beside the table<br>
-      Meat, vegetables, dishes, side dishes, wet tissues, tongs, etc. → Self bar<br>
+      Water and small plates → <strong>Refrigerator by the window</strong><br>
+      Spoons, chopsticks, and napkins → <strong>Drawer beside the table</strong><br>
+      Meat, vegetables, dishes, side dishes, wet tissues, tongs, etc. → <strong>Self bar</strong><br>
       <br>
-      Everything is self-service!
+      <strong>Everything is self-service!</strong>
     </p>
 
     <!-- 🇨🇳 중국어 -->
     <p data-lang="zh" style="display:none;">
-      水、小盘子 → 窗边冰箱<br>
-      勺子、筷子、餐巾纸 → 桌子旁抽屉<br>
-      肉、蔬菜、蔬菜盘、小菜、湿巾、夹子等 → 自助吧<br>
+      水、小盘子 → <strong>窗边冰箱</strong><br>
+      勺子、筷子、餐巾纸 → <strong>桌子旁抽屉</strong><br>
+      肉、蔬菜、蔬菜盘、小菜、湿巾、夹子等 → <strong>自助吧</strong><br>
       <br>
-      一切都可自助取用！
+      <strong>一切都可自助取用！</strong>
     </p>
 
     <!-- 🇯🇵 일본어 -->
     <p data-lang="ja" style="display:none;">
-      水、小皿 → 窓際の冷蔵庫<br>
-      スプーン・箸・ナプキン → テーブル横の引き出し<br>
-      肉・野菜・野菜皿・おかず・おしぼり・トングなど → セルフバー<br>
+      水、小皿 → <strong>窓際の冷蔵庫</strong><br>
+      スプーン・箸・ナプキン → <strong>テーブル横の引き出し</strong><br>
+      肉・野菜・野菜皿・おかず・おしぼり・トングなど → <strong>セルフバー</strong><br>
       <br>
-      すべてセルフサービスです！
+      <strong>すべてセルフサービスです！</strong>
     </p>
 
     <!-- 🇻🇳 베트남어 -->
     <p data-lang="vi" style="display:none;">
-      Nước, đĩa nhỏ → Tủ lạnh cạnh cửa sổ<br>
-      Muỗng, đũa và khăn giấy → Ngăn kéo bên bàn<br>
-      Thịt, rau, đĩa rau, món phụ, khăn ướt, kẹp, v.v. → Quầy tự phục vụ<br>
+      Nước, đĩa nhỏ → <strong>Tủ lạnh cạnh cửa sổ</strong><br>
+      Muỗng, đũa và khăn giấy → <strong>Ngăn kéo bên bàn</strong><br>
+      Thịt, rau, đĩa rau, món phụ, khăn ướt, kẹp, v.v. → <strong>Quầy tự phục vụ</strong><br>
       <br>
-      Tất cả đều tự phục vụ!
+      <strong>Tất cả đều tự phục vụ!</strong>
     </p>
 
     <!-- 🇹🇭 태국어 -->
     <p data-lang="th" style="display:none;">
-      น้ำและจานเล็ก → ตู้เย็นริมหน้าต่าง<br>
-      ช้อน ตะเกียบ และกระดาษทิชชู → ลิ้นชักข้างโต๊ะ<br>
-      เนื้อ ผัก จานผัก กับข้าว ทิชชูเปียก คีมคีบ ฯลฯ → บาร์บริการตัวเอง<br>
+      น้ำและจานเล็ก → <strong>ตู้เย็นริมหน้าต่าง</strong><br>
+      ช้อน ตะเกียบ และกระดาษทิชชู → <strong>ลิ้นชักข้างโต๊ะ</strong><br>
+      เนื้อ ผัก จานผัก กับข้าว ทิชชูเปียก คีมคีบ ฯลฯ → <strong>บาร์บริการตัวเอง</strong><br>
       <br>
-      ทุกอย่างสามารถใช้ได้ด้วยตนเอง!
+      <strong>ทุกอย่างสามารถใช้ได้ด้วยตนเอง!</strong>
     </p>
 
     <!-- 🇵🇭 필리핀어 -->
     <p data-lang="ph" style="display:none;">
-      Tubig at maliit na plato → Refrigerator sa tabi ng bintana<br>
-      Kutsara, tinidor, at tissue → Drawer sa tabi ng mesa<br>
-      Karne, gulay, side dish, basang tissue, sipit, at iba pa → Self bar<br>
+      Tubig at maliit na plato → <strong>Refrigerator sa tabi ng bintana</strong><br>
+      Kutsara, tinidor, at tissue → <strong>Drawer sa tabi ng mesa</strong><br>
+      Karne, gulay, side dish, basang tissue, sipit, at iba pa → <strong>Self bar</strong><br>
       <br>
-      Lahat ay self-service!
+      <strong>Lahat ay self-service!</strong>
     </p>
 
     <!-- 🇫🇷 프랑스어 -->
     <p data-lang="fr" style="display:none;">
-      Eau et petites assiettes → Réfrigérateur près de la fenêtre<br>
-      Cuillères, baguettes et serviettes → Tiroir à côté de la table<br>
-      Viande, légumes, plats, accompagnements, lingettes, pinces, etc. → Bar en libre-service<br>
+      Eau et petites assiettes → <strong>Réfrigérateur près de la fenêtre</strong><br>
+      Cuillères, baguettes et serviettes → <strong>Tiroir à côté de la table</strong><br>
+      Viande, légumes, plats, accompagnements, lingettes, pinces, etc. → <strong>Bar en libre-service</strong><br>
       <br>
-      Tout est en libre-service !
+      <strong>Tout est en libre-service !</strong>
     </p>
 
     <!-- 🇪🇸 스페인어 -->
     <p data-lang="es" style="display:none;">
-      Agua y platos pequeños → Refrigerador junto a la ventana<br>
-      Cucharas, palillos y servilletas → Cajón al lado de la mesa<br>
-      Carne, verduras, platos, guarniciones, toallitas, pinzas, etc. → Barra de autoservicio<br>
+      Agua y platos pequeños → <strong>Refrigerador junto a la ventana</strong><br>
+      Cucharas, palillos y servilletas → <strong>Cajón al lado de la mesa</strong><br>
+      Carne, verduras, platos, guarniciones, toallitas, pinzas, etc. → <strong>Barra de autoservicio</strong><br>
       <br>
-      ¡Todo es autoservicio!
+      <strong>¡Todo es autoservicio!</strong>
     </p>
 
     <!-- 🇵🇹 포르투갈어 -->
     <p data-lang="pt" style="display:none;">
-      Água e pratinhos → Geladeira ao lado da janela<br>
-      Colheres, hashis e guardanapos → Gaveta ao lado da mesa<br>
-      Carne, vegetais, acompanhamentos, guardanapos úmidos, pinças, etc. → Bar de autoatendimento<br>
+      Água e pratinhos → <strong>Geladeira ao lado da janela</strong><br>
+      Colheres, hashis e guardanapos → <strong>Gaveta ao lado da mesa</strong><br>
+      Carne, vegetais, acompanhamentos, guardanapos úmidos, pinças, etc. → <strong>Bar de autoatendimento</strong><br>
       <br>
-      Tudo é autoatendimento!
+      <strong>Tudo é autoatendimento!</strong>
     </p>
 
     <!-- 🇸🇦 아랍어 -->
@@ -423,25 +423,25 @@ function showUsageDetail() {
       الملاعق والعيدان والمناديل → الدرج بجانب الطاولة<br>
       اللحم، الخضروات، الأطباق الجانبية، المناديل المبللة، الملاقط، إلخ → بار الخدمة الذاتية<br>
       <br>
-      كل شيء بخدمة ذاتية!
+      <strong>كل شيء بخدمة ذاتية!</strong>
     </p>
 
     <!-- 🇷🇺 러시아어 -->
     <p data-lang="ru" style="display:none;">
-      Вода и маленькие тарелки → Холодильник у окна<br>
-      Ложки, палочки и салфетки → Ящик рядом со столом<br>
-      Мясо, овощи, гарниры, влажные салфетки, щипцы и т.д. → Зона самообслуживания<br>
+      Вода и маленькие тарелки → <strong>Холодильник у окна</strong><br>
+      Ложки, палочки и салфетки → <strong>Ящик рядом со столом</strong><br>
+      Мясо, овощи, гарниры, влажные салфетки, щипцы и т.д. → <strong>Зона самообслуживания</strong><br>
       <br>
-      Всё в формате самообслуживания!
+      <strong>Всё в формате самообслуживания!</strong>
     </p>
 
     <!-- 🇹🇷 튀르키예어 -->
     <p data-lang="tr" style="display:none;">
-      Su ve küçük tabaklar → Pencere kenarındaki buzdolabı<br>
-      Kaşık, çubuk ve peçeteler → Masanın yanındaki çekmece<br>
-      Et, sebzeler, yan yemekler, ıslak mendil, maşa vb. → Self-servis barı<br>
+      Su ve küçük tabaklar → <strong>Pencere kenarındaki buzdolabı</strong><br>
+      Kaşık, çubuk ve peçeteler → <strong>Masanın yanındaki çekmece</strong><br>
+      Et, sebzeler, yan yemekler, ıslak mendil, maşa vb. → <strong>Self-servis barı</strong><br>
       <br>
-      Her şey self-servistir!
+      <strong>Her şey self-servistir!</strong>
     </p>
       `;
 
