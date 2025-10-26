@@ -689,6 +689,14 @@ button {
   color: #d50000;        /* 검정색 유지 */
 }
 
+.menu-subtitle {
+  display: block;
+  font-size: 1.5em;      /* 🔹 크기 키움 */
+  font-weight: 900;      /* 🔹 매우 굵게 */
+  color: #000;           /* 🔹 검정색 통일 */
+  text-align: center;    /* 🔹 중앙 정렬 */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
 
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
