@@ -677,6 +677,12 @@ button {
   font-weight: bold;
 }
 
+.small-note {
+  font-size: 0.85em; /* 🔹 글씨 크기 15% 작게 */
+  color: #555;       /* 🔹 약간 흐린 회색 (선택 사항) */
+  font-weight: 500;  /* 🔹 너무 가늘지 않게 */
+}
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
   /* ✅ 언어 선택 박스 버튼 정렬 수정 */

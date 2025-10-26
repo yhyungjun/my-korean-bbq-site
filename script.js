@@ -134,10 +134,10 @@ function showSideDetail() {
     <!-- 한국어 -->
     <p data-lang="ko">
       <strong>사이드메뉴</strong><br>
-      함흥냉면 (물냉면/비빔냉면) 4,500원<br>
-      공기밥 (전인원 주문시 <span class="unlimited">무제한</span>) 1,000원<br>
-      음료수 (캔음료) 2,500원<br>
-      음료수 <span class="unlimited">무제한</span> (전인원 주문 필요) 1인 2,500원<br>
+      함흥냉면 <span class="small-note">(물냉면/비빔냉면)</span> 4,500원<br>
+      공기밥 <span class="small-note">(전인원 주문시 <span class="unlimited">무제한</span>)</span> 1,000원<br>
+      음료수 <span class="small-note">(캔음료)</span> 2,500원<br>
+      음료수 <span class="unlimited">무제한</span> <span class="small-note">(전인원 주문 필요)</span> 1인 2,500원<br>
       한강라면 1,500원<br>
       된장찌개 2,000원<br>
       소주 5,500원<br>
@@ -148,10 +148,10 @@ function showSideDetail() {
     <!-- English -->
     <p data-lang="en" style="display:none;">
       <strong>Side Menu</strong><br>
-      Cold noodles (Mul-naengmyeon / Bibim-naengmyeon) 4,500 KRW<br>
-      White rice (<span class="unlimited">Unlimited</span> if ordered for all) 1,000 KRW<br>
-      Beverage (Canned drink) 2,500 KRW<br>
-      <span class="unlimited">Unlimited</span> beverage (All must order) 2,500 KRW per person<br>
+      Cold noodles <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> 4,500 KRW<br>
+      White rice <span class="small-note">(<span class="unlimited">Unlimited</span> if ordered for all)</span> 1,000 KRW<br>
+      Beverage <span class="small-note">(Canned drink)</span> 2,500 KRW<br>
+      <span class="unlimited">Unlimited</span> beverage <span class="small-note">(All must order)</span> 2,500 KRW per person<br>
       Hangang ramen 1,500 KRW<br>
       Doenjang stew 2,000 KRW<br>
       Soju 5,500 KRW<br>
@@ -162,10 +162,10 @@ function showSideDetail() {
     <!-- 中文 -->
     <p data-lang="zh" style="display:none;">
       <strong>配菜菜单</strong><br>
-      咸兴冷面 (水冷面/拌冷面) 4,500韩元<br>
-      白米饭 (全员点单时<span class="unlimited">无限</span>续) 1,000韩元<br>
-      饮料 (罐装) 2,500韩元<br>
-      饮料<span class="unlimited">无限</span> (需全员点单) 每人 2,500韩元<br>
+      咸兴冷面 <span class="small-note">(水冷面/拌冷面)</span> 4,500韩元<br>
+      白米饭 <span class="small-note">(全员点单时<span class="unlimited">无限</span>续)</span> 1,000韩元<br>
+      饮料 <span class="small-note">(罐装)</span> 2,500韩元<br>
+      饮料<span class="unlimited">无限</span> <span class="small-note">(需全员点单)</span> 每人 2,500韩元<br>
       汉江拉面 1,500韩元<br>
       大酱汤 2,000韩元<br>
       烧酒 5,500韩元<br>
@@ -176,10 +176,10 @@ function showSideDetail() {
     <!-- 日本語 -->
     <p data-lang="ja" style="display:none;">
       <strong>サイドメニュー</strong><br>
-      咸興冷麺 (水冷麺/ビビン冷麺) 4,500ウォン<br>
-      白ご飯 (全員注文時<span class="unlimited">無制限</span>) 1,000ウォン<br>
-      飲み物 (缶ドリンク) 2,500ウォン<br>
-      ドリンク<span class="unlimited">飲み放題</span> (全員注文必須) 1人 2,500ウォン<br>
+      咸興冷麺 <span class="small-note">(水冷麺/ビビン冷麺)</span> 4,500ウォン<br>
+      白ご飯 <span class="small-note">(全員注文時<span class="unlimited">無制限</span>)</span> 1,000ウォン<br>
+      飲み物 <span class="small-note">(缶ドリンク)</span> 2,500ウォン<br>
+      ドリンク<span class="unlimited">飲み放題</span> <span class="small-note">(全員注文必須)</span> 1人 2,500ウォン<br>
       漢江ラーメン 1,500ウォン<br>
       テンジャンチゲ 2,000ウォン<br>
       ソジュ 5,500ウォン<br>
@@ -190,10 +190,10 @@ function showSideDetail() {
     <!-- Tiếng Việt -->
     <p data-lang="vi" style="display:none;">
       <strong>Thực đơn phụ</strong><br>
-      Mì lạnh (Mul-naengmyeon / Bibim-naengmyeon) 4.500 KRW<br>
-      Cơm trắng (khi gọi cho cả bàn <span class="unlimited">không giới hạn</span>) 1.000 KRW<br>
-      Nước giải khát (Lon) 2.500 KRW<br>
-      Nước giải khát <span class="unlimited">không giới hạn</span> (Cả bàn phải gọi) 2.500 KRW/người<br>
+      Mì lạnh <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> 4.500 KRW<br>
+      Cơm trắng <span class="small-note">(khi gọi cho cả bàn <span class="unlimited">không giới hạn</span>)</span> 1.000 KRW<br>
+      Nước giải khát <span class="small-note">(Lon)</span> 2.500 KRW<br>
+      Nước giải khát <span class="unlimited">không giới hạn</span> <span class="small-note">(Cả bàn phải gọi)</span> 2.500 KRW/người<br>
       Mì ramen Hangang 1.500 KRW<br>
       Canh tương đậu (Doenjang) 2.000 KRW<br>
       Soju 5.500 KRW<br>
@@ -204,9 +204,9 @@ function showSideDetail() {
     <p data-lang="th" style="display:none;">
       <strong>เมนูข้างเคียง</strong><br>
       บะหมี่เย็น 4,500 วอน<br>
-      ข้าวเปล่า (ถ้าสั่งทั้งโต๊ะ<span class="unlimited">ไม่อั้น</span>) 1,000 วอน<br>
+      ข้าวเปล่า <span class="small-note">(ถ้าสั่งทั้งโต๊ะ<span class="unlimited">ไม่อั้น</span>)</span> 1,000 วอน<br>
       เครื่องดื่มกระป๋อง 2,500 วอน<br>
-      เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> (สั่งทุกคน) 2,500 วอน/คน<br>
+      เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> <span class="small-note">(สั่งทุกคน)</span> 2,500 วอน/คน<br>
       ราเม็งฮันกัง 1,500 วอน<br>
       ซุปเต้าเจี้ยว 2,000 วอน<br>
       โซจู 5,500 วอน<br>
@@ -216,10 +216,10 @@ function showSideDetail() {
 
     <p data-lang="ph" style="display:none;">
       <strong>Side Menu</strong><br>
-      Hamheung cold noodles (spicy / mild) ₩4,500<br>
-      Steamed rice (<span class="unlimited">Unlimited</span> if everyone orders) ₩1,000<br>
-      Soft drink (can) ₩2,500<br>
-      <span class="unlimited">Unlimited</span> drinks (requires all members) ₩2,500 each<br>
+      Hamheung cold noodles <span class="small-note">(spicy / mild)</span> ₩4,500<br>
+      Steamed rice <span class="small-note">(<span class="unlimited">Unlimited</span> if everyone orders)</span> ₩1,000<br>
+      Soft drink <span class="small-note">(can)</span> ₩2,500<br>
+      <span class="unlimited">Unlimited</span> drinks <span class="small-note">(requires all members)</span> ₩2,500 each<br>
       Hangang ramen ₩1,500<br>
       Soybean stew ₩2,000<br>
       Soju ₩5,500<br>
@@ -230,10 +230,10 @@ function showSideDetail() {
     <!-- Français -->
     <p data-lang="fr" style="display:none;">
       <strong>Menu d’accompagnement</strong><br>
-      Nouilles froides (Mul-naengmyeon / Bibim-naengmyeon) 4 500₩<br>
-      Riz blanc (<span class="unlimited">à volonté</span> si commandé pour tous) 1 000₩<br>
-      Boisson (canette) 2 500₩<br>
-      Boissons <span class="unlimited">à volonté</span> (commande pour tous requise) 2 500₩/pers.<br>
+      Nouilles froides <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> 4 500₩<br>
+      Riz blanc <span class="small-note">(<span class="unlimited">à volonté</span> si commandé pour tous)</span> 1 000₩<br>
+      Boisson <span class="small-note">(canette)</span> 2 500₩<br>
+      Boissons <span class="unlimited">à volonté</span> <span class="small-note">(commande pour tous requise)</span> 2 500₩/pers.<br>
       Ramen Hangang 1 500₩<br>
       Ragoût de pâte de soja (Doenjang) 2 000₩<br>
       Soju 5 500₩<br>
@@ -244,10 +244,10 @@ function showSideDetail() {
     <!-- Español -->
     <p data-lang="es" style="display:none;">
       <strong>Menú lateral</strong><br>
-      Fideos fríos (Mul-naengmyeon / Bibim-naengmyeon) 4,500₩<br>
-      Arroz blanco (para todos <span class="unlimited">sin límite</span>) 1,000₩<br>
-      Bebida (Lata) 2,500₩<br>
-      Bebida <span class="unlimited">sin límite</span> (Todos deben pedir) 2,500₩ por persona<br>
+      Fideos fríos <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> 4,500₩<br>
+      Arroz blanco <span class="small-note">(para todos <span class="unlimited">sin límite</span>)</span> 1,000₩<br>
+      Bebida <span class="small-note">(Lata)</span> 2,500₩<br>
+      Bebida <span class="unlimited">sin límite</span> <span class="small-note">(Todos deben pedir)</span> 2,500₩ por persona<br>
       Ramen Hangang 1,500₩<br>
       Guiso de pasta de soja (Doenjang) 2,000₩<br>
       Soju 5,500₩<br>
@@ -258,10 +258,10 @@ function showSideDetail() {
     <!-- Português -->
     <p data-lang="pt" style="display:none;">
       <strong>Menu Lateral</strong><br>
-      Macarrão frio (Mul-naengmyeon / Bibim-naengmyeon) ₩4.500<br>
-      Arroz branco (<span class="unlimited">Ilimitado</span> se pedido para todos) ₩1.000<br>
-      Bebida (lata) ₩2.500<br>
-      Bebida <span class="unlimited">ilimitado</span> (todos devem pedir) ₩2.500 por pessoa<br>
+      Macarrão frio <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> ₩4.500<br>
+      Arroz branco <span class="small-note">(<span class="unlimited">Ilimitado</span> se pedido para todos)</span> ₩1.000<br>
+      Bebida <span class="small-note">(lata)</span> ₩2.500<br>
+      Bebida <span class="unlimited">ilimitado</span> <span class="small-note">(todos devem pedir)</span> ₩2.500 por pessoa<br>
       Lámen Hangang ₩1.500<br>
       Ensopado de pasta de soja (Doenjang) ₩2.000<br>
       Soju ₩5.500<br>
@@ -286,10 +286,10 @@ function showSideDetail() {
     <!-- Русский -->
     <p data-lang="ru" style="display:none;">
       <strong>Сайд-меню</strong><br>
-      Холодная лапша (Муль-нэнмён / Пибим-нэнмён) 4,500₩<br>
-      Белый рис (<span class="unlimited">безлимит</span> при заказе для всех) 1,000₩<br>
-      Напиток (банка) 2,500₩<br>
-      <span class="unlimited">Безлимитные</span> напитки (при заказе для всех) 2,500₩/чел<br>
+      Холодная лапша <span class="small-note">(Муль-нэнмён / Пибим-нэнмён)</span> 4,500₩<br>
+      Белый рис <span class="small-note">(<span class="unlimited">безлимит</span> при заказе для всех)</span> 1,000₩<br>
+      Напиток <span class="small-note">(банка)</span> 2,500₩<br>
+      <span class="unlimited">Безлимитные</span> напитки <span class="small-note">(при заказе для всех)</span> 2,500₩/чел<br>
       Рамен Ханган 1,500₩<br>
       Соевый суп (Тэнджан-чиге) 2,000₩<br>
       Соджу 5,500₩<br>
@@ -300,10 +300,10 @@ function showSideDetail() {
     <!-- Türkçe -->
     <p data-lang="tr" style="display:none;">
       <strong>Yan Menü</strong><br>
-      Soğuk erişte (Mul-naengmyeon / Bibim-naengmyeon) ₩4.500<br>
-      Beyaz pirinç (Herkes sipariş ederse <span class="unlimited">sınırsız</span>) ₩1.000<br>
-      İçecek (Kutu) ₩2.500<br>
-      <span class="unlimited">Sınırsız</span> içecek (Herkes sipariş etmeli) Kişi başı ₩2.500<br>
+      Soğuk erişte <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> ₩4.500<br>
+      Beyaz pirinç <span class="small-note">(Herkes sipariş ederse <span class="unlimited">sınırsız</span>)</span> ₩1.000<br>
+      İçecek <span class="small-note">(Kutu)</span> ₩2.500<br>
+      <span class="unlimited">Sınırsız</span> içecek <span class="small-note">(Herkes sipariş etmeli)</span> Kişi başı ₩2.500<br>
       Hangang ramen ₩1.500<br>
       Soya ezmesi güveci (Doenjang jjigae) ₩2.000<br>
       Soju ₩5.500<br>
