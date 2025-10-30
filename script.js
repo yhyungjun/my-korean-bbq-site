@@ -125,6 +125,8 @@ function showMenuDetail(menu) {
   detailBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+
+  scrollToTarget(detailBox, 80);
 }
 
 // 사이드 메뉴 상세
@@ -324,6 +326,7 @@ function showSideDetail() {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
 }
+
 // ✅ 박스 닫기 함수
 function closeDetailBox(id) {
   const box = document.getElementById(id);
@@ -332,6 +335,7 @@ function closeDetailBox(id) {
     setTimeout(() => {
       box.style.display = "none";
     }, 300);
+    scrollToTarget(box, 80);
   }
 }
 // 이용방법 상세 설명
@@ -466,6 +470,7 @@ function showUsageDetail() {
   usageBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+  scrollToTarget(box, 80);
 }
 
 // ✅ 코스별 이용팁 상세 표시
@@ -640,6 +645,7 @@ function showCourseTips() {
   detailBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+  scrollToTarget(box, 80);
 }
 
 // ✅ 가마솥뚜껑 상세 표시 (다국어 완전판)
@@ -777,6 +783,7 @@ function showGamasotDetail() {
   box.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+  scrollToTarget(box, 80);
 }
 
 // ✅ 한국식 쌈 상세
@@ -902,5 +909,14 @@ function showSsamDetail() {
   ssamBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+  scrollToTarget(box, 80);
 }
 
+// ✅ ⬇ 이 아래에 새 코드 추가
+function scrollToTarget(el, offset = 80) {
+  if (!el) return;
+  setTimeout(() => {
+    const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }, 50);
+}
