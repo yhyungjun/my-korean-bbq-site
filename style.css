@@ -123,7 +123,7 @@ button {
   line-height: 1.8;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease-in-out;
-  font-family: "Noto Sans KR", "Noto Sans", "Arial", sans-serif; /* 모든 언어 동일 폰트 */
+  font-family: 'BM Hanna', 'Noto Sans KR', sans-serif !important; /* 모든 언어 동일 폰트 */
   color: #000;
 }
 
