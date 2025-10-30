@@ -67,7 +67,7 @@ function showMenuDetail(menu) {
       <p data-lang="vi" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Suất Buffet Thịt Heo Không Giới Hạn</span><br><span class="price">17,900 KRW</span>/người<br>Ba chỉ + Thịt cổ + Ức bò + Má heo + Thăn sườn + Ba chỉ thái mỏng + Da heo tổ ong + Bulgogi heo + Lòng bò + Rau cuốn</p>
       <p data-lang="th" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> เซ็ตหมูรวมเติมไม่อั้น</span>คนละ <span class="price">17,900 วอน</span><br>หมูสามชั้น + คอหมู + เนื้ออกวัว + คอหมูอบ + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ</p>
       <p data-lang="ph" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Unlimited Pork Set</span><span class="price">₩17,900</span> bawat tao<br>Pork belly + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork + Pork skin + Pork bulgogi + Beef intestine + Mixed vegetable wraps</p>
-      <p data-lang="fr" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Assortiment de Porc à volonté</span><span class="price">17 900₩</span></span> par personne<br>Poitrine + Échine + Poitrine de bœuf + Joue de porc + Hampe + Poitrine fine + Couenne en nid d’abeille + Bulgogi de porc + Tripes de bœuf + Légumes</p>
+      <p data-lang="fr" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Assortiment de Porc à volonté</span><span class="price">17 900₩</span> par personne<br>Poitrine + Échine + Poitrine de bœuf + Joue de porc + Hampe + Poitrine fine + Couenne en nid d’abeille + Bulgogi de porc + Tripes de bœuf + Légumes</p>
       <p data-lang="es" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Surtido de Cerdo Ilimitado</span><span class="price">₩17.900</span> por pessoa<br>Barriga + Pescoço + Peito bovino + Bochecha + Fraldinha + Panceta fina + Pele em favo + Bulgogi de porco + Intestino bovino + Vegetais</p>
       <p data-lang="pt" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Rodízio de Porco Variado</span><span class="price">₩17.900</span> por pessoa<br>Barriga + Pescoço + Peito bovino + Bochecha + Fraldinha + Panceta fina + Pele em favo + Bulgogi de porco + Intestino bovino + Vegetais</p>
       <p data-lang="ar" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> تشكيلة لحم خنزير مفتوحة</span><span class="price">17,900₩</span> للشخص<br>بطن + رقبة + صدر بقر + خدود + لحم الحجاب + بطن رفيع + جلد خنزير مشبك + بولغوغي + أمعاء + خضروات</p>
@@ -98,12 +98,12 @@ function showMenuDetail(menu) {
   // ✅ F코스
   else if (menu === "F" || menu === "Full") {
     content = `
-      <p data-lang="ko"><span class="menu-subtitle"><strong class="course-label">Full</strong> 코스 무한리필</span>1인 <span class="price">23,900원</span><br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈+음료수<span class="unlimited">무제한</span>+공기밥<span class="unlimited">무제한</span>+냉면<span class="unlimited">무제한</span>
+      <p data-lang="ko"><span class="menu-subtitle"><strong class="course-label">Full</strong> 코스 무한리필</span>1인 <span class="price">23,900원</span><br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈+음료수<span class="unlimited">무제한</span>+공기밥<span class="unlimited">무제한</span>+냉면<span class="unlimited">무제한</span></p>
       <p data-lang="en" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> Course Unlimited Refill</span><span class="price">₩23,900</span> per person<br>Pork belly + Soy-marinated boneless chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork belly + Honeycomb pork skin + Pork bulgogi + Beef intestine + Assorted vegetable wraps + <span class="unlimited">Unlimited</span> drinks + <span class="unlimited">Unlimited</span> rice + <span class="unlimited">Unlimited</span> cold noodles</p>
       <p data-lang="zh" style="display:none;"><span class="menu-subtitle"><strong class="course-label">全</strong>套餐 无限续</span>每人 <span class="price">23,900韩元</span><br>五花肉 + 酱油无骨鸡 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包 + 饮料<span class="unlimited">无限</span> + 米饭<span class="unlimited">无限</span> + 冷面<span class="unlimited">无限</span></p>
       <p data-lang="ja" style="display:none;"><span class="menu-subtitle">フルコース 無限リフィル</span><br>1人 <span class="price">23,900ウォン</span>サムギョプサル + 醤油チキン + 豚肩ロース + 牛バラ肉 + 豚トロ + ハラミ + 薄切りサムギョプサル + 豚皮（ハチの巣）+ 豚プルコギ + 牛ホルモン + 野菜サム + 飲み物<span class="unlimited">飲み放題</span> + ご飯<span class="unlimited">無制限</span> + 冷麺<span class="unlimited">食べ放題</span></p>
       <p data-lang="vi" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> Buffet Không Giới Hạn</span><span class="price">23,900 KRW</span>/người<br>Ba chỉ + Gà xì dầu + Thịt cổ + Ức bò + Má heo + Thăn sườn + Ba chỉ thái mỏng + Da heo tổ ong + Bulgogi heo + Lòng bò + Rau cuốn + Nước uống <span class="unlimited">không giới hạn</span> + Cơm <span class="unlimited">không giới hạn</span> + Mì lạnh <span class="unlimited">không giới hạn</span></p>
-      <p data-lang="th" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> คอร์สบุฟเฟ่ต์เต็มรูปแบบ</span>คนละ <span class="price">23,900 วอน</span><br>หมูสามชั้น + ไก่ซอสถั่วเหลือง + คอหมู + เนื้อวัว + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ + เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> + ข้าว<span class="unlimited">ไม่อั้น</span> + บะหมี่เย็น<span class="unlimited">ไม่อั้น</span>
+      <p data-lang="th" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> คอร์สบุฟเฟ่ต์เต็มรูปแบบ</span>คนละ <span class="price">23,900 วอน</span><br>หมูสามชั้น + ไก่ซอสถั่วเหลือง + คอหมู + เนื้อวัว + สันในหมู + หมูสไลซ์บาง + หนังหมู + หมูบูลโกกิ + ไส้วัว + ผักห่อ + เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> + ข้าว<span class="unlimited">ไม่อั้น</span> + บะหมี่เย็น<span class="unlimited">ไม่อั้น</span></p>
       <p data-lang="ph" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> Unlimited Full Course</span><span class="price">₩23,900</span> bawat tao<br>Pork belly + Soy chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin pork + Pork skin + Pork bulgogi + Beef intestine + Veggies + <span class="unlimited">Unlimited</span> drinks + <span class="unlimited">Unlimited</span> rice + <span class="unlimited">Unlimited</span> cold noodles</p>
       <p data-lang="fr" style="display:none;"><span class="menu-subtitle">Formule <strong class="course-label">Complète</strong> à volonté</span><span class="price">23 900₩</span> par personne<br>Porc + poulet sauce soja + échine + poitrine de bœuf + joue + hampe + poitrine fine + couenne + bulgogi + tripes + légumes + boissons <span class="unlimited">illimitées</span> + riz <span class="unlimited">illimité</span> + nouilles froides <span class="unlimited">illimitées</span></p>
       <p data-lang="es" style="display:none;"><span class="menu-subtitle">Curso <strong class="course-label">Completo</strong> Ilimitado</span><span class="price">23,900₩</span> por persona<br>Cerdo + pollo en salsa de soja + cuello + falda + papada + entraña + panceta fina + piel panal + bulgogi + intestino + vegetales + bebidas <span class="unlimited">ilimitadas</span> + arroz <span class="unlimited">ilimitado</span> + fideos fríos <span class="unlimited">ilimitados</span></p>
@@ -326,7 +326,7 @@ function showSideDetail() {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
 
-  scrollToTarget(box, 80);
+  scrollToTarget(detailBox, 80);
 }
 
 // ✅ 박스 닫기 함수
@@ -465,7 +465,7 @@ function showUsageDetail() {
 
   usageBox.style.display = "block";
   setTimeout(() => usageBox.classList.add("show"), 10);
-  scrollToTarget(box, 80);
+  scrollToTarget(usagebox, 80);
   usageBox.classList.add("show");
 
   const currentLang = document.documentElement.lang || 'ko';
@@ -640,7 +640,7 @@ function showCourseTips() {
 
   detailBox.style.display = "block";
   setTimeout(() => detailBox.classList.add("show"), 10);
-  scrollToTarget(box, 80);
+  scrollToTarget(detailbox, 80);
   usageBox.classList.add("show");
 
   const currentLang = document.documentElement.lang || 'ko';
@@ -905,7 +905,7 @@ function showSsamDetail() {
 
   ssamBox.style.display = "block";
   setTimeout(() => ssamBox.classList.add("show"), 10);
-  scrollToTarget(box, 80);
+  scrollToTarget(ssambox, 80);
 
   const currentLang = document.documentElement.lang || 'ko';
   ssamBox.querySelectorAll('[data-lang]').forEach(el => {
