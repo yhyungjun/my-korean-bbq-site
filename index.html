@@ -489,7 +489,24 @@
     </div>
   </div>
 
+<script>
+    function openLangModal() {
+      const m = document.getElementById('langModal');
+      if (!m) return;
+      m.classList.add('open');        // 중앙 정렬 + 스크롤 활성
+      m.style.display = 'flex';       // flex 기반 정렬
+      document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+    }
 
+    function closeLangModal() {
+      const m = document.getElementById('langModal');
+      if (!m) return;
+      m.classList.remove('open');
+      m.style.display = 'none';
+      document.body.style.overflow = ''; // 복원
+    }
+  </script>
+  
   <script src="script.js"></script>
 </body>
 </html>

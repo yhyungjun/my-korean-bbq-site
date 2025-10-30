@@ -781,6 +781,84 @@ button {
 .modal-content::-webkit-scrollbar-thumb { background: #bbb; border-radius: 8px; }
 .modal-content::-webkit-scrollbar-track { background: transparent; }
 
+/* ✅ 모달 배경: 화면 전체 차지 + 뒤 배경 스크롤 방지 */
+.modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  background: rgba(0,0,0,0.6) !important;
+  display: none;            /* open 시 JS가 block으로 바꿈 */
+  overflow: hidden !important;
+}
+
+/* ✅ 모달 가운데 정렬 (Flex) */
+.modal.open {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px;            /* 화면 가장자리와 여백 */
+  box-sizing: border-box;
+}
+
+/* ✅ 카드(내용) 자체가 스크롤의 주체 */
+.modal-content {
+  width: 90% !important;
+  max-width: 600px !important;
+  background: #f2f2f2;
+  border-radius: 14px;
+  padding: 16px 16px 20px;
+  box-sizing: border-box;
+
+  /* 핵심 */
+  max-height: 85vh !important;           /* 화면 85%까지만 */
+  overflow-y: auto !important;            /* 내부 스크롤 활성화 */
+  -webkit-overflow-scrolling: touch;      /* iOS 관성 스크롤 */
+  overscroll-behavior: contain;           /* 바운스 방지 */
+  touch-action: pan-y;                    /* 세로 제스처 인식 */
+}
+
+/* 시각적 드래그 핸들 (선택사항) */
+.drag-handle {
+  width: 48px; height: 5px;
+  background: #ccc; border-radius: 999px;
+  margin: 6px auto 10px;
+}
+
+/* 버튼 그리드: 폭 넘침 방지 */
+.modal-buttons {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.modal-buttons button {
+  width: 100% !important;
+  min-width: 0 !important;          /* 텍스트가 폭 밀지 않도록 */
+  padding: 14px 8px !important;
+  word-break: keep-all;
+}
+
+/* 모바일에서는 2열로 내려 스크롤 부담↓ */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 92% !important;
+    max-width: 420px !important;
+    max-height: 80vh !important;
+    padding: 14px 14px 18px !important;
+  }
+  .modal-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .modal-buttons button {
+    font-size: 1rem !important;
+  }
+}
+
+/* (선택) 스크롤바 슬림 */
+.modal-content::-webkit-scrollbar { width: 8px; }
+.modal-content::-webkit-scrollbar-thumb { background: #bbb; border-radius: 8px; }
+.modal-content::-webkit-scrollbar-track { background: transparent; }
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
   /* ✅ 언어 선택 박스 버튼 정렬 수정 */
