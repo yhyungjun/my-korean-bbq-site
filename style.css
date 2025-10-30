@@ -379,6 +379,12 @@ footer a:hover {
   color: #ffb700; /* 노란색 포인트 */
 }
 
+/* ===== 한국어 이용방법 & 코스별 이용팁 글씨색상 고정 ===== */
+#usageDetailBox p[data-lang="ko"],
+#courseTipBox p[data-lang="ko"] {
+  color: #000 !important;  /* 항상 검정색 */
+}
+
 /* ===== 이용방법 & 코스별 이용팁 버튼 한 줄 정렬 ===== */
 .menu-buttons.double-row {
   display: flex;
