@@ -57,9 +57,15 @@ function showMenuDetail(menu) {
   const detailBox = document.getElementById("menuDetailBox");
   let content = "";
   
+  const header = `
+   <div class="detail-header">
+   <span class="close-btn" role="button" aria-label="닫기"
+   onclick="closeDetailBox('menuDetailBox')">✕</span>
+ </div>`;
+
   // ✅ A코스
   if (menu === "A") {
-    content = `
+    content = header + `
       <p data-lang="ko"><span class="menu-subtitle"><strong class="course-label">A</strong> 돼지모듬 무한리필</span>1인 <span class="price">17,900원</span><br>삼겹살+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈</p>
       <p data-lang="en" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Pork Assortment Unlimited Refill</span><span class="price">₩17,900</span> per person<br>Pork belly + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork belly + Honeycomb pork skin + Pork bulgogi + Beef intestine + Assorted vegetable wraps</p>
       <p data-lang="zh" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> 猪肉拼盘 无限续</span>每人 <span class="price">17,900韩元</span><br>五花肉 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包</p>
@@ -78,7 +84,7 @@ function showMenuDetail(menu) {
 
   // ✅ B코스
   else if (menu === "B") {
-    content = `
+    content = header + `
       <p data-lang="ko"><span class="menu-subtitle"><strong class="course-label">B</strong> 돼지모듬+간장순살치킨 무한리필</span>1인 <span class="price">19,900원</span><br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈</p>
       <p data-lang="en" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Pork Assortment + Soy Chicken Unlimited</span><span class="price">₩19,900</span> per person<br>Pork belly + Soy-marinated chicken + Neck + Beef brisket + Jowl + Skirt + Thin belly + Skin + Bulgogi + Intestine + Vegetables</p>
       <p data-lang="zh" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> 猪肉拼盘+酱油鸡 无限续</span>每人 <span class="price">19,900韩元</span><br>五花肉+酱油鸡+颈肉+牛胸肉+猪颊肉+横膈膜+薄切五花肉+猪皮+烤肉+牛肠+蔬菜</p>
@@ -97,7 +103,7 @@ function showMenuDetail(menu) {
 
   // ✅ F코스
   else if (menu === "F" || menu === "Full") {
-    content = `
+    content = header + `
       <p data-lang="ko"><span class="menu-subtitle"><strong class="course-label">Full</strong> 코스 무한리필</span>1인 <span class="price">23,900원</span><br>삼겹살+간장순살치킨+목살+우삼겹+가브리살+갈매기살+대패삼겹살+벌집껍데기+돼지불고기+소대창+모듬야채쌈+음료수<span class="unlimited">무제한</span>+공기밥<span class="unlimited">무제한</span>+냉면<span class="unlimited">무제한</span></p>
       <p data-lang="en" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> Course Unlimited Refill</span><span class="price">₩23,900</span> per person<br>Pork belly + Soy-marinated boneless chicken + Pork neck + Beef brisket + Pork jowl + Skirt meat + Thin-sliced pork belly + Honeycomb pork skin + Pork bulgogi + Beef intestine + Assorted vegetable wraps + <span class="unlimited">Unlimited</span> drinks + <span class="unlimited">Unlimited</span> rice + <span class="unlimited">Unlimited</span> cold noodles</p>
       <p data-lang="zh" style="display:none;"><span class="menu-subtitle"><strong class="course-label">全</strong>套餐 无限续</span>每人 <span class="price">23,900韩元</span><br>五花肉 + 酱油无骨鸡 + 猪颈肉 + 牛胸肉 + 猪颊肉 + 横膈膜肉 + 薄切五花肉 + 蜂窝猪皮 + 猪肉烤肉 + 牛大肠 + 蔬菜包 + 饮料<span class="unlimited">无限</span> + 米饭<span class="unlimited">无限</span> + 冷面<span class="unlimited">无限</span></p>
@@ -132,7 +138,12 @@ function showMenuDetail(menu) {
 // 사이드 메뉴 상세
 function showSideDetail() {
   const detailBox = document.getElementById("sideDetailBox");
-  let content = `
+  const header = `
+  <div class="detail-header">
+    <span class="close-btn" role="button" aria-label="닫기"
+          onclick="closeDetailBox('sideDetailBox')">✕</span>
+  </div>`;
+let content = header + `
     <!-- 한국어 -->
     <p data-lang="ko">
       <span class="menu-subtitle">사이드메뉴</span><br>
@@ -345,7 +356,12 @@ function showUsageDetail() {
   const courseBox = document.getElementById("courseTipBox");
   if (!usageBox) return;
 
-  usageBox.innerHTML = `
+   const header = `
+      <div class="detail-header">
+        <span class="close-btn" role="button" aria-label="닫기"
+              onclick="closeDetailBox('usageDetailBox')">✕</span>
+      </div>`;
+    usageBox.innerHTML = header + `
     <p data-lang="ko">
       물, 앞접시 → <strong>창가쪽 냉장고</strong><br>
       숟가락 및 젓가락, 냅킨 → <strong>테이블 옆 서랍</strong><br>
@@ -481,7 +497,12 @@ function showCourseTips() {
   const usageBox = document.getElementById("usageDetailBox");
   if (!detailBox) return;
 
-  detailBox.innerHTML = `
+   const header = `
+     <div class="detail-header">
+       <span class="close-btn" role="button" aria-label="닫기"
+            onclick="closeDetailBox('courseTipBox')">✕</span>
+    </div>`;
+  detailBox.innerHTML = header + `
     <p data-lang="ko">
      <strong>A 코스</strong>: 고기와 야채, 그리고 각종 소스를 이용가능한 코스<br>
      <em>이용팁</em>: 고기는 도마, 야채는 야채접시, 반찬은 앞접시를 이용한다.<br><br>

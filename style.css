@@ -111,6 +111,7 @@ button {
 .menu-detail,
 .side-detail,
 .usage-detail {
+  position: relative;
   display: none; /* 클릭 전 숨김 */
   background: #ffffff;
   border: 2px solid #ddd;
