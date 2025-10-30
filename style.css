@@ -705,6 +705,82 @@ button {
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
+/* ✅ 모달 전체: 배경은 고정, 내부 카드만 스크롤 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+  /* 배경 스크롤 방지 */
+  overflow: hidden;
+}
+
+/* ✅ 모달 카드: 모바일에서 화면 높이 기준 스크롤 */
+.modal-content {
+  background: #f2f2f2;
+  margin: 6% auto;
+  padding: 16px 16px 20px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 600px;
+
+  /* 핵심: 내부 스크롤 활성화 */
+  max-height: 85vh;           /* 화면 85% 높이까지만 */
+  overflow-y: auto;           /* 손가락 드래그로 스크롤 */
+  -webkit-overflow-scrolling: touch; /* iOS 관성 스크롤 */
+}
+
+/* ✅ 드래그 핸들(시각적 힌트) */
+.drag-handle {
+  width: 48px;
+  height: 5px;
+  border-radius: 999px;
+  background: #ccc;
+  margin: 6px auto 10px;
+}
+
+/* 버튼들이 가로로 넘치지 않도록 안전한 그리드 */
+.modal-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* 버튼은 컨테이너 폭 안에서 줄바꿈 */
+.modal-buttons button {
+  width: 100%;
+  min-width: 0;      /* 콘텐츠가 버튼 폭을 밀어내지 않게 */
+  padding: 14px 8px; /* 모바일 터치 충분 */
+  word-break: keep-all;
+}
+
+/* ✅ 모바일 최적화 */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 92%;
+    max-width: 420px;
+    max-height: 80vh;   /* 화면 더 낮게 차지 */
+    padding: 14px 14px 18px;
+  }
+
+  .modal-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2열로 변경 */
+    gap: 10px;
+    justify-items: stretch;
+  }
+
+  .modal-buttons button {
+    font-size: 1rem;
+    padding: 14px 8px;
+  }
+}
+
+/* (선택) 스크롤바 얇게 */
+.modal-content::-webkit-scrollbar { width: 8px; }
+.modal-content::-webkit-scrollbar-thumb { background: #bbb; border-radius: 8px; }
+.modal-content::-webkit-scrollbar-track { background: transparent; }
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
   /* ✅ 언어 선택 박스 버튼 정렬 수정 */

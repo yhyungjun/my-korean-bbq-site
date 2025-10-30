@@ -466,10 +466,11 @@
   <!-- 언어 선택 모달 -->
   <div id="langModal" class="modal">
     <div class="modal-content">
+          <!-- ✅ 드래그 핸들 -->
+      <div class="drag-handle" aria-hidden="true"></div>
+
       <span class="close" onclick="closeLangModal()">&times;</span>
-
       <h2 class="lang-title">Choose your language</h2>
-
       <div class="modal-buttons">
         <button onclick="setLang('ko')">🇰🇷 한국어</button>
         <button onclick="setLang('en')">🇺🇸 English</button>
