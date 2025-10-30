@@ -126,7 +126,7 @@ function showMenuDetail(menu) {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
 
-  scrollToTarget(detailBox, 80);
+   setTimeout(() => scrollToTarget(detailBox, 80), 120);
 }
 
 // 사이드 메뉴 상세
@@ -326,7 +326,7 @@ function showSideDetail() {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
 
-  scrollToTarget(detailBox, 80);
+   setTimeout(() => scrollToTarget(detailBox, 80), 120);
 }
 
 // ✅ 박스 닫기 함수
@@ -465,13 +465,14 @@ function showUsageDetail() {
 
   usageBox.style.display = "block";
   setTimeout(() => usageBox.classList.add("show"), 10);
-  scrollToTarget(usagebox, 80);
   usageBox.classList.add("show");
 
   const currentLang = document.documentElement.lang || 'ko';
   usageBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+
+  setTimeout(() => scrollToTarget(usageBox, 80), 120);
 }
 
 // ✅ 코스별 이용팁 상세 표시
@@ -640,13 +641,14 @@ function showCourseTips() {
 
   detailBox.style.display = "block";
   setTimeout(() => detailBox.classList.add("show"), 10);
-  scrollToTarget(detailbox, 80);
   usageBox.classList.add("show");
 
   const currentLang = document.documentElement.lang || 'ko';
   detailBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+
+  setTimeout(() => scrollToTarget(detailBox, 80), 120);
 }
 
 // ✅ 가마솥뚜껑 상세 표시 (다국어 완전판)
@@ -784,7 +786,8 @@ function showGamasotDetail() {
   box.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
-  scrollToTarget(box, 80);
+  
+  setTimeout(() => scrollToTarget(box, 80), 120);
 }
 
 // ✅ 한국식 쌈 상세
@@ -905,19 +908,23 @@ function showSsamDetail() {
 
   ssamBox.style.display = "block";
   setTimeout(() => ssamBox.classList.add("show"), 10);
-  scrollToTarget(ssambox, 80);
 
   const currentLang = document.documentElement.lang || 'ko';
   ssamBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+
+  setTimeout(() => scrollToTarget(ssamBox, 80), 120);
 }
 
-// ✅ ⬇ 이 아래에 새 코드 추가
+// ✅ 화면에 표시된 다음 안전하게 스크롤
 function scrollToTarget(el, offset = 80) {
   if (!el) return;
-  setTimeout(() => {
-    const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-  }, 50);
+  // 두 번의 프레임을 기다려서 display:block 적용/레이아웃 반영을 보장
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
 }

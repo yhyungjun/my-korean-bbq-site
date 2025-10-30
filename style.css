@@ -859,6 +859,8 @@ button {
 .modal-content::-webkit-scrollbar-thumb { background: #bbb; border-radius: 8px; }
 .modal-content::-webkit-scrollbar-track { background: transparent; }
 
+html { scroll-behavior: smooth; }
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
   /* ✅ 언어 선택 박스 버튼 정렬 수정 */
