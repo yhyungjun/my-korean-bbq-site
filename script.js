@@ -325,6 +325,8 @@ function showSideDetail() {
   detailBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
+
+  scrollToTarget(box, 80);
 }
 
 // ✅ 박스 닫기 함수
@@ -335,7 +337,6 @@ function closeDetailBox(id) {
     setTimeout(() => {
       box.style.display = "none";
     }, 300);
-    scrollToTarget(box, 80);
   }
 }
 // 이용방법 상세 설명
@@ -464,13 +465,13 @@ function showUsageDetail() {
 
   usageBox.style.display = "block";
   setTimeout(() => usageBox.classList.add("show"), 10);
+  scrollToTarget(box, 80);
   usageBox.classList.add("show");
 
   const currentLang = document.documentElement.lang || 'ko';
   usageBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
-  scrollToTarget(box, 80);
 }
 
 // ✅ 코스별 이용팁 상세 표시
@@ -639,13 +640,13 @@ function showCourseTips() {
 
   detailBox.style.display = "block";
   setTimeout(() => detailBox.classList.add("show"), 10);
+  scrollToTarget(box, 80);
   usageBox.classList.add("show");
 
   const currentLang = document.documentElement.lang || 'ko';
   detailBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
-  scrollToTarget(box, 80);
 }
 
 // ✅ 가마솥뚜껑 상세 표시 (다국어 완전판)
@@ -904,12 +905,12 @@ function showSsamDetail() {
 
   ssamBox.style.display = "block";
   setTimeout(() => ssamBox.classList.add("show"), 10);
+  scrollToTarget(box, 80);
 
   const currentLang = document.documentElement.lang || 'ko';
   ssamBox.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = (el.getAttribute('data-lang') === currentLang) ? '' : 'none';
   });
-  scrollToTarget(box, 80);
 }
 
 // ✅ ⬇ 이 아래에 새 코드 추가
