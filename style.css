@@ -380,6 +380,7 @@ footer a:hover {
 }
 
 /* ===== 한국어 이용방법 & 코스별 이용팁 글씨색상 고정 ===== */
+#menuDetailBox p[data-lang="ko"],
 #usageDetailBox p[data-lang="ko"],
 #courseTipBox p[data-lang="ko"] {
   color: #000 !important;  /* 항상 검정색 */
