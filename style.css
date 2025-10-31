@@ -20,7 +20,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px; /* 로고와 텍스트 간 여백 */
+  gap: 5px; /* 로고와 텍스트 간 여백 */
   flex-wrap: wrap; /* 모바일에서는 자동 줄바꿈 */
 }
 
