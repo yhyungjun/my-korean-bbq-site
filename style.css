@@ -871,6 +871,15 @@ button {
 
 html { scroll-behavior: smooth; }
 
+/* ✅ 한 줄 유지 + 단어 중간 줄바꿈 방지 + 넘침 처리 공통 */
+.nobr {
+  white-space: nowrap !important;   /* 줄바꿈 금지 */
+  word-break: keep-all !important;  /* 단어 중간 끊김 금지 (영문/숫자 포함) */
+  overflow: hidden !important;      /* 넘침 숨김 */
+  text-overflow: ellipsis !important; /* 말줄임표 … */
+  hyphens: none !important;         /* 하이픈 자동분할 금지 */
+}
+
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
   /* ✅ 언어 선택 박스 버튼 정렬 수정 */
