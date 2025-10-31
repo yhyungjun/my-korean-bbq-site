@@ -949,3 +949,19 @@ function scrollToTarget(el, offset = 80) {
     });
   });
 }
+
+// script.js 하단에 추가
+window.addEventListener("resize", adjustFontSize);
+window.addEventListener("load", adjustFontSize);
+
+function adjustFontSize() {
+  document.querySelectorAll(".menu-buttons button").forEach(btn => {
+    if (window.innerWidth < 400) {
+      btn.style.fontSize = "0.9rem";
+    } else if (window.innerWidth < 600) {
+      btn.style.fontSize = "1rem";
+    } else {
+      btn.style.fontSize = "1.1rem";
+    }
+  });
+}

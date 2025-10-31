@@ -105,6 +105,10 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 20px;
+  white-space: nowrap;       /* 줄바꿈 방지 */
+  overflow: hidden;          /* 너무 길면 넘침 숨김 */
+  text-overflow: ellipsis;   /* ...으로 처리 */
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* 화면 크기에 따라 자동 조정 */
 }
 
 /* ====== 공통 카드 박스 ====== */
@@ -148,6 +152,9 @@ button {
 .usage-detail p {
   margin: 12px 0;
   font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 가격 줄 강조 */
@@ -897,7 +904,7 @@ html { scroll-behavior: smooth; }
   }
 
   .menu-btn {
-    width: 100%;
+    width: 50%;
     margin: 5px 0;
   }
 
