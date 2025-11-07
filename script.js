@@ -363,117 +363,117 @@ function showUsageDetail() {
       </div>`;
     usageBox.innerHTML = header+`
     <p data-lang="ko">
-      <span class="small-note">물, 앞접시</span> → <strong>창가쪽 냉장고</strong><br>
-      <span class="small-note">숟가락 및 젓가락, 냅킨</span> → <strong>테이블 옆 서랍</strong><br>
-      <span class="small-note">고기, 야채, 야채접시, 반찬, 물티슈, 집게 등</span> → <strong>셀프바</strong><br>
+      <span class="small-note">물, 앞접시</span>： <strong>창가쪽 냉장고</strong><br>
+      <span class="small-note">숟가락 및 젓가락, 냅킨</span>： <strong>테이블 옆 서랍</strong><br>
+      <span class="small-note">고기, 야채, 야채접시, 반찬, 물티슈, 집게 등</span>： <strong>셀프바</strong><br>
       <br>
       <strong>셀프로 이용가능!</strong>
     </p>
 
     <!-- 🇺🇸 영어 -->
     <p data-lang="en" style="display:none;">
-      <span class="small-note">Water and small plates</span> → <strong>Refrigerator by the window</strong><br>
-      <span class="small-note">Spoons, chopsticks, and napkins</span> → <strong>Drawer beside the table</strong><br>
-      <span class="small-note">Meat, vegetables, dishes, side dishes, wet tissues, tongs, etc.</span> → <strong>Self bar</strong><br>
+      <span class="small-note">Water and small plates</span>： <strong>Refrigerator by the window</strong><br>
+      <span class="small-note">Spoons, chopsticks, and napkins</span>： <strong>Drawer beside the table</strong><br>
+      <span class="small-note">Meat, vegetables, dishes, side dishes, wet tissues, tongs, etc.</span>： <strong>Self bar</strong><br>
       <br>
       <strong>Everything is self-service!</strong>
     </p>
 
     <!-- 🇨🇳 중국어 -->
     <p data-lang="zh" style="display:none;">
-      <span class="small-note">水、小盘子</span> → <strong>窗边冰箱</strong><br>
-      <span class="small-note">勺子、筷子、餐巾纸</span> → <strong>桌子旁抽屉</strong><br>
-      <span class="small-note">肉、蔬菜、蔬菜盘、小菜、湿巾、夹子等</span> → <strong>自助吧</strong><br>
+      <span class="small-note">水、小盘子</span>： <strong>窗边冰箱</strong><br>
+      <span class="small-note">勺子、筷子、餐巾纸</span>： <strong>桌子旁抽屉</strong><br>
+      <span class="small-note">肉、蔬菜、蔬菜盘、小菜、湿巾、夹子等</span>： <strong>自助吧</strong><br>
       <br>
       <strong>一切都可自助取用！</strong>
     </p>
 
     <!-- 🇯🇵 일본어 -->
     <p data-lang="ja" style="display:none;">
-      <span class="small-note">水、小皿</span> → <strong>窓際の冷蔵庫</strong><br>
-      <span class="small-note">スプーン・箸・ナプキン</span> → <strong>テーブル横の引き出し</strong><br>
-      <span class="small-note">肉・野菜・野菜皿・おかず・おしぼり・トングなど</span> → <strong>セルフバー</strong><br>
+      <span class="small-note">水、小皿</span>： <strong>窓際の冷蔵庫</strong><br>
+      <span class="small-note">スプーン・箸・ナプキン</span>： <strong>テーブル横の引き出し</strong><br>
+      <span class="small-note">肉・野菜・野菜皿・おかず・おしぼり・トングなど</span>： <strong>セルフバー</strong><br>
       <br>
       <strong>すべてセルフサービスです！</strong>
     </p>
 
     <!-- 🇻🇳 베트남어 -->
     <p data-lang="vi" style="display:none;">
-      <span class="small-note">Nước, đĩa nhỏ</span> → <strong>Tủ lạnh cạnh cửa sổ</strong><br>
-      <span class="small-note">Muỗng, đũa và khăn giấy</span> → <strong>Ngăn kéo bên bàn</strong><br>
-      <span class="small-note">Thịt, rau, đĩa rau, món phụ, khăn ướt, kẹp, v.v.</span> → <strong>Quầy tự phục vụ</strong><br>
+      <span class="small-note">Nước, đĩa nhỏ</span>： <strong>Tủ lạnh cạnh cửa sổ</strong><br>
+      <span class="small-note">Muỗng, đũa và khăn giấy</span>： <strong>Ngăn kéo bên bàn</strong><br>
+      <span class="small-note">Thịt, rau, đĩa rau, món phụ, khăn ướt, kẹp, v.v.</span>： <strong>Quầy tự phục vụ</strong><br>
       <br>
       <strong>Tất cả đều tự phục vụ!</strong>
     </p>
 
     <!-- 🇹🇭 태국어 -->
     <p data-lang="th" style="display:none;">
-      <span class="small-note">น้ำและจานเล็ก</span> → <strong>ตู้เย็นริมหน้าต่าง</strong><br>
-      <span class="small-note">ช้อน ตะเกียบ และกระดาษทิชชู</span> → <strong>ลิ้นชักข้างโต๊ะ</strong><br>
-      <span class="small-note">เนื้อ ผัก จานผัก กับข้าว ทิชชูเปียก คีมคีบ ฯลฯ</span> → <strong>บาร์บริการตัวเอง</strong><br>
+      <span class="small-note">น้ำและจานเล็ก</span>： <strong>ตู้เย็นริมหน้าต่าง</strong><br>
+      <span class="small-note">ช้อน ตะเกียบ และกระดาษทิชชู</span>： <strong>ลิ้นชักข้างโต๊ะ</strong><br>
+      <span class="small-note">เนื้อ ผัก จานผัก กับข้าว ทิชชูเปียก คีมคีบ ฯลฯ</span>： <strong>บาร์บริการตัวเอง</strong><br>
       <br>
       <strong>ทุกอย่างสามารถใช้ได้ด้วยตนเอง!</strong>
     </p>
 
     <!-- 🇵🇭 필리핀어 -->
     <p data-lang="ph" style="display:none;">
-      <span class="small-note">Tubig at maliit na plato</span> → <strong>Refrigerator sa tabi ng bintana</strong><br>
-      <span class="small-note">Kutsara, tinidor, at tissue</span> → <strong>Drawer sa tabi ng mesa</strong><br>
-      <span class="small-note">Karne, gulay, side dish, basang tissue, sipit, at iba pa</span> → <strong>Self bar</strong><br>
+      <span class="small-note">Tubig at maliit na plato</span>： <strong>Refrigerator sa tabi ng bintana</strong><br>
+      <span class="small-note">Kutsara, tinidor, at tissue</span>： <strong>Drawer sa tabi ng mesa</strong><br>
+      <span class="small-note">Karne, gulay, side dish, basang tissue, sipit, at iba pa</span>： <strong>Self bar</strong><br>
       <br>
       <strong>Lahat ay self-service!</strong>
     </p>
 
     <!-- 🇫🇷 프랑스어 -->
     <p data-lang="fr" style="display:none;">
-      <span class="small-note">Eau et petites assiettes</span> → <strong>Réfrigérateur près de la fenêtre</strong><br>
-      <span class="small-note">Cuillères, baguettes et serviettes</span> → <strong>Tiroir à côté de la table</strong><br>
-      <span class="small-note">Viande, légumes, plats, accompagnements, lingettes, pinces, etc.</span> → <strong>Bar en libre-service</strong><br>
+      <span class="small-note">Eau et petites assiettes</span>： <strong>Réfrigérateur près de la fenêtre</strong><br>
+      <span class="small-note">Cuillères, baguettes et serviettes</span>： <strong>Tiroir à côté de la table</strong><br>
+      <span class="small-note">Viande, légumes, plats, accompagnements, lingettes, pinces, etc.</span>： <strong>Bar en libre-service</strong><br>
       <br>
       <strong>Tout est en libre-service !</strong>
     </p>
 
     <!-- 🇪🇸 스페인어 -->
     <p data-lang="es" style="display:none;">
-      <span class="small-note">Agua y platos pequeños</span> → <strong>Refrigerador junto a la ventana</strong><br>
-      <span class="small-note">Cucharas, palillos y servilletas</span> → <strong>Cajón al lado de la mesa</strong><br>
-      <span class="small-note">Carne, verduras, platos, guarniciones, toallitas, pinzas, etc.</span> → <strong>Barra de autoservicio</strong><br>
+      <span class="small-note">Agua y platos pequeños</span>： <strong>Refrigerador junto a la ventana</strong><br>
+      <span class="small-note">Cucharas, palillos y servilletas</span>： <strong>Cajón al lado de la mesa</strong><br>
+      <span class="small-note">Carne, verduras, platos, guarniciones, toallitas, pinzas, etc.</span>： <strong>Barra de autoservicio</strong><br>
       <br>
       <strong>¡Todo es autoservicio!</strong>
     </p>
 
     <!-- 🇵🇹 포르투갈어 -->
     <p data-lang="pt" style="display:none;">
-      <span class="small-note">Água e pratinhos</span> → <strong>Geladeira ao lado da janela</strong><br>
-      <span class="small-note">Colheres, hashis e guardanapos</span> → <strong>Gaveta ao lado da mesa</strong><br>
-      <span class="small-note">Carne, vegetais, acompanhamentos, guardanapos úmidos, pinças, etc.</span> → <strong>Bar de autoatendimento</strong><br>
+      <span class="small-note">Água e pratinhos</span>： <strong>Geladeira ao lado da janela</strong><br>
+      <span class="small-note">Colheres, hashis e guardanapos</span>： <strong>Gaveta ao lado da mesa</strong><br>
+      <span class="small-note">Carne, vegetais, acompanhamentos, guardanapos úmidos, pinças, etc.</span>： <strong>Bar de autoatendimento</strong><br>
       <br>
       <strong>Tudo é autoatendimento!</strong>
     </p>
 
     <!-- 🇸🇦 아랍어 -->
     <p data-lang="ar" style="display:none;">
-      <span class="small-note">الماء والأطباق الصغيرة </span>→ الثلاجة بجانب النافذة<br>
-      <span class="small-note">الملاعق والعيدان والمناديل </span>→ الدرج بجانب الطاولة<br>
-      <span class="small-note">اللحم، الخضروات، الأطباق الجانبية، المناديل المبللة، الملاقط، إلخ </span>→ بار الخدمة الذاتية<br>
+      <span class="small-note">الماء والأطباق الصغيرة </span>： الثلاجة بجانب النافذة<br>
+      <span class="small-note">الملاعق والعيدان والمناديل </span>： الدرج بجانب الطاولة<br>
+      <span class="small-note">اللحم، الخضروات، الأطباق الجانبية، المناديل المبللة، الملاقط، إلخ </span>： بار الخدمة الذاتية<br>
       <br>
       <strong>كل شيء بخدمة ذاتية!</strong>
     </p>
 
     <!-- 🇷🇺 러시아어 -->
     <p data-lang="ru" style="display:none;">
-      <span class="small-note">Вода и маленькие тарелки</span> → <strong>Холодильник у окна</strong><br>
-      <span class="small-note">Ложки, палочки и салфетки</span> → <strong>Ящик рядом со столом</strong><br>
-      <span class="small-note">Мясо, овощи, гарниры, влажные салфетки, щипцы и т.д.</span> → <strong>Зона самообслуживания</strong><br>
+      <span class="small-note">Вода и маленькие тарелки</span>： <strong>Холодильник у окна</strong><br>
+      <span class="small-note">Ложки, палочки и салфетки</span>： <strong>Ящик рядом со столом</strong><br>
+      <span class="small-note">Мясо, овощи, гарниры, влажные салфетки, щипцы и т.д.</span>： <strong>Зона самообслуживания</strong><br>
       <br>
       <strong>Всё в формате самообслуживания!</strong>
     </p>
 
     <!-- 🇹🇷 튀르키예어 -->
     <p data-lang="tr" style="display:none;">
-      <span class="small-note">Su ve küçük tabaklar</span> → <strong>Pencere kenarındaki buzdolabı</strong><br>
-      <span class="small-note">Kaşık, çubuk ve peçeteler</span> → <strong>Masanın yanındaki çekmece</strong><br>
-      <span class="small-note">Et, sebzeler, yan yemekler, ıslak mendil, maşa vb.</span> → <strong>Self-servis barı</strong><br>
+      <span class="small-note">Su ve küçük tabaklar</span>： <strong>Pencere kenarındaki buzdolabı</strong><br>
+      <span class="small-note">Kaşık, çubuk ve peçeteler</span>： <strong>Masanın yanındaki çekmece</strong><br>
+      <span class="small-note">Et, sebzeler, yan yemekler, ıslak mendil, maşa vb.</span>： <strong>Self-servis barı</strong><br>
       <br>
       <strong>Her şey self-servistir!</strong>
     </p>
@@ -513,7 +513,7 @@ function showCourseTips() {
 
      <strong>Full 코스</strong>: A 코스에 치킨, 공기밥, 냉면, 음료수까지 무제한 포함된 코스<br>
      <span class="small-note"><em>이용팁: 치킨, 냉면, 음료수는 테이블 벨로 리필 요청.<br>
-     (냉면 → 물냉면/비빔냉면, 음료 → 콜라/제로콜라/사이다)</em></span>
+     (냉면 ： 물냉면/비빔냉면, 음료 ： 콜라/제로콜라/사이다)</em></span>
    </p>
 
    <p data-lang="en" style="display:none;">
@@ -525,7 +525,7 @@ function showCourseTips() {
 
      <strong>Full Course</strong>: Includes Course A <span class="unlimited">+</span> chicken <span class="unlimited">+</span> unlimited rice, cold noodles, and beverages.<br>
      <span class="small-note"><em>Tip: Use the table bell for refills of chicken, cold noodles, and drinks.<br>
-     (Cold noodles → Mul-naengmyeon / Bibim-naengmyeon, Drinks → Cola / Zero Cola / Sprite)</em></span>
+     (Cold noodles ： Mul-naengmyeon / Bibim-naengmyeon, Drinks ： Cola / Zero Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="zh" style="display:none;">
@@ -537,7 +537,7 @@ function showCourseTips() {
 
      <strong>Full 套餐</strong>: A套餐基础上增加鸡肉、米饭、冷面、饮料无限量.<br>
      <span class="small-note"><em>提示: 鸡肉、冷面、饮料可按桌上铃呼叫员工加餐.<br>
-     （冷面→水冷面/拌冷面，饮料→可乐/零度可乐/雪碧)</em></span>
+     （冷面：水冷面/拌冷面，饮料：可乐/零度可乐/雪碧)</em></span>
    </p>
 
    <p data-lang="ja" style="display:none;">
@@ -549,7 +549,7 @@ function showCourseTips() {
 
      <strong>Full コース</strong>: Aコースにチキン、ご飯、冷麺、飲み物の食べ放題が追加。<br>
      <span class="small-note"><em>ヒント: チキン、冷麺、飲み物はテーブルベルでスタッフに依頼.<br>
-     （冷麺→水冷麺/ビビン冷麺、飲み物→コーラ/ゼロコーラ/サイダー)</em></span>
+     （冷麺：水冷麺/ビビン冷麺、飲み物：コーラ/ゼロコーラ/サイダー)</em></span>
    </p>
 
    <p data-lang="vi" style="display:none;">
@@ -561,7 +561,7 @@ function showCourseTips() {
 
      <strong>Suất Full</strong>: Bao gồm suất A <span class="unlimited">+</span> gà <span class="unlimited">+</span> cơm, mì lạnh và nước uống không giới hạn.<br>
      <span class="small-note"><em>Mẹo: Nhấn chuông bàn để yêu cầu thêm gà, mì lạnh, hoặc nước uống.<br>
-     (Mì lạnh → Mul-naengmyeon / Bibim-naengmyeon, Nước → Cola / Zero Cola / Sprite)</em></span>
+     (Mì lạnh ： Mul-naengmyeon / Bibim-naengmyeon, Nước ： Cola / Zero Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="th" style="display:none;">
@@ -599,7 +599,7 @@ function showCourseTips() {
 
      <strong>Menu Full</strong>: Comprend le menu A <span class="unlimited">+</span> poulet <span class="unlimited">+</span> riz, nouilles froides et boissons à volonté.<br>
      <span class="small-note"><em>Astuce: Utilisez la cloche pour redemander du poulet, des nouilles ou des boissons.<br>
-     (Nouilles froides → Mul-naengmyeon / Bibim-naengmyeon, Boissons → Cola / Zéro Cola / Sprite)</em></span>
+     (Nouilles froides ： Mul-naengmyeon / Bibim-naengmyeon, Boissons ： Cola / Zéro Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="es" style="display:none;">
@@ -610,7 +610,7 @@ function showCourseTips() {
      <span class="small-note"><em>Consejo: Solicite recargas de pollo con el timbre de mesa.</em></span><br><br>
 
      <strong>Menú Full</strong>: Incluye Menú A <span class="unlimited">+</span> pollo <span class="unlimited">+</span> arroz, fideos fríos y bebidas ilimitadas.<br>
-     <span class="small-note"><em>Consejo: Use el timbre para solicitar recargas. (Fideos fríos → Mul-naengmyeon / Bibim-naengmyeon, Bebidas → Cola / Zero Cola / Sprite)</em></span>
+     <span class="small-note"><em>Consejo: Use el timbre para solicitar recargas. (Fideos fríos ： Mul-naengmyeon / Bibim-naengmyeon, Bebidas ： Cola / Zero Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="pt" style="display:none;">
@@ -622,7 +622,7 @@ function showCourseTips() {
 
      <strong>Curso Full</strong>: Inclui Curso A <span class="unlimited">+</span> frango <span class="unlimited">+</span> arroz, macarrão frio e bebidas ilimitadas.<br>
      <span class="small-note"><em>Dica: Use o sino da mesa para pedir reposição de frango, macarrão ou bebidas.<br>
-     (Macarrão frio → Mul-naengmyeon / Bibim-naengmyeon, Bebidas → Cola / Zero Cola / Sprite)</em></span>
+     (Macarrão frio ： Mul-naengmyeon / Bibim-naengmyeon, Bebidas ： Cola / Zero Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="ar" style="display:none;">
@@ -633,7 +633,7 @@ function showCourseTips() {
      <span class="small-note"><em>نصيحة: اطلب المزيد من الدجاج باستخدام جرس الطاولة.</em></span><br><br>
 
      <strong>قائمة Full</strong>: تشمل قائمة A مع دجاج، أرز، نودلز باردة ومشروبات غير محدودة.<br>
-     <span class="small-note"><em>نصيحة: استخدم جرس الطاولة لطلب إعادة التعبئة. (النودلز الباردة → Mul-naengmyeon / Bibim-naengmyeon، المشروبات → كوكاكولا / زيرو كولا / سبرايت)</em></span>
+     <span class="small-note"><em>نصيحة: استخدم جرس الطاولة لطلب إعادة التعبئة. (النودلز الباردة ： Mul-naengmyeon / Bibim-naengmyeon، المشروبات ： كوكاكولا / زيرو كولا / سبرايت)</em></span>
    </p>
 
    <p data-lang="ru" style="display:none;">
@@ -655,7 +655,7 @@ function showCourseTips() {
      <span class="small-note"><em>İpucu: Tavuk yenilemesi için masa zilini kullanın.</em></span><br><br>
 
      <strong>Full Kursu</strong>: A Kursuna ek olarak tavuk, pilav, soğuk erişte ve içecekler sınırsızdır.<br>
-     <span class="small-note"><em>İpucu: Tavuk, erişte veya içecek için masa zilini kullanın. (Soğuk erişte → Mul-naengmyeon / Bibim-naengmyeon, İçecekler → Kola / Zero Kola / Sprite)</em></span>
+     <span class="small-note"><em>İpucu: Tavuk, erişte veya içecek için masa zilini kullanın. (Soğuk erişte ： Mul-naengmyeon / Bibim-naengmyeon, İçecekler ： Kola / Zero Kola / Sprite)</em></span>
 </p>
   `;
 
