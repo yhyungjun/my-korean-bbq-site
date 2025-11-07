@@ -387,6 +387,13 @@ footer a:hover {
 #courseTipBox p[data-lang="ko"] {
   color: #000 !important;  /* 항상 검정색 */
 }
+/* ===== 상세박스 전체 글씨색 통일 ===== */
+#menuDetailBox p[data-lang="en"],
+#sideDetailBox p[data-lang="en"],
+#usageDetailBox p[data-lang="en"],
+#courseTipBox p[data-lang="en"]{
+  color: #000 !important;   /* 모든 상세박스 글씨를 검정색으로 */
+}
 
 /* ===== 한국식 쌈 & 가마솥뚜껑 버튼 한 줄 정렬 ===== */
 .menu-buttons.double-row {
@@ -649,14 +656,6 @@ footer a:hover {
   text-decoration-color: #ffeb3b; /* 밑줄 색상 변경 */
   transform: scale(1.08); /* 살짝 확대 */
   text-shadow: 0 0 6px rgba(255, 235, 59, 0.6);
-}
-
-/* ===== 상세박스 전체 글씨색 통일 ===== */
-#menuDetailBox p[data-lang="en"],
-#sideDetailBox p[data-lang="en"],
-#usageDetailBox p[data-lang="en"],
-#courseTipBox p[data-lang="en"]{
-  color: #000 !important;   /* 모든 상세박스 글씨를 검정색으로 */
 }
 
 /* ===== 영어 볼드체 제거 및 전체 글씨 두께 통일 ===== */
