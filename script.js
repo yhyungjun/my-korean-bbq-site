@@ -505,157 +505,157 @@ function showCourseTips() {
   detailBox.innerHTML = header + `
     <p data-lang="ko">
      <strong>A 코스</strong>: 고기와 야채, 그리고 각종 소스를 이용가능한 코스<br>
-     <em>이용팁: 고기는 도마, 야채는 야채접시, 반찬은 앞접시를 이용한다.</em><br><br>
+     <span class="small-note"><em>이용팁: 고기는 도마, 야채는 야채접시, 반찬은 앞접시를 이용한다.</em></span><br><br>
 
      <strong>B 코스</strong>: A 코스에 치킨 무제한이 포함된 코스<br>
-     <em>이용팁: 치킨은 테이블벨을 이용하여 직원에게 리필 요청한다.<br>
-     고기는 도마, 야채는 야채접시, 반찬은 앞접시를 이용한다.</em><br><br>
+     <span class="small-note"><em>이용팁: 치킨은 테이블벨을 이용하여 직원에게 리필 요청한다.<br>
+     고기는 도마, 야채는 야채접시, 반찬은 앞접시를 이용한다.</em></span><br><br>
 
      <strong>Full 코스</strong>: A 코스에 치킨, 공기밥, 냉면, 음료수까지 무제한 포함된 코스<br>
-     <em>이용팁: 치킨, 냉면, 음료수는 테이블 벨로 리필 요청.<br>
-     (냉면 → 물냉면/비빔냉면, 음료 → 콜라/제로콜라/사이다)</em>
+     <span class="small-note"><em>이용팁: 치킨, 냉면, 음료수는 테이블 벨로 리필 요청.<br>
+     (냉면 → 물냉면/비빔냉면, 음료 → 콜라/제로콜라/사이다)</em></span>
    </p>
 
    <p data-lang="en" style="display:none;">
      <strong>Course A</strong>: Includes meat, vegetables, and sauces.<br>
-     <em>Tip: Use the cutting board for meat, the vegetable plate for veggies, and the small plate for side dishes.</em><br><br>
+     <span class="small-note"><em>Tip: Use the cutting board for meat, the vegetable plate for veggies, and the small plate for side dishes.</em></span><br><br>
 
      <strong>Course B</strong>: Adds unlimited chicken to Course A.<br>
-     <em>Tip: Ask for chicken refills using the table bell. Use the cutting board for meat, the vegetable plate for veggies, and the small plate for side dishes.</em><br><br>
+     <span class="small-note"><em>Tip: Ask for chicken refills using the table bell. Use the cutting board for meat, the vegetable plate for veggies, and the small plate for side dishes.</em></span><br><br>
 
      <strong>Full Course</strong>: Includes Course A + chicken + unlimited rice, cold noodles, and beverages.<br>
-     <em>Tip: Use the table bell for refills of chicken, cold noodles, and drinks.<br>
-     (Cold noodles → Mul-naengmyeon / Bibim-naengmyeon, Drinks → Cola / Zero Cola / Sprite)</em>
+     <span class="small-note"><em>Tip: Use the table bell for refills of chicken, cold noodles, and drinks.<br>
+     (Cold noodles → Mul-naengmyeon / Bibim-naengmyeon, Drinks → Cola / Zero Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="zh" style="display:none;">
      <strong>A 套餐</strong>: 可享用肉类、蔬菜和各种酱料.<br>
-     <em>提示: 肉用砧板，蔬菜用蔬菜盘，小菜用小盘.</em><br><br>
+     <span class="small-note"><em>提示: 肉用砧板，蔬菜用蔬菜盘，小菜用小盘.</em></span><br><br>
 
      <strong>B 套餐</strong>: 在A套餐基础上增加无限量鸡肉.<br>
-     <em>提示: 鸡肉请按桌上铃呼叫员工加餐。肉用砧板，蔬菜用蔬菜盘，小菜用小盘.</em><br><br>
+     <span class="small-note"><em>提示: 鸡肉请按桌上铃呼叫员工加餐。肉用砧板，蔬菜用蔬菜盘，小菜用小盘.</em></span><br><br>
 
      <strong>Full 套餐</strong>: A套餐基础上增加鸡肉、米饭、冷面、饮料无限量.<br>
-     <em>提示: 鸡肉、冷面、饮料可按桌上铃呼叫员工加餐.</em><br>
-     （冷面→水冷面/拌冷面，饮料→可乐/零度可乐/雪碧）
+     <span class="small-note"><em>提示: 鸡肉、冷面、饮料可按桌上铃呼叫员工加餐.<br>
+     （冷面→水冷面/拌冷面，饮料→可乐/零度可乐/雪碧)</em></span>
    </p>
 
    <p data-lang="ja" style="display:none;">
      <strong>A コース</strong>: 肉、野菜、各種ソースが利用可能なコース.<br>
-     <em>ヒント: 肉はまな板、野菜は野菜皿、おかずは取り皿を使用.</em><br><br>
+     <span class="small-note"><em>ヒント: 肉はまな板、野菜は野菜皿、おかずは取り皿を使用.</em></span><br><br>
 
      <strong>B コース</strong>: Aコースにチキン食べ放題が追加されたコース。<br>
-     <em>ヒント: チキンはテーブルベルでスタッフにリフィルを依頼。肉はまな板、野菜は野菜皿、おかずは取り皿を使用.</em><br><br>
+     <span class="small-note"><em>ヒント: チキンはテーブルベルでスタッフにリフィルを依頼。肉はまな板、野菜は野菜皿、おかずは取り皿を使用.</em></span><br><br>
 
      <strong>Full コース</strong>: Aコースにチキン、ご飯、冷麺、飲み物の食べ放題が追加。<br>
-     <em>ヒント: チキン、冷麺、飲み物はテーブルベルでスタッフに依頼.<br>
-     （冷麺→水冷麺/ビビン冷麺、飲み物→コーラ/ゼロコーラ/サイダー)</em>
+     <span class="small-note"><em>ヒント: チキン、冷麺、飲み物はテーブルベルでスタッフに依頼.<br>
+     （冷麺→水冷麺/ビビン冷麺、飲み物→コーラ/ゼロコーラ/サイダー)</em></span>
    </p>
 
    <p data-lang="vi" style="display:none;">
      <strong>Suất A</strong>: Bao gồm thịt, rau và các loại nước sốt.<br>
-     <em>Mẹo: Dùng thớt cho thịt, đĩa rau cho rau, đĩa nhỏ cho món phụ.</em><br><br>
+     <span class="small-note"><em>Mẹo: Dùng thớt cho thịt, đĩa rau cho rau, đĩa nhỏ cho món phụ.</em></span><br><br>
 
      <strong>Suất B</strong>: Giống suất A nhưng có thêm gà không giới hạn.<br>
-     <em>Mẹo: Nhấn chuông bàn để yêu cầu thêm gà. Dùng thớt cho thịt, đĩa rau cho rau, đĩa nhỏ cho món phụ.</em><br><br>
+     <span class="small-note"><em>Mẹo: Nhấn chuông bàn để yêu cầu thêm gà. Dùng thớt cho thịt, đĩa rau cho rau, đĩa nhỏ cho món phụ.</em></span><br><br>
 
      <strong>Suất Full</strong>: Bao gồm suất A + gà + cơm, mì lạnh và nước uống không giới hạn.<br>
-     <em>Mẹo: Nhấn chuông bàn để yêu cầu thêm gà, mì lạnh, hoặc nước uống.<br>
-     (Mì lạnh → Mul-naengmyeon / Bibim-naengmyeon, Nước → Cola / Zero Cola / Sprite)</em>
+     <span class="small-note"><em>Mẹo: Nhấn chuông bàn để yêu cầu thêm gà, mì lạnh, hoặc nước uống.<br>
+     (Mì lạnh → Mul-naengmyeon / Bibim-naengmyeon, Nước → Cola / Zero Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="th" style="display:none;">
      <strong>คอร์ส A</strong>: สามารถเลือกเนื้อ ผัก และซอสต่างๆ ได้ไม่จำกัด<br>
-     <em>เคล็ดลับ: ใช้เขียงสำหรับเนื้อ จานผักสำหรับผัก และจานเล็กสำหรับกับข้าว</em><br><br>
+     <span class="small-note"><em>เคล็ดลับ: ใช้เขียงสำหรับเนื้อ จานผักสำหรับผัก และจานเล็กสำหรับกับข้าว</em></span><br><br>
 
      <strong>คอร์ส B</strong>: คอร์ส A พร้อมไก่ซอสถั่วเหลืองไม่อั้น<br>
-     <em>เคล็ดลับ: กดกริ่งเรียกพนักงานเพื่อขอรีฟิลไก่<br>
-     ใช้เขียงสำหรับเนื้อ จานผักสำหรับผัก และจานเล็กสำหรับกับข้าว</em><br><br>
+     <span class="small-note"><em>เคล็ดลับ: กดกริ่งเรียกพนักงานเพื่อขอรีฟิลไก่<br>
+     ใช้เขียงสำหรับเนื้อ จานผักสำหรับผัก และจานเล็กสำหรับกับข้าว</em></span><br><br>
 
      <strong>คอร์ส Full</strong>: รวมเนื้อ ไก่ ข้าว บะหมี่เย็น และเครื่องดื่มไม่จำกัด<br>
-     <em>เคล็ดลับ: ใช้กริ่งเรียกพนักงานเมื่ออยากรีฟิลไก่ บะหมี่ หรือเครื่องดื่ม<br>
-     (บะหมี่เย็น: แบบน้ำ/แบบเผ็ด, เครื่องดื่ม: โคล่า/โคล่าไม่มีน้ำตาล/ไซเดอร์)</em>
+     <span class="small-note"><em>เคล็ดลับ: ใช้กริ่งเรียกพนักงานเมื่ออยากรีฟิลไก่ บะหมี่ หรือเครื่องดื่ม<br>
+     (บะหมี่เย็น: แบบน้ำ/แบบเผ็ด, เครื่องดื่ม: โคล่า/โคล่าไม่มีน้ำตาล/ไซเดอร์)</em></span>
    </p>
 
    <p data-lang="ph" style="display:none;">
      <strong>A Course</strong>: Maaaring kumuha ng karne, gulay, at iba't ibang sawsawan<br>
-     <em>Tip: Gumamit ng chopping board para sa karne, plato ng gulay para sa gulay, at maliit na plato para sa side dish.</em><br><br>
+     <span class="small-note"><em>Tip: Gumamit ng chopping board para sa karne, plato ng gulay para sa gulay, at maliit na plato para sa side dish.</em></span><br><br>
 
      <strong>B Course</strong>: Katulad ng A Course ngunit may unlimited soy chicken<br>
-     <em>Tip: Gamitin ang table bell para humingi ng refill ng chicken sa staff.<br>
-     Gumamit ng chopping board, plato ng gulay, at maliit na plato tulad ng A Course.</em><br><br>
+     <span class="small-note"><em>Tip: Gamitin ang table bell para humingi ng refill ng chicken sa staff.<br>
+     Gumamit ng chopping board, plato ng gulay, at maliit na plato tulad ng A Course.</em></span><br><br>
 
      <strong>Full Course</strong>: May kasamang unlimited chicken, rice, cold noodles, at inumin<br>
-     <em>Tip: I-ring ang bell para sa refill ng chicken, noodles, o inumin.<br>
-     (Cold noodles: may sabaw o maanghang / Inumin: cola, zero cola, o sprite)</em>
+     <span class="small-note"><em>Tip: I-ring ang bell para sa refill ng chicken, noodles, o inumin.<br>
+     (Cold noodles: may sabaw o maanghang / Inumin: cola, zero cola, o sprite)</em></span>
    </p>
 
    <p data-lang="fr" style="display:none;">
      <strong>Menu A</strong>: Comprend viande, légumes et sauces variées.<br>
-     <em>Astuce: Utilisez la planche à découper pour la viande, l’assiette de légumes pour les légumes et la petite assiette pour les accompagnements.</em><br><br>
+     <span class="small-note"><em>Astuce: Utilisez la planche à découper pour la viande, l’assiette de légumes pour les légumes et la petite assiette pour les accompagnements.</em></span><br><br>
 
      <strong>Menu B</strong>: Ajoute du poulet à volonté au menu A.<br>
-     <em>Astuce: Demandez un remplissage du poulet avec la cloche de table.</em><br><br>
+     <span class="small-note"><em>Astuce: Demandez un remplissage du poulet avec la cloche de table.</em></span><br><br>
 
      <strong>Menu Full</strong>: Comprend le menu A + poulet + riz, nouilles froides et boissons à volonté.<br>
-     <em>Astuce: Utilisez la cloche pour redemander du poulet, des nouilles ou des boissons.<br>
-     (Nouilles froides → Mul-naengmyeon / Bibim-naengmyeon, Boissons → Cola / Zéro Cola / Sprite)</em>
+     <span class="small-note"><em>Astuce: Utilisez la cloche pour redemander du poulet, des nouilles ou des boissons.<br>
+     (Nouilles froides → Mul-naengmyeon / Bibim-naengmyeon, Boissons → Cola / Zéro Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="es" style="display:none;">
      <strong>Menú A</strong>: Incluye carne, verduras y diversas salsas.<br>
-     <em>Consejo: Use la tabla para carne, el plato de verduras para vegetales y el plato pequeño para guarniciones.</em><br><br>
+     <span class="small-note"><em>Consejo: Use la tabla para carne, el plato de verduras para vegetales y el plato pequeño para guarniciones.</em></span><br><br>
 
      <strong>Menú B</strong>: Agrega pollo ilimitado al Menú A.<br>
-     <em>Consejo: Solicite recargas de pollo con el timbre de mesa.</em><br><br>
+     <span class="small-note"><em>Consejo: Solicite recargas de pollo con el timbre de mesa.</em></span><br><br>
 
      <strong>Menú Full</strong>: Incluye Menú A + pollo + arroz, fideos fríos y bebidas ilimitadas.<br>
-     <em>Consejo: Use el timbre para solicitar recargas. (Fideos fríos → Mul-naengmyeon / Bibim-naengmyeon, Bebidas → Cola / Zero Cola / Sprite)</em>
+     <span class="small-note"><em>Consejo: Use el timbre para solicitar recargas. (Fideos fríos → Mul-naengmyeon / Bibim-naengmyeon, Bebidas → Cola / Zero Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="pt" style="display:none;">
      <strong>Curso A</strong>: Inclui carne, legumes e molhos variados.<br>
-     <em>Dica: Use a tábua para carne, o prato de legumes para vegetais e o prato pequeno para acompanhamentos.</em><br><br>
+     <span class="small-note"><em>Dica: Use a tábua para carne, o prato de legumes para vegetais e o prato pequeno para acompanhamentos.</em></span><br><br>
 
      <strong>Curso B</strong>: Adiciona frango ilimitado ao Curso A.<br>
-     <em>Dica: Peça mais frango usando o sino da mesa.</em><br><br>
+     <span class="small-note"><em>Dica: Peça mais frango usando o sino da mesa.</em></span><br><br>
 
      <strong>Curso Full</strong>: Inclui Curso A + frango + arroz, macarrão frio e bebidas ilimitadas.<br>
-     <em>Dica: Use o sino da mesa para pedir reposição de frango, macarrão ou bebidas.<br>
-     (Macarrão frio → Mul-naengmyeon / Bibim-naengmyeon, Bebidas → Cola / Zero Cola / Sprite)</em>
+     <span class="small-note"><em>Dica: Use o sino da mesa para pedir reposição de frango, macarrão ou bebidas.<br>
+     (Macarrão frio → Mul-naengmyeon / Bibim-naengmyeon, Bebidas → Cola / Zero Cola / Sprite)</em></span>
    </p>
 
    <p data-lang="ar" style="display:none;">
      <strong>قائمة A</strong>: تشمل اللحوم والخضروات والصلصات المختلفة.<br>
-     <em>نصيحة: استخدم لوح التقطيع للحوم، طبق الخضار للخضروات، والطبق الصغير للأطباق الجانبية.</em><br><br>
+     <span class="small-note"><em>نصيحة: استخدم لوح التقطيع للحوم، طبق الخضار للخضروات، والطبق الصغير للأطباق الجانبية.</em></span><br><br>
 
      <strong>قائمة B</strong>: تشمل نفس محتوى A بالإضافة إلى دجاج غير محدود.<br>
-     <em>نصيحة: اطلب المزيد من الدجاج باستخدام جرس الطاولة.</em><br><br>
+     <span class="small-note"><em>نصيحة: اطلب المزيد من الدجاج باستخدام جرس الطاولة.</em></span><br><br>
 
      <strong>قائمة Full</strong>: تشمل قائمة A مع دجاج، أرز، نودلز باردة ومشروبات غير محدودة.<br>
-     <em>نصيحة: استخدم جرس الطاولة لطلب إعادة التعبئة. (النودلز الباردة → Mul-naengmyeon / Bibim-naengmyeon، المشروبات → كوكاكولا / زيرو كولا / سبرايت)</em>
+     <span class="small-note"><em>نصيحة: استخدم جرس الطاولة لطلب إعادة التعبئة. (النودلز الباردة → Mul-naengmyeon / Bibim-naengmyeon، المشروبات → كوكاكولا / زيرو كولا / سبرايت)</em></span>
    </p>
 
    <p data-lang="ru" style="display:none;">
      <strong>Курс A</strong>: Включает мясо, овощи и различные соусы.<br>
-     <em>Совет: Используйте разделочную доску для мяса, тарелку для овощей и маленькую тарелку для гарниров.</em><br><br>
+     <span class="small-note"><em>Совет: Используйте разделочную доску для мяса, тарелку для овощей и маленькую тарелку для гарниров.</em></span><br><br>
 
      <strong>Курс B</strong>: Добавляет безлимитную курицу к Курсу A.<br>
-     <em>Совет: Попросите добавку курицы с помощью настольного звонка.</em><br><br>
+     <span class="small-note"><em>Совет: Попросите добавку курицы с помощью настольного звонка.</em></span><br><br>
 
      <strong>Полный курс</strong>: Включает Курс A + курицу + безлимитный рис, холодную лапшу и напитки.<br>
-     <em>Совет: Используйте звонок, чтобы заказать добавку курицы, лапши или напитков.</em>
+     <span class="small-note"><em>Совет: Используйте звонок, чтобы заказать добавку курицы, лапши или напитков.</em></span>
    </p>
 
    <p data-lang="tr" style="display:none;">
      <strong>A Kursu</strong>: Et, sebze ve çeşitli sosları içerir.<br>
-     <em>İpucu: Et için kesme tahtası, sebzeler için sebze tabağı, yan yemekler için küçük tabak kullanın.</em><br><br>
+     <span class="small-note"><em>İpucu: Et için kesme tahtası, sebzeler için sebze tabağı, yan yemekler için küçük tabak kullanın.</em></span><br><br>
 
      <strong>B Kursu</strong>: A Kursuna sınırsız tavuk eklenmiştir.<br>
-     <em>İpucu: Tavuk yenilemesi için masa zilini kullanın.</em><br><br>
+     <span class="small-note"><em>İpucu: Tavuk yenilemesi için masa zilini kullanın.</em></span><br><br>
 
      <strong>Full Kursu</strong>: A Kursuna ek olarak tavuk, pilav, soğuk erişte ve içecekler sınırsızdır.<br>
-     <em>İpucu: Tavuk, erişte veya içecek için masa zilini kullanın. (Soğuk erişte → Mul-naengmyeon / Bibim-naengmyeon, İçecekler → Kola / Zero Kola / Sprite)</em>
+     <span class="small-note"><em>İpucu: Tavuk, erişte veya içecek için masa zilini kullanın. (Soğuk erişte → Mul-naengmyeon / Bibim-naengmyeon, İçecekler → Kola / Zero Kola / Sprite)</em></span>
 </p>
   `;
 

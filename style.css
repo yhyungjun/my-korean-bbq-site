@@ -122,6 +122,8 @@ button {
   max-width: 850px;
   text-align: center;
   font-size: 1.2rem;
+  letter-spacing: 0.3px;
+  word-break: keep-all;
   line-height: 1.8;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease-in-out;
