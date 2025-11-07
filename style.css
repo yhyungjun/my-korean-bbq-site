@@ -388,20 +388,6 @@ footer a:hover {
   color: #000 !important;  /* 항상 검정색 */
 }
 
-/* ===== 이용방법 & 코스별 이용팁 버튼 한 줄 정렬 ===== */
-.menu-buttons.double-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; /* 화면이 작을 땐 자동 줄바꿈 */
-  gap: 12px;
-}
-
-.menu-buttons.double-row .menu-btn {
-  min-width: 160px;
-  padding: 12px 24px;
-  font-size: 1rem;
-}
-
 /* ===== 한국식 쌈 & 가마솥뚜껑 버튼 한 줄 정렬 ===== */
 .menu-buttons.double-row {
   display: flex;
