@@ -119,6 +119,7 @@ button {
   border-radius: 14px;  
   padding: 28px;
   margin: 28px auto;
+  flex-wrap: nowrap;
   max-width: 850px;
   text-align: center;
   font-size: 1rem;
@@ -904,7 +905,16 @@ html { scroll-behavior: smooth; }
     font-size: 1rem;
     padding: 18px;
   }
-
+  /* ✅ 작은 화면에서 글자 자동 축소(과도한 넘침 방지, 선택사항) */
+  @media (max-width: 420px) {
+    .menu-buttons .menu-btn,
+    .modal-buttons button,
+    .menu-subtitle,
+    .footer-brand,
+    .footer-branches a {
+      font-size: clamp(0.85rem, 3.2vw, 1rem);
+    }
+  }
   .menu-buttons {
     flex-direction: column;
     align-items: center;
