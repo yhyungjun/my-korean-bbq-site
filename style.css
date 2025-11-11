@@ -86,17 +86,17 @@ button {
   background: #ddd;
 }
 
-
 /* 메뉴, 이용방법 섹션 */
 .menu {
   padding: 40px 20px;
   background: #f9f9f9;
 }
 
+/* ✅ 섹션 제목(메뉴 / 이용방법) 더 크게 + 진하게 */
 .menu h2, .usage h2 {
   margin-bottom: 20px;
-  font-size: 2.1rem;
-  font-weight: 700;
+  font-size: 2.6rem;
+  font-weight: 800 !important;
   color: #333;
 }
 
@@ -109,6 +109,7 @@ button {
 }
 
 /* ====== 공통 카드 박스 ====== */
+/* ✅ 글자 넘침 방지 & 모바일에서 자연스러운 줄바꿈 */
 .menu-detail,
 .side-detail,
 .usage-detail {
@@ -124,12 +125,12 @@ button {
   text-align: center;
   font-size: 1rem;
   letter-spacing: 0.2px;
-  word-break: break-word;
-  overflow-wrap: anywhere;
+  word-break: break-word;       /* ✅ 길면 적당히 끊어서 */
+  overflow-wrap: anywhere;      /* ✅ 박스 밖으로 안 나가게 */
   line-height: 1.8;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease-in-out;
-  font-family: 'BM Hanna', 'Noto Sans KR', sans-serif !important;
+  font-family: 'BM Hanna', 'Noto Sans KR', sans-serif !important; /* 모든 언어 동일 폰트 */
   color: #000;
 }
 
@@ -148,6 +149,7 @@ button {
 }
 
 /* ====== 내용 간격 ====== */
+/* ✅ 기본 본문 글자 살짝 줄이고 */
 .menu-detail p,
 .side-detail p,
 .usage-detail p {
@@ -155,15 +157,23 @@ button {
   font-size: 1.0rem;
 }
 
+/* ✅ 카드의 첫 줄(코스 제목)만 더 크게 */
+.menu-detail p:first-child,
+.side-detail p:first-child,
+.usage-detail p:first-child {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
 /* 가격 줄 강조 */
 .menu-detail p:nth-child(2),
 .side-detail p:nth-child(2),
 .usage-detail p:nth-child(2) {
-  margin-top: 26px;
-  margin-bottom: 22px;
+  margin-top: 25px;
+  margin-bottom: 20px;
   font-weight: bold;
-  font-size: 1.35rem;
-  color: #d32f2f; /* 레드 포인트 */
+  font-size: 1.3rem;
+  color: #d50000; /* 진한 레드 포인트로 통일 */
 }
 
 /* ====== 사이드 메뉴 2열 ====== */
@@ -248,31 +258,6 @@ button {
   border-color: #888;
   color: #000;
   transform: scale(1.03);
-}
-/* 가격 강조 색상 */
-.menu-detail p:nth-child(2),
-.side-detail p:nth-child(2),
-.usage-detail p:nth-child(2) {
-  margin-top: 25px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: #d50000; /* 진한 레드 포인트로 통일 */
-}
-
-
-/* ===== 사이드 메뉴 2열 레이아웃 ===== */
-.side-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px 35px;
-  margin-top: 18px;
-  text-align: left;
-}
-
-.side-grid p {
-  margin: 8px 0;
-  font-size: 1.05rem;
 }
 
 /* 모달 기본 */
@@ -448,9 +433,6 @@ footer a:hover {
 .hidden-body #langModal {
   display: block;
 }
-/* ============================= */
-/* 🔹 본문 페이드인 애니메이션 추가 */
-/* ============================= */
 
 /* ============================= */
 /* 🔹 전체 페이지 페이드인 + 부드러운 등장 애니메이션 */
@@ -585,7 +567,7 @@ body.fade-in footer {
     0 2px 4px rgba(0,0,0,0.6);
 }
 
-  /* 🔹 닫기(X) 버튼 */
+/* 🔹 닫기(X) 버튼 */
 #gamasotDetailBox .close-btn {
   position: absolute;
   top: 12px;
@@ -663,11 +645,17 @@ footer a:hover {
 }
 
 /* ===== 영어 볼드체 제거 및 전체 글씨 두께 통일 ===== */
+/* ✅ 본문과 버튼만 500, 제목은 따로 굵게 */
 body,
 p,
-h1, h2, h3, h4, h5, h6,
 button {
-  font-weight: 500 !important;  /* 기존 Bold를 강제로 덮어쓰기 */
+  font-weight: 500 !important;
+  font-family: "Noto Sans", "Noto Sans KR", Arial, sans-serif !important;
+}
+
+/* ✅ 제목 계열은 다시 굵게 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800 !important;
   font-family: "Noto Sans", "Noto Sans KR", Arial, sans-serif !important;
 }
 
@@ -697,7 +685,7 @@ button {
 
 .menu-subtitle {
   display: block;
-  font-size: 1.8em;      /* ✅ 모바일에서 더 크게 */
+  font-size: 1.8em;
   font-weight: 900;
   color: #000;
   text-align: center;
@@ -711,7 +699,6 @@ button {
   z-index: 9999;
   inset: 0;
   background-color: rgba(0,0,0,0.6);
-  /* 배경 스크롤 방지 */
   overflow: hidden;
 }
 
@@ -723,11 +710,9 @@ button {
   border-radius: 14px;
   width: 90%;
   max-width: 600px;
-
-  /* 핵심: 내부 스크롤 활성화 */
-  max-height: 85vh;           /* 화면 85% 높이까지만 */
-  overflow-y: auto;           /* 손가락 드래그로 스크롤 */
-  -webkit-overflow-scrolling: touch; /* iOS 관성 스크롤 */
+  max-height: 85vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ✅ 드래그 핸들(시각적 힌트) */
@@ -749,8 +734,8 @@ button {
 /* 버튼은 컨테이너 폭 안에서 줄바꿈 */
 .modal-buttons button {
   width: 100%;
-  min-width: 0;      /* 콘텐츠가 버튼 폭을 밀어내지 않게 */
-  padding: 14px 8px; /* 모바일 터치 충분 */
+  min-width: 0;
+  padding: 14px 8px;
   word-break: keep-all;
 }
 
@@ -759,12 +744,12 @@ button {
   .modal-content {
     width: 92%;
     max-width: 420px;
-    max-height: 80vh;   /* 화면 더 낮게 차지 */
+    max-height: 80vh;
     padding: 14px 14px 18px;
   }
 
   .modal-buttons {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2열로 변경 */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
     justify-items: stretch;
   }
@@ -786,7 +771,7 @@ button {
   inset: 0 !important;
   z-index: 9999 !important;
   background: rgba(0,0,0,0.6) !important;
-  display: none;            /* open 시 JS가 block으로 바꿈 */
+  display: none;
   overflow: hidden !important;
 }
 
@@ -795,7 +780,7 @@ button {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 16px;            /* 화면 가장자리와 여백 */
+  padding: 16px;
   box-sizing: border-box;
 }
 
@@ -807,13 +792,11 @@ button {
   border-radius: 14px;
   padding: 16px 16px 20px;
   box-sizing: border-box;
-
-  /* 핵심 */
-  max-height: 85vh !important;           /* 화면 85%까지만 */
-  overflow-y: auto !important;            /* 내부 스크롤 활성화 */
-  -webkit-overflow-scrolling: touch;      /* iOS 관성 스크롤 */
-  overscroll-behavior: contain;           /* 바운스 방지 */
-  touch-action: pan-y;                    /* 세로 제스처 인식 */
+  max-height: 85vh !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 /* 시각적 드래그 핸들 (선택사항) */
@@ -832,7 +815,7 @@ button {
 
 .modal-buttons button {
   width: 100% !important;
-  min-width: 0 !important;          /* 텍스트가 폭 밀지 않도록 */
+  min-width: 0 !important;
   padding: 14px 8px !important;
   word-break: keep-all;
 }
@@ -862,21 +845,21 @@ html { scroll-behavior: smooth; }
 
 /* ✅ 한 줄 유지 + 단어 중간 줄바꿈 방지 + 넘침 처리 공통 */
 .nobr {
-  white-space: nowrap !important;   /* 줄바꿈 금지 */
-  word-break: keep-all !important;  /* 단어 중간 끊김 금지 (영문/숫자 포함) */
-  overflow: hidden !important;      /* 넘침 숨김 */
-  text-overflow: ellipsis !important; /* 말줄임표 … */
-  hyphens: none !important;         /* 하이픈 자동분할 금지 */
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  hyphens: none !important;
 }
 
 /* ===== 모바일 대응 ===== */
 @media (max-width: 768px) {
-  /* ✅ 언어 선택 박스 버튼 정렬 수정 */
+
   .modal-buttons {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 3열 → 2열로 변경 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    justify-items: center; /* 버튼 중앙 정렬 */
+    justify-items: center;
   }
 
   .modal-buttons button {
@@ -884,10 +867,9 @@ html { scroll-behavior: smooth; }
     font-size: 1.2rem;
     min-width: 100px;
     width: 100%;
-    max-width: 140px; /* ✅ 화면 밖으로 나가지 않게 제한 */
+    max-width: 140px;
   }
 
-  /* ✅ 모달 전체 크기 조정 */
   .modal-content {
     width: 90%;
     max-width: 360px;
@@ -906,19 +888,16 @@ html { scroll-behavior: smooth; }
     font-size: 1rem;
     padding: 18px;
   }
-  /* ✅ 작은 화면에서 글자 자동 축소(과도한 넘침 방지, 선택사항) */
-  @media (max-width: 420px) {
-    .menu-buttons .menu-btn,
-    .modal-buttons button,
-    .menu-subtitle,
-    .footer-brand,
-    .footer-branches a {
-      font-size: clamp(0.85rem, 3.2vw, 1rem);
-    }
-  }
+
   .menu-buttons {
     flex-direction: column;
     align-items: center;
+  }
+
+  /* ✅ 모바일에서 제목 더 크게 한 번 더 보정 */
+  .menu h2,
+  .usage h2 {
+    font-size: 2.8rem;
   }
 
   .hero h1 {
