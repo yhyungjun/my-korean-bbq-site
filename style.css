@@ -94,9 +94,9 @@ button {
 
 /* ✅ 섹션 제목(메뉴 / 이용방법) 더 크게 + 진하게 */
 .menu h2, .usage h2 {
-  margin-bottom: 20px;
-  font-size: 2.6rem;
-  font-weight: 800 !important;
+  margin-bottom: 10px;
+  font-size: 2rem !important;
+  font-weight: 500 !important;
   color: #333;
 }
 
@@ -1031,3 +1031,89 @@ body {
   }
 }
 
+/* ============================= */
+/* 🔹 메뉴 선택박스 (A/B/FULL/사이드메뉴) 가로 한 줄 정렬 */
+/* ============================= */
+.menu-buttons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;   /* 줄바꿈 금지 */
+  gap: 8px;                      /* 버튼 간격 */
+  margin-bottom: 25px;
+}
+
+.menu-buttons .menu-btn {
+  flex: 0 1 auto !important;
+  min-width: 140px !important;    /* 버튼 크기 살짝 축소 */
+  padding: 10px 18px !important;
+  font-size: 1.5rem !important;
+  white-space: nowrap !important; /* 줄바꿈 방지 */
+  box-sizing: border-box;
+}
+
+/* ✅ 모바일에서도 한 줄 유지되도록 조정 */
+@media (max-width: 768px) {
+  .menu-buttons {
+    flex-direction: row !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    gap: 8px;
+  }
+  .menu-buttons .menu-btn {
+    min-width: 95px !important;
+    padding: 8px 10px !important;
+    font-size: 1.2rem !important;
+  }
+}
+
+.menu-buttons .menu-btn { flex: 1 1 0 !important; }
+
+/* ============================= */
+/* 🔹 가마솥 유래 / 한국식 쌈 버튼 폰트 & 여백 조정 */
+/* ============================= */
+.menu-buttons.double-row .menu-btn {
+  font-size: 1.1rem !important;    /* 🔹 기존보다 살짝 작게 (1.3~1.4rem → 1.1rem) */
+  padding: 10px 20px !important;   /* 🔹 세로·가로 여백 균형 */
+  min-width: 130px !important;     /* 🔹 버튼 폭 균형 조정 */
+  line-height: 1.4 !important;     /* 🔹 글자 간격 여유 */
+  letter-spacing: 0.5px;
+}
+
+/* ✅ 모바일용 (더 좁은 공간일 때 여백 자동 축소) */
+@media (max-width: 768px) {
+  .menu-buttons.double-row .menu-btn {
+    font-size: 1rem !important;
+    padding: 8px 16px !important;
+    min-width: 110px !important;
+  }
+}
+
+/* ============================= */
+/* 🔹 A/B/Full 메뉴 버튼 글씨 넘침 해결 */
+/* ============================= */
+.menu-buttons .menu-btn {
+  white-space: normal !important;   /* ✅ 줄바꿈 허용 */
+  word-break: keep-all !important;  /* ✅ 단어 중간에서 끊기지 않게 */
+  overflow: visible !important;     /* ✅ 글씨가 잘리지 않게 */
+  text-overflow: unset !important;  /* ✅ ... 제거 */
+  text-align: center !important;    /* ✅ 가운데 정렬 */
+  flex-wrap: wrap !important;       /* ✅ 여러 줄 허용 */
+
+  max-width: 150px !important;      /* 버튼 폭 제한 */
+  min-width: 110px !important;
+  height: auto !important;          /* 높이 자동조정 */
+  padding: 8px 10px !important;
+
+  font-size: clamp(0.85rem, 1.6vw, 1rem) !important; /* 자동 축소 */
+  line-height: 1.3 !important;
+}
+
+/* ✅ 반응형(모바일): 버튼 폭 살짝 늘려서 여유 있게 */
+@media (max-width: 768px) {
+  .menu-buttons .menu-btn {
+    max-width: 140px !important;
+    font-size: clamp(0.8rem, 3vw, 0.95rem) !important;
+    padding: 6px 8px !important;
+  }
+}
