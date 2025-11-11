@@ -106,6 +106,14 @@ button {
   justify-content: center;
   margin-bottom: 20px;
   font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* 화면 크기에 따라 자동 조정 */
+} 
+
+/* 메뉴 버튼 폰트만 손글씨체로 변경 */
+.menu-buttons button {
+  font-family: "Nanum Pen Script", "Patrick Hand", "Caveat", cursive;
+  font-size: 1.8rem;   /* 글씨 조금 크게 */
+  font-weight: normal; /* 진하게 하지 않음 */
+  letter-spacing: 1px;
 }
 
 /* ====== 공통 카드 박스 ====== */
@@ -513,9 +521,11 @@ body.fade-in footer {
 
 /* ===== 메뉴버튼 내 A/B/Full 노란색 강조 ===== */
 .highlight-yellow {
-  color: #ffb700; /* 진한 노랑 (Gold tone) */
-  font-weight: 900;
-  text-shadow: 0 0 6px rgba(255, 215, 0, 0.5); /* 은은한 빛 효과 */
+  color: #d50000; 
+  font-family: 'Nanum Brush Script', 'Caveat', 'Dancing Script', cursive !important;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* ===== 메뉴 상세박스 내 A/B/Full 노란색 강조 ===== */
