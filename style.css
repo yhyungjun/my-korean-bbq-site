@@ -95,8 +95,8 @@ button {
 
 .menu h2, .usage h2 {
   margin-bottom: 20px;
-  font-size: 1.8em;
-  font-weight: bold;
+  font-size: 2.1rem;
+  font-weight: 700;
   color: #333;
 }
 
@@ -117,18 +117,19 @@ button {
   background: #ffffff;
   border: 2px solid #ddd;
   border-radius: 14px;  
-  padding: 28px;
-  margin: 28px auto;
+  padding: 24px;
+  margin: 24px auto;
   flex-wrap: nowrap;
   max-width: 850px;
   text-align: center;
   font-size: 1rem;
-  letter-spacing: 0.3px;
-  word-break: keep-all;
+  letter-spacing: 0.2px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
   line-height: 1.8;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease-in-out;
-  font-family: 'BM Hanna', 'Noto Sans KR', sans-serif !important; /* 모든 언어 동일 폰트 */
+  font-family: 'BM Hanna', 'Noto Sans KR', sans-serif !important;
   color: #000;
 }
 
@@ -150,8 +151,8 @@ button {
 .menu-detail p,
 .side-detail p,
 .usage-detail p {
-  margin: 12px 0;
-  font-size: 1.1rem;
+  margin: 10px 0;
+  font-size: 1.0rem;
 }
 
 /* 가격 줄 강조 */
@@ -696,10 +697,10 @@ button {
 
 .menu-subtitle {
   display: block;
-  font-size: 1.5em;      /* 🔹 크기 키움 */
-  font-weight: 900;      /* 🔹 매우 굵게 */
-  color: #000;           /* 🔹 검정색 통일 */
-  text-align: center;    /* 🔹 중앙 정렬 */
+  font-size: 1.8em;      /* ✅ 모바일에서 더 크게 */
+  font-weight: 900;
+  color: #000;
+  text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
