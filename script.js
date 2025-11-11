@@ -66,57 +66,313 @@ function showMenuDetail(menu) {
   // ✅ A코스
   if (menu === "A") {
     content = header+`
-      <p data-lang="ko"><span class="menu-subtitle"><strong class="course-label">A</strong> 돼지모듬 무한리필</span>1인 <span class="price">17,900원</span><br>삼겹살<span class="small-note">+</span>목살<span class="small-note">+</span>우삼겹<span class="small-note">+</span>가브리살<span class="small-note">+</span>갈매기살<span class="small-note">+</span>대패삼겹살<span class="small-note">+</span>벌집껍데기<span class="small-note">+</span>돼지불고기<span class="small-note">+</span>소대창<span class="small-note">+</span>모듬야채쌈</p>
-      <p data-lang="en" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Pork Assortment Unlimited Refill</span><span class="price">₩17,900</span> per person<br>Pork belly <span class="small-note">+</span> Pork neck <span class="small-note">+</span> Beef brisket <span class="small-note">+</span> Pork jowl <span class="small-note">+</span> Skirt meat <span class="small-note">+</span> Thin-sliced pork belly <span class="small-note">+</span> Honeycomb pork skin <span class="small-note">+</span> Pork bulgogi <span class="small-note">+</span> Beef intestine <span class="small-note">+</span> Assorted vegetable wraps</p>
-      <p data-lang="zh" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> 猪肉拼盘 无限续</span>每人 <span class="price">17,900韩元</span><br>五花肉 <span class="small-note">+</span> 猪颈肉 <span class="small-note">+</span> 牛胸肉 <span class="small-note">+</span> 猪颊肉 <span class="small-note">+</span> 横膈膜肉 <span class="small-note">+</span> 薄切五花肉 <span class="small-note">+</span> 蜂窝猪皮 <span class="small-note">+</span> 猪肉烤肉 <span class="small-note">+</span> 牛大肠 <span class="small-note">+</span> 蔬菜包</p>
-      <p data-lang="ja" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> 豚盛り合わせ 無限リフィル</span>1人 <span class="price">17,900ウォン</span><br>サムギョプサル <span class="small-note">+</span> 豚肩ロース <span class="small-note">+</span> 牛バラ肉 <span class="small-note">+</span> 豚トロ <span class="small-note">+</span></span> ハラミ <span class="small-note">+</span> 薄切りサムギョプサル <span class="small-note">+</span> 豚皮（ハチの巣）<span class="small-note">+</span> 豚プルコギ <span class="small-note">+</span> 牛ホルモン <span class="small-note">+</span> 野菜サム</p>
-      <p data-lang="vi" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Suất Buffet Thịt Heo Không Giới Hạn</span><br><span class="price">17,900 KRW</span>/người<br>Ba chỉ <span class="small-note">+</span> Thịt cổ <span class="small-note">+</span> Ức bò <span class="small-note">+</span> Má heo <span class="small-note">+</span> Thăn sườn <span class="small-note">+</span> Ba chỉ thái mỏng <span class="small-note">+</span> Da heo tổ ong <span class="small-note">+</span> Bulgogi heo <span class="small-note">+</span> Lòng bò <span class="small-note">+</span> Rau cuốn</p>
-      <p data-lang="th" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> เซ็ตหมูรวมเติมไม่อั้น</span>คนละ <span class="price">17,900 วอน</span><br>หมูสามชั้น <span class="small-note">+</span> คอหมู <span class="small-note">+</span> เนื้ออกวัว <span class="small-note">+</span> คอหมูอบ <span class="small-note">+</span> สันในหมู <span class="small-note">+</span> หมูสไลซ์บาง <span class="small-note">+</span> หนังหมู <span class="small-note">+</span> หมูบูลโกกิ <span class="small-note">+</span> ไส้วัว <span class="small-note">+</span> ผักห่อ</p>
-      <p data-lang="ph" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Unlimited Pork Set</span><span class="price">₩17,900</span> bawat tao<br>Pork belly <span class="small-note">+</span> Pork neck <span class="small-note">+</span> Beef brisket <span class="small-note">+</span> Pork jowl <span class="small-note">+</span> Skirt meat <span class="small-note">+</span> Thin-sliced pork <span class="small-note">+</span> Pork skin <span class="small-note">+</span> Pork bulgogi <span class="small-note">+</span> Beef intestine <span class="small-note">+</span> Mixed vegetable wraps</p>
-      <p data-lang="fr" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Assortiment de Porc à volonté</span><span class="price">17 900₩</span> par personne<br>Poitrine <span class="small-note">+</span> Échine <span class="small-note">+</span> Poitrine de bœuf <span class="small-note">+</span> Joue de porc <span class="small-note">+</span> Hampe <span class="small-note">+</span> Poitrine fine <span class="small-note">+</span> Couenne en nid d’abeille <span class="small-note">+</span> Bulgogi de porc <span class="small-note">+</span> Tripes de bœuf <span class="small-note">+</span> Légumes</p>
-      <p data-lang="es" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Surtido de Cerdo Ilimitado</span><span class="price">₩17.900</span> por pessoa<br>Barriga <span class="small-note">+</span> Pescoço <span class="small-note">+</span> Peito bovino <span class="small-note">+</span> Bochecha <span class="small-note">+</span> Fraldinha <span class="small-note">+</span> Panceta fina <span class="small-note">+</span> Pele em favo <span class="small-note">+</span> Bulgogi de porco <span class="small-note">+</span> Intestino bovino <span class="small-note">+</span> Vegetais</p>
-      <p data-lang="pt" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Rodízio de Porco Variado</span><span class="price">₩17.900</span> por pessoa<br>Barriga <span class="small-note">+</span> Pescoço <span class="small-note">+</span> Peito bovino <span class="small-note">+</span> Bochecha <span class="small-note">+</span> Fraldinha <span class="small-note">+</span> Panceta fina <span class="small-note">+</span> Pele em favo <span class="small-note">+</span> Bulgogi de porco <span class="small-note">+</span> Intestino bovino <span class="small-note">+</span> Vegetais</p>
-      <p data-lang="ar" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> تشكيلة لحم خنزير مفتوحة</span><span class="price">17,900₩</span> للشخص<br>بطن <span class="small-note">+</span> رقبة <span class="small-note">+</span> صدر بقر <span class="small-note">+</span> خدود <span class="small-note">+</span> لحم الحجاب <span class="small-note">+</span> بطن رفيع <span class="small-note">+</span> جلد خنزير مشبك <span class="small-note">+</span> بولغوغي <span class="small-note">+</span> أمعاء <span class="small-note">+</span> خضروات</p>
-      <p data-lang="ru" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Ассорти из свинины безлимит</span><span class="price">17,900₩</span> за чел<br>Самгёпсаль <span class="small-note">+</span> Шея <span class="small-note">+</span> Грудинка <span class="small-note">+</span> Щёки <span class="small-note">+</span> Диафрагма <span class="small-note">+</span> Тонкий самгёпсаль <span class="small-note">+</span> Свиная кожа <span class="small-note">+</span> Булгоги <span class="small-note">+</span> Кишки <span class="unlimited"><span class="small-note">+</span> Овощи</p>
-      <p data-lang="tr" style="display:none;"><span class="menu-subtitle"><strong class="course-label">A</strong> Domuz Karışık Sınırsız</span>Kişi <span class="price">₩17.900</span> <br>Domuz göbeği <span class="small-note">+</span> Boyun <span class="small-note">+</span> Dana göğüs <span class="small-note">+</span> Yanak <span class="small-note">+</span> Diyafram <span class="small-note">+</span> İnce göbek <span class="small-note">+</span> Domuz derisi <span class="small-note">+</span> Bulgogi <span class="small-note">+</span> Bağırsak <span class="small-note">+</span> Sebzeler</p>
+<!-- 🇰🇷 한국어 (ko) -->
+<p data-lang="ko">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>돼지모듬 무한리필</span> 
+  1인 <span class="price">17,900원</span><br>
+  돼지모듬<span class="small-note">(삼겹살/목살/가브리살/갈매기살/우삼겹/대패삼겹살)</span><span class="small-note">+</span>벌집껍데기<span class="small-note">+</span>돼지불고기<span class="small-note">+</span>소대창<span class="small-note">+</span>모듬야채쌈
+</p>
+
+<!-- 🇺🇸 English (en) -->
+<p data-lang="en" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>Pork Assortment Unlimited Refill</span>
+  <span class="price">₩17,900</span> per person<br>
+  Pork assortment<span class="small-note">(Pork belly/Pork neck/Pork jowl/Skirt meat/Beef brisket/Thin-sliced pork belly)</span><span class="small-note">+</span>Honeycomb pork skin<span class="small-note">+</span>Pork bulgogi<span class="small-note">+</span>Beef intestine<span class="small-note">+</span>Assorted vegetable wraps
+</p>
+
+<!-- 🇨🇳 中文 (zh) -->
+<p data-lang="zh" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>猪肉拼盘 无限续</span>
+  每人 <span class="price">17,900韩元</span><br>
+  猪肉拼盘<span class="small-note">(五花肉/梅花肉/颈肩肉/横膈肌肉/牛胸肉/薄切五花肉)</span><span class="small-note">+</span>蜂窝猪皮<span class="small-note">+</span>猪肉烤肉<span class="small-note">+</span>牛大肠<span class="small-note">+</span>综合蔬菜包
+</p>
+
+<!-- 🇯🇵 日本語 (ja) -->
+<p data-lang="ja" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>豚盛り合わせ 無限リフィル</span>
+  1人 <span class="price">17,900ウォン</span><br>
+  豚盛り合わせ<span class="small-note">(サムギョプサル/モクサル/カブリサル/カルメギサル/ウサムギョプ/薄切りサムギョプサル)</span><span class="small-note">+</span>豚皮（ハチの巣）<span class="small-note">+</span>豚プルコギ<span class="small-note">+</span>牛ホルモン<span class="small-note">+</span>野菜サム
+</p>
+
+<!-- 🇻🇳 Tiếng Việt (vi) -->
+<p data-lang="vi" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>Suất Buffet Thịt Heo Không Giới Hạn</span>
+  <span class="price">17,900 KRW</span>/người<br>
+  Thịt heo tổng hợp<span class="small-note">(Ba chỉ/Cổ/Thịt má/Sườn ngoài/Ức bò/Ba chỉ thái mỏng)</span><span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Lòng bò<span class="small-note">+</span>Rau cuốn
+</p>
+
+<!-- 🇹🇭 ไทย (th) -->
+<p data-lang="th" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>เซ็ตหมูรวมเติมไม่อั้น</span>
+  คนละ <span class="price">17,900 วอน</span><br>
+  หมูรวม<span class="small-note">(หมูสามชั้น/คอหมู/แก้มหมู/เนื้อส่วนท้อง/เนื้ออกวัว/หมูสามชั้นบาง)</span><span class="small-note">+</span>หนังหมูรังผึ้ง<span class="small-note">+</span>หมูบูลโกกิ<span class="small-note">+</span>ไส้วัว<span class="small-note">+</span>ผักห่อ
+</p>
+
+<!-- 🇵🇭 Filipino (ph) -->
+<p data-lang="ph" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>Unlimited Pork Set</span>
+  <span class="price">₩17,900</span> bawat tao<br>
+  Mixed pork<span class="small-note">(Pork belly/Pork neck/Pork jowl/Skirt meat/Beef brisket/Thin-sliced pork belly)</span><span class="small-note">+</span>Pork skin<span class="small-note">+</span>Pork bulgogi<span class="small-note">+</span>Beef intestine<span class="small-note">+</span>Vegetable wraps
+</p>
+
+<!-- 🇫🇷 Français (fr) -->
+<p data-lang="fr" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>Assortiment de Porc à volonté</span>
+  <span class="price">17 900₩</span> par personne<br>
+  Assortiment de porc<span class="small-note">(Poitrine/Échine/Joue/Hampe/Poitrine de bœuf/Poitrine fine)</span><span class="small-note">+</span>Couenne en nid d’abeille<span class="small-note">+</span>Bulgogi de porc<span class="small-note">+</span>Tripes de bœuf<span class="small-note">+</span>Légumes
+</p>
+
+<!-- 🇪🇸 Español (es) -->
+<p data-lang="es" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>Surtido de Cerdo Ilimitado</span>
+  <span class="price">₩17.900</span> por persona<br>
+  Surtido de cerdo<span class="small-note">(Panceta/Cuello/Papada/Falda/Pecho de res/Panceta fina)</span><span class="small-note">+</span>Piel de cerdo panal<span class="small-note">+</span>Bulgogi de cerdo<span class="small-note">+</span>Intestino de res<span class="small-note">+</span>Verduras mixtas
+</p>
+
+<!-- 🇵🇹 Português (pt) -->
+<p data-lang="pt" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>Rodízio de Porco Variado</span>
+  <span class="price">₩17.900</span> por pessoa<br>
+  Misto de porco<span class="small-note">(Barriga/Pescoço/Bochecha/Fraldinha/Peito bovino/Panceta fina)</span><span class="small-note">+</span>Pele de porco favo<span class="small-note">+</span>Bulgogi de porco<span class="small-note">+</span>Intestino bovino<span class="small-note">+</span>Legumes variados
+</p>
+
+<!-- 🇸🇦 العربية (ar) -->
+<p data-lang="ar" style="display:none; direction:rtl; text-align:right;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>تشكيلة لحم خنزير غير محدودة</span>
+  <span class="price">17,900₩</span> للشخص<br>
+  مجموعة لحم خنزير<span class="small-note">(بطن/رقبة/خدود/حجاب حاجز/صدر بقر/بطن رفيع)</span><span class="small-note">+</span>جلد خنزير مشبك<span class="small-note">+</span>بولغوغي<span class="small-note">+</span>أمعاء البقر<span class="small-note">+</span>خضروات مشكلة
+</p>
+
+<!-- 🇷🇺 Русский (ru) -->
+<p data-lang="ru" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>Ассорти из свинины безлимит</span>
+  <span class="price">17,900₩</span> за человека<br>
+  Ассорти из свинины<span class="small-note">(Самгёпсаль/Шея/Щёки/Диафрагма/Грудинка/Тонкий самгёпсаль)</span><span class="small-note">+</span>Свиная кожа<span class="small-note">+</span>Булгоги<span class="small-note">+</span>Кишки<span class="small-note">+</span>Овощи
+</p>
+
+<!-- 🇹🇷 Türkçe (tr) -->
+<p data-lang="tr" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">A</strong>Domuz Karışık Sınırsız</span>
+  Kişi başı <span class="price">₩17.900</span><br>
+  Domuz karışımı<span class="small-note">(Domuz göbeği/Boyun/Yanak eti/Diyafram eti/Dana göğüs/İnce karın)</span><span class="small-note">+</span>Domuz derisi<span class="small-note">+</span>Bulgogi<span class="small-note">+</span>Bağırsak<span class="small-note">+</span>Sebzeler
+</p>
     `;
   }
 
   // ✅ B코스
   else if (menu === "B") {
     content = header+`
-      <p data-lang="ko"><span class="menu-subtitle"><strong class="course-label">B</strong> 돼지모듬<span class="small-note">+</span>간장순살치킨 무한리필</span>1인 <span class="price">19,900원</span><br>삼겹살<span class="small-note">+</span>간장순살치킨<span class="small-note">+</span>목살<span class="small-note">+</span>우삼겹<span class="small-note">+</span>가브리살<span class="small-note">+</span>갈매기살<span class="small-note">+</span>대패삼겹살<span class="small-note">+</span>벌집껍데기<span class="small-note">+</span>돼지불고기<span class="small-note">+</span>소대창<span class="small-note">+</span>모듬야채쌈</p>
-      <p data-lang="en" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Pork Assortment <span class="small-note">+</span> Soy Chicken Unlimited</span><span class="price">₩19,900</span> per person<br>Pork belly <span class="small-note">+</span> Soy-marinated chicken <span class="small-note">+</span> Neck <span class="small-note">+</span> Beef brisket <span class="small-note">+</span> Jowl <span class="small-note">+</span> Skirt <span class="small-note">+</span> Thin belly <span class="small-note">+</span> Skin <span class="small-note">+</span> Bulgogi <span class="small-note">+</span> Intestine <span class="small-note">+</span> Vegetables</p>
-      <p data-lang="zh" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> 猪肉拼盘<span class="small-note">+</span>酱油鸡 无限续</span>每人 <span class="price">19,900韩元</span><br>五花肉<span class="small-note">+</span>酱油鸡<span class="small-note">+</span>颈肉<span class="small-note">+</span>牛胸肉<span class="small-note">+</span>猪颊肉<span class="small-note">+</span>横膈膜<span class="small-note">+</span>薄切五花肉<span class="small-note">+</span>猪皮<span class="small-note">+</span>烤肉<span class="small-note">+</span>牛肠<span class="small-note">+</span>蔬菜</p>
-      <p data-lang="ja" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> 豚盛り合わせ<span class="small-note">+</span>醤油チキン 無限リフィル</span>1人 <span class="price">19,900ウォン</span><br>サムギョプサル<span class="small-note">+</span>醤油チキン<span class="small-note">+</span>肩ロース<span class="small-note">+</span>牛バラ<span class="small-note">+</span>豚トロ<span class="small-note">+</span>ハラミ<span class="small-note">+</span>薄切り<span class="small-note">+</span>皮<span class="small-note">+</span>プルコギ<span class="small-note">+</span>ホルモン<span class="small-note">+</span>野菜</p>
-      <p data-lang="vi" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Suất Thịt Heo <span class="small-note">+</span> Gà Xì Dầu Không Giới Hạn</span><span class="price">19,900 KRW</span>/người<br>Ba chỉ <span class="small-note">+</span> Gà xì dầu <span class="small-note">+</span> Cổ <span class="small-note">+</span> Ức bò <span class="small-note">+</span> Má <span class="small-note">+</span> Thăn <span class="small-note">+</span> Ba chỉ mỏng <span class="small-note">+</span> Da <span class="small-note">+</span> Bulgogi <span class="small-note">+</span> Lòng <span class="small-note">+</span> Rau</p>
-      <p data-lang="th" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> หมูรวม <span class="small-note">+</span> ไก่ซอสถั่วเหลือง เติมไม่อั้น</span>คนละ <span class="price">19,900 วอน</span><br>หมูสามชั้น <span class="small-note">+</span> ไก่ซอสถั่วเหลือง <span class="small-note">+</span> คอหมู <span class="small-note">+</span> เนื้อวัว <span class="small-note">+</span> สันในหมู <span class="small-note">+</span> หมูสไลซ์บาง <span class="small-note">+</span> หนังหมู <span class="small-note">+</span> หมูบูลโกกิ <span class="small-note">+</span> ไส้วัว <span class="small-note">+</span> ผักห่อ</p>
-      <p data-lang="ph" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Unlimited Pork <span class="small-note">+</span> Soy Chicken Set</span><span class="price">₩19,900</span> bawat tao<br>Pork belly <span class="small-note">+</span> Soy-marinated chicken <span class="small-note">+</span> Pork neck <span class="small-note">+</span> Beef brisket <span class="small-note">+</span> Pork jowl <span class="small-note">+</span> Skirt meat <span class="small-note">+</span> Thin pork belly <span class="small-note">+</span> Pork skin <span class="small-note">+</span> Pork bulgogi <span class="small-note">+</span> Beef intestine <span class="small-note">+</span> Veggie wraps</p>
-      <p data-lang="fr" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Porc <span class="small-note">+</span> Poulet soja à volonté</span><span class="price">19 900₩</span> par personne<br>Poitrine <span class="small-note">+</span> Poulet soja <span class="small-note">+</span> Échine <span class="small-note">+</span> Poitrine bœuf <span class="small-note">+</span> Joue <span class="small-note">+</span> Hampe <span class="small-note">+</span> Fine poitrine <span class="small-note">+</span> Peau <span class="small-note">+</span> Bulgogi <span class="small-note">+</span> Tripes <span class="small-note">+</span> Légumes</p>
-      <p data-lang="es" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Cerdo <span class="small-note">+</span> Pollo soja Ilimitado</span><span class="price">19,900₩</span> por persona<br>Panceta <span class="small-note">+</span> Pollo soja <span class="small-note">+</span> Cuello <span class="small-note">+</span> Falda <span class="small-note">+</span> Papada <span class="small-note">+</span> Entraña <span class="small-note">+</span> Panceta fina <span class="small-note">+</span> Piel <span class="small-note">+</span> Bulgogi <span class="small-note">+</span> Intestino <span class="small-note">+</span> Verduras</p>
-      <p data-lang="pt" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Porco <span class="small-note">+</span> Frango molho soja Rodízio</span><span class="price">₩19.900</span> por pessoa<br>Barriga <span class="small-note">+</span> Frango soja <span class="small-note">+</span> Pescoço <span class="small-note">+</span> Peito boi <span class="small-note">+</span> Bochecha <span class="small-note">+</span> Fraldinha <span class="small-note">+</span> Panceta fina <span class="small-note">+</span> Pele <span class="small-note">+</span> Bulgogi <span class="small-note">+</span> Intestino <span class="small-note">+</span> Vegetais</p>
-      <p data-lang="ar" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> خنزير<span class="small-note">+</span>دجاج صويا مفتوح</span><span class="price">19,900₩</span> للشخص<br>بطن <span class="small-note">+</span> دجاج صويا <span class="small-note">+</span> رقبة <span class="small-note">+</span> صدر بقر <span class="small-note">+</span> خدود <span class="small-note">+</span> لحم الحجاب <span class="small-note">+</span> بطن رفيع <span class="small-note">+</span> جلد <span class="small-note">+</span> بولغوغي <span class="small-note">+</span> أمعاء <span class="small-note">+</span> خضار</p>
-      <p data-lang="ru" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Свинина<span class="small-note">+</span>Соевый курица безлимит</span><span class="price">19,900₩</span> чел<br>Самгёпсаль <span class="small-note">+</span> Курица соя <span class="small-note">+</span> Шея <span class="small-note">+</span> Грудинка <span class="small-note">+</span> Щёки <span class="small-note">+</span> Диафрагма <span class="small-note">+</span> Тонкий самгёпсаль <span class="small-note">+</span> Кожа <span class="small-note">+</span> Булгоги <span class="small-note">+</span> Кишки <span class="small-note">+</span> Овощи</p>
-      <p data-lang="tr" style="display:none;"><span class="menu-subtitle"><strong class="course-label">B</strong> Domuz<span class="small-note">+</span>Soya Tavuk Sınırsız</span><span class="price">₩19.900</span> kişi<br>Göbek <span class="small-note">+</span> Soya tavuk <span class="small-note">+</span> Boyun <span class="small-note">+</span> Dana göğüs <span class="small-note">+</span> Yanak <span class="small-note">+</span> Diyafram <span class="small-note">+</span> İnce göbek <span class="small-note">+</span> Deri <span class="small-note">+</span> Bulgogi <span class="small-note">+</span> Bağırsak <span class="small-note">+</span> Sebze</p>
+      <!-- 🇰🇷 한국어 (ko) -->
+<p data-lang="ko">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>돼지모듬+간장순살치킨 무한리필</span>
+  1인 <span class="price">19,900원</span><br>
+  돼지모듬<span class="small-note">(삼겹살/목살/가브리살/갈매기살/우삼겹/대패삼겹살)</span><span class="small-note">+</span>간장순살치킨<span class="small-note">+</span>벌집껍데기<span class="small-note">+</span>돼지불고기<span class="small-note">+</span>소대창<span class="small-note">+</span>모듬야채쌈
+</p>
+
+<!-- 🇺🇸 English (en) -->
+<p data-lang="en" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>Pork Assortment + Soy Chicken Unlimited Refill</span>
+  <span class="price">₩19,900</span> per person<br>
+  Pork assortment<span class="small-note">(pork belly/pork neck/pork jowl/skirt meat/beef brisket/thin-sliced pork)</span><span class="small-note">+</span>Soy-marinated boneless chicken<span class="small-note">+</span>Honeycomb pork skin<span class="small-note">+</span>Pork bulgogi<span class="small-note">+</span>Beef intestine<span class="small-note">+</span>Vegetable wraps
+</p>
+
+<!-- 🇨🇳 中文 (zh) -->
+<p data-lang="zh" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>猪肉拼盘+酱油鸡 无限续</span>
+  每人 <span class="price">19,900韩元</span><br>
+  猪肉拼盘<span class="small-note">(五花肉/猪颈肉/猪颊肉/横膈膜/牛胸肉/薄切五花肉)</span><span class="small-note">+</span>酱油无骨鸡<span class="small-note">+</span>蜂窝猪皮<span class="small-note">+</span>猪肉烤肉<span class="small-note">+</span>牛大肠<span class="small-note">+</span>蔬菜包
+</p>
+
+<!-- 🇯🇵 日本語 (ja) -->
+<p data-lang="ja" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>豚盛り合わせ+醤油チキン 無限リフィル</span>
+  1人 <span class="price">19,900ウォン</span><br>
+  豚盛り<span class="small-note">(サムギョプサル/豚肩ロース/豚トロ/ハラミ/牛バラ/薄切りサムギョプサル)</span><span class="small-note">+</span>醤油チキン（骨なし）<span class="small-note">+</span>豚皮（ハチの巣）<span class="small-note">+</span>豚プルコギ<span class="small-note">+</span>牛ホルモン<span class="small-note">+</span>野菜サム
+</p>
+
+<!-- 🇻🇳 Tiếng Việt (vi) -->
+<p data-lang="vi" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>Thịt Heo + Gà Xì Dầu Buffet Không Giới Hạn</span>
+  <span class="price">19,900 KRW</span>/người<br>
+  Thịt heo<span class="small-note">(ba chỉ/cổ/má/thăn sườn/ức bò/ba chỉ mỏng)</span><span class="small-note">+</span>Gà xì dầu không xương<span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Lòng bò<span class="small-note">+</span>Rau cuốn
+</p>
+
+<!-- 🇹🇭 ไทย (th) -->
+<p data-lang="th" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>หมูรวม + ไก่ซอสถั่วเหลือง เติมไม่อั้น</span>
+  คนละ <span class="price">19,900 วอน</span><br>
+  หมูรวม<span class="small-note">(สามชั้น/คอหมู/สันใน/ซี่โครง/บางเฉียบ)</span><span class="small-note">+</span>ไก่ไม่มีกระดูกซอสซีอิ๊ว<span class="small-note">+</span>หนังหมู<span class="small-note">+</span>หมูบูลโกกิ<span class="small-note">+</span>ไส้วัว<span class="small-note">+</span>ผักห่อ
+</p>
+
+<!-- 🇵🇭 Filipino (ph) -->
+<p data-lang="ph" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>Unlimited Pork + Soy Chicken Set</span>
+  <span class="price">₩19,900</span> bawat tao<br>
+  Pork set<span class="small-note">(belly/neck/jowl/skirt/brisket/thin-cut pork)</span><span class="small-note">+</span>Soy-marinated boneless chicken<span class="small-note">+</span>Pork skin<span class="small-note">+</span>Pork bulgogi<span class="small-note">+</span>Beef intestine<span class="small-note">+</span>Mixed vegetables
+</p>
+
+<!-- 🇫🇷 Français (fr) -->
+<p data-lang="fr" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>Assortiment Porc + Poulet soja à volonté</span>
+  <span class="price">19 900₩</span> par personne<br>
+  Porc<span class="small-note">(poitrine/échine/joue/hampe/fine)</span><span class="small-note">+</span>Poulet sans os sauce soja<span class="small-note">+</span>Couenne<span class="small-note">+</span>Bulgogi de porc<span class="small-note">+</span>Tripes<span class="small-note">+</span>Légumes
+</p>
+
+<!-- 🇪🇸 Español (es) -->
+<p data-lang="es" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>Cerdo + Pollo soja Ilimitado</span>
+  <span class="price">₩19,900</span> por persona<br>
+  Cerdo<span class="small-note">(panceta/cuello/mejilla/falda/fina)</span><span class="small-note">+</span>Pollo sin hueso con soja<span class="small-note">+</span>Piel de cerdo<span class="small-note">+</span>Bulgogi de cerdo<span class="small-note">+</span>Intestino<span class="small-note">+</span>Verduras
+</p>
+
+<!-- 🇵🇹 Português (pt) -->
+<p data-lang="pt" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>Porco + Frango molho soja Rodízio</span>
+  <span class="price">₩19.900</span> por pessoa<br>
+  Porco<span class="small-note">(barriga/pescoço/bochecha/fraldinha/fina)</span><span class="small-note">+</span>Frango sem osso ao molho de soja<span class="small-note">+</span>Pele<span class="small-note">+</span>Bulgogi de porco<span class="small-note">+</span>Tripas<span class="small-note">+</span>Legumes
+</p>
+
+<!-- 🇸🇦 العربية (ar) -->
+<p data-lang="ar" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>لحم خنزير + دجاج صويا مفتوح</span>
+  <span class="price">19,900₩</span> للشخص<br>
+  لحم خنزير<span class="small-note">(بطن/رقبة/خد/حجاب حاجز/رفيع)</span><span class="small-note">+</span>دجاج بدون عظم بصلصة الصويا<span class="small-note">+</span>جلد الخنزير<span class="small-note">+</span>بولغوجي خنزير<span class="small-note">+</span>أمعاء<span class="small-note">+</span>خضروات
+</p>
+
+<!-- 🇷🇺 Русский (ru) -->
+<p data-lang="ru" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>Свинина + Соевый Курица Безлимит</span>
+  <span class="price">19,900₩</span> за чел<br>
+  Свинина<span class="small-note">(самгёпсаль/шея/щёки/вырезка/тонкий)</span><span class="small-note">+</span>Курица в соевом соусе без костей<span class="small-note">+</span>Кожа свинины<span class="small-note">+</span>Булгоги<span class="small-note">+</span>Кишки<span class="small-note">+</span>Овощи
+</p>
+
+<!-- 🇹🇷 Türkçe (tr) -->
+<p data-lang="tr" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">B</strong>Domuz + Soya Tavuk Sınırsız</span>
+  <span class="price">₩19.900</span> kişi<br>
+  Domuz<span class="small-note">(göbek/boyun/yanak/diyafram/ince dilim)</span><span class="small-note">+</span>Soya soslu kemiksiz tavuk<span class="small-note">+</span>Domuz derisi<span class="small-note">+</span>Bulgogi<span class="small-note">+</span>Bağırsak<span class="small-note">+</span>Sebzeler
+</p>
     `;
   }
 
   // ✅ F코스
   else if (menu === "F" || menu === "Full") {
     content = header+`
-      <p data-lang="ko"><span class="menu-subtitle"><strong class="course-label">Full</strong> 코스 무한리필</span>1인 <span class="price">23,900원</span><br>삼겹살<span class="small-note">+</span>간장순살치킨<span class="small-note">+</span>목살<span class="small-note">+</span>우삼겹<span class="small-note">+</span>가브리살<span class="small-note">+</span>갈매기살<span class="small-note">+</span>대패삼겹살<span class="small-note">+</span>벌집껍데기<span class="small-note">+</span>돼지불고기<span class="small-note">+</span>소대창<span class="small-note">+</span>모듬야채쌈<span class="small-note">+</span>음료수<span class="unlimited">무제한</span><span class="small-note">+</span>공기밥<span class="unlimited">무제한</span><span class="small-note">+</span>냉면<span class="unlimited">무제한</span></p>
-      <p data-lang="en" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> Course Unlimited Refill</span><span class="price">₩23,900</span> per person<br>Pork belly <span class="small-note">+</span> Soy-marinated boneless chicken <span class="small-note">+</span> Pork neck <span class="small-note">+</span> Beef brisket <span class="small-note">+</span> Pork jowl <span class="small-note">+</span> Skirt meat <span class="small-note">+</span> Thin-sliced pork belly <span class="small-note">+</span> Honeycomb pork skin <span class="small-note">+</span> Pork bulgogi <span class="small-note">+</span> Beef intestine <span class="small-note">+</span> Assorted vegetable wraps <span class="small-note">+</span> <span class="unlimited">Unlimited</span> drinks <span class="small-note">+</span> <span class="unlimited">Unlimited</span> rice <span class="small-note">+</span> <span class="unlimited">Unlimited</span> cold noodles</p>
-      <p data-lang="zh" style="display:none;"><span class="menu-subtitle"><strong class="course-label">全</strong>套餐 无限续</span>每人 <span class="price">23,900韩元</span><br>五花肉 <span class="small-note">+</span> 酱油无骨鸡 <span class="small-note">+</span> 猪颈肉 <span class="small-note">+</span> 牛胸肉 <span class="small-note">+</span> 猪颊肉 <span class="small-note">+</span> 横膈膜肉 <span class="small-note">+</span> 薄切五花肉 <span class="small-note">+</span> 蜂窝猪皮 <span class="small-note">+</span> 猪肉烤肉 <span class="small-note">+</span> 牛大肠 <span class="small-note">+</span> 蔬菜包 <span class="small-note">+</span> 饮料<span class="unlimited">无限</span> <span class="small-note">+</span> 米饭<span class="unlimited">无限</span> <span class="small-note">+</span> 冷面<span class="unlimited">无限</span></p>
-      <p data-lang="ja" style="display:none;"><span class="menu-subtitle">フルコース 無限リフィル</span><br>1人 <span class="price">23,900ウォン</span>サムギョプサル <span class="small-note">+</span> 醤油チキン <span class="small-note">+</span> 豚肩ロース <span class="small-note">+</span> 牛バラ肉 <span class="small-note">+</span> 豚トロ <span class="small-note">+</span> ハラミ <span class="small-note">+</span> 薄切りサムギョプサル <span class="small-note">+</span> 豚皮（ハチの巣）<span class="small-note">+</span> 豚プルコギ <span class="small-note">+</span> 牛ホルモン <span class="small-note">+</span> 野菜サム <span class="small-note">+</span> 飲み物<span class="unlimited">飲み放題</span> <span class="small-note">+</span> ご飯<span class="unlimited">無制限</span> <span class="small-note">+</span> 冷麺<span class="unlimited">食べ放題</span></p>
-      <p data-lang="vi" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> Buffet Không Giới Hạn</span><span class="price">23,900 KRW</span>/người<br>Ba chỉ <span class="small-note">+</span> Gà xì dầu <span class="small-note">+</span> Thịt cổ <span class="small-note">+</span> Ức bò <span class="small-note">+</span> Má heo <span class="small-note">+</span> Thăn sườn <span class="small-note">+</span> Ba chỉ thái mỏng <span class="small-note">+</span> Da heo tổ ong <span class="small-note">+</span> Bulgogi heo <span class="small-note">+</span> Lòng bò <span class="small-note">+</span> Rau cuốn <span class="small-note">+</span> Nước uống <span class="unlimited">không giới hạn</span> <span class="small-note">+</span> Cơm <span class="unlimited">không giới hạn</span> <span class="small-note">+</span> Mì lạnh <span class="unlimited">không giới hạn</span></p>
-      <p data-lang="th" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> คอร์สบุฟเฟ่ต์เต็มรูปแบบ</span>คนละ <span class="price">23,900 วอน</span><br>หมูสามชั้น <span class="small-note">+</span> ไก่ซอสถั่วเหลือง <span class="small-note">+</span> คอหมู <span class="small-note">+</span> เนื้อวัว <span class="small-note">+</span> สันในหมู <span class="small-note">+</span> หมูสไลซ์บาง <span class="small-note">+</span> หนังหมู <span class="small-note">+</span> หมูบูลโกกิ <span class="small-note">+</span> ไส้วัว <span class="small-note">+</span> ผักห่อ <span class="small-note">+</span> เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> <span class="small-note">+</span> ข้าว<span class="unlimited">ไม่อั้น</span> <span class="small-note">+</span> บะหมี่เย็น<span class="unlimited">ไม่อั้น</span></p>
-      <p data-lang="ph" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Full</strong> Unlimited Full Course</span><span class="price">₩23,900</span> bawat tao<br>Pork belly <span class="small-note">+</span> Soy chicken <span class="small-note">+</span> Pork neck <span class="small-note">+</span> Beef brisket <span class="small-note">+</span> Pork jowl <span class="small-note">+</span> Skirt meat <span class="small-note">+</span> Thin pork <span class="small-note">+</span> Pork skin <span class="small-note">+</span> Pork bulgogi <span class="small-note">+</span> Beef intestine <span class="small-note">+</span> Veggies <span class="small-note">+</span> <span class="unlimited">Unlimited</span> drinks <span class="small-note">+</span> <span class="unlimited">Unlimited</span> rice <span class="small-note">+</span> <span class="unlimited">Unlimited</span> cold noodles</p>
-      <p data-lang="fr" style="display:none;"><span class="menu-subtitle">Formule <strong class="course-label">Complète</strong> à volonté</span><span class="price">23 900₩</span> par personne<br>Porc <span class="small-note">+</span> poulet sauce soja <span class="small-note">+</span> échine <span class="small-note">+</span> poitrine de bœuf <span class="small-note">+</span> joue <span class="small-note">+</span> hampe <span class="small-note">+</span> poitrine fine <span class="small-note">+</span> couenne <span class="small-note">+</span> bulgogi <span class="small-note">+</span> tripes <span class="small-note">+</span> légumes <span class="small-note">+</span> boissons <span class="unlimited">illimitées</span> <span class="small-note">+</span> riz <span class="unlimited">illimité</span> <span class="small-note">+</span> nouilles froides <span class="unlimited">illimitées</span></p>
-      <p data-lang="es" style="display:none;"><span class="menu-subtitle">Curso <strong class="course-label">Completo</strong> Ilimitado</span><span class="price">23,900₩</span> por persona<br>Cerdo <span class="small-note">+</span> pollo en salsa de soja <span class="small-note">+</span> cuello <span class="small-note">+</span> falda <span class="small-note">+</span> papada <span class="small-note">+</span> entraña <span class="small-note">+</span> panceta fina <span class="small-note">+</span> piel panal <span class="small-note">+</span> bulgogi <span class="small-note">+</span> intestino <span class="small-note">+</span> vegetales <span class="small-note">+</span> bebidas <span class="unlimited">ilimitadas</span> <span class="small-note">+</span> arroz <span class="unlimited">ilimitado</span> <span class="small-note">+</span> fideos fríos <span class="unlimited">ilimitados</span></p>
-      <p data-lang="pt" style="display:none;"><span class="menu-subtitle">Curso <strong class="course-label">Completo</strong> Rodízio</span><span class="price">₩23.900</span> por pessoa<br>Barriga de porco <span class="small-note">+</span> frango ao molho de soja <span class="small-note">+</span> pescoço <span class="small-note">+</span> peito <span class="small-note">+</span> bochecha <span class="small-note">+</span> fraldinha <span class="small-note">+</span> pele em favo <span class="small-note">+</span> bulgogi <span class="small-note">+</span> tripas <span class="small-note">+</span> legumes <span class="small-note">+</span> bebidas <span class="unlimited">ilimitados</span><span class="small-note">+</span> arroz <span class="unlimited">ilimitados</span> <span class="small-note">+</span> macarrão frio <span class="unlimited">ilimitados</span></p>
-      <p data-lang="ar" style="display:none; direction: rtl;"><span class="menu-subtitle"><strong class="course-label">بوفيه كاملغير</strong> محدود</span><span class="price">23,900₩</span> للشخص<br>لحم خنزير <span class="small-note">+</span> دجاج صويا <span class="small-note">+</span> رقبة <span class="small-note">+</span> صدر <span class="small-note">+</span> جلد <span class="small-note">+</span> بولغوغي <span class="small-note">+</span> أمعاء <span class="small-note">+</span> خضار <span class="small-note">+</span>    مشروبات <span class="unlimited">غير محدودة</span> <span class="small-note">+</span> أرز <span class="unlimited">غير محدود</span> <span class="small-note">+</span> نودلز باردة <span class="unlimited">غير محدودة</span></p>
-      <p data-lang="ru" style="display:none;"><span class="menu-subtitle">Полный <strong class="course-label">курс</strong> безлимит</span><span class="price">23,900₩</span> за человека<br>Свинина <span class="small-note">+</span> курица в соевом соусе <span class="small-note">+</span> шея <span class="small-note">+</span> грудинка <span class="small-note">+</span> щека <span class="small-note">+</span> диафрагма <span class="small-note">+</span> тонко нарезанная свинина <span class="small-note">+</span> кожа <span class="small-note">+</span> булгоги <span class="small-note">+</span> кишки <span class="small-note">+</span> овощи <span class="small-note">+</span> Напитки <span class="unlimited">безлимит</span> <span class="small-note">+</span> Рис <span class="unlimited">безлимит</span> <span class="small-note">+</span> Холодная лапша <span class="unlimited">безлимит</span></p>
-      <p data-lang="tr" style="display:none;"><span class="menu-subtitle"><strong class="course-label">Tam</strong> Kurs Sınırsız</span>Kişi başı <span class="price">₩23.900</span><br>Domuz eti <span class="small-note">+</span> soya soslu tavuk <span class="small-note">+</span> boyun <span class="small-note">+</span> dana göğüs <span class="small-note">+</span> yanak <span class="small-note">+</span> diyafram <span class="small-note">+</span> ince dilimlenmiş domuz eti <span class="small-note">+</span> deri <span class="small-note">+</span> bulgogi <span class="small-note">+</span> bağırsak <span class="small-note">+</span> sebze <span class="small-note">+</span> İçecekler <span class="unlimited">sınırsız</span> <span class="small-note">+</span> Pilav <span class="unlimited">sınırsız</span> <span class="small-note">+</span> Soğuk erişte <span class="unlimited">sınırsız</span></p>
+<p data-lang="ko">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> 돼지모듬+간장순살치킨 무한리필</span>
+  1인 <span class="price">23,900원</span><br>
+  돼지모듬<span class="small-note">(삼겹살/목살/가브리살/갈매기살/우삼겹/대패삼겹살)</span><span class="small-note">+</span>
+  간장순살치킨<span class="small-note">+</span>벌집껍데기<span class="small-note">+</span>돼지불고기<span class="small-note">+</span>소대창<span class="small-note">+</span>모듬야채쌈<span class="small-note">+</span>
+  음료수<span class="unlimited">무제한</span><span class="small-note">+</span>공기밥<span class="unlimited">무제한</span><span class="small-note">+</span>냉면<span class="unlimited">무제한</span>
+</p>
+
+<!-- 🇺🇸 English (en) -->
+<p data-lang="en" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> Pork Assortment + Soy Chicken Unlimited</span>
+  <span class="price">₩23,900</span> per person<br>
+  Pork assortment<span class="small-note">(pork belly/pork neck/pork jowl/skirt meat/beef brisket/thin-sliced pork)</span><span class="small-note">+</span>
+  Soy-marinated boneless chicken<span class="small-note">+</span>Honeycomb pork skin<span class="small-note">+</span>Pork bulgogi<span class="small-note">+</span>Beef intestine<span class="small-note">+</span>Vegetable wraps<span class="small-note">+</span>
+  Drinks<span class="unlimited">Unlimited</span><span class="small-note">+</span>Rice<span class="unlimited">Unlimited</span><span class="small-note">+</span>Cold noodles<span class="unlimited">Unlimited</span>
+</p>
+
+<!-- 🇨🇳 中文 (zh) -->
+<p data-lang="zh" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> 猪肉拼盘+酱油鸡 无限续</span>
+  每人 <span class="price">23,900韩元</span><br>
+  猪肉拼盘<span class="small-note">(五花肉/猪颈肉/猪颊肉/横膈膜/牛胸肉/薄切五花肉)</span><span class="small-note">+</span>
+  酱油无骨鸡<span class="small-note">+</span>蜂窝猪皮<span class="small-note">+</span>猪肉烤肉<span class="small-note">+</span>牛大肠<span class="small-note">+</span>蔬菜包<span class="small-note">+</span>
+  饮料<span class="unlimited">无限</span><span class="small-note">+</span>米饭<span class="unlimited">无限</span><span class="small-note">+</span>冷面<span class="unlimited">无限</span>
+</p>
+
+<!-- 🇯🇵 日本語 (ja) -->
+<p data-lang="ja" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> 豚盛り合わせ+醤油チキン 無限リフィル</span>
+  1人 <span class="price">23,900ウォン</span><br>
+  豚盛り<span class="small-note">(サムギョプサル/豚肩ロース/豚トロ/ハラミ/牛バラ/薄切りサムギョプサル)</span><span class="small-note">+</span>
+  醤油チキン（骨なし）<span class="small-note">+</span>豚皮（ハチの巣）<span class="small-note">+</span>豚プルコギ<span class="small-note">+</span>牛ホルモン<span class="small-note">+</span>野菜サム<span class="small-note">+</span>
+  ドリンク<span class="unlimited">飲み放題</span><span class="small-note">+</span>ごはん<span class="unlimited">おかわり自由</span><span class="small-note">+</span>冷麺<span class="unlimited">食べ放題</span>
+</p>
+
+<!-- 🇻🇳 Tiếng Việt (vi) -->
+<p data-lang="vi" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> Thịt Heo + Gà Xì Dầu Không Giới Hạn</span>
+  <span class="price">23,900 KRW</span>/người<br>
+  Thịt heo<span class="small-note">(ba chỉ/cổ/má/thăn sườn/ức bò/ba chỉ mỏng)</span><span class="small-note">+</span>
+  Gà xì dầu không xương<span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Lòng bò<span class="small-note">+</span>Rau cuốn<span class="small-note">+</span>
+  Nước uống<span class="unlimited">không giới hạn</span><span class="small-note">+</span>Cơm<span class="unlimited">không giới hạn</span><span class="small-note">+</span>Mì lạnh<span class="unlimited">không giới hạn</span>
+</p>
+
+<!-- 🇹🇭 ไทย (th) -->
+<p data-lang="th" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> หมูรวม + ไก่ซอสถั่วเหลือง เติมไม่อั้น</span>
+  คนละ <span class="price">23,900 วอน</span><br>
+  หมูรวม<span class="small-note">(สามชั้น/คอหมู/สันใน/ซี่โครง/บางเฉียบ)</span><span class="small-note">+</span>
+  ไก่ไม่มีกระดูกซอสซีอิ๊ว<span class="small-note">+</span>หนังหมู<span class="small-note">+</span>หมูบูลโกกิ<span class="small-note">+</span>ไส้วัว<span class="small-note">+</span>ผักห่อ<span class="small-note">+</span>
+  เครื่องดื่ม<span class="unlimited">ไม่จำกัด</span><span class="small-note">+</span>ข้าว<span class="unlimited">ไม่จำกัด</span><span class="small-note">+</span>บะหมี่เย็น<span class="unlimited">ไม่จำกัด</span>
+</p>
+
+<!-- 🇵🇭 Filipino (ph) -->
+<p data-lang="ph" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> Unlimited Pork + Soy Chicken Set</span>
+  <span class="price">₩23,900</span> bawat tao<br>
+  Pork set<span class="small-note">(belly/neck/jowl/skirt/brisket/thin-cut pork)</span><span class="small-note">+</span>
+  Soy-marinated boneless chicken<span class="small-note">+</span>Pork skin<span class="small-note">+</span>Pork bulgogi<span class="small-note">+</span>Beef intestine<span class="small-note">+</span>Mixed vegetables<span class="small-note">+</span>
+  Drinks<span class="unlimited">Unlimited</span><span class="small-note">+</span>Rice<span class="unlimited">Unlimited</span><span class="small-note">+</span>Cold noodles<span class="unlimited">Unlimited</span>
+</p>
+
+<!-- 🇫🇷 Français (fr) -->
+<p data-lang="fr" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> Assortiment Porc + Poulet soja à volonté</span>
+  <span class="price">23 900₩</span> par personne<br>
+  Porc<span class="small-note">(poitrine/échine/joue/hampe/fine)</span><span class="small-note">+</span>
+  Poulet sans os sauce soja<span class="small-note">+</span>Couenne<span class="small-note">+</span>Bulgogi de porc<span class="small-note">+</span>Tripes<span class="small-note">+</span>Légumes<span class="small-note">+</span>
+  Boissons<span class="unlimited">à volonté</span><span class="small-note">+</span>Riz<span class="unlimited">à volonté</span><span class="small-note">+</span>Nouilles froides<span class="unlimited">à volonté</span>
+</p>
+
+<!-- 🇪🇸 Español (es) -->
+<p data-lang="es" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> Cerdo + Pollo soja Ilimitado</span>
+  <span class="price">₩23,900</span> por persona<br>
+  Cerdo<span class="small-note">(panceta/cuello/mejilla/falda/fina)</span><span class="small-note">+</span>
+  Pollo sin hueso con soja<span class="small-note">+</span>Piel de cerdo<span class="small-note">+</span>Bulgogi de cerdo<span class="small-note">+</span>Intestino<span class="small-note">+</span>Verduras<span class="small-note">+</span>
+  Bebidas<span class="unlimited">ilimitadas</span><span class="small-note">+</span>Arroz<span class="unlimited">ilimitado</span><span class="small-note">+</span>Fideos fríos<span class="unlimited">ilimitados</span>
+</p>
+
+<!-- 🇵🇹 Português (pt) -->
+<p data-lang="pt" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> Porco + Frango molho soja Rodízio</span>
+  <span class="price">₩23.900</span> por pessoa<br>
+  Porco<span class="small-note">(barriga/pescoço/bochecha/fraldinha/fina)</span><span class="small-note">+</span>
+  Frango sem osso ao molho de soja<span class="small-note">+</span>Pele<span class="small-note">+</span>Bulgogi de porco<span class="small-note">+</span>Tripas<span class="small-note">+</span>Legumes<span class="small-note">+</span>
+  Bebidas<span class="unlimited">ilimitadas</span><span class="small-note">+</span>Arroz<span class="unlimited">ilimitado</span><span class="small-note">+</span>Macarrão frio<span class="unlimited">ilimitado</span>
+</p>
+
+<!-- 🇸🇦 العربية (ar) -->
+<p data-lang="ar" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> لحم خنزير + دجاج صويا مفتوح</span>
+  <span class="price">23,900₩</span> للشخص<br>
+  لحم خنزير<span class="small-note">(بطن/رقبة/خد/حجاب حاجز/رفيع)</span><span class="small-note">+</span>
+  دجاج بدون عظم بصلصة الصويا<span class="small-note">+</span>جلد الخنزير<span class="small-note">+</span>بولغوجي خنزير<span class="small-note">+</span>أمعاء<span class="small-note">+</span>خضروات<span class="small-note">+</span>
+  مشروبات<span class="unlimited">غير محدودة</span><span class="small-note">+</span>أرز<span class="unlimited">غير محدود</span><span class="small-note">+</span>نودلز باردة<span class="unlimited">غير محدودة</span>
+</p>
+
+<!-- 🇷🇺 Русский (ru) -->
+<p data-lang="ru" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> Свинина + Соевый Курица Безлимит</span>
+  <span class="price">23,900₩</span> за чел<br>
+  Свинина<span class="small-note">(самгёпсаль/шея/щёки/вырезка/тонкий)</span><span class="small-note">+</span>
+  Курица в соевом соусе без костей<span class="small-note">+</span>Кожа свинины<span class="small-note">+</span>Булгоги<span class="small-note">+</span>Кишки<span class="small-note">+</span>Овощи<span class="small-note">+</span>
+  Напитки<span class="unlimited">безлимитно</span><span class="small-note">+</span>Рис<span class="unlimited">безлимитно</span><span class="small-note">+</span>Холодная лапша<span class="unlimited">безлимитно</span>
+</p>
+
+<!-- 🇹🇷 Türkçe (tr) -->
+<p data-lang="tr" style="display:none;">
+  <span class="menu-subtitle"><strong class="course-label">Full</strong> Domuz + Soya Tavuk Sınırsız</span>
+  <span class="price">₩23.900</span> kişi<br>
+  Domuz<span class="small-note">(göbek/boyun/yanak/diyafram/ince dilim)</span><span class="small-note">+</span>
+  Soya soslu kemiksiz tavuk<span class="small-note">+</span>Domuz derisi<span class="small-note">+</span>Bulgogi<span class="small-note">+</span>Bağırsak<span class="small-note">+</span>Sebzeler<span class="small-note">+</span>
+  İçecekler<span class="unlimited">sınırsız</span><span class="small-note">+</span>Pirinç<span class="unlimited">sınırsız</span><span class="small-note">+</span>Soğuk erişте<span class="unlimited">sınırsız</span>
+</p>
     `;
   }
 
