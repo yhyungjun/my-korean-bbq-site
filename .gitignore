@@ -8,3 +8,6 @@
 # 로그 · 임시 파일
 *.log
 node_modules/
+
+# 브레인스토밍 시각 자료 (superpowers)
+.superpowers/
