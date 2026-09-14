@@ -325,16 +325,13 @@ body.fade-in footer {
   transform: translateY(0);
 }
 
-/* 페이드인 키프레임 */
+/* 페이드인 키프레임 — opacity 만 움직인다.
+   transform 을 쓰면 forwards 로 남은 transform 때문에 body 가 position:fixed 의 기준이 되어
+   언어 모달이 화면이 아니라 문서에 붙고 첫 방문 스크롤이 튄다. 섹션의 등장 움직임은 아래
+   section/footer 의 translateY 전환이 맡는다. */
 @keyframes fadeInPage {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .menu-detail,
@@ -992,4 +989,272 @@ body.scroll-locked {
   max-width: none;
   font-size: inherit;
   line-height: inherit;
+}
+
+/* ============================= */
+/* 🔹 QR 메뉴판 레이아웃 (2026-09 개편) */
+/* ============================= */
+
+/* 인라인 다국어 라벨: [data-lang] 의 블록용 레이아웃 규칙(margin·max-width·font-size·padding)을 받지 않는다 */
+.i18n-inline [data-lang] {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+}
+
+/* 상단 고정 바 */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 14px;
+  background: #d50000;
+  color: #fff;
+}
+
+.topbar-brand {
+  margin: 0;                   /* h1 기본 여백 제거 */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.topbar-brand img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  flex: none;
+}
+
+.topbar-brand [data-lang] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topbar-lang {
+  flex: none;
+  margin: 0;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #d50000;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+/* 벨 안내 띠 */
+.bell {
+  margin: 0;
+  padding: 9px 14px;
+  background: #fff3cd;
+  color: #6b4e00;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* 메뉴 시트(코스·사이드·접이식 공통 폭) */
+.menu-sheet {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 6px 14px 24px;
+}
+
+.menu-sheet section {
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.menu-sheet h2 {
+  margin: 14px 0 8px;
+  font-size: 1.1rem;
+  color: #7a2a2a;
+  text-align: start;
+}
+
+/* 카드·가격표 안의 언어 pane 은 블록이지만 [data-lang] 레이아웃 규칙은 받지 않는다 */
+.course-card [data-lang],
+.side-list [data-lang] {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  font-size: inherit;
+  line-height: 1.6;
+  text-align: start;
+}
+
+/* 코스 카드 */
+.course-card {
+  margin: 0 0 10px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid #f0c9d0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.course-card.is-featured {
+  border-color: #d50000;
+  background: #fffafa;
+}
+
+.course-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.course-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.course-title::before {
+  content: attr(data-icon) " ";
+}
+
+.course-title .menu-subtitle {
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-shadow: none;
+  letter-spacing: 0;
+}
+
+.course-title .course-label {
+  font-size: 1.4rem;
+  margin-right: 6px;
+}
+
+.course-price {
+  flex: none;
+  text-align: end;
+  font-weight: 700;
+  color: #333;
+}
+
+.course-price .price {
+  color: #d50000;
+  font-size: 1.1rem;
+}
+
+.course-body {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #333;
+  word-break: keep-all;
+}
+
+.course-body .small-note {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* .sep 의 " · " 텍스트는 js/render.js 가 이미 넣었다 — 여기서는 색만 준다. ::before 로 content 를 넣지 말 것(중복). */
+.course-body .sep {
+  color: #c33;
+}
+
+.course-chips {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.course-chips .chip {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #FFEDF0;
+  font-size: 0.95rem;
+}
+
+/* 사이드 가격표 */
+.side-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e8d3d7;
+  font-size: 0.95rem;
+}
+
+.side-name .small-note {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.side-price {
+  flex: none;
+  text-align: end;
+}
+
+.side-price .price {
+  color: #d50000;
+  font-weight: 800;
+}
+
+/* 접이식 안내 */
+.acc {
+  border-top: 1px solid #eadfe1;
+}
+
+.acc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 12px 4px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: start;
+  cursor: pointer;
+}
+
+.acc-head::after {
+  content: "▾";
+  color: #999;
+  transition: transform 0.2s;
+}
+
+.acc-head[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.acc .usage-detail {
+  margin: 0 0 12px;
+  max-width: none;
+}
+
+/* 푸터: 슬로건은 히어로에서 내려왔다 */
+footer .tagline {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+}
+
+footer .footer-brand {
+  margin: 0;
 }
