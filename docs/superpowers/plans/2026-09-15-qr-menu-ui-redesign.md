@@ -1591,6 +1591,14 @@ Expected: 전부 1 이상. `.usage-detail` 카드 룩(display:none·배경·테�
 
 리뷰에서 넘어온 추가 1건: "QR 메뉴판 레이아웃" 블록의 `.course-price { … }` 안, `max-width` 다음 줄에 `word-break: normal;`을 추가한다 (320px 폭에서 일본어 등 가격 텍스트가 `[data-lang]`의 `keep-all` 상속으로 40% 칸 밖으로 삐져나오는 것을 막기 위함).
 
+리뷰 2차 라운드에서 추가로 확인된 미참조 규칙(각각 `index.html`·`js/*.js`(정적·동적 클래스 생성 포함)에서 참조 0건 확인 후 삭제):
+- `.menu, .usage, #ssam { background-color }` — 개편 후 섹션은 `id="menu"`/`id="side"`/`id="guide"`만 쓰고 해당 클래스·id는 없음
+- `.menu h2, .usage h2 { … }` — 위와 같은 이유로 대상 없음
+- `.location { … }` — 위치 섹션이 더 이상 이 클래스를 쓰지 않음
+- `.side-grid { … }` / `.side-grid p { … }` + 그 ≤768px 미디어 변형 — 사이드 메뉴는 이제 `render.js`가 만드는 `.side-list`/`.side-row`/`.side-name`/`.side-price`만 사용
+- `.highlight-yellow { … }` — 참조 없음
+- `.active-menu { … }` — 참조 없음
+
 - [ ] **Step 4: 전체 검사 재실행**
 
 ```bash
