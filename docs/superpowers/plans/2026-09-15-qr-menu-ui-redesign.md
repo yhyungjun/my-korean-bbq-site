@@ -921,7 +921,8 @@ function openDetail(boxId, contentKey) {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       box.classList.add("show");
-      scrollToElement(box);
+      // 헤더까지 보이도록 접이식 래퍼로 스크롤한다 (고정 바 52px 아래에 헤더가 오게)
+      scrollToElement(box.closest(".acc") || box);
     });
   });
 }
@@ -1046,6 +1047,31 @@ git commit -m "feat: content.js 블록을 잘라 코스 카드와 사이드 가�
 
   const bell = cs(".bell [data-lang]:not([hidden])");
   if (bell.display !== "inline") errs.push("벨 문구 span 이 inline 아님");
+
+  // ④ 캐스케이드: 옛 규칙을 실제로 이겼는지 (존재가 아니라 결과를 잰다)
+  const tagSpan = document.querySelector("footer .tagline [data-lang]:not([hidden])");
+  const brandSpan = document.querySelector("footer .footer-brand [data-lang]:not([hidden])");
+  if (tagSpan && brandSpan && tagSpan.getBoundingClientRect().bottom > brandSpan.getBoundingClientRect().top)
+    errs.push("푸터 슬로건이 © 줄과 겹침");
+  if (parseInt(cs(".acc-head").fontWeight, 10) < 700) errs.push(`접이식 헤더 굵기 ${cs(".acc-head").fontWeight} (기대 ≥700)`);
+  if (parseInt(cs(".topbar-lang").fontWeight, 10) < 700) errs.push(`언어 버튼 굵기 ${cs(".topbar-lang").fontWeight}`);
+
+  // 접이식 본문 크기는 언어와 무관해야 한다 (ko 와 zh 비교)
+  document.querySelector('.acc-head[data-content="usage"]').click();
+  const sizeOf = (lang) => {
+    document.querySelector(`[data-lang-code="${lang}"]`).click();
+    return getComputedStyle(document.querySelector('#usageDetailBox p[data-lang]:not([hidden])')).fontSize;
+  };
+  const koSize = sizeOf("ko"), zhSize = sizeOf("zh");
+  if (koSize !== zhSize) errs.push(`접이식 본문 크기 언어별 상이 ko ${koSize} / zh ${zhSize}`);
+  document.querySelector('.acc-head[data-content="usage"]').click(); // 닫기
+
+  // 라틴 문자 제목이 가격에 밀려 찢기지 않는지 (en, B코스)
+  document.querySelector('[data-lang-code="en"]').click();
+  const enHead = document.querySelector('.course-card[data-course="courseB"] [data-lang="en"] .course-head');
+  const enTitle = enHead.querySelector(".course-title").getBoundingClientRect().width;
+  if (enTitle < enHead.getBoundingClientRect().width * 0.55) errs.push(`en 제목 칸 ${Math.round(enTitle)}px — 헤더의 55% 미만`);
+  document.querySelector('[data-lang-code="ko"]').click();
   return errs.length ? "FAIL: " + errs.join(" / ") : "PASS";
 })()
 ```
@@ -1059,13 +1085,19 @@ Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
 
 - [ ] **Step 3: CSS 추가**
 
-`style.css` **맨 끝**에 아래를 붙인다 (뒤에 올수록 이기므로 기존 규칙과의 충돌을 위치로 해결한다):
+`style.css` **맨 끝**에 아래를 붙인다 (뒤에 올수록 이기므로 기존 규칙과의 충돌을 위치로 해결한다). 추가로 레거시 규칙 두 개도 이 자리에서 함께 고친다: 옛 `footer { line-height: 0.5 }`는 © 한 줄짜리 레이아웃용 꼼수였는데 슬로건 문단이 내려오며 글자가 겹쳤으므로 `1.6`으로, 옛 `body.fade-in { animation: fadeInPage 1.8s … }`는 QR 손님이 메뉴를 읽기까지 너무 오래 걸려 `0.6s`로 바꾼다.
 
 ```css
 
 /* ============================= */
 /* 🔹 QR 메뉴판 레이아웃 (2026-09 개편) */
 /* ============================= */
+
+/* 이 블록이 이겨야 하는 옛 규칙들 — 지우기 전엔 여기 규칙이 왜 !important/명시값을 쓰는지 참고:
+   · body, p, button { font-weight: 500 !important }
+   · footer { line-height } (1.6 으로 고침)
+   · .usage-detail p:first-child / p:nth-child(2) (위치 기반 크기)
+   · [data-lang] { margin; max-width; font-size; text-align } + @media 변형 */
 
 /* 인라인 다국어 라벨: [data-lang] 의 블록용 레이아웃 규칙(margin·max-width·font-size·padding)을 받지 않는다 */
 .i18n-inline [data-lang] {
@@ -1124,7 +1156,7 @@ Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
   background: #fff;
   color: #d50000;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 700 !important; /* body, p, button { font-weight: 500 !important } 를 이긴다 */
   box-shadow: none;
   cursor: pointer;
 }
@@ -1193,11 +1225,13 @@ Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
 }
 
 .course-title {
+  flex: 1 1 0;
+  min-width: 0;            /* 제목이 먼저 폭을 갖고, 가격이 줄바꿈으로 양보한다 */
   font-size: 1.05rem;
   font-weight: 800;
 }
 
-.course-title::before {
+.course-title[data-icon]::before {
   content: attr(data-icon) " ";
 }
 
@@ -1216,7 +1250,9 @@ Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
 }
 
 .course-price {
-  flex: none;
+  flex: 0 1 auto;
+  max-width: 40%;          /* 라틴 문자 가격줄("₩19,900 per person")은 여기서 두 줄로 접힌다 —
+                               42% 는 제목 칸을 헤더 폭의 55% 밑으로 밀어냈다(측정: 54.8%) */
   text-align: end;
   font-weight: 700;
   color: #333;
@@ -1257,6 +1293,10 @@ Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
 }
 
 /* 사이드 가격표 */
+.side-list {
+  padding: 0 15px;
+}
+
 .side-row {
   display: flex;
   justify-content: space-between;
@@ -1300,7 +1340,7 @@ Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
   box-shadow: none;
   color: #333;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 700 !important; /* body, p, button { font-weight: 500 !important } 를 이긴다 */
   text-align: start;
   cursor: pointer;
 }
@@ -1318,6 +1358,13 @@ Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
 .acc .usage-detail {
   margin: 0 0 12px;
   max-width: none;
+}
+
+/* 옛 .usage-detail p:first-child / :nth-child(2) 규칙이 13개 언어 문단의 DOM 순서에 걸려
+   언어마다 글자 크기가 달라졌다(ko 1.4rem, en 1.3rem, 나머지 1rem). 전부 같은 크기로. */
+.acc .usage-detail p {
+  margin: 10px 0;
+  font-size: 1rem;
 }
 
 /* 푸터: 슬로건은 히어로에서 내려왔다 */

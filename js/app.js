@@ -185,7 +185,8 @@ function openDetail(boxId, contentKey) {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       box.classList.add("show");
-      scrollToElement(box);
+      // 헤더까지 보이도록 접이식 래퍼로 스크롤한다 (고정 바 52px 아래에 헤더가 오게)
+      scrollToElement(box.closest(".acc") || box);
     });
   });
 }

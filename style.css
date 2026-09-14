@@ -217,7 +217,8 @@ footer {
   color: #fff;
   padding: 25px 15px;
   text-align: center;
-  line-height: 0.5;
+  /* 0.5 는 옛 푸터(© + 지점 링크 한 줄)용 꼼수였다 — 슬로건 문단이 내려오면서 글자가 겹쳤다 */
+  line-height: 1.6;
 }
 
 /* 브랜드명 강조 */
@@ -308,7 +309,7 @@ footer {
 
 /* 초기 body 페이드인 */
 body.fade-in {
-  animation: fadeInPage 1.8s ease-in-out forwards;
+  animation: fadeInPage 0.6s ease-in-out forwards;
 }
 
 /* Hero, 메뉴, 이용방법, 사이드 등 섹션 자연 등장 */
@@ -995,6 +996,12 @@ body.scroll-locked {
 /* 🔹 QR 메뉴판 레이아웃 (2026-09 개편) */
 /* ============================= */
 
+/* 이 블록이 이겨야 하는 옛 규칙들 — 지우기 전엔 여기 규칙이 왜 !important/명시값을 쓰는지 참고:
+   · body, p, button { font-weight: 500 !important }
+   · footer { line-height } (1.6 으로 고침)
+   · .usage-detail p:first-child / p:nth-child(2) (위치 기반 크기)
+   · [data-lang] { margin; max-width; font-size; text-align } + @media 변형 */
+
 /* 인라인 다국어 라벨: [data-lang] 의 블록용 레이아웃 규칙(margin·max-width·font-size·padding)을 받지 않는다 */
 .i18n-inline [data-lang] {
   display: inline;
@@ -1052,7 +1059,7 @@ body.scroll-locked {
   background: #fff;
   color: #d50000;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 700 !important; /* body, p, button { font-weight: 500 !important } 를 이긴다 */
   box-shadow: none;
   cursor: pointer;
 }
@@ -1121,11 +1128,13 @@ body.scroll-locked {
 }
 
 .course-title {
+  flex: 1 1 0;
+  min-width: 0;            /* 제목이 먼저 폭을 갖고, 가격이 줄바꿈으로 양보한다 */
   font-size: 1.05rem;
   font-weight: 800;
 }
 
-.course-title::before {
+.course-title[data-icon]::before {
   content: attr(data-icon) " ";
 }
 
@@ -1144,7 +1153,9 @@ body.scroll-locked {
 }
 
 .course-price {
-  flex: none;
+  flex: 0 1 auto;
+  max-width: 40%;          /* 라틴 문자 가격줄("₩19,900 per person")은 여기서 두 줄로 접힌다 —
+                               42% 는 제목 칸을 헤더 폭의 55% 밑으로 밀어냈다(측정: 54.8%) */
   text-align: end;
   font-weight: 700;
   color: #333;
@@ -1186,6 +1197,10 @@ body.scroll-locked {
 }
 
 /* 사이드 가격표 */
+.side-list {
+  padding: 0 15px;
+}
+
 .side-row {
   display: flex;
   justify-content: space-between;
@@ -1229,7 +1244,7 @@ body.scroll-locked {
   box-shadow: none;
   color: #333;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 700 !important; /* body, p, button { font-weight: 500 !important } 를 이긴다 */
   text-align: start;
   cursor: pointer;
 }
@@ -1247,6 +1262,13 @@ body.scroll-locked {
 .acc .usage-detail {
   margin: 0 0 12px;
   max-width: none;
+}
+
+/* 옛 .usage-detail p:first-child / :nth-child(2) 규칙이 13개 언어 문단의 DOM 순서에 걸려
+   언어마다 글자 크기가 달라졌다(ko 1.4rem, en 1.3rem, 나머지 1rem). 전부 같은 크기로. */
+.acc .usage-detail p {
+  margin: 10px 0;
+  font-size: 1rem;
 }
 
 /* 푸터: 슬로건은 히어로에서 내려왔다 */

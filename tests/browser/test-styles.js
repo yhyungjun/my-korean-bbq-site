@@ -46,5 +46,30 @@
   // ③ .sep 은 JS 가 텍스트(" · ")를 이미 넣었다 — CSS 가 ::before 로 또 넣으면 " ·  · " 가 된다
   const sep = document.querySelector(".course-body .sep");
   if (sep && getComputedStyle(sep, "::before").content !== "none") errs.push("`.sep::before` 가 content 를 넣고 있음 (중복 구분자)");
+
+  // ④ 캐스케이드: 옛 규칙을 실제로 이겼는지 (존재가 아니라 결과를 잰다)
+  const tagSpan = document.querySelector("footer .tagline [data-lang]:not([hidden])");
+  const brandSpan = document.querySelector("footer .footer-brand [data-lang]:not([hidden])");
+  if (tagSpan && brandSpan && tagSpan.getBoundingClientRect().bottom > brandSpan.getBoundingClientRect().top)
+    errs.push("푸터 슬로건이 © 줄과 겹침");
+  if (parseInt(cs(".acc-head").fontWeight, 10) < 700) errs.push(`접이식 헤더 굵기 ${cs(".acc-head").fontWeight} (기대 ≥700)`);
+  if (parseInt(cs(".topbar-lang").fontWeight, 10) < 700) errs.push(`언어 버튼 굵기 ${cs(".topbar-lang").fontWeight}`);
+
+  // 접이식 본문 크기는 언어와 무관해야 한다 (ko 와 zh 비교)
+  document.querySelector('.acc-head[data-content="usage"]').click();
+  const sizeOf = (lang) => {
+    document.querySelector(`[data-lang-code="${lang}"]`).click();
+    return getComputedStyle(document.querySelector('#usageDetailBox p[data-lang]:not([hidden])')).fontSize;
+  };
+  const koSize = sizeOf("ko"), zhSize = sizeOf("zh");
+  if (koSize !== zhSize) errs.push(`접이식 본문 크기 언어별 상이 ko ${koSize} / zh ${zhSize}`);
+  document.querySelector('.acc-head[data-content="usage"]').click(); // 닫기
+
+  // 라틴 문자 제목이 가격에 밀려 찢기지 않는지 (en, B코스)
+  document.querySelector('[data-lang-code="en"]').click();
+  const enHead = document.querySelector('.course-card[data-course="courseB"] [data-lang="en"] .course-head');
+  const enTitle = enHead.querySelector(".course-title").getBoundingClientRect().width;
+  if (enTitle < enHead.getBoundingClientRect().width * 0.55) errs.push(`en 제목 칸 ${Math.round(enTitle)}px — 헤더의 55% 미만`);
+  document.querySelector('[data-lang-code="ko"]').click();
   return errs.length ? "FAIL: " + errs.join(" / ") : "PASS";
 })()
