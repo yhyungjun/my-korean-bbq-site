@@ -952,9 +952,16 @@ body.scroll-locked {
   margin: 18px auto 0;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.35);
-  font-style: normal;          /* address 요소 기본 이탤릭 제거 */
   font-size: 0.95rem;
   line-height: 1.7;
+}
+
+.store-info .store {
+  font-style: normal;          /* address 요소 기본 이탤릭 제거 */
+}
+
+.store-info .store + .store {
+  margin-top: 14px;
 }
 
 .store-info p {
