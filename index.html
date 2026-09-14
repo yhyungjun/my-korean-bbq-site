@@ -114,7 +114,7 @@
 
 <!-- 상단 고정 바: 로고 + 매장명 + 언어 -->
 <header class="topbar">
-  <div class="topbar-brand i18n-inline">
+  <h1 class="topbar-brand i18n-inline">
     <img src="images/logo.png" alt="" width="28" height="28">
     <span data-lang="ko">강남 돼지상회 무한리필</span>
     <span data-lang="en" hidden>Gangnam Porkstore Unlimited Refill</span>
@@ -129,14 +129,14 @@
     <span data-lang="ar" hidden>سوق لحم الخنزير غانغنام - بوفيه مفتوح</span>
     <span data-lang="ru" hidden>Гангнам Свиной рынок безлимитный буфет</span>
     <span data-lang="tr" hidden>Gangnam Domuz Pazarı Sınırsız Büfe</span>
-  </div>
+  </h1>
   <button type="button" class="topbar-lang" data-action="open-lang" aria-haspopup="dialog">
-    🌐 <span id="topbarLangName">한국어</span> ▾
+    <span aria-hidden="true">🌐</span> <span id="topbarLangName">한국어</span> <span aria-hidden="true">▾</span>
   </button>
 </header>
 
 <!-- 벨 안내 (유일한 신규 문구) -->
-<p class="bell i18n-inline">🔔
+<p class="bell i18n-inline"><span aria-hidden="true">🔔</span>
   <span data-lang="ko">주문·리필은 테이블 벨을 눌러주세요</span>
   <span data-lang="en" hidden>Press the table bell to order or get a refill</span>
   <span data-lang="zh" hidden>点餐或续餐请按桌上的呼叫铃</span>

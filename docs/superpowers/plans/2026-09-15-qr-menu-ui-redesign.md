@@ -245,26 +245,46 @@ git commit -m "test: 브라우저 테스트 실행기와 개편 전 텍스트 �
 ```js
 (() => {
   const errs = [];
+  const LANGS = ["ko","en","zh","ja","vi","th","ph","fr","es","pt","ar","ru","tr"];
+  const WANT = [...LANGS].sort().join(",");
+  document.querySelector('[data-lang-code="ko"]')?.click();
+
   const need = (sel, n, label) => {
     const c = document.querySelectorAll(sel).length;
     if (c !== n) errs.push(`${label}: ${c}개 (기대 ${n})`);
   };
+  // 언어 "집합"을 본다 — 개수만 세면 ko 둘·zh 없음도 13개로 통과한다
+  const needLangs = (sel, label) => {
+    const got = [...document.querySelectorAll(sel)].map((e) => e.dataset.lang).sort().join(",");
+    if (got !== WANT) errs.push(`${label}: 언어 집합 불일치 [${got}]`);
+  };
+
   need("header.topbar", 1, "상단 바");
-  need(".topbar-brand [data-lang]", 13, "상단 바 매장명");
+  need("h1.topbar-brand", 1, "상단 바 매장명(h1)");
+  needLangs("h1.topbar-brand [data-lang]", "상단 바 매장명");
   need("#topbarLangName", 1, "언어 버튼 이름");
-  need(".bell [data-lang]", 13, "벨 안내");
-  need("#menuTitle [data-lang]", 13, "코스 제목");
+  needLangs(".bell [data-lang]", "벨 안내");
+  needLangs("#menuTitle [data-lang]", "코스 제목");
   need("#courseCards", 1, "코스 컨테이너");
-  need("#sideTitle [data-lang]", 13, "사이드 제목");
+  needLangs("#sideTitle [data-lang]", "사이드 제목");
   need("#sideList", 1, "사이드 컨테이너");
   need(".acc-head", 4, "접이식 헤더");
-  need(".acc-head [data-lang]", 52, "접이식 라벨");
+  for (const key of ["usage", "tips", "gamasot", "ssam"]) {
+    const head = document.querySelector(`.acc-head[data-content="${key}"]`);
+    if (!head) { errs.push(`접이식 ${key}: 헤더 없음`); continue; }
+    needLangs(`.acc-head[data-content="${key}"] [data-lang]`, `접이식 ${key} 라벨`);
+    if (head.dataset.target !== head.getAttribute("aria-controls")) errs.push(`접이식 ${key}: data-target ≠ aria-controls`);
+    if (!document.getElementById(head.dataset.target)) errs.push(`접이식 ${key}: 박스 #${head.dataset.target} 없음`);
+  }
   need("section.hero", 0, "히어로(삭제돼야 함)");
   need(".footer-branches", 0, "푸터 지점 링크 행(삭제돼야 함)");
-  need("footer .tagline [data-lang]", 13, "푸터 슬로건");
-  need("footer .footer-brand [data-lang]", 13, "푸터 ©");
+  needLangs("footer .tagline [data-lang]", "푸터 슬로건");
+  needLangs("footer .footer-brand [data-lang]", "푸터 ©");
   need("footer .store-info .store", 3, "지점 카드");
-  need("#langModal [data-lang-code]", 13, "언어 모달 버튼");
+  {
+    const got = [...document.querySelectorAll("#langModal [data-lang-code]")].map((e) => e.dataset.langCode).sort().join(",");
+    if (got !== WANT) errs.push(`언어 모달 버튼: 언어 집합 불일치 [${got}]`);
+  }
   return errs.length ? "FAIL: " + errs.join(" / ") : "PASS";
 })()
 ```
@@ -352,17 +372,17 @@ body = f'''
 
 <!-- 상단 고정 바: 로고 + 매장명 + 언어 -->
 <header class="topbar">
-  <div class="topbar-brand i18n-inline">
+  <h1 class="topbar-brand i18n-inline">
     <img src="images/logo.png" alt="" width="28" height="28">
 {spans(store_name, '    ')}
-  </div>
+  </h1>
   <button type="button" class="topbar-lang" data-action="open-lang" aria-haspopup="dialog">
-    🌐 <span id="topbarLangName">한국어</span> ▾
+    <span aria-hidden="true">🌐</span> <span id="topbarLangName">한국어</span> <span aria-hidden="true">▾</span>
   </button>
 </header>
 
 <!-- 벨 안내 (유일한 신규 문구) -->
-<p class="bell i18n-inline">🔔
+<p class="bell i18n-inline"><span aria-hidden="true">🔔</span>
 {spans(BELL, '  ')}
 </p>
 
@@ -404,6 +424,8 @@ open(P, 'w', encoding='utf-8').write(head + body)
 print('index.html 재작성:', (head + body).count('\n') + 1, '줄')
 ```
 
+이 스크립트는 개편 전 마크업(히어로·버튼 그리드)을 전제로 하므로 한 번만 실행할 수 있다. 재실행하면 첫 정규식에서 AttributeError 로 멈추고 index.html 은 건드리지 않는다.
+
 ```bash
 python3 /tmp/build-index.py
 ```
@@ -415,6 +437,81 @@ Expected: `index.html 재작성: <숫자> 줄` (AssertionError가 나면 추출 
 tests/run.sh
 ```
 Expected: `✅ test-structure.js — PASS`
+
+- [ ] **Step 4b: UI 문구 검사 생성**
+
+이동한 UI 문구(매장명·슬로건·메뉴 제목·사이드 제목·접이식 라벨 4개·푸터 ©) 13개 언어 × 9그룹 = 117개를 자동 대조하는 검사를 만든다. 개편 전 `index.html`(커밋 `59bed54`)에서 문구를 뽑아 기대값으로 박아 넣는다.
+
+아래를 `/tmp/gen-ui-strings.py`로 저장하고 실행한다.
+
+```python
+import re, json, subprocess
+old = subprocess.run(['git', 'show', '59bed54:index.html'], capture_output=True, text=True, check=True).stdout
+LANGS = ['ko','en','zh','ja','vi','th','ph','fr','es','pt','ar','ru','tr']
+strip = lambda s: re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', s)).strip()
+
+def grab(pattern, block, label):
+    got = {m.group(1): strip(m.group(3)) for m in re.finditer(pattern, block, re.S)}
+    assert sorted(got) == sorted(LANGS), f'{label}: {sorted(got)}'
+    return got
+
+hero = re.search(r'<div class="hero-texts">(.*?)</div>', old, re.S).group(1)
+menu = re.search(r'<section id="menu".*?</section>', old, re.S).group(0)
+foot = old[old.index('<footer>'):old.index('</footer>')]
+groups = {
+  'storeName': (grab(r'<h1 data-lang="(\w\w)"( hidden)?>(.*?)</h1>', hero, 'storeName'), 'h1.topbar-brand'),
+  'tagline':   (grab(r'<p data-lang="(\w\w)"( hidden)?>(.*?)</p>', hero, 'tagline'), 'footer .tagline'),
+  'menuTitle': (grab(r'<h2 data-lang="(\w\w)"( hidden)?>(.*?)</h2>', menu, 'menuTitle'), '#menuTitle'),
+  'sideTitle': (grab(r'data-content="side" data-lang="(\w\w)"( hidden)?>(.*?)</button>', old, 'sideTitle'), '#sideTitle'),
+  'brand':     ({}, 'footer .footer-brand'),
+}
+for m in re.finditer(r'<p data-lang="(\w\w)"[^>]*>\s*<span class="footer-brand">(.*?)</span>', foot, re.S):
+    groups['brand'][0][m.group(1)] = strip(m.group(2))
+assert sorted(groups['brand'][0]) == sorted(LANGS)
+acc = {}
+for m in re.finditer(r'<div data-lang="(\w\w)"( hidden)?>\s*(<button.*?</button>)\s*(<button.*?</button>)\s*</div>', old, re.S):
+    for b in (m.group(3), m.group(4)):
+        key = re.search(r'data-content="(\w+)"', b).group(1)
+        acc.setdefault(key, {})[m.group(1)] = strip(re.search(r'>(.*?)</button>', b, re.S).group(1))
+for key in ('usage', 'tips', 'gamasot', 'ssam'):
+    assert sorted(acc[key]) == sorted(LANGS), key
+    groups[f'acc.{key}'] = (acc[key], f'.acc-head[data-content="{key}"]')
+
+expected = {f'{g}|{l}': v for g, (d, _) in groups.items() for l, v in d.items()}
+selectors = {g: sel for g, (_, sel) in groups.items()}
+assert len(expected) == 117, len(expected)
+
+js = f'''// 자동 생성: 커밋 59bed54 의 index.html(개편 전)에서 뽑은 UI 문구 117개.
+// 생성 스크립트는 docs/superpowers/plans/2026-09-15-qr-menu-ui-redesign.md Task 2 참고.
+(() => {{
+  const EXPECTED = {json.dumps(expected, ensure_ascii=False, indent=2)};
+  const SELECTORS = {json.dumps(selectors, ensure_ascii=False, indent=2)};
+  const norm = (t) => t.replace(/\\s+/g, " ").trim();
+  const errs = [];
+  document.querySelector('[data-lang-code="ko"]')?.click();
+  for (const [id, want] of Object.entries(EXPECTED)) {{
+    const [group, lang] = id.split("|");
+    const el = document.querySelector(`${{SELECTORS[group]}} [data-lang="${{lang}}"]`);
+    if (!el) {{ errs.push(`${{id}}: 요소 없음`); continue; }}
+    const got = norm(el.textContent);
+    if (got !== want) errs.push(`${{id}}: '${{got}}' ≠ '${{want}}'`);
+  }}
+  return errs.length ? `FAIL: ${{errs.length}}/117 — ` + errs.slice(0, 6).join(" / ") : "PASS (117 UI 문구 일치)";
+}})()
+'''
+open('tests/browser/test-ui-strings.js', 'w', encoding='utf-8').write(js)
+print('생성: tests/browser/test-ui-strings.js —', len(expected), '문구')
+```
+
+```bash
+python3 /tmp/gen-ui-strings.py
+```
+Expected: `생성: tests/browser/test-ui-strings.js — 117 문구`
+
+```bash
+tests/run.sh
+```
+Expected: `✅ test-ui-strings.js — PASS (117 UI 문구 일치)`
 
 - [ ] **Step 5: 브라우저에서 눈으로 확인**
 
@@ -1014,6 +1111,7 @@ Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
 }
 
 .topbar-brand {
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1548,7 +1646,7 @@ git commit -m "test: 13개 언어 x 8콘텐츠 렌더 텍스트를 개편 전 �
 ```bash
 tests/run.sh && VIEWPORT_W=1280 VIEWPORT_H=900 tests/run.sh
 ```
-Expected: 두 번 모두 8개 검사 `✅`. (데스크톱에서 `test-first-screen`이 실패하면 카드 여백을 줄이기보다 먼저 390 결과를 우선한다 — 스펙의 기준은 390이다. 1280에서만 실패하면 그 검사는 통과로 간주하고 이유를 커밋 메시지에 적는다.)
+Expected: 두 번 모두 9개 검사 `✅`. (데스크톱에서 `test-first-screen`이 실패하면 카드 여백을 줄이기보다 먼저 390 결과를 우선한다 — 스펙의 기준은 390이다. 1280에서만 실패하면 그 검사는 통과로 간주하고 이유를 커밋 메시지에 적는다.)
 
 - [ ] **Step 3: 스크린샷 저장**
 
@@ -1592,7 +1690,7 @@ CNAME             커스텀 도메인
 ## 검사 돌리기
 
 ```bash
-tests/run.sh                       # 모바일(390px) 기준 8개 검사
+tests/run.sh                       # 모바일(390px) 기준 9개 검사
 VIEWPORT_W=1280 tests/run.sh       # 데스크톱
 ```
 
