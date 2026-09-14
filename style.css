@@ -1,52 +1,5 @@
 
 
-/* 히어로 섹션 */
-.hero {
-  background-color: #d50000; /* 🔥 기존 강한 빨강 유지 */
-  color: white;
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.hero-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px; /* 로고와 텍스트 간 여백 */
-  flex-wrap: wrap; /* 모바일에서는 자동 줄바꿈 */
-}
-
-.hero-logo-inline {
-  width: 120px;
-  height: auto;
-  border-radius: 15px; /* 살짝 둥글게 */
-}
-
-.hero-texts h1 {
-  margin: 0;
-  font-size: 2.5em; /* 기존 스타일 유지 */
-  color: white;
-}
-
-.hero-texts p {
-  margin: 10px 0 20px;
-  font-size: 1.2em;
-  color: #fff;
-}
-
-/* 반응형 (모바일용) */
-@media (max-width: 768px) {
-  .hero-title {
-    flex-direction: column;
-  }
-  .hero-logo-inline {
-    width: 100px;
-  }
-  .hero-texts h1 {
-    font-size: 2em;
-  }
-}
-
 /* 버튼 기본 스타일 */
 button {
   cursor: pointer;
@@ -71,14 +24,6 @@ button {
   font-size: 2rem !important;
   font-weight: 500 !important;
   color: #333;
-} 
-
-/* 메뉴 버튼 폰트만 손글씨체로 변경 */
-.menu-buttons button {
-  font-family: "Nanum Pen Script", "Patrick Hand", "Caveat", cursive;
-  font-size: 1.8rem;   /* 글씨 조금 크게 */
-  font-weight: normal; /* 진하게 하지 않음 */
-  letter-spacing: 1px;
 }
 
 .usage-detail.show {
@@ -86,35 +31,18 @@ button {
   opacity: 1;
   transition: opacity 0.4s ease;
 }
-
-/* hover 시 카드 강조 */
-.menu-detail:hover,
-.side-detail:hover,
 .usage-detail:hover {
   box-shadow: 0 10px 24px rgba(0,0,0,0.2);
   transform: translateY(-3px);
 }
-
-/* ====== 내용 간격 ====== */
-/* ✅ 기본 본문 글자 살짝 줄이고 */
-.menu-detail p,
-.side-detail p,
 .usage-detail p {
   margin: 10px 0;
   font-size: 1.0rem;
 }
-
-/* ✅ 카드의 첫 줄(코스 제목)만 더 크게 */
-.menu-detail p:first-child,
-.side-detail p:first-child,
 .usage-detail p:first-child {
   font-size: 1.4rem;
   font-weight: 800;
 }
-
-/* 가격 줄 강조 */
-.menu-detail p:nth-child(2),
-.side-detail p:nth-child(2),
 .usage-detail p:nth-child(2) {
   margin-top: 25px;
   margin-bottom: 20px;
@@ -135,27 +63,6 @@ button {
 .side-grid p {
   margin: 8px 0;
   font-size: 1.05rem;
-}
-
-.menu-btn {
-  background-color: #f1f1f1;
-  color: #222;
-  border: 2px solid #ccc;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  font-weight: bold;
-  border-radius: 10px;
-  padding: 12px 22px;
-  margin: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.25s ease-in-out;
-}
-
-.menu-btn:hover {
-  background: #fffbe6;
-  background-color: #f5f5f5;
-  border-color: #888;
-  color: #000;
 }
 
 .active-menu {
@@ -229,54 +136,13 @@ footer {
   display: block;
   margin-bottom: 6px;
 }
-
-/* 지점명 */
-.footer-branches {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #fff;
-}
-
-.footer-branches a {
-  color: #fff;
-  text-decoration: underline;
-  transition: all 0.3s ease;
-}
-
-.footer-branches a:hover {
-  color: #ffb700;
-  text-shadow: 0 0 6px rgba(255, 183, 0, 0.6);
-}
-
-/* ===== 한국어 이용방법 & 코스별 이용팁 글씨색상 고정 ===== */
-#menuDetailBox p[data-lang="ko"],
-#sideDetailBox p[data-lang="ko"],
 #usageDetailBox p[data-lang="ko"],
 #courseTipBox p[data-lang="ko"] {
   color: #000 !important;  /* 항상 검정색 */
 }
-/* ===== 상세박스 전체 글씨색 통일 ===== */
-#menuDetailBox p[data-lang="en"],
-#sideDetailBox p[data-lang="en"],
 #usageDetailBox p[data-lang="en"],
-#courseTipBox p[data-lang="en"]{
+#courseTipBox p[data-lang="en"] {
   color: #000 !important;   /* 모든 상세박스 글씨를 검정색으로 */
-}
-
-/* ===== 한국식 쌈 & 가마솥뚜껑 버튼 한 줄 정렬 ===== */
-.menu-buttons.double-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-
-.menu-buttons.double-row div[data-lang] {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
 }
 
 /* ===== 가마솥 상세박스 디자인 개선 ===== */
@@ -296,13 +162,6 @@ footer {
   font-weight: 700;
 }
 
-/* 언어 선택 전엔 본문 숨기기 (히어로는 보이게) */
-.hidden-body section:not(.hero),
-.hidden-body footer {
-  display: none !important;
-}
-
-
 /* ============================= */
 /* 🔹 전체 페이지 페이드인 + 부드러운 등장 애니메이션 */
 /* ============================= */
@@ -310,20 +169,6 @@ footer {
 /* 초기 body 페이드인 */
 body.fade-in {
   animation: fadeInPage 0.6s ease-in-out forwards;
-}
-
-/* Hero, 메뉴, 이용방법, 사이드 등 섹션 자연 등장 */
-section, footer {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease-in-out;
-}
-
-/* 애니메이션 완료 후 */
-body.fade-in section,
-body.fade-in footer {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* 페이드인 키프레임 — opacity 만 움직인다.
@@ -334,9 +179,6 @@ body.fade-in footer {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
-.menu-detail,
-.side-detail,
 .usage-detail {
   position: relative;
   display: none;
@@ -360,31 +202,9 @@ body.fade-in footer {
   opacity: 0;
   transform: translateY(15px);
 }
-
-/* 카드가 표시될 때 */
-.menu-detail.show,
-.side-detail.show,
 .usage-detail.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* 닫기(X) 버튼 공통 스타일 */
-.detail-header {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.close-btn {
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #444;
-  transition: 0.3s;
-}
-
-.close-btn:hover {
-  color: #d50000; /* 진한 빨강 */
-  transform: scale(1.2);
 }
 
 /* ===== 상단~푸터 사이 영역(본문 섹션) 배경색 변경 ===== */
@@ -690,36 +510,15 @@ html { scroll-behavior: smooth; }
     margin: 10% auto;
     text-align: center;
   }
-
-  .menu-btn {
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  .menu-detail,
-  .side-detail,
-  .usage-detail {
+.usage-detail {
     font-size: 1rem;
     padding: 18px;
-  }
-
-  .menu-buttons {
-    flex-direction: column;
-    align-items: center;
   }
 
   /* ✅ 모바일에서 제목 더 크게 한 번 더 보정 */
   .menu h2,
   .usage h2 {
     font-size: 2.8rem;
-  }
-
-  .hero h1 {
-    font-size: 1.8em;
-  }
-
-  .hero p {
-    font-size: 1em;
   }
 
   /* ✅ 사이드메뉴 1열 */
@@ -838,74 +637,6 @@ body {
   }
 }
 
-.menu-buttons {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  justify-content: center !important;
-  margin-bottom: 25px;
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  align-items: center !important;
-  gap: 8px;
-}
-
-/* ✅ 모바일에서도 한 줄 유지되도록 조정 */
-@media (max-width: 768px) {
-  .menu-buttons {
-    flex-direction: row !important;
-    justify-content: center !important;
-    flex-wrap: nowrap !important;
-    gap: 8px;
-  }
-  .menu-buttons .menu-btn {
-    min-width: 95px !important;
-    padding: 8px 10px !important;
-    font-size: 1.2rem !important;
-  }
-}
-
-.menu-buttons.double-row .menu-btn {
-  min-width: 130px !important;
-  padding: 10px 20px !important;
-  font-size: 1.1rem !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0.5px;
-}
-
-/* ✅ 모바일용 (더 좁은 공간일 때 여백 자동 축소) */
-@media (max-width: 768px) {
-  .menu-buttons.double-row .menu-btn {
-    font-size: 1rem !important;
-    padding: 8px 16px !important;
-    min-width: 110px !important;
-  }
-}
-
-.menu-buttons .menu-btn {
-  flex: 1 1 0 !important;
-  min-width: 110px !important;
-  padding: 8px 10px !important;
-  font-size: clamp(0.85rem, 1.6vw, 1rem) !important;
-  white-space: normal !important;
-  box-sizing: border-box;
-  word-break: keep-all !important;
-  overflow: visible !important;
-  text-overflow: unset !important;
-  text-align: center !important;
-  flex-wrap: wrap !important;
-  max-width: 150px !important;
-  height: auto !important;
-  line-height: 1.3 !important;
-}
-
-/* ✅ 반응형(모바일): 버튼 폭 살짝 늘려서 여유 있게 */
-@media (max-width: 768px) {
-  .menu-buttons .menu-btn {
-    max-width: 140px !important;
-    font-size: clamp(0.8rem, 3vw, 0.95rem) !important;
-    padding: 6px 8px !important;
-  }
-}
-
 /* ============================= */
 /* 🔹 표시 상태 제어 (js/app.js 와 짝) */
 /* ============================= */
@@ -924,11 +655,7 @@ body {
 body.scroll-locked {
   overflow: hidden;
 }
-
-/* 닫기 버튼(×, ✕) — span 에서 button 으로 바뀌어 기본 버튼 스타일을 지운다.
-   (키보드 접근성을 위해 button 을 쓰되 모양은 기존 글리프 그대로) */
-.modal-content .close,
-.detail-header .close-btn {
+.modal-content .close {
   background: none;
   border: none;
   margin: 0;
@@ -1156,6 +883,7 @@ body.scroll-locked {
   flex: 0 1 auto;
   max-width: 40%;          /* 라틴 문자 가격줄("₩19,900 per person")은 여기서 두 줄로 접힌다 —
                                42% 는 제목 칸을 헤더 폭의 55% 밑으로 밀어냈다(측정: 54.8%) */
+  word-break: normal;   /* 320px 에서 일본어 가격이 40% 칸 밖으로 삐져나오지 않게 ([data-lang] 의 keep-all 해제) */
   text-align: end;
   font-weight: 700;
   color: #333;

@@ -1517,9 +1517,14 @@ import re
 P = 'style.css'
 src = open(P, encoding='utf-8').read()
 
-# 이 셀렉터로 시작하는 규칙은 더 이상 대상 요소가 없다
+# 선택자 "시작"이 이 이름들이면 죽은 선택자다 (대상 요소가 더 이상 없다)
 DEAD = re.compile(r'^(\.hero|\.hidden-body|\.menu-buttons|\.menu-btn|#menuDetailBox|#sideDetailBox|'
                   r'\.menu-detail|\.side-detail|\.footer-branches|\.detail-header|\.close-btn)')
+# 정확히 이 선택자 목록인 규칙은 통째로 지운다: 섹션 등장 전환 — body.fade-in 이 첫 페인트 전에 붙어
+# 한 번도 발동하지 않으면서 section/footer 에 transform 과 transition:all 만 남긴다.
+EXACT_DEAD = {'section, footer', 'body.fade-in section, body.fade-in footer'}
+
+removed = []
 
 def clean(css):
     mask = re.sub(r'/\*.*?\*/', lambda m: ' ' * len(m.group(0)), css, flags=re.S)
@@ -1537,28 +1542,36 @@ def clean(css):
             inner = clean(body)
             if inner.strip():
                 out += head + '{' + inner + '}'
+            else:
+                removed.append(sel + ' (빈 @블록)')
         else:
             parts = [s.strip() for s in sel.split(',') if s.strip()]
-            keep = [s for s in parts if not DEAD.match(s)]
-            if not keep:
-                pass                                   # 블록 통째 삭제 (앞 주석 포함)
-            elif len(keep) == len(parts):
-                out += css[i:k]                        # 그대로
+            if sel in EXACT_DEAD:
+                removed.append(sel)
             else:
-                out += '\n' + ',\n'.join(keep) + ' {' + body + '}'   # 죽은 셀렉터만 제거
+                keep = [s for s in parts if not DEAD.match(s)]
+                dead = [s for s in parts if DEAD.match(s)]
+                removed.extend(dead)
+                if not keep:
+                    pass                                   # 블록 통째 삭제 (앞 주석 포함)
+                elif len(keep) == len(parts):
+                    out += css[i:k]                        # 그대로
+                else:
+                    out += '\n' + ',\n'.join(keep) + ' {' + body + '}'   # 죽은 선택자만 제거
         i = k
     return out
 
 result = re.sub(r'\n{3,}', '\n\n', clean(src))
 open(P, 'w', encoding='utf-8').write(result)
 print('규칙 수:', src.count('{'), '→', result.count('{'))
+print('제거한 선택자', len(removed), '개:')
+for s in removed: print('  -', s)
 ```
 
 ```bash
 python3 /tmp/prune-css.py
-grep -nE '^(\.hero|\.hidden-body|\.menu-buttons|\.menu-btn|#menuDetailBox|#sideDetailBox|\.footer-branches)' style.css || echo "죽은 셀렉터 없음"
 ```
-Expected: `규칙 수: N → M` (M < N), 그리고 `죽은 셀렉터 없음`
+Expected: `규칙 수: N → M` (M < N), 그리고 제거한 선택자 목록이 전부 죽은 이름(`DEAD` 접두사)으로 시작하거나 `EXACT_DEAD` 두 규칙 중 하나, 또는 `(빈 @블록)`이어야 한다. 그 외 이름이 하나라도 보이면 즉시 중단하고 `git checkout style.css`.
 
 - [ ] **Step 3: 남아야 할 규칙 확인**
 
@@ -1566,6 +1579,17 @@ Expected: `규칙 수: N → M` (M < N), 그리고 `죽은 셀렉터 없음`
 grep -nE '^\.usage-detail|^#gamasotDetailBox|^#ssamDetailBox|^\.detail-header|^\.modal|^\[hidden\]|^\.store-info|^\.topbar|^\.course-card' style.css | head -20
 ```
 Expected: 각 셀렉터가 최소 한 줄씩 나온다 (접이식 박스·가마솥/쌈 배경·모달·매장 안내·새 레이아웃은 살아 있어야 한다)
+
+- [ ] **Step 3½: 반드시 살아야 할 규칙 표 + 가격 칸 word-break 추가**
+
+```bash
+for s in '^\.usage-detail \{' '^\.usage-detail\.show' '^\.usage-detail:hover' '^\.usage-detail p \{' '^#gamasotDetailBox' '^#ssamDetailBox' '^\.modal-content \.close' '^\.detail-box\.is-open' '^\[hidden\]' '^\.store-info' '^body\.fade-in \{' '^@keyframes fadeInPage' '^footer \{' '^\.topbar \{' '^\.course-card \{' '^\.acc-head \{'; do
+  c=$(grep -cE "$s" style.css); printf '%-32s %s\n' "$s" "$c"
+done
+```
+Expected: 전부 1 이상. `.usage-detail` 카드 룩(display:none·배경·테두리·padding·max-width·box-shadow·opacity/transform/transition)과 `.show`·`:hover`·`p`·768px 미디어 변형(`.menu-detail, .side-detail, .usage-detail { padding: 18px }` → `.usage-detail { padding: 18px }`으로 축소되어 있어야 함), `.modal-content .close`(죽은 `.detail-header .close-btn`과 묶여 있었음), `#gamasotDetailBox`/`#ssamDetailBox`/`.detail-box.is-open`/`[hidden]`/`.store-info`/`body.fade-in`/`@keyframes fadeInPage`/`footer`/QR 메뉴판 레이아웃 블록(`.topbar`/`.course-card`/`.acc-head`)이 대상.
+
+리뷰에서 넘어온 추가 1건: "QR 메뉴판 레이아웃" 블록의 `.course-price { … }` 안, `max-width` 다음 줄에 `word-break: normal;`을 추가한다 (320px 폭에서 일본어 등 가격 텍스트가 `[data-lang]`의 `keep-all` 상속으로 40% 칸 밖으로 삐져나오는 것을 막기 위함).
 
 - [ ] **Step 4: 전체 검사 재실행**
 
