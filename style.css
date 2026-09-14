@@ -135,7 +135,9 @@ button {
 .side-grid p {
   margin: 8px 0;
   font-size: 1.05rem;
-}.menu-btn {
+}
+
+.menu-btn {
   background-color: #f1f1f1;
   color: #222;
   border: 2px solid #ccc;
@@ -147,7 +149,9 @@ button {
   cursor: pointer;
   font-size: 1rem;
   transition: all 0.25s ease-in-out;
-}.menu-btn:hover {
+}
+
+.menu-btn:hover {
   background: #fffbe6;
   background-color: #f5f5f5;
   border-color: #888;
@@ -174,7 +178,9 @@ button {
   border: 2px solid #444;
   background-color: #e0e0e0;
   color: #000;
-}.modal-buttons button:hover {
+}
+
+.modal-buttons button:hover {
   background: #ddd;
   background-color: #f5f5f5;
   border-color: #888;
@@ -204,7 +210,9 @@ footer p {
   font-size: 1.3rem;  /* 기본 1rem → 1.3rem으로 확대 */
   font-weight: bold;  /* 굵게 강조 */
   letter-spacing: 0.5px; /* 글자 간격 살짝 띄워 안정감 */
-}footer {
+}
+
+footer {
   background: #d50000;
   color: #fff;
   padding: 25px 15px;
@@ -327,7 +335,9 @@ body.fade-in footer {
     opacity: 1;
     transform: translateY(0);
   }
-}.menu-detail,
+}
+
+.menu-detail,
 .side-detail,
 .usage-detail {
   position: relative;
@@ -415,7 +425,9 @@ body.fade-in footer {
   color: #ffb700; /* 제목 강조 */
   font-size: 1.3rem;
   text-shadow: 0 0 8px rgba(255, 183, 0, 0.7);
-}#gamasotDetailBox p {
+}
+
+#gamasotDetailBox p {
   color: #fff4d6;
   font-size: 1.15rem;
   line-height: 1.9;
@@ -486,11 +498,15 @@ body.fade-in footer {
 }
 #ssamDetailBox .close-btn:hover {
   transform: scale(1.2);
-}footer a {
+}
+
+footer a {
   color: #fff;
   text-decoration: underline;
   transition: all 0.3s ease;
-}footer a:hover {
+}
+
+footer a:hover {
   color: #ffeb3b;
   text-decoration-color: #ffeb3b;
   transform: scale(1.08);
@@ -536,7 +552,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     padding: 14px 8px;
   }
-}.modal {
+}
+
+.modal {
   display: none;
   position: fixed !important;
   z-index: 9999 !important;
@@ -557,7 +575,9 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center !important;
   padding: 16px;
   box-sizing: border-box;
-}.modal-content {
+}
+
+.modal-content {
   background: #f2f2f2;
   margin: 6% auto;
   padding: 16px 16px 20px;
@@ -570,17 +590,23 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
   overscroll-behavior: contain;
   touch-action: pan-y;
-}.drag-handle {
+}
+
+.drag-handle {
   width: 48px;
   height: 5px;
   border-radius: 999px;
   background: #ccc;
   margin: 6px auto 10px;
-}.modal-buttons {
+}
+
+.modal-buttons {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 10px !important;
-}.modal-buttons button {
+}
+
+.modal-buttons button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -616,12 +642,18 @@ h1, h2, h3, h4, h5, h6 {
   .modal-buttons button {
     font-size: 1rem !important;
   }
-}.modal-content::-webkit-scrollbar {
+}
+
+.modal-content::-webkit-scrollbar {
   width: 8px;
-}.modal-content::-webkit-scrollbar-thumb {
+}
+
+.modal-content::-webkit-scrollbar-thumb {
   background: #bbb;
   border-radius: 8px;
-}.modal-content::-webkit-scrollbar-track {
+}
+
+.modal-content::-webkit-scrollbar-track {
   background: transparent;
 }
 
@@ -701,7 +733,9 @@ html { scroll-behavior: smooth; }
   .usage-image img {
     max-width: 100%;
   }
-}body {
+}
+
+body {
   margin: 0;
   font-family: 'Pretendard', 'Noto Sans KR', 'Arial', sans-serif;
   background-color: #FFEDF0;
@@ -718,7 +752,9 @@ html { scroll-behavior: smooth; }
   text-align: center;
   word-break: keep-all;
   line-height: 1.7;
-}.menu-subtitle {
+}
+
+.menu-subtitle {
   display: block;
   font-size: 1.5rem;
   font-weight: 800;
@@ -728,7 +764,9 @@ html { scroll-behavior: smooth; }
   font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
   letter-spacing: 0.6px;
   margin-bottom: 6px;
-}.course-label {
+}
+
+.course-label {
   color: #c30000;
   font-weight: 600;
   font-size: 2rem;
@@ -739,7 +777,9 @@ html { scroll-behavior: smooth; }
   margin-right: 8px;
   display: inline-block;
   transform: rotate(-1.5deg);
-}.price {
+}
+
+.price {
   font-weight: 700;
   font-size: 1.2em;
   color: #d50000;
@@ -749,7 +789,9 @@ html { scroll-behavior: smooth; }
   display: inline-block;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.2);
   margin-left: 4px;
-}.small-note {
+}
+
+.small-note {
   font-size: 0.95rem;
   color: #555;
   font-weight: 500;
@@ -796,7 +838,9 @@ html { scroll-behavior: smooth; }
   .price {
     font-size: 0.95rem;
   }
-}.menu-buttons {
+}
+
+.menu-buttons {
   display: flex !important;
   flex-wrap: nowrap !important;
   justify-content: center !important;
@@ -819,7 +863,9 @@ html { scroll-behavior: smooth; }
     padding: 8px 10px !important;
     font-size: 1.2rem !important;
   }
-}.menu-buttons.double-row .menu-btn {
+}
+
+.menu-buttons.double-row .menu-btn {
   min-width: 130px !important;
   padding: 10px 20px !important;
   font-size: 1.1rem !important;
@@ -834,7 +880,9 @@ html { scroll-behavior: smooth; }
     padding: 8px 16px !important;
     min-width: 110px !important;
   }
-}.menu-buttons .menu-btn {
+}
+
+.menu-buttons .menu-btn {
   flex: 1 1 0 !important;
   min-width: 110px !important;
   padding: 8px 10px !important;
