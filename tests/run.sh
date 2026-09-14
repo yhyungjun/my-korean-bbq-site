@@ -19,6 +19,12 @@ case "$MODE" in
   *) echo "사용법: tests/run.sh [baseline|test]"; exit 2 ;;
 esac
 
+# bash 3.2(macOS 기본)에서는 빈 배열의 "${files[@]}" 확장이 set -u 에 걸리므로 이 가드가 필요하다
+if [ "$MODE" = test ]; then
+  files=(tests/browser/test-*.js)
+  if [ ${#files[@]} -eq 0 ]; then echo "검사 스크립트 없음 (tests/browser/test-*.js)"; exit 0; fi
+fi
+
 PORT=8080
 URL="http://127.0.0.1:$PORT/"
 STARTED_SERVER=""
@@ -44,6 +50,7 @@ AB=(agent-browser --session kbbq-test)
 cleanup() {
   "${AB[@]}" close >/dev/null 2>&1 || true
   if [ -n "$STARTED_SERVER" ]; then kill "$STARTED_SERVER" 2>/dev/null || true; fi
+  rm -f "${tmp:-}"
 }
 trap cleanup EXIT
 
@@ -82,15 +89,11 @@ assert len(d) == 104, f"항목 수 {len(d)} (기대 104)"
 assert not bad, f"비정상 항목: {bad[:5]}"
 print(f"기준선 검증 OK: {len(d)} 항목")
 PY
+    chmod 644 "$tmp"
     mv "$tmp" tests/baseline/content-text.json
     echo "기준선 저장: tests/baseline/content-text.json"
     ;;
   test)
-    files=(tests/browser/test-*.js)
-    if [ ${#files[@]} -eq 0 ]; then
-      echo "검사 스크립트 없음 (tests/browser/test-*.js)"
-      exit 0
-    fi
     PRE="const BASELINE = {};"
     if [ -f tests/baseline/content-text.json ]; then
       PRE="const BASELINE = $(cat tests/baseline/content-text.json);"

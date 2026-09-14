@@ -13,11 +13,6 @@ button {
 }
 
 /* 메뉴, 이용방법 섹션 */
-.menu {
-  padding: 40px 20px;
-  background: #f9f9f9;
-}
-
 .usage-detail.show {
   display: block;
   opacity: 1;
@@ -465,12 +460,6 @@ html { scroll-behavior: smooth; }
   .usage-detail {
     font-size: 1rem;
     padding: 18px;
-  }
-
-  /* ✅ 모바일에서 제목 더 크게 한 번 더 보정 */
-  .menu h2,
-  .usage h2 {
-    font-size: 2.8rem;
   }
 
   /* ✅ 이미지 크기 자동 조정 */
