@@ -65,21 +65,55 @@ Expected: `feat/qr-menu-ui`
 
 ```bash
 #!/usr/bin/env bash
-# 사용법:  tests/run.sh baseline   → 개편 전 텍스트 기준선 저장
+# 사용법:  tests/run.sh baseline   → 개편 전 텍스트 기준선 저장 (문구 변경이 의도된 경우에만!)
 #          tests/run.sh            → tests/browser/test-*.js 전부 실행
 # 환경변수 VIEWPORT_W / VIEWPORT_H (기본 390 x 844 = 모바일)
+#
+# 규칙
+# - 8080 에 서버가 이미 있으면 그대로 쓰되, 이 사이트가 맞는지 확인한다(아니면 중단).
+# - 이 스크립트가 직접 띄운 서버와 브라우저 세션(kbbq-test)은 끝날 때 정리한다.
+# - 검사 스크립트는 첫 방문 상태(저장 언어 없음, 언어 모달 열림)에서 시작한다.
+#   그래서 대부분의 검사는 첫 줄에서 언어 버튼을 클릭해 모달을 닫고 시작한다.
+# - 검사 스크립트는 문자열 "PASS…" 또는 "FAIL: 이유" 를 반환한다.
 set -euo pipefail
+shopt -s nullglob
 cd "$(dirname "$0")/.."
+
+MODE="${1:-test}"
+case "$MODE" in
+  baseline|test) ;;
+  *) echo "사용법: tests/run.sh [baseline|test]"; exit 2 ;;
+esac
 
 PORT=8080
 URL="http://127.0.0.1:$PORT/"
+STARTED_SERVER=""
 if ! lsof -nP -iTCP:$PORT -sTCP:LISTEN >/dev/null 2>&1; then
   python3 -m http.server "$PORT" --bind 127.0.0.1 >/dev/null 2>&1 &
-  sleep 1
+  STARTED_SERVER=$!
 fi
 
-AB="agent-browser --session kbbq-test"
-$AB set viewport "${VIEWPORT_W:-390}" "${VIEWPORT_H:-844}" >/dev/null
+# 이 사이트가 맞는지 확인 (최대 5초 대기)
+site_ok() { curl -fsS "$URL" 2>/dev/null | grep -q 'data-lang-code'; }
+for _ in 1 2 3 4 5 6 7 8 9 10; do
+  site_ok && break
+  sleep 0.5
+done
+if ! site_ok; then
+  echo "8080 에 이 사이트가 아닌 것이 떠 있거나 서버가 뜨지 않았습니다. 확인 후 다시 실행하세요."
+  [ -n "$STARTED_SERVER" ] && kill "$STARTED_SERVER" 2>/dev/null || true
+  exit 2
+fi
+
+AB=(agent-browser --session kbbq-test)
+
+cleanup() {
+  "${AB[@]}" close >/dev/null 2>&1 || true
+  if [ -n "$STARTED_SERVER" ]; then kill "$STARTED_SERVER" 2>/dev/null || true; fi
+}
+trap cleanup EXIT
+
+"${AB[@]}" set viewport "${VIEWPORT_W:-390}" "${VIEWPORT_H:-844}" >/dev/null
 
 # agent-browser eval 은 결과를 JSON 문자열로 감싼다. 안쪽 값만 꺼낸다.
 unwrap() {
@@ -93,29 +127,44 @@ print(v if isinstance(v, str) else json.dumps(v, ensure_ascii=False))'
 }
 
 fresh() {  # 저장된 언어를 지우고 첫 방문 상태로 다시 연다
-  $AB open "$URL" >/dev/null
-  $AB eval 'try{localStorage.clear()}catch(e){}; "ok"' >/dev/null
-  $AB open "$URL" >/dev/null
-  $AB wait --load networkidle >/dev/null
+  "${AB[@]}" open "$URL" >/dev/null
+  "${AB[@]}" eval 'try{localStorage.clear()}catch(e){}; "ok"' >/dev/null
+  "${AB[@]}" open "$URL" >/dev/null
+  "${AB[@]}" wait --load networkidle >/dev/null
 }
 
-case "${1:-test}" in
+case "$MODE" in
   baseline)
     mkdir -p tests/baseline
     fresh
-    $AB eval --stdin < tests/browser/capture-baseline.js | unwrap > tests/baseline/content-text.json
-    echo "기준선 저장: $(python3 -c 'import json; print(len(json.load(open("tests/baseline/content-text.json"))))') 항목"
+    tmp="$(mktemp)"
+    "${AB[@]}" eval --stdin < tests/browser/capture-baseline.js | unwrap > "$tmp"
+    # 검증 통과 전에는 기존 기준선을 건드리지 않는다
+    python3 - "$tmp" <<'PY'
+import json, sys
+d = json.load(open(sys.argv[1]))
+bad = [k for k, v in d.items() if not v or v == "(버튼 없음)" or "{{" in v]
+assert len(d) == 104, f"항목 수 {len(d)} (기대 104)"
+assert not bad, f"비정상 항목: {bad[:5]}"
+print(f"기준선 검증 OK: {len(d)} 항목")
+PY
+    mv "$tmp" tests/baseline/content-text.json
+    echo "기준선 저장: tests/baseline/content-text.json"
     ;;
   test)
+    files=(tests/browser/test-*.js)
+    if [ ${#files[@]} -eq 0 ]; then
+      echo "검사 스크립트 없음 (tests/browser/test-*.js)"
+      exit 0
+    fi
+    PRE="const BASELINE = {};"
     if [ -f tests/baseline/content-text.json ]; then
       PRE="const BASELINE = $(cat tests/baseline/content-text.json);"
-    else
-      PRE="const BASELINE = {};"
     fi
     fail=0
-    for f in tests/browser/test-*.js; do
+    for f in "${files[@]}"; do
       fresh
-      out=$( { echo "$PRE"; cat "$f"; } | $AB eval --stdin 2>&1 | unwrap )
+      out=$( { echo "$PRE"; cat "$f"; } | "${AB[@]}" eval --stdin 2>&1 | unwrap ) || true
       case "$out" in
         PASS*) echo "✅ $(basename "$f") — $out" ;;
         *)     echo "❌ $(basename "$f") — $out"; fail=1 ;;
@@ -123,7 +172,6 @@ case "${1:-test}" in
     done
     exit $fail
     ;;
-  *) echo "사용법: tests/run.sh [baseline|test]"; exit 2 ;;
 esac
 ```
 
@@ -141,11 +189,13 @@ esac
     document.querySelector(`[data-lang-code="${lang}"]`).click();
     for (const key of KEYS) {
       const btn = [...document.querySelectorAll(`[data-content="${key}"]`)].find((b) => b.offsetParent !== null);
-      if (!btn) { out[`${key}|${lang}`] = "(버튼 없음)"; continue; }
+      // 버튼이 안 보이면 본문이 숨김 상태라는 뜻 — 조용히 넘기지 말고 실패시킨다
+      if (!btn) throw new Error(`보이는 버튼 없음: ${key}|${lang}`);
       btn.click();
       const box = document.getElementById(btn.dataset.target);
       const p = box.querySelector(`p[data-lang="${lang}"]`).cloneNode(true);
-      // 사이드의 "사이드메뉴" 제목은 개편 후 섹션 제목으로 빠지므로 기준선에서도 뺀다
+      // 사이드의 "사이드메뉴" 제목은 개편 후 섹션 제목으로 빠지므로 기준선에서도 뺀다.
+      // 코스(A/B/F)의 제목은 개편 후에도 카드 안에 남으므로 그대로 둔다.
       if (key === "side") p.querySelector(".menu-subtitle")?.remove();
       out[`${key}|${lang}`] = norm(p.textContent);
     }
@@ -160,7 +210,7 @@ esac
 chmod +x tests/run.sh
 tests/run.sh baseline
 ```
-Expected: `기준선 저장: 104 항목`
+Expected: `기준선 검증 OK: 104 항목` + `기준선 저장: tests/baseline/content-text.json`
 
 - [ ] **Step 4: 기준선 내용 확인**
 
@@ -169,7 +219,7 @@ python3 -c "
 import json; d=json.load(open('tests/baseline/content-text.json'))
 print(d['courseA|ko'][:80]); print(d['side|ja'][:80]); print(sum(1 for v in d.values() if '{{' in v), '개 토큰 미치환')"
 ```
-Expected: 첫 줄에 `A돼지모듬 무한리필 1인 17,900원 돼지모듬 (삼겹살/…`, 둘째 줄 일본어 사이드(제목 없이 `咸興冷麺`으로 시작), 마지막 `0 개 토큰 미치환`
+Expected: 첫 줄에 `A돼지모듬 무한리필 1인 17,900원 돼지모듬(삼겹살/…`, 둘째 줄 일본어 사이드(제목 없이 `咸興冷麺`으로 시작), 마지막 `0 개 토큰 미치환`
 
 - [ ] **Step 5: 커밋**
 
