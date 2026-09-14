@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# 에디터 개인 설정 (launch.json 은 공용 디버그 설정이라 추적한다)
+.vscode/*
+!.vscode/launch.json
+
+# 로그 · 임시 파일
+*.log
+node_modules/

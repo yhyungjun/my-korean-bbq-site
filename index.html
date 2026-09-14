@@ -1,513 +1,442 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 대응 -->
-  <title>강남 돼지상회 무한리필 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Dancing+Script:wght@600&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <!-- ✅ BM Hanna 폰트 불러오기 -->
-  <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMHANNA_11yrs.woff" rel="stylesheet" as="font" type="font/woff" crossorigin>
-<style>
-  @font-face {
-    font-family: 'BM Hanna';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMHANNA_11yrs.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
- </style>
+  <title>강남 돼지상회 무한리필 | 돼지모듬 무한리필 · 13개 언어 메뉴</title>
+  <meta name="description" content="강남 돼지상회 무한리필 — 삼겹살·목살·가브리살 등 돼지모듬 무한리필 전문점. A/B/Full 코스와 사이드 메뉴, 이용방법을 13개 언어로 안내합니다.">
+  <link rel="canonical" href="https://koreanbbqstore.com/">
 
+  <!-- 공유 미리보기 (카카오톡 · 페이스북 · X) -->
+  <meta property="og:type" content="restaurant">
+  <meta property="og:site_name" content="강남 돼지상회 무한리필">
+  <meta property="og:title" content="강남 돼지상회 무한리필">
+  <meta property="og:description" content="강남 돼지상회 무한리필 — 삼겹살·목살·가브리살 등 돼지모듬 무한리필 전문점. A/B/Full 코스와 사이드 메뉴, 이용방법을 13개 언어로 안내합니다.">
+  <meta property="og:url" content="https://koreanbbqstore.com/">
+  <meta property="og:image" content="https://koreanbbqstore.com/images/logo.png">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- 🔹 Favicon (파비콘) -->
-  <!-- PNG 권장. 이미지가 images 폴더에 있을 때 -->
-  <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32">
-    <!-- (선택) 아이폰/안드로이드 홈화면용 -->
-  <link rel="icon" type="image/png" href="images/apple-icon-180x180.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "강남 돼지상회 무한리필",
+  "url": "https://koreanbbqstore.com/",
+  "image": "https://koreanbbqstore.com/images/logo.png",
+  "servesCuisine": [
+    "Korean BBQ",
+    "Korean"
+  ],
+  "priceRange": "₩₩",
+  "currenciesAccepted": "KRW",
+  "hasMenu": "https://koreanbbqstore.com/#menu"
+}
+  </script>
+
+  <!-- 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Dancing+Script:wght@600&family=Nanum+Brush+Script&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff" crossorigin
+        href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMHANNA_11yrs.woff">
+
+  <!-- 파비콘 -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/apple-icon-180x180.png">
-  <link rel="shortcut icon" href="images/apple-icon-180x180.png">
 
-    <!-- 🔹 PDF 메타(검색/대체 링크용) -->
-  <link rel="alternate" type="application/pdf" href="files/menu.pdf" title="Menu PDF">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Hero Section -->
+<!-- Hero -->
 <section class="hero">
   <div class="hero-title">
-    <img src="images/logo-transparent.png" alt="강남 돼지상회 로고" class="hero-logo-inline">
+    <img src="images/logo.png" alt="강남 돼지상회 로고" class="hero-logo-inline"
+         width="360" height="362" fetchpriority="high">
 
     <div class="hero-texts">
       <h1 data-lang="ko">강남 돼지상회 무한리필</h1>
-      <h1 data-lang="en" style="display:none;">Gangnam Porkstore Unlimited Refill</h1>
-      <h1 data-lang="zh" style="display:none;">江南猪肉商会 自助无限续</h1>
-      <h1 data-lang="ja" style="display:none;">江南 豚市場 無限リフィル</h1>
-      <h1 data-lang="vi" style="display:none;">Gangnam Thịt Heo Buffet Không Giới Hạn</h1>
-      <h1 data-lang="th" style="display:none;">ร้านหมูแกงนัม บุฟเฟต์ไม่อั้น</h1>
-      <h1 data-lang="ph" style="display:none;">Gangnam Porkstore Unlimited Refill</h1>
-      <h1 data-lang="fr" style="display:none;">Gangnam Boucherie Porkstore à volonté</h1>
-      <h1 data-lang="es" style="display:none;">Gangnam Mercado de Cerdo Buffet Libre</h1>
-      <h1 data-lang="pt" style="display:none;">Gangnam Mercado de Porco Rodízio</h1>
-      <h1 data-lang="ar" style="display:none;">سوق لحم الخنزير غانغنام - بوفيه مفتوح</h1>
-      <h1 data-lang="ru" style="display:none;">Гангнам Свиной рынок безлимитный буфет</h1>
-      <h1 data-lang="tr" style="display:none;">Gangnam Domuz Pazarı Sınırsız Büfe</h1>
+      <h1 data-lang="en" hidden>Gangnam Porkstore Unlimited Refill</h1>
+      <h1 data-lang="zh" hidden>江南猪肉商会 自助无限续</h1>
+      <h1 data-lang="ja" hidden>江南 豚市場 無限リフィル</h1>
+      <h1 data-lang="vi" hidden>Gangnam Thịt Heo Buffet Không Giới Hạn</h1>
+      <h1 data-lang="th" hidden>ร้านหมูแกงนัม บุฟเฟต์ไม่อั้น</h1>
+      <h1 data-lang="ph" hidden>Gangnam Porkstore Unlimited Refill</h1>
+      <h1 data-lang="fr" hidden>Gangnam Boucherie Porkstore à volonté</h1>
+      <h1 data-lang="es" hidden>Gangnam Mercado de Cerdo Buffet Libre</h1>
+      <h1 data-lang="pt" hidden>Gangnam Mercado de Porco Rodízio</h1>
+      <h1 data-lang="ar" hidden>سوق لحم الخنزير غانغنام - بوفيه مفتوح</h1>
+      <h1 data-lang="ru" hidden>Гангнам Свиной рынок безлимитный буфет</h1>
+      <h1 data-lang="tr" hidden>Gangnam Domuz Pazarı Sınırsız Büfe</h1>
 
       <p data-lang="ko">돼지상회는 사랑입니다. 눈치보지말고 맘껏먹자!</p>
-      <p data-lang="en" style="display:none;">Pig Market is love. Don’t hold back, eat as much as you want!</p>
-      <p data-lang="zh" style="display:none;">猪肉商会就是爱。不要拘束，尽情吃吧！</p>
-      <p data-lang="ja" style="display:none;">豚市場は愛です。気にせず思う存分食べよう！</p>
-      <p data-lang="vi" style="display:none;">Thịt Heo là tình yêu. Đừng ngại, hãy ăn thật no!</p>
-      <p data-lang="th" style="display:none;">ร้านหมูคือความรัก กินให้อิ่มไม่ต้องเกรงใจ!</p>
-      <p data-lang="ph" style="display:none;">Ang Pig Market ay pagmamahal. Kumain ka hanggang gusto mo!</p>
-      <p data-lang="fr" style="display:none;">La Boucherie Porc, c’est l’amour. Mange à volonté!</p>
-      <p data-lang="es" style="display:none;">El Mercado de Cerdo es amor. ¡Come todo lo que quieras!</p>
-      <p data-lang="pt" style="display:none;">O Mercado de Porco é amor. Coma à vontade!</p>
-      <p data-lang="ar" style="display:none;">سوق لحم الخنزير هو الحب. كل حتى تشبع!</p>
-      <p data-lang="ru" style="display:none;">Свиной рынок — это любовь. Ешь сколько хочешь!</p>
-      <p data-lang="tr" style="display:none;">Domuz Pazarı aşktır. Çekinme, istediğin kadar ye!</p>
+      <p data-lang="en" hidden>Pig Market is love. Don’t hold back, eat as much as you want!</p>
+      <p data-lang="zh" hidden>猪肉商会就是爱。不要拘束，尽情吃吧！</p>
+      <p data-lang="ja" hidden>豚市場は愛です。気にせず思う存分食べよう！</p>
+      <p data-lang="vi" hidden>Thịt Heo là tình yêu. Đừng ngại, hãy ăn thật no!</p>
+      <p data-lang="th" hidden>ร้านหมูคือความรัก กินให้อิ่มไม่ต้องเกรงใจ!</p>
+      <p data-lang="ph" hidden>Ang Pig Market ay pagmamahal. Kumain ka hanggang gusto mo!</p>
+      <p data-lang="fr" hidden>La Boucherie Porc, c’est l’amour. Mange à volonté!</p>
+      <p data-lang="es" hidden>El Mercado de Cerdo es amor. ¡Come todo lo que quieras!</p>
+      <p data-lang="pt" hidden>O Mercado de Porco é amor. Coma à vontade!</p>
+      <p data-lang="ar" hidden>سوق لحم الخنزير هو الحب. كل حتى تشبع!</p>
+      <p data-lang="ru" hidden>Свиной рынок — это любовь. Ешь сколько хочешь!</p>
+      <p data-lang="tr" hidden>Domuz Pazarı aşktır. Çekinme, istediğin kadar ye!</p>
     </div>
   </div>
 
-  <button class="menu-btn" onclick="openLangModal()">Change Language</button>
+  <button type="button" class="menu-btn" data-action="open-lang">Change Language</button>
 </section>
 
+<!-- 메뉴 소개 -->
+<section id="menu" class="menu">
+  <h2 data-lang="ko">메뉴 소개</h2>
+  <h2 data-lang="en" hidden>Menu</h2>
+  <h2 data-lang="zh" hidden>菜单</h2>
+  <h2 data-lang="ja" hidden>メニュー</h2>
+  <h2 data-lang="vi" hidden>Thực đơn</h2>
+  <h2 data-lang="th" hidden>เมนูอาหาร</h2>
+  <h2 data-lang="ph" hidden>Menu</h2>
+  <h2 data-lang="fr" hidden>Menu</h2>
+  <h2 data-lang="es" hidden>Menú</h2>
+  <h2 data-lang="pt" hidden>Cardápio</h2>
+  <h2 data-lang="ar" hidden>قائمة الطعام</h2>
+  <h2 data-lang="ru" hidden>Меню</h2>
+  <h2 data-lang="tr" hidden>Menü</h2>
 
+  <div class="menu-buttons">
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="ko"><span class="highlight-yellow">A</span>코스</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="en" hidden><span class="highlight-yellow">A</span> Course</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="zh" hidden><span class="highlight-yellow">A</span> 套餐</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="ja" hidden><span class="highlight-yellow">A</span> コース</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="vi" hidden>Suất <span class="highlight-yellow">A</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="th" hidden>ชุด <span class="highlight-yellow">A</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="ph" hidden><span class="highlight-yellow">A</span> Set</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="fr" hidden>Menu <span class="highlight-yellow">A</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="es" hidden>Menú <span class="highlight-yellow">A</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="pt" hidden>Curso <span class="highlight-yellow">A</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="ar" hidden>الوجبة <span class="highlight-yellow">A</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="ru" hidden>Курс <span class="highlight-yellow">A</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseA" data-lang="tr" hidden><span class="highlight-yellow">A</span> Kursu</button>
 
-  <!-- 메뉴 소개 -->
-  <section id="menu" class="menu">
-    <h2 data-lang="ko">메뉴 소개</h2>
-    <h2 data-lang="en" style="display:none;">Menu</h2>
-    <h2 data-lang="zh" style="display:none;">菜单</h2>
-    <h2 data-lang="ja" style="display:none;">メニュー</h2>
-    <h2 data-lang="vi" style="display:none;">Thực đơn</h2>
-    <h2 data-lang="th" style="display:none;">เมนูอาหาร</h2>
-    <h2 data-lang="ph" style="display:none;">Menu</h2>
-    <h2 data-lang="fr" style="display:none;">Menu</h2>
-    <h2 data-lang="es" style="display:none;">Menú</h2>
-    <h2 data-lang="pt" style="display:none;">Cardápio</h2>
-    <h2 data-lang="ar" style="display:none;">قائمة الطعام</h2>
-    <h2 data-lang="ru" style="display:none;">Меню</h2>
-    <h2 data-lang="tr" style="display:none;">Menü</h2>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="ko"><span class="highlight-yellow">B</span>코스</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="en" hidden><span class="highlight-yellow">B</span> Course</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="zh" hidden><span class="highlight-yellow">B</span> 套餐</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="ja" hidden><span class="highlight-yellow">B</span> コース</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="vi" hidden>Suất <span class="highlight-yellow">B</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="th" hidden>ชุด <span class="highlight-yellow">B</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="ph" hidden><span class="highlight-yellow">B</span> Set</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="fr" hidden>Menu <span class="highlight-yellow">B</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="es" hidden>Menú <span class="highlight-yellow">B</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="pt" hidden>Curso <span class="highlight-yellow">B</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="ar" hidden>الوجبة <span class="highlight-yellow">B</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="ru" hidden>Курс <span class="highlight-yellow">B</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseB" data-lang="tr" hidden><span class="highlight-yellow">B</span> Kursu</button>
 
-    <!-- 메뉴 버튼 -->
-    <div class="menu-buttons">
-      <!-- A코스 -->
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="ko"><span class="highlight-yellow">A</span>코스</button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="en" style="display:none;"><span class="highlight-yellow">A</span> Course</button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="zh" style="display:none;"><span class="highlight-yellow">A</span> 套餐</button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="ja" style="display:none;"><span class="highlight-yellow">A</span> コース</button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="vi" style="display:none;">Suất <span class="highlight-yellow">A</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="th" style="display:none;">ชุด <span class="highlight-yellow">A</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="ph" style="display:none;"><span class="highlight-yellow">A</span> Set</button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="fr" style="display:none;">Menu <span class="highlight-yellow">A</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="es" style="display:none;">Menú <span class="highlight-yellow">A</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="pt" style="display:none;">Curso <span class="highlight-yellow">A</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="ar" style="display:none;">الوجبة <span class="highlight-yellow">A</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="ru" style="display:none;">Курс <span class="highlight-yellow">A</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('A')" data-lang="tr" style="display:none;"><span class="highlight-yellow">A</span> Kursu</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="ko"><span class="highlight-yellow">Full</span> 코스</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="en" hidden><span class="highlight-yellow">Full</span> Course</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="zh" hidden><span class="highlight-yellow">全</span> 套餐</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="ja" hidden><span class="highlight-yellow">フル</span> コース</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="vi" hidden>Suất <span class="highlight-yellow">Full</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="th" hidden>ชุด <span class="highlight-yellow">Full</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="ph" hidden><span class="highlight-yellow">Full</span> Set</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="fr" hidden>Formule <span class="highlight-yellow">complète</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="es" hidden>Curso <span class="highlight-yellow">Completo</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="pt" hidden>Curso <span class="highlight-yellow">Completo</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="ar" hidden>وجبة <span class="highlight-yellow">كاملة</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="ru" hidden>Полный <span class="highlight-yellow">курс</span></button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="menuDetailBox" data-content="courseF" data-lang="tr" hidden><span class="highlight-yellow">Tam</span> Kurs</button>
+  </div>
 
-     <!-- B코스 -->
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="ko"><span class="highlight-yellow">B</span>코스</button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="en" style="display:none;"><span class="highlight-yellow">B</span> Course</button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="zh" style="display:none;"><span class="highlight-yellow">B</span> 套餐</button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="ja" style="display:none;"><span class="highlight-yellow">B</span> コース</button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="vi" style="display:none;">Suất <span class="highlight-yellow">B</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="th" style="display:none;">ชุด <span class="highlight-yellow">B</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="ph" style="display:none;"><span class="highlight-yellow">B</span> Set</button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="fr" style="display:none;">Menu <span class="highlight-yellow">B</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="es" style="display:none;">Menú <span class="highlight-yellow">B</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="pt" style="display:none;">Curso <span class="highlight-yellow">B</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="ar" style="display:none;">الوجبة <span class="highlight-yellow">B</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="ru" style="display:none;">Курс <span class="highlight-yellow">B</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('B')" data-lang="tr" style="display:none;"><span class="highlight-yellow">B</span> Kursu</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="ko">사이드 메뉴</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="en" hidden>Side Menu</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="zh" hidden>小菜菜单</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="ja" hidden>サイドメニュー</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="vi" hidden>Món phụ</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="th" hidden>เมนูเครื่องเคียง</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="ph" hidden>Side Menu</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="fr" hidden>Menu d'accompagnement</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="es" hidden>Menú lateral</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="pt" hidden>Menu lateral</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="ar" hidden>قائمة جانبية</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="ru" hidden>Сайд-меню</button>
+  <button type="button" class="menu-btn" data-action="detail" data-target="sideDetailBox" data-content="side" data-lang="tr" hidden>Yan Menü</button>
 
-     <!-- Full 코스 -->
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="ko"><span class="highlight-yellow">Full</span> 코스</button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="en" style="display:none;"><span class="highlight-yellow">Full</span> Course</button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="zh" style="display:none;"><span class="highlight-yellow">全</span> 套餐</button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="ja" style="display:none;"><span class="highlight-yellow">フル</span> コース</button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="vi" style="display:none;">Suất <span class="highlight-yellow">Full</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="th" style="display:none;">ชุด <span class="highlight-yellow">Full</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="ph" style="display:none;"><span class="highlight-yellow">Full</span> Set</button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="fr" style="display:none;">Formule <span class="highlight-yellow">complète</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="es" style="display:none;">Curso <span class="highlight-yellow">Completo</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="pt" style="display:none;">Curso <span class="highlight-yellow">Completo</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="ar" style="display:none;">وجبة <span class="highlight-yellow">كاملة</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="ru" style="display:none;">Полный <span class="highlight-yellow">курс</span></button>
-     <button class="menu-btn" onclick="showMenuDetail('F')" data-lang="tr" style="display:none;"><span class="highlight-yellow">Tam</span> Kurs</button>
-    </div>
+  <div id="menuDetailBox" class="menu-detail detail-box" hidden></div>
+  <div id="sideDetailBox" class="menu-detail detail-box" hidden></div>
+</section>
 
-      <!-- 사이드 메뉴 -->
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="ko">사이드 메뉴</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="en" style="display:none;">Side Menu</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="zh" style="display:none;">小菜菜单</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="ja" style="display:none;">サイドメニュー</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="vi" style="display:none;">Món phụ</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="th" style="display:none;">เมนูเครื่องเคียง</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="ph" style="display:none;">Side Menu</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="fr" style="display:none;">Menu d'accompagnement</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="es" style="display:none;">Menú lateral</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="pt" style="display:none;">Menu lateral</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="ar" style="display:none;">قائمة جانبية</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="ru" style="display:none;">Сайд-меню</button>
-      <button class="menu-btn" onclick="showSideDetail()" data-lang="tr" style="display:none;">Yan Menü</button>
-    </div>
-
-    <!-- 상세 설명 박스 -->
-    <div id="menuDetailBox" class="menu-detail" style="display:none;"></div>
-    <div id="sideDetailBox" class="menu-detail" style="display:none;"></div>
-  </section>
-
-<!-- 이용방법 섹션 -->
+<!-- 이용방법 -->
 <section id="usage" class="menu">
   <h2 data-lang="ko">이용방법</h2>
-  <h2 data-lang="en" style="display:none;">How to Use</h2>
-  <h2 data-lang="zh" style="display:none;">使用方法</h2>
-  <h2 data-lang="ja" style="display:none;">利用方法</h2>
-  <h2 data-lang="vi" style="display:none;">Cách sử dụng</h2>
-  <h2 data-lang="th" style="display:none;">วิธีการใช้งาน</h2>
-  <h2 data-lang="ph" style="display:none;">Paraan ng Paggamit</h2>
-  <h2 data-lang="fr" style="display:none;">Comment utiliser</h2>
-  <h2 data-lang="es" style="display:none;">Cómo usar</h2>
-  <h2 data-lang="pt" style="display:none;">Como usar</h2>
-  <h2 data-lang="ar" style="display:none;">طريقة الاستخدام</h2>
-  <h2 data-lang="ru" style="display:none;">Как использовать</h2>
-  <h2 data-lang="tr" style="display:none;">Nasıl kullanılır</h2>
+  <h2 data-lang="en" hidden>How to Use</h2>
+  <h2 data-lang="zh" hidden>使用方法</h2>
+  <h2 data-lang="ja" hidden>利用方法</h2>
+  <h2 data-lang="vi" hidden>Cách sử dụng</h2>
+  <h2 data-lang="th" hidden>วิธีการใช้งาน</h2>
+  <h2 data-lang="ph" hidden>Paraan ng Paggamit</h2>
+  <h2 data-lang="fr" hidden>Comment utiliser</h2>
+  <h2 data-lang="es" hidden>Cómo usar</h2>
+  <h2 data-lang="pt" hidden>Como usar</h2>
+  <h2 data-lang="ar" hidden>طريقة الاستخدام</h2>
+  <h2 data-lang="ru" hidden>Как использовать</h2>
+  <h2 data-lang="tr" hidden>Nasıl kullanılır</h2>
 
-    <!-- 한국어 -->
+  <div data-lang="ko">
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">이용방법</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">코스별 이용팁</button>
+  </div>
+  <div data-lang="en" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">Usage</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">Course Tips</button>
+  </div>
+  <div data-lang="zh" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">使用</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">各套餐使用提示</button>
+  </div>
+  <div data-lang="ja" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">利用</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">コース別利用ヒント</button>
+  </div>
+  <div data-lang="vi" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">Sử dụng</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">Mẹo theo suất</button>
+  </div>
+  <div data-lang="th" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">วิธีการใช้งาน</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">เคล็ดลับแต่ละคอร์ส</button>
+  </div>
+  <div data-lang="ph" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">Paraan ng Paggamit</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">Mga Tip sa Bawat Set</button>
+  </div>
+  <div data-lang="fr" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">Utiliser</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">Astuces par formule</button>
+  </div>
+  <div data-lang="es" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">Usar</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">Consejos por curso</button>
+  </div>
+  <div data-lang="pt" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">Usar</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">Dicas por curso</button>
+  </div>
+  <div data-lang="ar" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">الاستخدام</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">نصائح لكل قائمة</button>
+  </div>
+  <div data-lang="ru" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">Использовать</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">Советы по курсам</button>
+  </div>
+  <div data-lang="tr" hidden>
+    <button type="button" class="menu-btn" data-action="detail" data-target="usageDetailBox" data-content="usage">Kullan</button>
+    <button type="button" class="menu-btn" data-action="detail" data-target="courseTipBox" data-content="tips">Kurs İpuçları</button>
+  </div>
+
+  <div id="usageDetailBox" class="usage-detail detail-box" hidden></div>
+  <div id="courseTipBox" class="usage-detail detail-box" hidden></div>
+</section>
+
+<!-- 가마솥 & 한국식 쌈 -->
+<section id="ssam" class="menu">
+  <div class="menu-buttons double-row">
     <div data-lang="ko">
-      <button class="menu-btn" onclick="showUsageDetail()">이용방법</button>
-      <button class="menu-btn" onclick="showCourseTips()">코스별 이용팁</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">가마솥 유래</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">한국식 쌈</button>
     </div>
-
-    <!-- English -->
-    <div data-lang="en" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">Usage</button>
-      <button class="menu-btn" onclick="showCourseTips()">Course Tips</button>
+    <div data-lang="en" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">Origins of the Iron Pot Lid</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">Korean Wrap</button>
     </div>
-
-    <!-- 中文 -->
-    <div data-lang="zh" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">使用</button>
-      <button class="menu-btn" onclick="showCourseTips()">各套餐使用提示</button>
+    <div data-lang="zh" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">铁釜锅盖的由来与特点</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">韩式包饭</button>
     </div>
-
-    <!-- 日本語 -->
-    <div data-lang="ja" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">利用</button>
-      <button class="menu-btn" onclick="showCourseTips()">コース別利用ヒント</button>
+    <div data-lang="ja" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">釜蓋（かまぶた）の由来と特徴</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">韓国式サム</button>
     </div>
-
-    <!-- Tiếng Việt -->
-    <div data-lang="vi" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">Sử dụng</button>
-      <button class="menu-btn" onclick="showCourseTips()">Mẹo theo suất</button>
+    <div data-lang="vi" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">Nắp nồi gang — nguồn gốc và đặc điểm</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">Gói kiểu Hàn</button>
     </div>
-
-    <div data-lang="th" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">วิธีการใช้งาน</button>
-      <button class="menu-btn" onclick="showCourseTips()">เคล็ดลับแต่ละคอร์ส</button>
+    <div data-lang="th" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">ที่มาของหม้อเหล็ก (กามาซ็อต)</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">ห่อแบบเกาหลี</button>
     </div>
-
-    <div data-lang="ph" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">Paraan ng Paggamit</button>
-      <button class="menu-btn" onclick="showCourseTips()">Mga Tip sa Bawat Set</button>
+    <div data-lang="ph" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">Pinagmulan ng “Gamasot” (Iron Pot)</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">Korean Style Wrap</button>
     </div>
-
-    <!-- Français -->
-    <div data-lang="fr" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">Utiliser</button>
-      <button class="menu-btn" onclick="showCourseTips()">Astuces par formule</button>
+    <div data-lang="fr" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">Couvercle en fonte — origine et caractéristiques</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">Wrap coréen</button>
     </div>
-
-    <!-- Español -->
-    <div data-lang="es" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">Usar</button>
-      <button class="menu-btn" onclick="showCourseTips()">Consejos por curso</button>
+    <div data-lang="es" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">Tapa de olla de hierro — origen</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">Envoltura coreana</button>
     </div>
-
-    <!-- Português -->
-    <div data-lang="pt" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">Usar</button>
-      <button class="menu-btn" onclick="showCourseTips()">Dicas por curso</button>
+    <div data-lang="pt" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">Tampa de panela de ferro — origem</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">Enrolado coreano</button>
     </div>
-
-    <!-- العربية -->
-    <div data-lang="ar" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">الاستخدام</button>
-      <button class="menu-btn" onclick="showCourseTips()">نصائح لكل قائمة</button>
+    <div data-lang="ar" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">غطاء قدر الحديد — الأصل والميزات</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">اللف الكوري</button>
     </div>
-
-    <!-- Русский -->
-    <div data-lang="ru" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">Использовать</button>
-      <button class="menu-btn" onclick="showCourseTips()">Советы по курсам</button>
+    <div data-lang="ru" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">Крышка чугунного котла — происхождение и особенности</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">Корейский сам</button>
     </div>
-
-    <!-- Türkçe -->
-    <div data-lang="tr" style="display:none;">
-      <button class="menu-btn" onclick="showUsageDetail()">Kullan</button>
-      <button class="menu-btn" onclick="showCourseTips()">Kurs İpuçları</button>
+    <div data-lang="tr" hidden>
+      <button type="button" class="menu-btn" data-action="detail" data-target="gamasotDetailBox" data-content="gamasot">Dökme demir kapak - köken ve özellikler</button>
+      <button type="button" class="menu-btn" data-action="detail" data-target="ssamDetailBox" data-content="ssam">Kore tarzı sarma</button>
     </div>
   </div>
 
-  <!-- 상세박스들 -->
-  <div id="usageDetailBox" class="usage-detail"></div>
-  <div id="courseTipBox" class="usage-detail"></div>
+  <div id="gamasotDetailBox" class="usage-detail detail-box" hidden></div>
+  <div id="ssamDetailBox" class="usage-detail detail-box" hidden></div>
 </section>
 
-  <!-- ===== 한국식 쌈 & 가마솥뚜껑 섹션 ===== -->
-  <section id="ssam" class="menu">
-    <div class="menu-buttons double-row">
-      <div data-lang="ko">
-        <button class="menu-btn" onclick="showGamasotDetail()">가마솥 유래</button>
-        <button class="menu-btn" onclick="showSsamDetail()">한국식 쌈</button>
-      </div>
-
-      <div data-lang="en" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">Origins of the Iron Pot Lid</button>
-        <button class="menu-btn" onclick="showSsamDetail()">Korean Wrap</button>
-      </div>
-
-      <div data-lang="zh" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">铁釜锅盖的由来与特点</button>
-        <button class="menu-btn" onclick="showSsamDetail()">韩式包饭</button>
-      </div>
-
-      <div data-lang="ja" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">釜蓋（かまぶた）の由来と特徴</button>
-        <button class="menu-btn" onclick="showSsamDetail()">韓国式サム</button>
-      </div>
-
-      <div data-lang="vi" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">Nắp nồi gang — nguồn gốc và đặc điểm</button>
-        <button class="menu-btn" onclick="showSsamDetail()">Gói kiểu Hàn</button>
-      </div>
-
-      <div data-lang="th" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">ที่มาของหม้อเหล็ก (กามาซ็อต)</button>
-        <button class="menu-btn" onclick="showSsamDetail()">ห่อแบบเกาหลี</button>
-      </div>
-
-      <div data-lang="ph" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">Pinagmulan ng “Gamasot” (Iron Pot)</button>
-        <button class="menu-btn" onclick="showSsamDetail()">Korean Style Wrap</button>
-      </div> 
-
-      <div data-lang="fr" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">Couvercle en fonte — origine et caractéristiques</button>
-        <button class="menu-btn" onclick="showSsamDetail()">Wrap coréen</button>
-      </div>
-
-      <div data-lang="es" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">Tapa de olla de hierro — origen</button>
-        <button class="menu-btn" onclick="showSsamDetail()">Envoltura coreana</button>
-      </div>
-
-      <div data-lang="pt" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">Tampa de panela de ferro — origem</button>
-        <button class="menu-btn" onclick="showSsamDetail()">Enrolado coreano</button>
-      </div>
-
-      <div data-lang="ar" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">غطاء قدر الحديد — الأصل والميزات</button>
-        <button class="menu-btn" onclick="showSsamDetail()">اللف الكوري</button>
-      </div>
-
-      <div data-lang="ru" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">Крышка чугунного котла — происхождение и особенности</button>
-        <button class="menu-btn" onclick="showSsamDetail()">Корейский сам</button>
-      </div>
-
-      <div data-lang="tr" style="display:none;">
-        <button class="menu-btn" onclick="showGamasotDetail()">Dökme demir kapak - köken ve özellikler</button>
-        <button class="menu-btn" onclick="showSsamDetail()">Kore tarzı sarma</button>
-      </div>
-    </div>
-
-    <!-- 상세박스 2개 -->
-    <div id="gamasotDetailBox" class="usage-detail"></div>
-    <div id="ssamDetailBox" class="usage-detail"></div>
-  </section>
-
 <footer>
-  <!-- 🇰🇷 한국어 -->
   <p data-lang="ko">
     <span class="footer-brand">© 강남 돼지상회 무한리필</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=돼지상회+강남역" target="_blank">강남본점</a> /
-      <a href="https://www.google.com/search?q=돼지상회+홍대" target="_blank">홍대직영점</a> /
-      <a href="https://www.google.com/search?q=돼지상회+명동" target="_blank">명동직영점</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=돼지상회+강남역" target="_blank" rel="noopener noreferrer">강남본점</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=돼지상회+홍대" target="_blank" rel="noopener noreferrer">홍대직영점</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=돼지상회+명동" target="_blank" rel="noopener noreferrer">명동직영점</a>
     </span>
   </p>
-
-    <!-- 🇺🇸 English -->
-  <p data-lang="en" style="display:none;">
+  <p data-lang="en" hidden>
     <span class="footer-brand">© Gangnam Pig Market Unlimited Refill</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">Gangnam Main Branch</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">Hongdae Direct Branch</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">Myeongdong Direct Branch</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">Gangnam Main Branch</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">Hongdae Direct Branch</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">Myeongdong Direct Branch</a>
     </span>
   </p>
-  
-  <!-- 🇨🇳 中文 -->
-  <p data-lang="zh" style="display:none;">
+  <p data-lang="zh" hidden>
     <span class="footer-brand">© 江南猪肉商会 自助无限续</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=猪肉商会+江南" target="_blank">江南总店</a> /
-      <a href="https://www.google.com/search?q=猪肉商会+弘大" target="_blank">弘大直营店</a> /
-      <a href="https://www.google.com/search?q=猪肉商会+明洞" target="_blank">明洞直营店</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=猪肉商会+江南" target="_blank" rel="noopener noreferrer">江南总店</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=猪肉商会+弘大" target="_blank" rel="noopener noreferrer">弘大直营店</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=猪肉商会+明洞" target="_blank" rel="noopener noreferrer">明洞直营店</a>
     </span>
   </p>
-
-  <!-- 🇯🇵 日本語 -->
-  <p data-lang="ja" style="display:none;">
+  <p data-lang="ja" hidden>
     <span class="footer-brand">© 江南 豚市場 無限リフィル</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">江南本店</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">弘大直営店</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">明洞直営店</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">江南本店</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">弘大直営店</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">明洞直営店</a>
     </span>
   </p>
-
-  <!-- 🇻🇳 Tiếng Việt -->
-  <p data-lang="vi" style="display:none;">
+  <p data-lang="vi" hidden>
     <span class="footer-brand">© Gangnam Thịt Heo Buffet Không Giới Hạn</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">Chi nhánh Gangnam</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">Chi nhánh Hongdae</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">Chi nhánh Myeongdong</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">Chi nhánh Gangnam</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">Chi nhánh Hongdae</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">Chi nhánh Myeongdong</a>
     </span>
   </p>
-
-  <!-- 🇹🇭 ไทย -->
-  <p data-lang="th" style="display:none;">
+  <p data-lang="th" hidden>
     <span class="footer-brand">© Gangnam Pig Market บุฟเฟ่ต์หมูไม่อั้น</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">สาขากังนัม</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">สาขาฮงแด</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">สาขามยองดง</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">สาขากังนัม</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">สาขาฮงแด</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">สาขามยองดง</a>
     </span>
   </p>
-
-  <!-- 🇵🇭 Filipino -->
-  <p data-lang="ph" style="display:none;">
+  <p data-lang="ph" hidden>
     <span class="footer-brand">© Gangnam Pig Market Unlimited Refill</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">Gangnam Main Branch</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">Hongdae Branch</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">Myeongdong Branch</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">Gangnam Main Branch</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">Hongdae Branch</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">Myeongdong Branch</a>
     </span>
   </p>
-
-  <!-- 🇫🇷 Français -->
-  <p data-lang="fr" style="display:none;">
+  <p data-lang="fr" hidden>
     <span class="footer-brand">© Gangnam Boucherie Porc Buffet à volonté</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">Succursale de Gangnam</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">Succursale de Hongdae</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">Succursale de Myeongdong</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">Succursale de Gangnam</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">Succursale de Hongdae</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">Succursale de Myeongdong</a>
     </span>
   </p>
-
-  <!-- 🇪🇸 Español -->
-  <p data-lang="es" style="display:none;">
+  <p data-lang="es" hidden>
     <span class="footer-brand">© Mercado de Cerdo Gangnam Buffet Libre</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">Sucursal Gangnam</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">Sucursal Hongdae</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">Sucursal Myeongdong</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">Sucursal Gangnam</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">Sucursal Hongdae</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">Sucursal Myeongdong</a>
     </span>
   </p>
-
-  <!-- 🇵🇹 Português -->
-  <p data-lang="pt" style="display:none;">
+  <p data-lang="pt" hidden>
     <span class="footer-brand">© Gangnam Mercado de Porco Rodízio</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">Filial Gangnam</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">Filial Hongdae</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">Filial Myeongdong</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">Filial Gangnam</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">Filial Hongdae</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">Filial Myeongdong</a>
     </span>
   </p>
-
-  <!-- 🇸🇦 العربية -->
-  <p data-lang="ar" style="display:none; direction: rtl;">
+  <p data-lang="ar" dir="rtl" hidden>
     <span class="footer-brand">© سوق لحم الخنزير غانغنام بوفيه مفتوح</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">فرع غانغنام</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">فرع هونغدي</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">فرع ميونغ دونغ</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">فرع غانغنام</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">فرع هونغدي</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">فرع ميونغ دونغ</a>
     </span>
   </p>
-
-  <!-- 🇷🇺 Русский -->
-  <p data-lang="ru" style="display:none;">
+  <p data-lang="ru" hidden>
     <span class="footer-brand">© Ресторан свинины Гангнам безлимит</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">Филиал Каннам</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">Филиал Хондэ</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">Филиал Мёндон</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">Филиал Каннам</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">Филиал Хондэ</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">Филиал Мёндон</a>
     </span>
   </p>
-
-  <!-- 🇹🇷 Türkçe -->
-  <p data-lang="tr" style="display:none;">
+  <p data-lang="tr" hidden>
     <span class="footer-brand">© Gangnam Domuz Pazarı Sınırsız Büfe</span><br>
     <span class="footer-branches">
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Gangnam" target="_blank">Gangnam Ana Şube</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Hongdae" target="_blank">Hongdae Şubesi</a> /
-      <a href="https://www.google.com/search?q=Gangnam+Pig+Market+Myeongdong" target="_blank">Myeongdong Şubesi</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Gangnam" target="_blank" rel="noopener noreferrer">Gangnam Ana Şube</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Hongdae" target="_blank" rel="noopener noreferrer">Hongdae Şubesi</a> /
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gangnam+Pig+Market+Myeongdong" target="_blank" rel="noopener noreferrer">Myeongdong Şubesi</a>
     </span>
   </p>
 </footer>
 
+<!-- 언어 선택 -->
+<div id="langModal" class="modal" role="dialog" aria-modal="true"
+     aria-labelledby="langModalTitle" hidden>
+  <div class="modal-content">
+    <div class="drag-handle" aria-hidden="true"></div>
 
-  <!-- 언어 선택 모달 -->
-  <div id="langModal" class="modal">
-    <div class="modal-content">
-          <!-- ✅ 드래그 핸들 -->
-      <div class="drag-handle" aria-hidden="true"></div>
+    <button type="button" class="close" data-action="close-lang" aria-label="Close">&times;</button>
+    <h2 class="lang-title" id="langModalTitle">Choose your language</h2>
 
-      <span class="close" onclick="closeLangModal()">&times;</span>
-      <h2 class="lang-title">Choose your language</h2>
-      <div class="modal-buttons">
-        <button onclick="setLang('ko')">🇰🇷 한국어</button>
-        <button onclick="setLang('en')">🇺🇸 English</button>
-        <button onclick="setLang('zh')">🇨🇳 中文</button>
-        <button onclick="setLang('ja')">🇯🇵 日本語</button>
-        <button onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
-        <button onclick="setLang('th')">🇹🇭 ไทย</button>
-        <button onclick="setLang('ph')">🇵🇭 Filipino</button>
-        <button onclick="setLang('fr')">🇫🇷 Français</button>
-        <button onclick="setLang('es')">🇪🇸 Español</button>
-        <button onclick="setLang('pt')">🇵🇹 Português</button>
-        <button onclick="setLang('ar')">🇸🇦 العربية</button>
-        <button onclick="setLang('ru')">🇷🇺 Русский</button>
-        <button onclick="setLang('tr')">🇹🇷 Türkçe</button>
-      </div>
+    <div class="modal-buttons">
+          <button type="button" data-action="lang" data-lang-code="ko" aria-pressed="true">🇰🇷 한국어</button>
+          <button type="button" data-action="lang" data-lang-code="en" aria-pressed="false">🇺🇸 English</button>
+          <button type="button" data-action="lang" data-lang-code="zh" aria-pressed="false">🇨🇳 中文</button>
+          <button type="button" data-action="lang" data-lang-code="ja" aria-pressed="false">🇯🇵 日本語</button>
+          <button type="button" data-action="lang" data-lang-code="vi" aria-pressed="false">🇻🇳 Tiếng Việt</button>
+          <button type="button" data-action="lang" data-lang-code="th" aria-pressed="false">🇹🇭 ไทย</button>
+          <button type="button" data-action="lang" data-lang-code="ph" aria-pressed="false">🇵🇭 Filipino</button>
+          <button type="button" data-action="lang" data-lang-code="fr" aria-pressed="false">🇫🇷 Français</button>
+          <button type="button" data-action="lang" data-lang-code="es" aria-pressed="false">🇪🇸 Español</button>
+          <button type="button" data-action="lang" data-lang-code="pt" aria-pressed="false">🇵🇹 Português</button>
+          <button type="button" data-action="lang" data-lang-code="ar" aria-pressed="false">🇸🇦 العربية</button>
+          <button type="button" data-action="lang" data-lang-code="ru" aria-pressed="false">🇷🇺 Русский</button>
+          <button type="button" data-action="lang" data-lang-code="tr" aria-pressed="false">🇹🇷 Türkçe</button>
     </div>
   </div>
+</div>
 
-<script>
-    function openLangModal() {
-      const m = document.getElementById('langModal');
-      if (!m) return;
-      m.classList.add('open');        // 중앙 정렬 + 스크롤 활성
-      m.style.display = 'flex';       // flex 기반 정렬
-      document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
-    }
-
-    function closeLangModal() {
-      const m = document.getElementById('langModal');
-      if (!m) return;
-      m.classList.remove('open');
-      m.style.display = 'none';
-      document.body.style.overflow = ''; // 복원
-    }
-  </script>
-  
-  <script src="script.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
