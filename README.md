@@ -51,6 +51,12 @@ export const PRICES = {
 
 `index.html` 에서 `data-lang="언어코드"` 가 붙은 요소를 직접 고친다.
 
+### 매장 정보(주소·전화·영업시간) 바꾸기
+
+`index.html` 푸터의 `<address class="store-info">` 블록 **한 곳**만 고친다.
+주소·전화·시간은 언어와 무관해서 한 번만 적혀 있고, 라벨(주소/전화/영업시간)만 언어별 `data-lang` 으로 바뀐다.
+같은 정보가 `<head>` 의 JSON-LD 에도 있으니 함께 맞춘다.
+
 ### 언어 추가하기
 
 1. `js/content.js` 의 `LANGS` 와 `LANG_NAMES` 에 코드 추가

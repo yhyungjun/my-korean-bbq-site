@@ -943,3 +943,46 @@ body.scroll-locked {
 .modal-content .close {
   float: right;
 }
+
+/* ============================= */
+/* 🔹 푸터 매장 안내 */
+/* ============================= */
+.store-info {
+  max-width: 600px;
+  margin: 18px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  font-style: normal;          /* address 요소 기본 이탤릭 제거 */
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.store-info p {
+  margin: 4px 0;
+  font-size: inherit;   /* footer p { font-size: 1.3rem } 를 받지 않는다 */
+}
+
+.store-info .store-name {
+  font-size: 1.1rem;
+  font-weight: 700 !important;   /* p { font-weight: 500 !important } 를 이긴다 */
+  margin-bottom: 8px;
+}
+
+.store-info .store-label {
+  opacity: 0.85;
+  margin-right: 6px;
+}
+
+.store-info .small-note {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 라벨 span 은 [data-lang] 의 블록용 레이아웃 규칙(margin·max-width·padding)을 받지 않는다 */
+.store-info [data-lang] {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  font-size: inherit;
+  line-height: inherit;
+}
