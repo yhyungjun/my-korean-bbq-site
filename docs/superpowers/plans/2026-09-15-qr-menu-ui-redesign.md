@@ -731,7 +731,7 @@ export function buildSideList(currentLang) {
 
 - [ ] **Step 4: app.js 전체 교체**
 
-`js/app.js` — 기존 파일을 아래로 **통째로** 바꾼다. 바뀐 점: `render.js` 임포트와 `renderMenu()`, `hidden-body`/`revealPage` 제거, 상단 바 언어 이름 갱신, 접이식 `aria-expanded` 동기화.
+`js/app.js` — 기존 파일을 아래로 **통째로** 바꾼다. 바뀐 점: render.js 임포트와 renderMenu(), hidden-body/revealPage 제거, 상단 바 언어 이름 갱신, 접이식 aria-expanded 동기화. 상세박스 안의 ✕ 닫기 버튼은 접이식 헤더가 닫기를 맡으므로 없앴다(CLOSE_LABELS·close-detail 액션 삭제).
 
 ```js
 import { LANGS, LANG_NAMES, CONTENT } from "./content.js";
@@ -743,12 +743,6 @@ const STORAGE_KEY = "kbbq.lang";
 const RTL_LANGS = ["ar"];
 const SCROLL_OFFSET_PX = 80;
 const FADE_OUT_MS = 300;
-
-const CLOSE_LABELS = {
-  ko: "닫기", en: "Close", zh: "关闭", ja: "閉じる", vi: "Đóng", th: "ปิด",
-  ph: "Isara", fr: "Fermer", es: "Cerrar", pt: "Fechar", ar: "إغلاق",
-  ru: "Закрыть", tr: "Kapat",
-};
 
 // 첫 화면에 항상 펼쳐 두는 코스 카드. 이모지는 언어와 무관한 시각 앵커.
 const COURSES = [
@@ -804,11 +798,6 @@ function applyLang(lang) {
 
   const topbarName = document.getElementById("topbarLangName");
   if (topbarName) topbarName.textContent = LANG_NAMES[lang] || lang;
-
-  const closeLabel = CLOSE_LABELS[lang] || CLOSE_LABELS[DEFAULT_LANG];
-  document.querySelectorAll(".detail-box .close-btn").forEach((btn) => {
-    btn.setAttribute("aria-label", closeLabel);
-  });
 }
 
 // ─────────────────────────── 첫 화면 메뉴 렌더 ─────────────────────────────
@@ -874,25 +863,19 @@ function selectLang(lang) {
 
 // ─────────────────────────── 접이식 안내 (상세박스 4개) ────────────────────
 
-function renderDetail(contentKey, boxId, lang) {
+// 13개 언어 문단을 모두 넣고 현재 언어만 보인다. 닫기는 접이식 헤더가 맡는다.
+function renderDetail(contentKey, lang) {
   const section = CONTENT[contentKey];
   if (!section) {
     console.error(`[app] 콘텐츠를 찾을 수 없습니다: ${contentKey}`);
     return "";
   }
-  const label = CLOSE_LABELS[lang] || CLOSE_LABELS[DEFAULT_LANG];
-  const header =
-    `<div class="detail-header">` +
-    `<button type="button" class="close-btn" data-action="close-detail"` +
-    ` data-target="${boxId}" aria-label="${label}">✕</button>` +
-    `</div>`;
-  const paragraphs = LANGS.map(
+  return LANGS.map(
     (code) =>
       `<p data-lang="${code}"${code === lang ? "" : " hidden"}>` +
       fillPrices(section[code], code) +
       `</p>`
   ).join("");
-  return header + paragraphs;
 }
 
 function setExpanded(boxId, expanded) {
@@ -930,7 +913,7 @@ function openDetail(boxId, contentKey) {
 
   const lang = currentLang();
   box.dataset.content = contentKey;
-  box.innerHTML = renderDetail(contentKey, boxId, lang);
+  box.innerHTML = renderDetail(contentKey, lang);
   box.hidden = false;
   box.classList.add("is-open");
   setExpanded(boxId, true);
@@ -955,7 +938,6 @@ const ACTIONS = {
   "close-lang": closeLangModal,
   lang: (el) => selectLang(el.dataset.langCode),
   detail: (el) => openDetail(el.dataset.target, el.dataset.content),
-  "close-detail": (el) => closeDetail(el.dataset.target),
 };
 
 function onClick(event) {
@@ -1477,7 +1459,7 @@ src = open(P, encoding='utf-8').read()
 
 # 이 셀렉터로 시작하는 규칙은 더 이상 대상 요소가 없다
 DEAD = re.compile(r'^(\.hero|\.hidden-body|\.menu-buttons|\.menu-btn|#menuDetailBox|#sideDetailBox|'
-                  r'\.menu-detail|\.side-detail|\.footer-branches)')
+                  r'\.menu-detail|\.side-detail|\.footer-branches|\.detail-header|\.close-btn)')
 
 def clean(css):
     mask = re.sub(r'/\*.*?\*/', lambda m: ' ' * len(m.group(0)), css, flags=re.S)

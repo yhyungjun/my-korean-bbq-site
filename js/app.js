@@ -1,5 +1,6 @@
-import { CONTENT, LANGS } from "./content.js";
+import { LANGS, LANG_NAMES, CONTENT } from "./content.js";
 import { fillPrices } from "./prices.js";
+import { buildCourseCard, buildSideList } from "./render.js";
 
 const DEFAULT_LANG = "ko";
 const STORAGE_KEY = "kbbq.lang";
@@ -7,11 +8,12 @@ const RTL_LANGS = ["ar"];
 const SCROLL_OFFSET_PX = 80;
 const FADE_OUT_MS = 300;
 
-const CLOSE_LABELS = {
-  ko: "닫기", en: "Close", zh: "关闭", ja: "閉じる", vi: "Đóng", th: "ปิด",
-  ph: "Isara", fr: "Fermer", es: "Cerrar", pt: "Fechar", ar: "إغلاق",
-  ru: "Закрыть", tr: "Kapat",
-};
+// 첫 화면에 항상 펼쳐 두는 코스 카드. 이모지는 언어와 무관한 시각 앵커.
+const COURSES = [
+  { key: "courseA", icon: "🥩" },
+  { key: "courseB", icon: "🥩" },
+  { key: "courseF", icon: "🥩", featured: true, chips: ["🍗", "🥤", "🍚", "🍜"] },
+];
 
 const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
@@ -22,7 +24,7 @@ function readSavedLang() {
     const saved = window.localStorage.getItem(STORAGE_KEY);
     return LANGS.includes(saved) ? saved : null;
   } catch {
-    return null; // 시크릿 모드 등에서 접근이 막히면 저장 없이 동작한다.
+    return null;
   }
 }
 
@@ -58,16 +60,21 @@ function applyLang(lang) {
     btn.setAttribute("aria-pressed", String(btn.dataset.langCode === lang));
   });
 
-  // 상세박스 안 문단도 showOnlyLang 이 함께 처리한다. 닫기 버튼 라벨만 따로 갱신.
-  const closeLabel = CLOSE_LABELS[lang] || CLOSE_LABELS[DEFAULT_LANG];
-  document.querySelectorAll(".detail-box .close-btn").forEach((btn) => {
-    btn.setAttribute("aria-label", closeLabel);
-  });
+  const topbarName = document.getElementById("topbarLangName");
+  if (topbarName) topbarName.textContent = LANG_NAMES[lang] || lang;
 }
 
-function revealPage() {
-  document.body.classList.remove("hidden-body");
-  document.body.classList.add("fade-in");
+// ─────────────────────────── 첫 화면 메뉴 렌더 ─────────────────────────────
+
+function renderMenu(lang) {
+  const cards = document.getElementById("courseCards");
+  const side = document.getElementById("sideList");
+  if (!cards || !side) {
+    console.error("[app] #courseCards / #sideList 가 index.html 에 없습니다.");
+    return;
+  }
+  cards.replaceChildren(...COURSES.map((c) => buildCourseCard(c.key, lang, c)));
+  side.replaceChildren(buildSideList(lang));
 }
 
 // ─────────────────────────── 언어 선택 모달 ──────────────────────────────────
@@ -92,11 +99,6 @@ function closeLangModal() {
   el.classList.remove("open");
   el.hidden = true;
   document.body.classList.remove("scroll-locked");
-
-  // 언어를 고르지 않고 닫아도 본문은 반드시 보여야 한다.
-  // (이 한 줄이 빠져 있어서 ✕ 를 누르면 페이지가 빈 화면이 됐다.)
-  revealPage();
-
   if (lastFocusedBeforeModal instanceof HTMLElement) lastFocusedBeforeModal.focus();
 }
 
@@ -123,31 +125,27 @@ function selectLang(lang) {
   closeLangModal();
 }
 
-// ─────────────────────────── 상세박스 (7개 공통) ─────────────────────────────
+// ─────────────────────────── 접이식 안내 (상세박스 4개) ────────────────────
 
-function renderDetail(contentKey, boxId, lang) {
+// 13개 언어 문단을 모두 넣고 현재 언어만 보인다. 닫기는 접이식 헤더가 맡는다.
+function renderDetail(contentKey, lang) {
   const section = CONTENT[contentKey];
   if (!section) {
     console.error(`[app] 콘텐츠를 찾을 수 없습니다: ${contentKey}`);
     return "";
   }
-
-  const label = CLOSE_LABELS[lang] || CLOSE_LABELS[DEFAULT_LANG];
-  const header =
-    `<div class="detail-header">` +
-    `<button type="button" class="close-btn" data-action="close-detail"` +
-    ` data-target="${boxId}" aria-label="${label}">✕</button>` +
-    `</div>`;
-
-  // 13개 언어를 모두 넣고 현재 언어만 보여준다. 각 블록의 가격은 그 언어 표기로 채운다.
-  const paragraphs = LANGS.map(
+  return LANGS.map(
     (code) =>
       `<p data-lang="${code}"${code === lang ? "" : " hidden"}>` +
       fillPrices(section[code], code) +
       `</p>`
   ).join("");
+}
 
-  return header + paragraphs;
+function setExpanded(boxId, expanded) {
+  document
+    .querySelectorAll(`[data-action="detail"][data-target="${boxId}"]`)
+    .forEach((btn) => btn.setAttribute("aria-expanded", String(expanded)));
 }
 
 function closeDetail(boxId) {
@@ -155,6 +153,7 @@ function closeDetail(boxId) {
   if (!box) return;
   box.classList.remove("show");
   box.classList.remove("is-open");
+  setExpanded(boxId, false);
   window.setTimeout(() => {
     if (!box.classList.contains("is-open")) box.hidden = true;
   }, FADE_OUT_MS);
@@ -166,13 +165,11 @@ function openDetail(boxId, contentKey) {
     console.error(`[app] 상세박스를 찾을 수 없습니다: ${boxId}`);
     return;
   }
-
-  // 이미 열려 있던 같은 박스를 다시 누르면 토글로 닫는다.
+  // 열려 있는 박스를 다시 누르면 닫는다.
   if (box.classList.contains("is-open") && box.dataset.content === contentKey) {
     closeDetail(boxId);
     return;
   }
-
   // 한 번에 하나만 열린다.
   document.querySelectorAll(".detail-box.is-open").forEach((other) => {
     if (other.id !== boxId) closeDetail(other.id);
@@ -180,11 +177,11 @@ function openDetail(boxId, contentKey) {
 
   const lang = currentLang();
   box.dataset.content = contentKey;
-  box.innerHTML = renderDetail(contentKey, boxId, lang);
+  box.innerHTML = renderDetail(contentKey, lang);
   box.hidden = false;
   box.classList.add("is-open");
+  setExpanded(boxId, true);
 
-  // display 반영 후 다음 프레임에 show 를 붙여야 페이드인이 실제로 동작한다.
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       box.classList.add("show");
@@ -205,7 +202,6 @@ const ACTIONS = {
   "close-lang": closeLangModal,
   lang: (el) => selectLang(el.dataset.langCode),
   detail: (el) => openDetail(el.dataset.target, el.dataset.content),
-  "close-detail": (el) => closeDetail(el.dataset.target),
 };
 
 function onClick(event) {
@@ -233,14 +229,13 @@ function init() {
   modal()?.addEventListener("click", onBackdropClick);
 
   const saved = readSavedLang();
-  if (saved) {
-    applyLang(saved); // 재방문: 고른 언어로 바로 보여준다.
-    revealPage();
-  } else {
-    applyLang(DEFAULT_LANG);
-    document.body.classList.add("hidden-body");
-    openLangModal();
-  }
+  const startLang = saved || DEFAULT_LANG;
+  renderMenu(startLang);
+  applyLang(startLang);
+  document.body.classList.add("fade-in");
+
+  // 첫 방문: 본문(한국어)은 그대로 두고 모달만 위에 띄운다.
+  if (!saved) openLangModal();
 }
 
 if (document.readyState === "loading") {
