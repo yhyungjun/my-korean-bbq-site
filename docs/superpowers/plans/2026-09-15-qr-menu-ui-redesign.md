@@ -1,0 +1,1595 @@
+# QR 메뉴판 UI 개편 Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** 테이블 QR 메뉴판에서 코스 3개의 가격·구성과 사이드 가격이 탭 없이 첫 화면에 보이도록 `index.html`·`style.css`·`js/app.js`를 재구성한다. 문구(`js/content.js`)와 가격(`js/prices.js`)은 한 글자도 바꾸지 않는다.
+
+**Architecture:** `content.js`의 HTML 블록은 모두 같은 뼈대(제목 → 가격 줄 → `<br>` → 구성)라서, 새 모듈 `js/render.js`가 DOM 수준에서 세 조각으로 잘라 카드/가격표에 배치한다. 언어 전환은 지금처럼 `data-lang` + `hidden`으로 13개 언어 버전을 미리 렌더해 두고 보이기만 바꾼다. 검증은 `agent-browser`로 실행하는 브라우저 스크립트(`tests/browser/*.js`)와, 개편 **전**에 캡처한 텍스트 기준선(`tests/baseline/content-text.json`) 대조로 한다.
+
+**Tech Stack:** 순수 HTML/CSS/ES 모듈, 빌드 없음, GitHub Pages. 로컬 서버 `python3 -m http.server 8080`. 브라우저 검증 `agent-browser` 0.25.x (이미 설치됨). 스펙: `docs/superpowers/specs/2026-09-15-qr-menu-ui-redesign-design.md`.
+
+---
+
+## 읽기 전에
+
+- 모든 명령은 저장소 루트 `/Users/hyungjuny/orca/my-korean-bbq-site`에서 실행한다.
+- 미리보기 서버가 8080에 떠 있지 않으면 `tests/run.sh`가 띄운다. 이미 떠 있으면 그대로 쓴다.
+- `agent-browser eval --stdin`은 결과를 **JSON 문자열로 감싸서** 출력한다(`"PASS"`처럼 따옴표 포함). `tests/run.sh`가 벗겨 준다.
+- 커밋 메시지에 **백틱(`)을 쓰지 말 것** — 이 저장소의 git 훅이 명령 문자열의 백틱을 막는다.
+- `js/content.js`, `js/prices.js`는 **절대 수정하지 않는다.** 마지막 Task에서 `git diff`가 비어 있음을 확인한다.
+
+## 파일 구조
+
+| 파일 | 역할 | 이번 작업 |
+|---|---|---|
+| `index.html` | 페이지 뼈대. 13개 언어 UI 문구는 `data-lang` 요소 | Task 2에서 생성 스크립트로 재작성 |
+| `style.css` | 전체 스타일 | Task 4 규칙 추가, Task 6 죽은 규칙 삭제 |
+| `js/app.js` | 언어·모달·접이식·초기 렌더 | Task 3·5 수정 |
+| `js/render.js` | **신규.** 콘텐츠 블록 → 카드/가격표 DOM | Task 3 생성 |
+| `js/content.js` `js/prices.js` | 문구·가격 | **무변경** |
+| `tests/run.sh` | 테스트 실행기 | Task 1 생성 |
+| `tests/browser/capture-baseline.js` | 개편 전 텍스트 캡처 | Task 1 |
+| `tests/browser/test-*.js` | 브라우저 검사 스크립트 (`PASS` / `FAIL: 이유` 반환) | Task 1~8 |
+| `tests/baseline/content-text.json` | 개편 전 기준선 (커밋됨) | Task 1 |
+| `README.md` | 안내 | Task 8 |
+
+---
+
+### Task 0: 작업 브랜치
+
+**Files:** 없음
+
+- [ ] **Step 1: 브랜치 생성**
+
+```bash
+git checkout fix/site-audit-2026-09
+git checkout -b feat/qr-menu-ui
+git branch --show-current
+```
+Expected: `feat/qr-menu-ui`
+
+---
+
+### Task 1: 테스트 실행기 + 개편 전 기준선 캡처
+
+개편 전 화면에서 13개 언어 × 8개 콘텐츠의 텍스트를 저장해 둔다. 이후 모든 Task의 "문구 무손실" 검사가 이 파일과 비교한다. **반드시 index.html을 바꾸기 전에 실행한다.**
+
+**Files:**
+- Create: `tests/run.sh`
+- Create: `tests/browser/capture-baseline.js`
+- Create: `tests/baseline/content-text.json` (스크립트가 생성)
+
+- [ ] **Step 1: 실행기 작성**
+
+`tests/run.sh`:
+
+```bash
+#!/usr/bin/env bash
+# 사용법:  tests/run.sh baseline   → 개편 전 텍스트 기준선 저장
+#          tests/run.sh            → tests/browser/test-*.js 전부 실행
+# 환경변수 VIEWPORT_W / VIEWPORT_H (기본 390 x 844 = 모바일)
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+PORT=8080
+URL="http://127.0.0.1:$PORT/"
+if ! lsof -nP -iTCP:$PORT -sTCP:LISTEN >/dev/null 2>&1; then
+  python3 -m http.server "$PORT" --bind 127.0.0.1 >/dev/null 2>&1 &
+  sleep 1
+fi
+
+AB="agent-browser --session kbbq-test"
+$AB set viewport "${VIEWPORT_W:-390}" "${VIEWPORT_H:-844}" >/dev/null
+
+# agent-browser eval 은 결과를 JSON 문자열로 감싼다. 안쪽 값만 꺼낸다.
+unwrap() {
+  python3 -c 'import sys, json
+s = sys.stdin.read().strip()
+try:
+    v = json.loads(s)
+except Exception:
+    print(s); sys.exit()
+print(v if isinstance(v, str) else json.dumps(v, ensure_ascii=False))'
+}
+
+fresh() {  # 저장된 언어를 지우고 첫 방문 상태로 다시 연다
+  $AB open "$URL" >/dev/null
+  $AB eval 'try{localStorage.clear()}catch(e){}; "ok"' >/dev/null
+  $AB open "$URL" >/dev/null
+  $AB wait --load networkidle >/dev/null
+}
+
+case "${1:-test}" in
+  baseline)
+    mkdir -p tests/baseline
+    fresh
+    $AB eval --stdin < tests/browser/capture-baseline.js | unwrap > tests/baseline/content-text.json
+    echo "기준선 저장: $(python3 -c 'import json; print(len(json.load(open("tests/baseline/content-text.json"))))') 항목"
+    ;;
+  test)
+    if [ -f tests/baseline/content-text.json ]; then
+      PRE="const BASELINE = $(cat tests/baseline/content-text.json);"
+    else
+      PRE="const BASELINE = {};"
+    fi
+    fail=0
+    for f in tests/browser/test-*.js; do
+      fresh
+      out=$( { echo "$PRE"; cat "$f"; } | $AB eval --stdin 2>&1 | unwrap )
+      case "$out" in
+        PASS*) echo "✅ $(basename "$f") — $out" ;;
+        *)     echo "❌ $(basename "$f") — $out"; fail=1 ;;
+      esac
+    done
+    exit $fail
+    ;;
+  *) echo "사용법: tests/run.sh [baseline|test]"; exit 2 ;;
+esac
+```
+
+- [ ] **Step 2: 기준선 캡처 스크립트 작성**
+
+`tests/browser/capture-baseline.js` — **개편 전 DOM**(버튼을 눌러 상세박스를 여는 방식)에서 동작한다:
+
+```js
+(() => {
+  const LANGS = ["ko","en","zh","ja","vi","th","ph","fr","es","pt","ar","ru","tr"];
+  const KEYS = ["courseA","courseB","courseF","side","usage","tips","gamasot","ssam"];
+  const norm = (t) => t.replace(/\s+/g, " ").trim();
+  const out = {};
+  for (const lang of LANGS) {
+    document.querySelector(`[data-lang-code="${lang}"]`).click();
+    for (const key of KEYS) {
+      const btn = [...document.querySelectorAll(`[data-content="${key}"]`)].find((b) => b.offsetParent !== null);
+      if (!btn) { out[`${key}|${lang}`] = "(버튼 없음)"; continue; }
+      btn.click();
+      const box = document.getElementById(btn.dataset.target);
+      const p = box.querySelector(`p[data-lang="${lang}"]`).cloneNode(true);
+      // 사이드의 "사이드메뉴" 제목은 개편 후 섹션 제목으로 빠지므로 기준선에서도 뺀다
+      if (key === "side") p.querySelector(".menu-subtitle")?.remove();
+      out[`${key}|${lang}`] = norm(p.textContent);
+    }
+  }
+  return JSON.stringify(out);
+})()
+```
+
+- [ ] **Step 3: 실행 권한 부여 후 기준선 저장**
+
+```bash
+chmod +x tests/run.sh
+tests/run.sh baseline
+```
+Expected: `기준선 저장: 104 항목`
+
+- [ ] **Step 4: 기준선 내용 확인**
+
+```bash
+python3 -c "
+import json; d=json.load(open('tests/baseline/content-text.json'))
+print(d['courseA|ko'][:80]); print(d['side|ja'][:80]); print(sum(1 for v in d.values() if '{{' in v), '개 토큰 미치환')"
+```
+Expected: 첫 줄에 `A돼지모듬 무한리필 1인 17,900원 돼지모듬 (삼겹살/…`, 둘째 줄 일본어 사이드(제목 없이 `咸興冷麺`으로 시작), 마지막 `0 개 토큰 미치환`
+
+- [ ] **Step 5: 커밋**
+
+```bash
+git add tests/
+git commit -m "test: 브라우저 테스트 실행기와 개편 전 텍스트 기준선"
+```
+
+---
+
+### Task 2: index.html 재구성 (생성 스크립트)
+
+13개 언어 문구를 손으로 옮기면 오타가 난다. 현재 `index.html`에서 문구를 **프로그램으로 추출**해 새 구조에 넣는다. 이 Task가 끝나면 카드·가격표 자리는 비어 있고(Task 3에서 채움), 히어로는 사라지고, 접이식 4개는 동작한다.
+
+**Files:**
+- Create: `tests/browser/test-structure.js`
+- Modify: `index.html` (전체 재작성)
+
+- [ ] **Step 1: 실패하는 구조 검사 작성**
+
+`tests/browser/test-structure.js`:
+
+```js
+(() => {
+  const errs = [];
+  const need = (sel, n, label) => {
+    const c = document.querySelectorAll(sel).length;
+    if (c !== n) errs.push(`${label}: ${c}개 (기대 ${n})`);
+  };
+  need("header.topbar", 1, "상단 바");
+  need(".topbar-brand [data-lang]", 13, "상단 바 매장명");
+  need("#topbarLangName", 1, "언어 버튼 이름");
+  need(".bell [data-lang]", 13, "벨 안내");
+  need("#menuTitle [data-lang]", 13, "코스 제목");
+  need("#courseCards", 1, "코스 컨테이너");
+  need("#sideTitle [data-lang]", 13, "사이드 제목");
+  need("#sideList", 1, "사이드 컨테이너");
+  need(".acc-head", 4, "접이식 헤더");
+  need(".acc-head [data-lang]", 52, "접이식 라벨");
+  need("section.hero", 0, "히어로(삭제돼야 함)");
+  need(".footer-branches", 0, "푸터 지점 링크 행(삭제돼야 함)");
+  need("footer .tagline [data-lang]", 13, "푸터 슬로건");
+  need("footer .footer-brand [data-lang]", 13, "푸터 ©");
+  need("footer .store-info .store", 3, "지점 카드");
+  need("#langModal [data-lang-code]", 13, "언어 모달 버튼");
+  return errs.length ? "FAIL: " + errs.join(" / ") : "PASS";
+})()
+```
+
+- [ ] **Step 2: 실패 확인**
+
+```bash
+tests/run.sh
+```
+Expected: `❌ test-structure.js — FAIL: 상단 바: 0개 (기대 1) / …`
+
+- [ ] **Step 3: 생성 스크립트 작성 후 실행**
+
+아래를 `/tmp/build-index.py`로 저장하고 실행한다. 현재 `index.html`을 읽어 같은 자리에 새 파일을 쓴다.
+
+```python
+import re, sys
+P = 'index.html'
+h = open(P, encoding='utf-8').read()
+LANGS = ['ko','en','zh','ja','vi','th','ph','fr','es','pt','ar','ru','tr']
+
+def grab(pattern, block, label, n=13):
+    """data-lang 요소 13개를 {lang: innerHTML} 로 뽑는다. 개수가 다르면 중단."""
+    got = {m.group(1): m.group(3).strip() for m in re.finditer(pattern, block, re.S)}
+    missing = [l for l in LANGS if l not in got]
+    assert not missing and len(got) == n, f'{label}: {len(got)}개, 누락 {missing}'
+    return got
+
+head = h[:h.index('<body>') + len('<body>')]
+hero = re.search(r'<div class="hero-texts">(.*?)</div>', h, re.S).group(1)
+store_name = grab(r'<h1 data-lang="(\w\w)"( hidden)?>(.*?)</h1>', hero, '매장명')
+tagline    = grab(r'<p data-lang="(\w\w)"( hidden)?>(.*?)</p>', hero, '슬로건')
+menu_sec   = re.search(r'<section id="menu".*?</section>', h, re.S).group(0)
+menu_title = grab(r'<h2 data-lang="(\w\w)"( hidden)?>(.*?)</h2>', menu_sec, '메뉴 제목')
+side_title = grab(r'data-content="side" data-lang="(\w\w)"( hidden)?>(.*?)</button>', h, '사이드 라벨')
+
+# 접이식 라벨: <div data-lang="xx"> 안의 버튼 2개 (usage/tips, gamasot/ssam)
+acc = {}
+for m in re.finditer(r'<div data-lang="(\w\w)"( hidden)?>\s*(<button.*?</button>)\s*(<button.*?</button>)\s*</div>', h, re.S):
+    lang = m.group(1)
+    for b in (m.group(3), m.group(4)):
+        key = re.search(r'data-content="(\w+)"', b).group(1)
+        label = re.search(r'>(.*?)</button>', b, re.S).group(1).strip()
+        acc.setdefault(key, {})[lang] = label
+for key in ('usage', 'tips', 'gamasot', 'ssam'):
+    assert sorted(acc[key]) == sorted(LANGS), f'접이식 {key}: {sorted(acc[key])}'
+
+foot = h[h.index('<footer>'):h.index('</footer>')]
+brand = {}
+for m in re.finditer(r'<p data-lang="(\w\w)"[^>]*>\s*<span class="footer-brand">(.*?)</span>', foot, re.S):
+    brand[m.group(1)] = m.group(2).strip()
+assert sorted(brand) == sorted(LANGS), f'푸터 ©: {sorted(brand)}'
+store_info = re.search(r'(  <!-- 매장 안내.*?\n  </div>\n)</footer>', h, re.S).group(1)
+modal = h[h.index('<!-- 언어 선택 -->'):h.index('<script type="module"')]
+
+BELL = {
+ 'ko': '주문·리필은 테이블 벨을 눌러주세요',
+ 'en': 'Press the table bell to order or get a refill',
+ 'zh': '点餐或续餐请按桌上的呼叫铃',
+ 'ja': '注文・おかわりはテーブルのベルを押してください',
+ 'vi': 'Bấm chuông bàn để gọi món hoặc lấy thêm',
+ 'th': 'กดกริ่งที่โต๊ะเพื่อสั่งอาหารหรือรีฟิล',
+ 'ph': 'Pindutin ang table bell para mag-order o mag-refill',
+ 'fr': 'Appuyez sur la sonnette de table pour commander ou être resservi',
+ 'es': 'Pulse el timbre de la mesa para pedir o repetir',
+ 'pt': 'Toque a campainha da mesa para pedir ou repetir',
+ 'ar': 'اضغط جرس الطاولة للطلب أو لإعادة التعبئة',
+ 'ru': 'Нажмите кнопку вызова на столе, чтобы заказать или получить добавку',
+ 'tr': 'Sipariş veya yenileme için masa zilini kullanın',
+}
+
+def spans(d, indent='      '):
+    return '\n'.join(f'{indent}<span data-lang="{l}"{"" if l == "ko" else " hidden"}>{d[l]}</span>' for l in LANGS)
+
+ACC = [('usage', 'usageDetailBox'), ('tips', 'courseTipBox'), ('gamasot', 'gamasotDetailBox'), ('ssam', 'ssamDetailBox')]
+acc_html = '\n'.join(f'''    <div class="acc">
+      <button type="button" class="acc-head i18n-inline" data-action="detail"
+              data-target="{box}" data-content="{key}" aria-expanded="false" aria-controls="{box}">
+{spans(acc[key], '        ')}
+      </button>
+      <div id="{box}" class="usage-detail detail-box" hidden></div>
+    </div>''' for key, box in ACC)
+
+body = f'''
+
+<!-- 상단 고정 바: 로고 + 매장명 + 언어 -->
+<header class="topbar">
+  <div class="topbar-brand i18n-inline">
+    <img src="images/logo.png" alt="" width="28" height="28">
+{spans(store_name, '    ')}
+  </div>
+  <button type="button" class="topbar-lang" data-action="open-lang" aria-haspopup="dialog">
+    🌐 <span id="topbarLangName">한국어</span> ▾
+  </button>
+</header>
+
+<!-- 벨 안내 (유일한 신규 문구) -->
+<p class="bell i18n-inline">🔔
+{spans(BELL, '  ')}
+</p>
+
+<main class="menu-sheet">
+  <section id="menu" aria-labelledby="menuTitle">
+    <h2 id="menuTitle" class="i18n-inline">
+{spans(menu_title, '      ')}
+    </h2>
+    <div id="courseCards"></div>
+  </section>
+
+  <section id="side" aria-labelledby="sideTitle">
+    <h2 id="sideTitle" class="i18n-inline">
+{spans(side_title, '      ')}
+    </h2>
+    <div id="sideList"></div>
+  </section>
+
+  <!-- 접이식 안내 4개: 기존 상세박스를 그대로 아래에 연다 -->
+  <section id="guide">
+{acc_html}
+  </section>
+</main>
+
+<footer>
+  <p class="tagline i18n-inline">
+{spans(tagline, '    ')}
+  </p>
+  <p class="footer-brand i18n-inline">
+{spans(brand, '    ')}
+  </p>
+{store_info}</footer>
+
+{modal}<script type="module" src="js/app.js"></script>
+</body>
+</html>
+'''
+open(P, 'w', encoding='utf-8').write(head + body)
+print('index.html 재작성:', (head + body).count('\n') + 1, '줄')
+```
+
+```bash
+python3 /tmp/build-index.py
+```
+Expected: `index.html 재작성: <숫자> 줄` (AssertionError가 나면 추출 패턴이 현재 파일과 안 맞는 것 — 메시지의 항목을 index.html에서 확인)
+
+- [ ] **Step 4: 구조 검사 통과 확인**
+
+```bash
+tests/run.sh
+```
+Expected: `✅ test-structure.js — PASS`
+
+- [ ] **Step 5: 브라우저에서 눈으로 확인**
+
+http://127.0.0.1:8080 을 열면 상단 빨간 바, 노란 벨 띠, "메뉴 소개"·"사이드 메뉴" 제목(내용은 아직 비어 있음), 접이식 4개, 푸터가 보인다. 접이식을 누르면 기존 상세박스가 열린다. 제목 글자가 아주 작게 보이는 건 정상 — Task 4에서 CSS로 잡는다.
+
+- [ ] **Step 6: 커밋**
+
+```bash
+git add index.html tests/browser/test-structure.js
+git commit -m "feat: index.html을 상단 바·벨 안내·카드 자리·접이식 구조로 재구성"
+```
+
+---
+
+### Task 3: render.js — 콘텐츠 블록을 카드·가격표로 자르기
+
+**Files:**
+- Create: `js/render.js`
+- Create: `tests/browser/test-course-cards.js`
+- Create: `tests/browser/test-side-list.js`
+- Modify: `js/app.js` (전체 교체)
+
+- [ ] **Step 1: 실패하는 카드 검사 작성**
+
+`tests/browser/test-course-cards.js`:
+
+```js
+(() => {
+  const errs = [];
+  const cards = document.querySelectorAll("#courseCards article.course-card");
+  if (cards.length !== 3) return `FAIL: 카드 ${cards.length}개 (기대 3)`;
+  for (const card of cards) {
+    const key = card.dataset.course;
+    const panes = card.querySelectorAll(":scope > [data-lang]");
+    if (panes.length !== 13) errs.push(`${key}: pane ${panes.length}개`);
+    const visible = [...panes].filter((p) => !p.hidden);
+    if (visible.length !== 1) errs.push(`${key}: 보이는 pane ${visible.length}개`);
+    for (const p of panes) {
+      const id = `${key}/${p.dataset.lang}`;
+      if (!p.querySelector(".course-title .menu-subtitle")) errs.push(`${id}: 제목 없음`);
+      if (!p.querySelector(".course-price .price")?.textContent.trim()) errs.push(`${id}: 가격 없음`);
+      if (!p.querySelector(".course-body")) errs.push(`${id}: 본문 없음`);
+      if (/\{\{/.test(p.textContent)) errs.push(`${id}: 가격 토큰 미치환`);
+      if (p.querySelector(".course-body span.small-note")?.textContent.trim() === "+") errs.push(`${id}: + 구분자 미처리`);
+    }
+  }
+  if (!document.querySelector('.course-card[data-course="courseF"].is-featured > .course-chips')) errs.push("Full 카드 강조/칩 없음");
+  return errs.length ? "FAIL: " + errs.slice(0, 6).join(" / ") : "PASS";
+})()
+```
+
+`tests/browser/test-side-list.js`:
+
+```js
+(() => {
+  const errs = [];
+  const panes = document.querySelectorAll("#sideList .side-pane");
+  if (panes.length !== 13) return `FAIL: pane ${panes.length}개 (기대 13)`;
+  for (const p of panes) {
+    const rows = p.querySelectorAll(".side-row");
+    if (rows.length !== 9) errs.push(`${p.dataset.lang}: 행 ${rows.length}개 (기대 9)`);
+    rows.forEach((r, i) => {
+      if (!r.querySelector(".side-name")?.textContent.trim()) errs.push(`${p.dataset.lang} ${i + 1}행: 이름 없음`);
+      if (!r.querySelector(".side-price .price")?.textContent.trim()) errs.push(`${p.dataset.lang} ${i + 1}행: 가격 없음`);
+    });
+    if (/\{\{/.test(p.textContent)) errs.push(`${p.dataset.lang}: 가격 토큰 미치환`);
+  }
+  return errs.length ? "FAIL: " + errs.slice(0, 6).join(" / ") : "PASS";
+})()
+```
+
+- [ ] **Step 2: 실패 확인**
+
+```bash
+tests/run.sh
+```
+Expected: `❌ test-course-cards.js — FAIL: 카드 0개 (기대 3)` 와 `❌ test-side-list.js — FAIL: pane 0개 (기대 13)`
+
+- [ ] **Step 3: render.js 작성**
+
+`js/render.js`:
+
+```js
+// content.js 의 HTML 블록을 카드/가격표 DOM 으로 자른다. 문구는 손대지 않는다.
+//
+// 코스 블록 뼈대:  <span class="menu-subtitle">제목</span> 가격줄 <br> 구성…
+// 사이드 블록 뼈대: <span class="menu-subtitle">…</span><br> 이름 (설명) 가격<br> …
+import { CONTENT, LANGS } from "./content.js";
+import { fillPrices } from "./prices.js";
+
+const SEPARATOR_TEXT = " · "; // "+" 구분자를 이걸로 바꾼다 (기준선 대조 때 +·는 무시)
+
+function toFragment(html) {
+  const tpl = document.createElement("template");
+  tpl.innerHTML = html;
+  return tpl.content;
+}
+
+const isBr = (n) => n.nodeType === Node.ELEMENT_NODE && n.tagName === "BR";
+const isBlankText = (n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim() === "";
+
+function el(tag, className, children = []) {
+  const node = document.createElement(tag);
+  node.className = className;
+  children.forEach((c) => node.appendChild(c));
+  return node;
+}
+
+/** 코스 블록 → { title, priceLine[], body[] }. 뼈대가 다르면 null. */
+export function splitCourseBlock(html) {
+  const frag = toFragment(html);
+  const title = frag.querySelector(".menu-subtitle");
+  if (!title) return null;
+  title.remove();
+  const nodes = [...frag.childNodes];
+  const br = nodes.findIndex(isBr);
+  if (br === -1) return null;
+  return { title, priceLine: nodes.slice(0, br), body: nodes.slice(br + 1) };
+}
+
+/** 사이드 블록 → [{ name[], price[] }, …] (제목 줄 제외, 빈 줄 제외) */
+export function splitSideBlock(html) {
+  const frag = toFragment(html);
+  frag.querySelector(".menu-subtitle")?.remove();
+  const lines = [[]];
+  for (const n of [...frag.childNodes]) {
+    if (isBr(n)) lines.push([]);
+    else lines[lines.length - 1].push(n);
+  }
+  return lines
+    .filter((nodes) => nodes.some((n) => !isBlankText(n)))
+    .map((nodes) => {
+      const i = nodes.findIndex((n) => n.nodeType === Node.ELEMENT_NODE && n.classList.contains("price"));
+      // 가격 뒤에 붙는 꼬리말("per person")은 가격 칸에 함께 둔다
+      return i === -1 ? { name: nodes, price: [] } : { name: nodes.slice(0, i), price: nodes.slice(i) };
+    });
+}
+
+function markSeparators(root) {
+  root.querySelectorAll("span.small-note").forEach((s) => {
+    if (s.textContent.trim() === "+") {
+      s.className = "sep";
+      s.textContent = SEPARATOR_TEXT;
+    }
+  });
+}
+
+/**
+ * 코스 카드 한 장. 13개 언어 pane 을 모두 넣고 현재 언어만 보인다.
+ * @param {string} contentKey  "courseA" | "courseB" | "courseF"
+ * @param {string} currentLang
+ * @param {{icon?: string, featured?: boolean, chips?: string[]}} options
+ */
+export function buildCourseCard(contentKey, currentLang, { icon = "", featured = false, chips = [] } = {}) {
+  const card = el("article", featured ? "course-card is-featured" : "course-card");
+  card.dataset.course = contentKey;
+
+  for (const lang of LANGS) {
+    const pane = el("div", "course-pane");
+    pane.dataset.lang = lang;
+    pane.hidden = lang !== currentLang;
+    const raw = CONTENT[contentKey]?.[lang];
+
+    if (raw == null) {
+      console.warn(`[render] 콘텐츠 없음: ${contentKey}/${lang}`);
+    } else {
+      const html = fillPrices(raw, lang);
+      const parts = splitCourseBlock(html);
+      if (!parts) {
+        console.warn(`[render] 뼈대 불일치, 통째로 표시: ${contentKey}/${lang}`);
+        pane.innerHTML = html;
+      } else {
+        const title = el("div", "course-title", [parts.title]);
+        if (icon) title.dataset.icon = icon; // CSS ::before 로 그린다 (textContent 에 안 들어감)
+        const head = el("div", "course-head", [title, el("div", "course-price", parts.priceLine)]);
+        const body = el("div", "course-body", parts.body);
+        markSeparators(body);
+        pane.append(head, body);
+      }
+    }
+    card.appendChild(pane);
+  }
+
+  if (chips.length) {
+    const row = el("div", "course-chips");
+    row.setAttribute("aria-hidden", "true"); // 본문에 이미 글로 있는 정보의 시각 강조일 뿐
+    chips.forEach((c) => {
+      const chip = el("span", "chip");
+      chip.textContent = c;
+      row.appendChild(chip);
+    });
+    card.appendChild(row);
+  }
+  return card;
+}
+
+/** 사이드 가격표. 13개 언어 pane, 현재 언어만 보인다. */
+export function buildSideList(currentLang) {
+  const list = el("div", "side-list");
+  for (const lang of LANGS) {
+    const pane = el("div", "side-pane");
+    pane.dataset.lang = lang;
+    pane.hidden = lang !== currentLang;
+    const raw = CONTENT.side?.[lang];
+    if (raw == null) {
+      console.warn(`[render] 콘텐츠 없음: side/${lang}`);
+    } else {
+      for (const row of splitSideBlock(fillPrices(raw, lang))) {
+        pane.appendChild(el("div", "side-row", [el("div", "side-name", row.name), el("div", "side-price", row.price)]));
+      }
+    }
+    list.appendChild(pane);
+  }
+  return list;
+}
+```
+
+- [ ] **Step 4: app.js 전체 교체**
+
+`js/app.js` — 기존 파일을 아래로 **통째로** 바꾼다. 바뀐 점: `render.js` 임포트와 `renderMenu()`, `hidden-body`/`revealPage` 제거, 상단 바 언어 이름 갱신, 접이식 `aria-expanded` 동기화.
+
+```js
+import { LANGS, LANG_NAMES, CONTENT } from "./content.js";
+import { fillPrices } from "./prices.js";
+import { buildCourseCard, buildSideList } from "./render.js";
+
+const DEFAULT_LANG = "ko";
+const STORAGE_KEY = "kbbq.lang";
+const RTL_LANGS = ["ar"];
+const SCROLL_OFFSET_PX = 80;
+const FADE_OUT_MS = 300;
+
+const CLOSE_LABELS = {
+  ko: "닫기", en: "Close", zh: "关闭", ja: "閉じる", vi: "Đóng", th: "ปิด",
+  ph: "Isara", fr: "Fermer", es: "Cerrar", pt: "Fechar", ar: "إغلاق",
+  ru: "Закрыть", tr: "Kapat",
+};
+
+// 첫 화면에 항상 펼쳐 두는 코스 카드. 이모지는 언어와 무관한 시각 앵커.
+const COURSES = [
+  { key: "courseA", icon: "🥩" },
+  { key: "courseB", icon: "🥩" },
+  { key: "courseF", icon: "🥩", featured: true, chips: ["🍗", "🥤", "🍚", "🍜"] },
+];
+
+const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+// ─────────────────────────── 언어 저장 (localStorage 차단 환경 대비) ──────────
+
+function readSavedLang() {
+  try {
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    return LANGS.includes(saved) ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveLang(lang) {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, lang);
+  } catch {
+    /* 저장 실패는 치명적이지 않다 — 이번 방문에만 적용된다. */
+  }
+}
+
+// ─────────────────────────── 언어 적용 ───────────────────────────────────────
+
+function showOnlyLang(root, lang) {
+  root.querySelectorAll("[data-lang]").forEach((el) => {
+    el.hidden = el.dataset.lang !== lang;
+  });
+}
+
+function currentLang() {
+  const lang = document.documentElement.lang;
+  return LANGS.includes(lang) ? lang : DEFAULT_LANG;
+}
+
+function applyLang(lang) {
+  document.documentElement.lang = lang;
+  document.documentElement.dir = RTL_LANGS.includes(lang) ? "rtl" : "ltr";
+
+  showOnlyLang(document, lang);
+
+  document.querySelectorAll("[data-lang-code]").forEach((btn) => {
+    btn.classList.toggle("active-lang", btn.dataset.langCode === lang);
+    btn.setAttribute("aria-pressed", String(btn.dataset.langCode === lang));
+  });
+
+  const topbarName = document.getElementById("topbarLangName");
+  if (topbarName) topbarName.textContent = LANG_NAMES[lang] || lang;
+
+  const closeLabel = CLOSE_LABELS[lang] || CLOSE_LABELS[DEFAULT_LANG];
+  document.querySelectorAll(".detail-box .close-btn").forEach((btn) => {
+    btn.setAttribute("aria-label", closeLabel);
+  });
+}
+
+// ─────────────────────────── 첫 화면 메뉴 렌더 ─────────────────────────────
+
+function renderMenu(lang) {
+  const cards = document.getElementById("courseCards");
+  const side = document.getElementById("sideList");
+  if (!cards || !side) {
+    console.error("[app] #courseCards / #sideList 가 index.html 에 없습니다.");
+    return;
+  }
+  cards.replaceChildren(...COURSES.map((c) => buildCourseCard(c.key, lang, c)));
+  side.replaceChildren(buildSideList(lang));
+}
+
+// ─────────────────────────── 언어 선택 모달 ──────────────────────────────────
+
+const modal = () => document.getElementById("langModal");
+let lastFocusedBeforeModal = null;
+
+function openLangModal() {
+  const el = modal();
+  if (!el) return;
+  lastFocusedBeforeModal = document.activeElement;
+  el.classList.add("open");
+  el.hidden = false;
+  document.body.classList.add("scroll-locked");
+  const first = el.querySelector(FOCUSABLE);
+  if (first) first.focus();
+}
+
+function closeLangModal() {
+  const el = modal();
+  if (!el) return;
+  el.classList.remove("open");
+  el.hidden = true;
+  document.body.classList.remove("scroll-locked");
+  if (lastFocusedBeforeModal instanceof HTMLElement) lastFocusedBeforeModal.focus();
+}
+
+function trapFocus(event) {
+  const el = modal();
+  if (!el || el.hidden || event.key !== "Tab") return;
+  const items = [...el.querySelectorAll(FOCUSABLE)].filter((n) => !n.hidden);
+  if (items.length === 0) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function selectLang(lang) {
+  if (!LANGS.includes(lang)) return;
+  applyLang(lang);
+  saveLang(lang);
+  closeLangModal();
+}
+
+// ─────────────────────────── 접이식 안내 (상세박스 4개) ────────────────────
+
+function renderDetail(contentKey, boxId, lang) {
+  const section = CONTENT[contentKey];
+  if (!section) {
+    console.error(`[app] 콘텐츠를 찾을 수 없습니다: ${contentKey}`);
+    return "";
+  }
+  const label = CLOSE_LABELS[lang] || CLOSE_LABELS[DEFAULT_LANG];
+  const header =
+    `<div class="detail-header">` +
+    `<button type="button" class="close-btn" data-action="close-detail"` +
+    ` data-target="${boxId}" aria-label="${label}">✕</button>` +
+    `</div>`;
+  const paragraphs = LANGS.map(
+    (code) =>
+      `<p data-lang="${code}"${code === lang ? "" : " hidden"}>` +
+      fillPrices(section[code], code) +
+      `</p>`
+  ).join("");
+  return header + paragraphs;
+}
+
+function setExpanded(boxId, expanded) {
+  document
+    .querySelectorAll(`[data-action="detail"][data-target="${boxId}"]`)
+    .forEach((btn) => btn.setAttribute("aria-expanded", String(expanded)));
+}
+
+function closeDetail(boxId) {
+  const box = document.getElementById(boxId);
+  if (!box) return;
+  box.classList.remove("show");
+  box.classList.remove("is-open");
+  setExpanded(boxId, false);
+  window.setTimeout(() => {
+    if (!box.classList.contains("is-open")) box.hidden = true;
+  }, FADE_OUT_MS);
+}
+
+function openDetail(boxId, contentKey) {
+  const box = document.getElementById(boxId);
+  if (!box) {
+    console.error(`[app] 상세박스를 찾을 수 없습니다: ${boxId}`);
+    return;
+  }
+  // 열려 있는 박스를 다시 누르면 닫는다.
+  if (box.classList.contains("is-open") && box.dataset.content === contentKey) {
+    closeDetail(boxId);
+    return;
+  }
+  // 한 번에 하나만 열린다.
+  document.querySelectorAll(".detail-box.is-open").forEach((other) => {
+    if (other.id !== boxId) closeDetail(other.id);
+  });
+
+  const lang = currentLang();
+  box.dataset.content = contentKey;
+  box.innerHTML = renderDetail(contentKey, boxId, lang);
+  box.hidden = false;
+  box.classList.add("is-open");
+  setExpanded(boxId, true);
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      box.classList.add("show");
+      scrollToElement(box);
+    });
+  });
+}
+
+function scrollToElement(el) {
+  const top = el.getBoundingClientRect().top + window.pageYOffset - SCROLL_OFFSET_PX;
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
+// ─────────────────────────── 이벤트 (위임) ──────────────────────────────────
+
+const ACTIONS = {
+  "open-lang": openLangModal,
+  "close-lang": closeLangModal,
+  lang: (el) => selectLang(el.dataset.langCode),
+  detail: (el) => openDetail(el.dataset.target, el.dataset.content),
+  "close-detail": (el) => closeDetail(el.dataset.target),
+};
+
+function onClick(event) {
+  const trigger = event.target.closest("[data-action]");
+  if (!trigger) return;
+  const handler = ACTIONS[trigger.dataset.action];
+  if (handler) handler(trigger);
+}
+
+function onKeydown(event) {
+  const el = modal();
+  if (el && !el.hidden) {
+    if (event.key === "Escape") closeLangModal();
+    else trapFocus(event);
+  }
+}
+
+function onBackdropClick(event) {
+  if (event.target === modal()) closeLangModal();
+}
+
+function init() {
+  document.addEventListener("click", onClick);
+  document.addEventListener("keydown", onKeydown);
+  modal()?.addEventListener("click", onBackdropClick);
+
+  const saved = readSavedLang();
+  const startLang = saved || DEFAULT_LANG;
+  renderMenu(startLang);
+  applyLang(startLang);
+  document.body.classList.add("fade-in");
+
+  // 첫 방문: 본문(한국어)은 그대로 두고 모달만 위에 띄운다.
+  if (!saved) openLangModal();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
+```
+
+- [ ] **Step 5: 문법 검사**
+
+```bash
+for f in js/render.js js/app.js; do cp "$f" /tmp/chk.mjs && node --check /tmp/chk.mjs && echo "OK $f"; done; rm -f /tmp/chk.mjs
+```
+Expected: `OK js/render.js` `OK js/app.js`
+
+- [ ] **Step 6: 검사 통과 확인**
+
+```bash
+tests/run.sh
+```
+Expected: `test-structure.js`, `test-course-cards.js`, `test-side-list.js` 모두 `✅ … PASS`
+
+- [ ] **Step 7: 콘솔 오류 확인**
+
+```bash
+agent-browser --session kbbq-test open http://127.0.0.1:8080/ >/dev/null && agent-browser --session kbbq-test wait --load networkidle >/dev/null && agent-browser --session kbbq-test console 2>/dev/null | grep -iE "error|warn" || echo "콘솔 오류/경고 없음"
+```
+Expected: `콘솔 오류/경고 없음` (`[render] 뼈대 불일치` 경고가 있으면 해당 블록을 `js/content.js`에서 확인 — 나오면 안 된다)
+
+- [ ] **Step 8: 커밋**
+
+```bash
+git add js/render.js js/app.js tests/browser/test-course-cards.js tests/browser/test-side-list.js
+git commit -m "feat: content.js 블록을 잘라 코스 카드와 사이드 가격표를 첫 화면에 렌더"
+```
+
+---
+
+### Task 4: 새 레이아웃 CSS
+
+**Files:**
+- Create: `tests/browser/test-styles.js`
+- Modify: `style.css` (끝에 추가)
+
+- [ ] **Step 1: 실패하는 스타일 검사 작성**
+
+`tests/browser/test-styles.js`:
+
+```js
+(() => {
+  const errs = [];
+  const cs = (sel) => getComputedStyle(document.querySelector(sel));
+  if (cs("header.topbar").position !== "sticky") errs.push("상단 바가 sticky 아님");
+
+  const h2 = document.querySelector("#menuTitle");
+  const span = h2.querySelector("[data-lang]:not([hidden])");
+  if (getComputedStyle(span).fontSize !== getComputedStyle(h2).fontSize)
+    errs.push(`제목 span ${getComputedStyle(span).fontSize} ≠ h2 ${getComputedStyle(h2).fontSize}`);
+
+  const pane = cs(".course-card [data-lang]:not([hidden])");
+  if (pane.marginTop !== "0px") errs.push(`카드 pane margin-top ${pane.marginTop}`);
+  if (!["start", "left"].includes(pane.textAlign)) errs.push(`카드 pane text-align ${pane.textAlign}`);
+
+  if (cs(".course-title .menu-subtitle").display !== "inline") errs.push("카드 제목 subtitle 이 block");
+  if (cs(".course-head").display !== "flex") errs.push("카드 헤더 flex 아님");
+  if (cs(".side-row").display !== "flex") errs.push("사이드 행 flex 아님");
+
+  const head = cs(".acc-head");
+  if (head.backgroundColor !== "rgba(0, 0, 0, 0)") errs.push(`접이식 헤더 배경 ${head.backgroundColor}`);
+  if (head.width === "auto" || parseFloat(head.width) < 300) errs.push(`접이식 헤더 너비 ${head.width}`);
+
+  const bell = cs(".bell [data-lang]:not([hidden])");
+  if (bell.display !== "inline") errs.push("벨 문구 span 이 inline 아님");
+  return errs.length ? "FAIL: " + errs.join(" / ") : "PASS";
+})()
+```
+
+- [ ] **Step 2: 실패 확인**
+
+```bash
+tests/run.sh 2>&1 | grep test-styles
+```
+Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
+
+- [ ] **Step 3: CSS 추가**
+
+`style.css` **맨 끝**에 아래를 붙인다 (뒤에 올수록 이기므로 기존 규칙과의 충돌을 위치로 해결한다):
+
+```css
+
+/* ============================= */
+/* 🔹 QR 메뉴판 레이아웃 (2026-09 개편) */
+/* ============================= */
+
+/* 인라인 다국어 라벨: [data-lang] 의 블록용 레이아웃 규칙(margin·max-width·font-size·padding)을 받지 않는다 */
+.i18n-inline [data-lang] {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+}
+
+/* 상단 고정 바 */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 14px;
+  background: #d50000;
+  color: #fff;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.topbar-brand img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  flex: none;
+}
+
+.topbar-brand [data-lang] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topbar-lang {
+  flex: none;
+  margin: 0;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #d50000;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+/* 벨 안내 띠 */
+.bell {
+  margin: 0;
+  padding: 9px 14px;
+  background: #fff3cd;
+  color: #6b4e00;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* 메뉴 시트(코스·사이드·접이식 공통 폭) */
+.menu-sheet {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 6px 14px 24px;
+}
+
+.menu-sheet section {
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.menu-sheet h2 {
+  margin: 14px 0 8px;
+  font-size: 1.1rem;
+  color: #7a2a2a;
+  text-align: start;
+}
+
+/* 카드·가격표 안의 언어 pane 은 블록이지만 [data-lang] 레이아웃 규칙은 받지 않는다 */
+.course-card [data-lang],
+.side-list [data-lang] {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  font-size: inherit;
+  line-height: 1.6;
+  text-align: start;
+}
+
+/* 코스 카드 */
+.course-card {
+  margin: 0 0 10px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid #f0c9d0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.course-card.is-featured {
+  border-color: #d50000;
+  background: #fffafa;
+}
+
+.course-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.course-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.course-title::before {
+  content: attr(data-icon) " ";
+}
+
+.course-title .menu-subtitle {
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-shadow: none;
+  letter-spacing: 0;
+}
+
+.course-title .course-label {
+  font-size: 1.4rem;
+  margin-right: 6px;
+}
+
+.course-price {
+  flex: none;
+  text-align: end;
+  font-weight: 700;
+  color: #333;
+}
+
+.course-price .price {
+  color: #d50000;
+  font-size: 1.1rem;
+}
+
+.course-body {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #333;
+  word-break: keep-all;
+}
+
+.course-body .small-note {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.course-body .sep {
+  color: #c33;
+}
+
+.course-chips {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.course-chips .chip {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #FFEDF0;
+  font-size: 0.95rem;
+}
+
+/* 사이드 가격표 */
+.side-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e8d3d7;
+  font-size: 0.95rem;
+}
+
+.side-name .small-note {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.side-price {
+  flex: none;
+  text-align: end;
+}
+
+.side-price .price {
+  color: #d50000;
+  font-weight: 800;
+}
+
+/* 접이식 안내 */
+.acc {
+  border-top: 1px solid #eadfe1;
+}
+
+.acc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 12px 4px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: start;
+  cursor: pointer;
+}
+
+.acc-head::after {
+  content: "▾";
+  color: #999;
+  transition: transform 0.2s;
+}
+
+.acc-head[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.acc .usage-detail {
+  margin: 0 0 12px;
+  max-width: none;
+}
+
+/* 푸터: 슬로건은 히어로에서 내려왔다 */
+footer .tagline {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+}
+
+footer .footer-brand {
+  margin: 0;
+}
+```
+
+- [ ] **Step 4: 검사 통과 확인**
+
+```bash
+tests/run.sh
+```
+Expected: 지금까지의 4개 검사 모두 `✅ … PASS`
+
+- [ ] **Step 5: 눈으로 확인**
+
+http://127.0.0.1:8080 — 언어를 고른 뒤: 빨간 상단 바가 스크롤해도 붙어 있고, 노란 벨 띠, 흰 카드 3장(Full 만 빨간 테두리 + 칩), 사이드 가격표, 접이식 4개가 보인다. 카드 제목 앞에 🥩가 보인다. 제목 크기가 작지 않다.
+
+- [ ] **Step 6: 커밋**
+
+```bash
+git add style.css tests/browser/test-styles.js
+git commit -m "style: 상단 바·벨 띠·코스 카드·사이드 표·접이식 레이아웃"
+```
+
+---
+
+### Task 5: 접이식 접근성 + 언어 전환 검사
+
+코드는 Task 3의 `app.js`에 이미 들어 있다(`setExpanded`, `topbarLangName`). 이 Task는 그 동작을 검사로 고정한다.
+
+**Files:**
+- Create: `tests/browser/test-accordion.js`
+- Create: `tests/browser/test-lang-switch.js`
+
+- [ ] **Step 1: 접이식 검사 작성**
+
+`tests/browser/test-accordion.js`:
+
+```js
+(() => {
+  const errs = [];
+  const heads = [...document.querySelectorAll(".acc-head")];
+  if (heads.length !== 4) return `FAIL: 헤더 ${heads.length}개`;
+  const boxOf = (h) => document.getElementById(h.dataset.target);
+  if (heads.some((h) => h.tagName !== "BUTTON")) errs.push("헤더가 button 이 아님 (키보드 불가)");
+
+  heads[0].click();
+  if (heads[0].getAttribute("aria-expanded") !== "true") errs.push("열었는데 aria-expanded=true 아님");
+  if (boxOf(heads[0]).hidden || !boxOf(heads[0]).classList.contains("is-open")) errs.push("1번 박스가 안 열림");
+  if (!boxOf(heads[0]).querySelector("p[data-lang]:not([hidden])")) errs.push("1번 박스에 보이는 문단 없음");
+
+  heads[1].click();
+  if (boxOf(heads[0]).classList.contains("is-open")) errs.push("2번을 열었는데 1번이 안 닫힘");
+  if (heads[0].getAttribute("aria-expanded") !== "false") errs.push("닫혔는데 aria-expanded=false 아님");
+  if (!boxOf(heads[1]).classList.contains("is-open")) errs.push("2번 박스가 안 열림");
+
+  heads[1].click();
+  if (boxOf(heads[1]).classList.contains("is-open")) errs.push("같은 헤더를 다시 눌렀는데 안 닫힘");
+  return errs.length ? "FAIL: " + errs.join(" / ") : "PASS";
+})()
+```
+
+- [ ] **Step 2: 언어 전환 검사 작성**
+
+`tests/browser/test-lang-switch.js`:
+
+```js
+(() => {
+  const errs = [];
+  const LANGS = ["ko","en","zh","ja","vi","th","ph","fr","es","pt","ar","ru","tr"];
+  const NAMES = { ko: "한국어", en: "English", zh: "中文", ja: "日本語", vi: "Tiếng Việt", th: "ไทย",
+    ph: "Filipino", fr: "Français", es: "Español", pt: "Português", ar: "العربية", ru: "Русский", tr: "Türkçe" };
+  for (const lang of LANGS) {
+    document.querySelector(`[data-lang-code="${lang}"]`).click();
+    if (document.documentElement.lang !== lang) errs.push(`${lang}: html lang 미적용`);
+    const stray = [...document.querySelectorAll("[data-lang]")].filter((e) => !e.hidden && e.dataset.lang !== lang).length;
+    if (stray) errs.push(`${lang}: 다른 언어 요소 ${stray}개 노출`);
+    const hiddenOwn = [...document.querySelectorAll(`[data-lang="${lang}"]`)].filter((e) => e.hidden).length;
+    if (hiddenOwn) errs.push(`${lang}: 자기 언어 요소 ${hiddenOwn}개 숨김`);
+    const label = document.getElementById("topbarLangName").textContent;
+    if (label !== NAMES[lang]) errs.push(`${lang}: 상단 바 라벨 '${label}'`);
+  }
+  // 아랍어: 가격이 제목의 왼쪽에 와야 한다 (RTL)
+  document.querySelector('[data-lang-code="ar"]').click();
+  const t = document.querySelector('.course-card [data-lang="ar"] .course-title').getBoundingClientRect();
+  const p = document.querySelector('.course-card [data-lang="ar"] .course-price').getBoundingClientRect();
+  if (!(p.left < t.left)) errs.push("아랍어에서 가격이 왼쪽에 오지 않음");
+  if (document.documentElement.dir !== "rtl") errs.push("아랍어 dir=rtl 아님");
+  document.querySelector('[data-lang-code="ko"]').click();
+  return errs.length ? "FAIL: " + errs.slice(0, 6).join(" / ") : "PASS";
+})()
+```
+
+- [ ] **Step 3: 실행**
+
+```bash
+tests/run.sh
+```
+Expected: 6개 검사 모두 `✅ … PASS`. 실패하면 Task 3의 `app.js`(`setExpanded`, `applyLang`)와 Task 4의 CSS(`.course-head` flex)를 확인.
+
+- [ ] **Step 4: 커밋**
+
+```bash
+git add tests/browser/test-accordion.js tests/browser/test-lang-switch.js
+git commit -m "test: 접이식 aria-expanded와 13개 언어 전환 검사"
+```
+
+---
+
+### Task 6: 죽은 CSS 삭제
+
+히어로·버튼 그리드·`hidden-body`·코스/사이드 상세박스 전용 규칙은 이제 아무 요소와도 맞지 않는다. 셀렉터 목록으로 자동 삭제한다. 그룹 셀렉터(`.menu-detail p, .usage-detail p`)는 죽은 항목만 빼고 남긴다.
+
+**Files:**
+- Modify: `style.css`
+
+- [ ] **Step 1: 삭제 전 규칙 수 기록**
+
+```bash
+grep -c '{' style.css
+```
+Expected: 숫자 하나 (예: 260대). 뒤에서 줄어드는지 본다.
+
+- [ ] **Step 2: 삭제 스크립트 실행**
+
+아래를 `/tmp/prune-css.py`로 저장하고 실행한다.
+
+```python
+import re
+P = 'style.css'
+src = open(P, encoding='utf-8').read()
+
+# 이 셀렉터로 시작하는 규칙은 더 이상 대상 요소가 없다
+DEAD = re.compile(r'^(\.hero|\.hidden-body|\.menu-buttons|\.menu-btn|#menuDetailBox|#sideDetailBox|'
+                  r'\.menu-detail|\.side-detail|\.footer-branches)')
+
+def clean(css):
+    mask = re.sub(r'/\*.*?\*/', lambda m: ' ' * len(m.group(0)), css, flags=re.S)
+    out = ''; i = 0; n = len(css)
+    while i < n:
+        j = mask.find('{', i)
+        if j == -1:
+            out += css[i:]; break
+        depth = 1; k = j + 1
+        while k < n and depth:
+            depth += (mask[k] == '{') - (mask[k] == '}'); k += 1
+        head = css[i:j]; body = css[j + 1:k - 1]
+        sel = ' '.join(mask[i:j].split())
+        if sel.startswith('@'):
+            inner = clean(body)
+            if inner.strip():
+                out += head + '{' + inner + '}'
+        else:
+            parts = [s.strip() for s in sel.split(',') if s.strip()]
+            keep = [s for s in parts if not DEAD.match(s)]
+            if not keep:
+                pass                                   # 블록 통째 삭제 (앞 주석 포함)
+            elif len(keep) == len(parts):
+                out += css[i:k]                        # 그대로
+            else:
+                out += '\n' + ',\n'.join(keep) + ' {' + body + '}'   # 죽은 셀렉터만 제거
+        i = k
+    return out
+
+result = re.sub(r'\n{3,}', '\n\n', clean(src))
+open(P, 'w', encoding='utf-8').write(result)
+print('규칙 수:', src.count('{'), '→', result.count('{'))
+```
+
+```bash
+python3 /tmp/prune-css.py
+grep -nE '^(\.hero|\.hidden-body|\.menu-buttons|\.menu-btn|#menuDetailBox|#sideDetailBox|\.footer-branches)' style.css || echo "죽은 셀렉터 없음"
+```
+Expected: `규칙 수: N → M` (M < N), 그리고 `죽은 셀렉터 없음`
+
+- [ ] **Step 3: 남아야 할 규칙 확인**
+
+```bash
+grep -nE '^\.usage-detail|^#gamasotDetailBox|^#ssamDetailBox|^\.detail-header|^\.modal|^\[hidden\]|^\.store-info|^\.topbar|^\.course-card' style.css | head -20
+```
+Expected: 각 셀렉터가 최소 한 줄씩 나온다 (접이식 박스·가마솥/쌈 배경·모달·매장 안내·새 레이아웃은 살아 있어야 한다)
+
+- [ ] **Step 4: 전체 검사 재실행**
+
+```bash
+tests/run.sh
+```
+Expected: 6개 모두 `✅`. 실패하면 `git diff style.css`로 잘못 지워진 그룹을 찾아 되살린다.
+
+- [ ] **Step 5: 커밋**
+
+```bash
+git add style.css
+git commit -m "style: 히어로·버튼 그리드·hidden-body 등 대상 요소가 없어진 규칙 삭제"
+```
+
+---
+
+### Task 7: 문구 무손실 검사 (기준선 대조)
+
+**Files:**
+- Create: `tests/browser/test-fidelity.js`
+
+- [ ] **Step 1: 검사 작성**
+
+`tests/browser/test-fidelity.js` — `BASELINE`은 `tests/run.sh`가 앞에 붙여 준다.
+
+```js
+(() => {
+  const errs = [];
+  const norm = (t) => t.replace(/[+·]/g, " ").replace(/\s+/g, " ").trim();
+  const bag = (t) => {
+    const m = new Map();
+    for (const w of norm(t).split(" ")) if (w) m.set(w, (m.get(w) || 0) + 1);
+    return m;
+  };
+  const same = (a, b) => a.size === b.size && [...a].every(([k, v]) => b.get(k) === v);
+  const LANGS = ["ko","en","zh","ja","vi","th","ph","fr","es","pt","ar","ru","tr"];
+  const ACC = { usage: "usageDetailBox", tips: "courseTipBox", gamasot: "gamasotDetailBox", ssam: "ssamDetailBox" };
+  let n = 0;
+  const check = (id, text) => {
+    n++;
+    const base = BASELINE[id];
+    if (base == null) { errs.push(`${id}: 기준선 없음`); return; }
+    if (!same(bag(text), bag(base))) errs.push(id);
+  };
+  for (const lang of LANGS) {
+    document.querySelector(`[data-lang-code="${lang}"]`).click();
+    for (const key of ["courseA", "courseB", "courseF"]) {
+      check(`${key}|${lang}`, document.querySelector(`.course-card[data-course="${key}"] [data-lang="${lang}"]`).textContent);
+    }
+    check(`side|${lang}`, document.querySelector(`#sideList [data-lang="${lang}"]`).textContent);
+    for (const [key, boxId] of Object.entries(ACC)) {
+      document.querySelector(`.acc-head[data-content="${key}"]`).click();
+      const p = document.querySelector(`#${boxId} p[data-lang="${lang}"]`);
+      check(`${key}|${lang}`, p ? p.textContent : "");
+    }
+  }
+  document.querySelector('[data-lang-code="ko"]').click();
+  return errs.length
+    ? `FAIL: ${errs.length}/${n} 불일치 — ${errs.slice(0, 8).join(", ")}`
+    : `PASS (${n}블록 기준선과 일치)`;
+})()
+```
+
+- [ ] **Step 2: 실행**
+
+```bash
+tests/run.sh 2>&1 | grep fidelity
+```
+Expected: `✅ test-fidelity.js — PASS (104블록 기준선과 일치)`
+
+불일치가 나오면: 해당 블록의 기준선(`python3 -c "import json;print(json.load(open('tests/baseline/content-text.json'))['courseA|ko'])"`)과 화면 텍스트를 비교한다. 흔한 원인은 `splitCourseBlock`이 제목이나 가격 줄 노드를 빠뜨린 것.
+
+- [ ] **Step 3: content.js / prices.js 무변경 확인**
+
+```bash
+git diff fix/site-audit-2026-09 -- js/content.js js/prices.js | wc -l
+```
+Expected: `0`
+
+- [ ] **Step 4: 커밋**
+
+```bash
+git add tests/browser/test-fidelity.js
+git commit -m "test: 13개 언어 x 8콘텐츠 렌더 텍스트를 개편 전 기준선과 대조"
+```
+
+---
+
+### Task 8: 첫 화면 합격 기준 · 스크린샷 · README
+
+**Files:**
+- Create: `tests/browser/test-first-screen.js`
+- Modify: `README.md`
+
+- [ ] **Step 1: 첫 화면 검사 작성** (실행기 기본 뷰포트 390×844에서 돈다)
+
+`tests/browser/test-first-screen.js`:
+
+```js
+(() => {
+  const errs = [];
+  const H = window.innerHeight;
+  const bottom = (sel) => {
+    const el = document.querySelector(sel);
+    return el ? el.getBoundingClientRect().bottom : Infinity;
+  };
+  document.querySelector('[data-lang-code="ko"]').click();
+  window.scrollTo(0, 0);
+  if (bottom('.course-card[data-course="courseA"] .course-price') > H) errs.push("A코스 가격이 첫 화면 밖");
+  if (bottom('.course-card[data-course="courseF"] .course-price') > H * 1.5) errs.push("Full 가격이 한 화면 반 밖");
+  if (bottom("#sideList .side-row") > H * 1.5) errs.push("사이드 첫 항목이 한 화면 반 밖");
+  if (getComputedStyle(document.querySelector(".bell")).display === "none") errs.push("벨 안내 안 보임");
+  return errs.length ? `FAIL(${window.innerWidth}x${H}): ` + errs.join(" / ") : "PASS";
+})()
+```
+
+- [ ] **Step 2: 모바일·데스크톱 양쪽에서 전체 검사**
+
+```bash
+tests/run.sh && VIEWPORT_W=1280 VIEWPORT_H=900 tests/run.sh
+```
+Expected: 두 번 모두 8개 검사 `✅`. (데스크톱에서 `test-first-screen`이 실패하면 카드 여백을 줄이기보다 먼저 390 결과를 우선한다 — 스펙의 기준은 390이다. 1280에서만 실패하면 그 검사는 통과로 간주하고 이유를 커밋 메시지에 적는다.)
+
+- [ ] **Step 3: 스크린샷 저장**
+
+```bash
+mkdir -p docs/superpowers/screenshots
+for W in 390 1280; do
+  agent-browser --session kbbq-test set viewport $W 900 >/dev/null
+  agent-browser --session kbbq-test open http://127.0.0.1:8080/ >/dev/null
+  agent-browser --session kbbq-test wait --load networkidle >/dev/null
+  agent-browser --session kbbq-test eval 'document.querySelector("[data-lang-code=ko]").click(); "ok"' >/dev/null
+  agent-browser --session kbbq-test screenshot --full docs/superpowers/screenshots/2026-09-15-qr-menu-$W.png >/dev/null
+done
+ls -la docs/superpowers/screenshots/
+```
+Expected: png 2개. Read 도구로 열어 보고: 카드가 겹치거나 잘리지 않는지, 아랍어가 아니어도 가격이 오른쪽에 붙는지, 접이식 화살표가 보이는지 확인한다.
+
+- [ ] **Step 4: README 갱신**
+
+`README.md`의 "## 파일 구조" 블록을 아래로 바꾼다:
+
+```
+index.html        페이지 구조 — 상단 바 · 벨 안내 · 코스 카드 · 사이드 표 · 접이식 안내 · 푸터
+                  (UI 문구는 data-lang 속성으로 언어별 분기)
+style.css         전체 스타일
+js/
+  app.js          로직 — 언어 전환, 모달, 접이식, 첫 화면 렌더
+  render.js       content.js 블록을 코스 카드·사이드 표 DOM 으로 자르는 함수
+  content.js      상세 문구 원본 (8개 섹션 × 13개 언어)
+  prices.js       가격 단일 원본 + 언어별 통화 표기
+tests/
+  run.sh          브라우저 검사 실행기 (tests/run.sh / tests/run.sh baseline)
+  browser/        검사 스크립트 (agent-browser 로 실행)
+  baseline/       개편 전 텍스트 기준선
+images/           로고 · 파비콘 · 배경 이미지
+CNAME             커스텀 도메인
+```
+
+그리고 "## 자주 하는 수정" 앞에 아래 절을 추가한다 (물결 울타리 안의 내용을 그대로):
+
+~~~
+## 검사 돌리기
+
+```bash
+tests/run.sh                       # 모바일(390px) 기준 8개 검사
+VIEWPORT_W=1280 tests/run.sh       # 데스크톱
+```
+
+`agent-browser`(npm i -g agent-browser)가 필요하다. 문구를 바꾼 뒤에는 기준선도 다시 만든다:
+`tests/run.sh baseline` — 단, 이 명령은 **문구 변경이 의도된 경우에만** 실행한다.
+~~~
+
+- [ ] **Step 5: 최종 커밋**
+
+```bash
+git add tests/browser/test-first-screen.js README.md docs/superpowers/screenshots/
+git commit -m "feat: QR 메뉴판 UI 개편 완료 - 첫 화면 검사, 스크린샷, README"
+git log --oneline fix/site-audit-2026-09..HEAD
+```
+Expected: Task 1~8 커밋 8~9개가 나열된다.
+
+- [ ] **Step 6: 스펙 합격 기준 대조**
+
+스펙 §6의 7개 항목을 하나씩 확인해 보고한다:
+
+| # | 기준 | 확인 방법 |
+|---|---|---|
+| 1 | 가격까지 0탭 | `test-first-screen.js` PASS |
+| 2 | 문구 무손실 | `test-fidelity.js` PASS (104블록) |
+| 3 | 언어 전환·RTL | `test-lang-switch.js` PASS |
+| 4 | 접이식 키보드·단일 열림 | `test-accordion.js` PASS |
+| 5 | 첫 방문 모달 + 한국어 본문 / 재방문 무모달 | 브라우저에서 localStorage 지우고 열기 → 모달 뒤로 카드가 보인다; 언어 고른 뒤 새로고침 → 모달 없음 |
+| 6 | 콘솔 오류 0, 스크린샷 겹침 없음 | Task 3 Step 7 명령 재실행, Step 3 스크린샷 |
+| 7 | content.js·prices.js diff 없음 | Task 7 Step 3 |
+
+---
+
+## 자기 검토
+
+**스펙 대조**
+- §3① 상단 바 → Task 2(마크업)·4(CSS)·3(`topbarLangName` 갱신) ✓
+- §3② 벨 안내 13문장 → Task 2 생성 스크립트 `BELL` ✓
+- §3③ 카드 3장·Full 강조·이모지 칩·항상 펼침 → Task 3 `COURSES`·`buildCourseCard`, Task 4 CSS ✓
+- §3④ 사이드 표 → Task 3 `buildSideList`, Task 4 ✓
+- §3⑤ 접이식 4개·한 번에 하나 → Task 2 마크업, Task 3 `openDetail`, Task 5 검사 ✓
+- §3⑥ 푸터(슬로건 이동, 지점 링크 행 삭제, 지점 카드 유지) → Task 2 ✓
+- §3 언어 선택 전 상태(hidden-body 제거) → Task 3 `init`, Task 6 CSS 삭제 ✓
+- §4 자르기 규칙·폴백·언어 전환·RTL → Task 3 `splitCourseBlock`/`splitSideBlock`/경고, Task 5 RTL 검사 ✓
+- §5 파일별 변경 → 각 Task 파일 목록과 일치 ✓
+- §6 합격 기준 7개 → Task 8 Step 6 표 ✓
+- §7 범위 밖 → 어느 Task도 손대지 않음 ✓
+
+**빈칸 검사** — TBD/TODO 없음. 모든 코드 단계에 실제 코드, 모든 명령에 기대 출력.
+
+**이름 일관성** — `buildCourseCard`/`buildSideList`(render.js ↔ app.js), `#courseCards`/`#sideList`(index.html ↔ app.js ↔ 검사), `#topbarLangName`(index.html ↔ app.js ↔ 검사), `.acc-head`·`aria-expanded`(index.html ↔ `setExpanded` ↔ 검사), `.course-pane`/`.side-pane`/`.side-row`/`.course-title`/`.course-price`/`.course-body`/`.sep`(render.js ↔ CSS ↔ 검사) 모두 일치.
