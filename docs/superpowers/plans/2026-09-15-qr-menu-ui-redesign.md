@@ -1633,7 +1633,6 @@ git commit -m "style: 히어로·버튼 그리드·hidden-body 등 대상 요소
     for (const w of norm(t).split(" ")) if (w) m.set(w, (m.get(w) || 0) + 1);
     return m;
   };
-  const same = (a, b) => a.size === b.size && [...a].every(([k, v]) => b.get(k) === v);
   const LANGS = ["ko","en","zh","ja","vi","th","ph","fr","es","pt","ar","ru","tr"];
   const ACC = { usage: "usageDetailBox", tips: "courseTipBox", gamasot: "gamasotDetailBox", ssam: "ssamDetailBox" };
   let n = 0;
@@ -1641,18 +1640,24 @@ git commit -m "style: 히어로·버튼 그리드·hidden-body 등 대상 요소
     n++;
     const base = BASELINE[id];
     if (base == null) { errs.push(`${id}: 기준선 없음`); return; }
-    if (!same(bag(text), bag(base))) errs.push(id);
+    const a = norm(text), b = norm(base);
+    if (a === b) return;
+    // 어떤 단어가 늘고 줄었는지 보여준다 (순서만 다르면 diff 가 비어 '순서 차이' 로 표시)
+    const A = bag(text), B = bag(base), diff = [];
+    for (const [w, c] of A) if ((B.get(w) || 0) !== c) diff.push(`+${w}×${c - (B.get(w) || 0)}`);
+    for (const [w, c] of B) if (!A.has(w)) diff.push(`-${w}×${c}`);
+    errs.push(diff.length ? `${id} [${diff.slice(0, 6).join(", ")}]` : `${id} (순서 차이)`);
   };
   for (const lang of LANGS) {
     document.querySelector(`[data-lang-code="${lang}"]`).click();
     for (const key of ["courseA", "courseB", "courseF"]) {
-      check(`${key}|${lang}`, document.querySelector(`.course-card[data-course="${key}"] [data-lang="${lang}"]`).textContent);
+      check(`${key}|${lang}`, document.querySelector(`.course-card[data-course="${key}"] [data-lang="${lang}"]`)?.textContent ?? "");
     }
-    check(`side|${lang}`, document.querySelector(`#sideList [data-lang="${lang}"]`).textContent);
+    check(`side|${lang}`, document.querySelector(`#sideList [data-lang="${lang}"]`)?.textContent ?? "");
     for (const [key, boxId] of Object.entries(ACC)) {
       document.querySelector(`.acc-head[data-content="${key}"]`).click();
       const p = document.querySelector(`#${boxId} p[data-lang="${lang}"]`);
-      check(`${key}|${lang}`, p ? p.textContent : "");
+      check(`${key}|${lang}`, p?.textContent ?? "");
     }
   }
   document.querySelector('[data-lang-code="ko"]').click();
@@ -1669,7 +1674,7 @@ tests/run.sh 2>&1 | grep fidelity
 ```
 Expected: `✅ test-fidelity.js — PASS (104블록 기준선과 일치)`
 
-불일치가 나오면: 해당 블록의 기준선(`python3 -c "import json;print(json.load(open('tests/baseline/content-text.json'))['courseA|ko'])"`)과 화면 텍스트를 비교한다. 흔한 원인은 `splitCourseBlock`이 제목이나 가격 줄 노드를 빠뜨린 것.
+불일치가 나오면: 실패 메시지 자체에 `[+단어×n, -단어×n]` 형태로 어떤 단어가 늘고 줄었는지 나온다(순서만 다르면 `(순서 차이)`로 표시). 흔한 원인은 `splitCourseBlock`이 제목이나 가격 줄 노드를 빠뜨린 것.
 
 - [ ] **Step 3: content.js / prices.js 무변경 확인**
 
