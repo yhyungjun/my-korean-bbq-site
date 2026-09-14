@@ -40,7 +40,7 @@ export const CONTENT = {
   豚盛り合わせ<span class="small-note">(サムギョプサル/モクサル/豚トロ/カルメギサル/ウサムギョプ/薄切りサムギョプサル)</span><span class="small-note">+</span>豚皮（ハチの巣）<span class="small-note">+</span>豚プルコギ<span class="small-note">+</span>ギアラ<span class="small-note">+</span>野菜サム`,
     vi: `  <span class="menu-subtitle"><strong class="course-label">A</strong>Suất Buffet Thịt Heo Không Giới Hạn</span>
   <span class="price">{{courseA}}</span>/người<br>
-  Thịt heo tổng hợp <span class="small-note">(Ba chỉ/Cổ/Thịt má/Sườn ngoài/Ức bò/Ba chỉ thái mỏng)</span><span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Sách bò<span class="small-note">+</span>Rau cuốn`,
+  Thịt heo tổng hợp <span class="small-note">(Ba chỉ/Cổ/Thịt má/Sườn ngoài/Ức bò/Ba chỉ thái mỏng)</span><span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Khế bò<span class="small-note">+</span>Rau cuốn`,
     th: `  <span class="menu-subtitle"><strong class="course-label">A</strong>เซ็ตหมูรวมเติมไม่อั้น</span>
   คนละ <span class="price">{{courseA}}</span><br>
   หมูรวม<span class="small-note">(หมูสามชั้น/คอหมู/แก้มหมู/เนื้อส่วนท้อง/เนื้ออกวัว/หมูสามชั้นบาง)</span><span class="small-note">+</span>หนังหมูรังผึ้ง<span class="small-note">+</span>หมูบูลโกกิ<span class="small-note">+</span>ผ้าขี้ริ้ว<span class="small-note">+</span>ผักห่อ`,
@@ -83,7 +83,7 @@ export const CONTENT = {
   豚盛り<span class="small-note">(サムギョプサル/豚肩ロース/豚トロ/ハラミ/牛バラ/薄切りサムギョプサル)</span><span class="small-note">+</span>醤油チキン（骨なし）<span class="small-note">+</span>豚皮（ハチの巣）<span class="small-note">+</span>豚プルコギ<span class="small-note">+</span>ギアラ<span class="small-note">+</span>野菜サム`,
     vi: `  <span class="menu-subtitle"><strong class="course-label">B</strong>Thịt Heo + Gà Xì Dầu Buffet Không Giới Hạn</span>
   <span class="price">{{courseB}}</span>/người<br>
-  Thịt heo <span class="small-note">(ba chỉ/cổ/má/thăn sườn/ức bò/ba chỉ mỏng)</span><span class="small-note">+</span>Gà xì dầu không xương<span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Sách bò<span class="small-note">+</span>Rau cuốn`,
+  Thịt heo <span class="small-note">(ba chỉ/cổ/má/thăn sườn/ức bò/ba chỉ mỏng)</span><span class="small-note">+</span>Gà xì dầu không xương<span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Khế bò<span class="small-note">+</span>Rau cuốn`,
     th: `  <span class="menu-subtitle"><strong class="course-label">B</strong>หมูรวม + ไก่ซอสถั่วเหลือง เติมไม่อั้น</span>
   คนละ <span class="price">{{courseB}}</span><br>
   หมูรวม<span class="small-note">(หมูสามชั้น/คอหมู/แก้มหมู/เนื้อส่วนท้อง/เนื้ออกวัว/หมูสามชั้นบาง)</span><span class="small-note">+</span>ไก่ไม่มีกระดูกซอสซีอิ๊ว<span class="small-note">+</span>หนังหมู<span class="small-note">+</span>หมูบูลโกกิ<span class="small-note">+</span>ผ้าขี้ริ้ว<span class="small-note">+</span>ผักห่อ`,
@@ -135,7 +135,7 @@ export const CONTENT = {
     vi: `  <span class="menu-subtitle"><strong class="course-label">Full</strong> Thịt Heo + Gà Xì Dầu Không Giới Hạn</span>
   <span class="price">{{courseF}}</span>/người<br>
   Thịt heo <span class="small-note">(ba chỉ/cổ/má/thăn sườn/ức bò/ba chỉ mỏng)</span><span class="small-note">+</span>
-  Gà xì dầu không xương<span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Sách bò<span class="small-note">+</span>Rau cuốn<span class="small-note">+</span>
+  Gà xì dầu không xương<span class="small-note">+</span>Da heo tổ ong<span class="small-note">+</span>Bulgogi heo<span class="small-note">+</span>Khế bò<span class="small-note">+</span>Rau cuốn<span class="small-note">+</span>
   Nước uống <span class="unlimited">không giới hạn</span><span class="small-note">+</span>Cơm <span class="unlimited">không giới hạn</span><span class="small-note">+</span>Mì lạnh <span class="unlimited">không giới hạn</span>`,
     th: `  <span class="menu-subtitle"><strong class="course-label">Full</strong> หมูรวม + ไก่ซอสถั่วเหลือง เติมไม่อั้น</span>
   คนละ <span class="price">{{courseF}}</span><br>
@@ -237,7 +237,7 @@ export const CONTENT = {
       Cheongha / Soju hoa quả <span class="price">{{cheongha}}</span>
     `,
     th: `      <span class="menu-subtitle">เมนูข้างเคียง</span><br>
-      บะหมี่เย็น <span class="price">{{naengmyeon}}</span><br>
+      บะหมี่เย็น <span class="small-note">(แบบน้ำ/แบบเผ็ด)</span> <span class="price">{{naengmyeon}}</span><br>
       ข้าวเปล่า <span class="small-note">(ถ้าสั่งทั้งโต๊ะ<span class="unlimited">ไม่อั้น</span>)</span> <span class="price">{{rice}}</span><br>
       เครื่องดื่มกระป๋อง <span class="price">{{drinkCan}}</span><br>
       เครื่องดื่ม<span class="unlimited">ไม่อั้น</span> <span class="small-note">(สั่งทุกคน)</span> <span class="price">{{drinkUnlimited}}</span>/คน<br>
@@ -247,13 +247,13 @@ export const CONTENT = {
       เบียร์ <span class="price">{{beer}}</span><br>
       ชองฮา / โซจูผลไม้ <span class="price">{{cheongha}}</span>
     `,
-    ph: `      <span class="menu-subtitle">Side Menu</span><br>
-      Hamheung cold noodles <span class="small-note">(spicy / mild)</span> <span class="price">{{naengmyeon}}</span><br>
-      Steamed rice <span class="small-note">(<span class="unlimited">Unlimited</span> if everyone orders)</span> <span class="price">{{rice}}</span><br>
-      Soft drink <span class="small-note">(can)</span> <span class="price">{{drinkCan}}</span><br>
-      <span class="unlimited">Unlimited</span> drinks <span class="small-note">(requires all members)</span> <span class="price">{{drinkUnlimited}}</span> each<br>
+    ph: `      <span class="menu-subtitle">Mga Side Dish</span><br>
+      Hamheung cold noodles <span class="small-note">(may sabaw / maanghang)</span> <span class="price">{{naengmyeon}}</span><br>
+      Kanin <span class="small-note">(<span class="unlimited">Unlimited</span> kung lahat ay oorder)</span> <span class="price">{{rice}}</span><br>
+      Softdrink <span class="small-note">(de lata)</span> <span class="price">{{drinkCan}}</span><br>
+      <span class="unlimited">Unlimited</span> na inumin <span class="small-note">(kailangan lahat ay oorder)</span> <span class="price">{{drinkUnlimited}}</span> bawat tao<br>
       Hangang ramen <span class="price">{{ramen}}</span><br>
-      Soybean stew <span class="price">{{jjigae}}</span><br>
+      Sabaw na doenjang <span class="price">{{jjigae}}</span><br>
       Soju <span class="price">{{soju}}</span><br>
       Beer <span class="price">{{beer}}</span><br>
       Cheongha / Fruit soju <span class="price">{{cheongha}}</span>
@@ -269,7 +269,7 @@ export const CONTENT = {
       Bière <span class="price">{{beer}}</span><br>
       Cheongha / Soju fruité <span class="price">{{cheongha}}</span>
     `,
-    es: `      <span class="menu-subtitle">Menú lateral</span><br>
+    es: `      <span class="menu-subtitle">Acompañamientos</span><br>
       Fideos fríos <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">{{naengmyeon}}</span><br>
       Arroz blanco <span class="small-note">(para todos <span class="unlimited">sin límite</span>)</span> <span class="price">{{rice}}</span><br>
       Bebida <span class="small-note">(Lata)</span> <span class="price">{{drinkCan}}</span><br>
@@ -280,7 +280,7 @@ export const CONTENT = {
       Cerveza <span class="price">{{beer}}</span><br>
       Cheongha / Soju de frutas <span class="price">{{cheongha}}</span>
     `,
-    pt: `      <span class="menu-subtitle">Menu Lateral</span><br>
+    pt: `      <span class="menu-subtitle">Acompanhamentos</span><br>
       Macarrão frio <span class="small-note">(Mul-naengmyeon / Bibim-naengmyeon)</span> <span class="price">{{naengmyeon}}</span><br>
       Arroz branco <span class="small-note">(<span class="unlimited">Ilimitado</span> se pedido para todos)</span> <span class="price">{{rice}}</span><br>
       Bebida <span class="small-note">(lata)</span> <span class="price">{{drinkCan}}</span><br>
@@ -528,7 +528,8 @@ export const CONTENT = {
      <span class="small-note"><em>Совет: Попросите добавку курицы с помощью настольного звонка.</em></span><br><br>
 
      <strong>Полный курс</strong>: Включает Курс A <span class="small-note">+</span> курицу <span class="small-note">+</span> безлимитный рис, холодную лапшу и напитки.<br>
-     <span class="small-note"><em>Совет: Используйте звонок, чтобы заказать добавку курицы, лапши или напитков.</em></span>
+     <span class="small-note"><em>Совет: Используйте звонок, чтобы заказать добавку курицы, лапши или напитков.<br>
+     (Холодная лапша: Муль-нэнмён / Пибим-нэнмён, Напитки: Кола / Зеро Кола / Спрайт)</em></span>
    `,
     tr: `     <strong>A Kursu</strong>: Et, sebze ve çeşitli sosları içerir.<br>
      <span class="small-note"><em>İpucu: Et için kesme tahtası, sebzeler için sebze tabağı, yan yemekler için küçük tabak kullanın.</em></span><br><br>
@@ -583,7 +584,7 @@ export const CONTENT = {
       จึงเป็นสัญลักษณ์ของครอบครัวและวัฒนธรรมการกินร่วมกันในเกาหลี
     `,
     ph: `      <strong>Pinagmulan ng “Gamasot” (Iron Pot)</strong><br><br>
-      Ginagamit sa Korea bago pa ang panahon ng Three Kingdoms (mahigit 2,000 taon na ang nakaraan).<br>
+      Pinaniniwalaang ginamit na ito sa Korea bago pa ang panahon ng Three Kingdoms (mahigit 2,000 taon na ang nakaraan).<br>
       Ang cast iron pot ay naging karaniwan sa mga tao mga 1,400 taon na ang nakalipas.<br><br>
       Mabagal itong uminit ngunit matagal ding mananatiling mainit, kaya pantay ang pagkaluto ng karne.<br>
       Isa itong simbolo ng pamilya at pagkakaisa sa kulturang Koreano.
@@ -668,7 +669,7 @@ export const CONTENT = {
     th: `      <strong>ซัม (쌈) คืออะไร?</strong><br>
       คือการห่ออาหารตามใจชอบของคุณ!<br><br>
       วางเนื้อที่จิ้มซอสน้ำมันงาหรือผงถั่วบนผัก แล้วใส่ซัมจัง (ซอสถั่วหมัก)<br>
-      สามารถเพิ่มหัวหอมดอง กิมจิ กระเทียมย่าง หรือถั่วงอกได้ตามชอบ<br><br>
+      สามารถเพิ่มยำต้นหอม กิมจิ กระเทียมย่าง หรือถั่วงอกได้ตามชอบ<br><br>
       ถ้าอยากลิ้มรสเนื้อแท้ๆ แนะนำให้จิ้มเกลือเพียงเล็กน้อย
     `,
     ph: `      <strong>Ano ang “Ssam”?</strong><br>
