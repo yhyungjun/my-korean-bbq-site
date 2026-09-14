@@ -56,7 +56,7 @@ export function splitSideBlock(html) {
 function markSeparators(root) {
   root.querySelectorAll("span.small-note").forEach((s) => {
     if (s.textContent.trim() === "+") {
-      s.className = "sep";
+      s.classList.replace("small-note", "sep");
       s.textContent = SEPARATOR_TEXT;
     }
   });

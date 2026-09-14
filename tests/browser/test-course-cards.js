@@ -14,7 +14,7 @@
       if (!p.querySelector(".course-price .price")?.textContent.trim()) errs.push(`${id}: 가격 없음`);
       if (!p.querySelector(".course-body")) errs.push(`${id}: 본문 없음`);
       if (/\{\{/.test(p.textContent)) errs.push(`${id}: 가격 토큰 미치환`);
-      if (p.querySelector(".course-body span.small-note")?.textContent.trim() === "+") errs.push(`${id}: + 구분자 미처리`);
+      if ([...p.querySelectorAll(".course-body span.small-note")].some((s) => s.textContent.trim() === "+")) errs.push(`${id}: + 구분자 미처리`);
     }
   }
   if (!document.querySelector('.course-card[data-course="courseF"].is-featured > .course-chips')) errs.push("Full 카드 강조/칩 없음");
