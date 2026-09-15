@@ -2,7 +2,7 @@
 
 > 상태: 완료 (2026-09-15) — 커밋 b8c3fdf … 마지막 커밋은 git log 참고.
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 테이블 QR 메뉴판에서 코스 3개의 가격·구성과 사이드 가격이 탭 없이 첫 화면에 보이도록 `index.html`·`style.css`·`js/app.js`를 재구성한다. 문구(`js/content.js`)와 가격(`js/prices.js`)은 한 글자도 바꾸지 않는다.
 
