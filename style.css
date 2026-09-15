@@ -200,19 +200,6 @@ body.fade-in {
   font-weight: 600;
 }
 
-/* 🔹 닫기(X) 버튼 */
-#gamasotDetailBox .close-btn {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  color: #ffb700;
-  font-size: 1.4rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  z-index: 2;
-}
-
 /* ===== 한국식 쌈 상세박스 (밝은 흰색 텍스트 버전) ===== */
 #ssamDetailBox {
   background-image: url("images/ssam.jpg");
@@ -247,22 +234,6 @@ body.fade-in {
     0 0 10px rgba(255, 180, 50, 0.6),
     0 0 20px rgba(255, 120, 0, 0.4),
     0 2px 4px rgba(0,0,0,0.6);
-} 
-
-/* 닫기 버튼 */
-#ssamDetailBox .close-btn {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  color: #ffb700;
-  font-size: 1.4rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  z-index: 2;
-}
-#ssamDetailBox .close-btn:hover {
-  transform: scale(1.2);
 }
 
 footer a {

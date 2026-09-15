@@ -1,4 +1,4 @@
-// 자동 생성: 커밋 59bed54 의 index.html(개편 전)에서 뽑은 UI 문구 117개.
+// 자동 생성: 커밋 59bed54 의 index.html(개편 전)에서 뽑은 UI 문구 117개 + 벨 안내 13개(수기 추가) = 130개.
 // 생성 스크립트는 docs/superpowers/plans/2026-09-15-qr-menu-ui-redesign.md Task 2 참고.
 (() => {
   const EXPECTED = {
@@ -118,7 +118,20 @@
   "acc.ssam|pt": "Enrolado coreano",
   "acc.ssam|ar": "اللف الكوري",
   "acc.ssam|ru": "Корейский сам",
-  "acc.ssam|tr": "Kore tarzı sarma"
+  "acc.ssam|tr": "Kore tarzı sarma",
+  "bell|ko": "주문·리필은 테이블 벨을 눌러주세요",
+  "bell|en": "Press the table bell to order or get a refill",
+  "bell|zh": "点餐或续餐请按桌上的呼叫铃",
+  "bell|ja": "注文・おかわりはテーブルのベルを押してください",
+  "bell|vi": "Bấm chuông bàn để gọi món hoặc lấy thêm",
+  "bell|th": "กดกริ่งที่โต๊ะเพื่อสั่งอาหารหรือรีฟิล",
+  "bell|ph": "Pindutin ang table bell para mag-order o mag-refill",
+  "bell|fr": "Appuyez sur la sonnette de table pour commander ou être resservi",
+  "bell|es": "Pulse el timbre de la mesa para pedir o repetir",
+  "bell|pt": "Toque a campainha da mesa para pedir ou repetir",
+  "bell|ar": "اضغط جرس الطاولة للطلب أو لإعادة التعبئة",
+  "bell|ru": "Нажмите кнопку вызова на столе, чтобы заказать или получить добавку",
+  "bell|tr": "Sipariş veya yenileme için masa zilini kullanın"
 };
   const SELECTORS = {
   "storeName": "h1.topbar-brand",
@@ -129,7 +142,8 @@
   "acc.usage": ".acc-head[data-content=\"usage\"]",
   "acc.tips": ".acc-head[data-content=\"tips\"]",
   "acc.gamasot": ".acc-head[data-content=\"gamasot\"]",
-  "acc.ssam": ".acc-head[data-content=\"ssam\"]"
+  "acc.ssam": ".acc-head[data-content=\"ssam\"]",
+  "bell": ".bell"
 };
   const norm = (t) => t.replace(/\s+/g, " ").trim();
   const errs = [];
@@ -141,5 +155,5 @@
     const got = norm(el.textContent);
     if (got !== want) errs.push(`${id}: '${got}' ≠ '${want}'`);
   }
-  return errs.length ? `FAIL: ${errs.length}/117 — ` + errs.slice(0, 6).join(" / ") : "PASS (117 UI 문구 일치)";
+  return errs.length ? `FAIL: ${errs.length}/130 — ` + errs.slice(0, 6).join(" / ") : "PASS (130 UI 문구 일치)";
 })()

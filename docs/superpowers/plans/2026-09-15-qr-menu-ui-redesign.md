@@ -1,6 +1,8 @@
 # QR 메뉴판 UI 개편 Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> 상태: 완료 (2026-09-15) — 커밋 b8c3fdf … 마지막 커밋은 git log 참고.
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** 테이블 QR 메뉴판에서 코스 3개의 가격·구성과 사이드 가격이 탭 없이 첫 화면에 보이도록 `index.html`·`style.css`·`js/app.js`를 재구성한다. 문구(`js/content.js`)와 가격(`js/prices.js`)은 한 글자도 바꾸지 않는다.
 
@@ -39,7 +41,7 @@
 
 **Files:** 없음
 
-- [ ] **Step 1: 브랜치 생성**
+- [x] **Step 1: 브랜치 생성**
 
 ```bash
 git checkout fix/site-audit-2026-09
@@ -59,7 +61,7 @@ Expected: `feat/qr-menu-ui`
 - Create: `tests/browser/capture-baseline.js`
 - Create: `tests/baseline/content-text.json` (스크립트가 생성)
 
-- [ ] **Step 1: 실행기 작성**
+- [x] **Step 1: 실행기 작성**
 
 `tests/run.sh`:
 
@@ -175,7 +177,7 @@ PY
 esac
 ```
 
-- [ ] **Step 2: 기준선 캡처 스크립트 작성**
+- [x] **Step 2: 기준선 캡처 스크립트 작성**
 
 `tests/browser/capture-baseline.js` — **개편 전 DOM**(버튼을 눌러 상세박스를 여는 방식)에서 동작한다:
 
@@ -204,7 +206,7 @@ esac
 })()
 ```
 
-- [ ] **Step 3: 실행 권한 부여 후 기준선 저장**
+- [x] **Step 3: 실행 권한 부여 후 기준선 저장**
 
 ```bash
 chmod +x tests/run.sh
@@ -212,7 +214,7 @@ tests/run.sh baseline
 ```
 Expected: `기준선 검증 OK: 104 항목` + `기준선 저장: tests/baseline/content-text.json`
 
-- [ ] **Step 4: 기준선 내용 확인**
+- [x] **Step 4: 기준선 내용 확인**
 
 ```bash
 python3 -c "
@@ -221,7 +223,7 @@ print(d['courseA|ko'][:80]); print(d['side|ja'][:80]); print(sum(1 for v in d.va
 ```
 Expected: 첫 줄에 `A돼지모듬 무한리필 1인 17,900원 돼지모듬(삼겹살/…`, 둘째 줄 일본어 사이드(제목 없이 `咸興冷麺`으로 시작), 마지막 `0 개 토큰 미치환`
 
-- [ ] **Step 5: 커밋**
+- [x] **Step 5: 커밋**
 
 ```bash
 git add tests/
@@ -238,7 +240,7 @@ git commit -m "test: 브라우저 테스트 실행기와 개편 전 텍스트 �
 - Create: `tests/browser/test-structure.js`
 - Modify: `index.html` (전체 재작성)
 
-- [ ] **Step 1: 실패하는 구조 검사 작성**
+- [x] **Step 1: 실패하는 구조 검사 작성**
 
 `tests/browser/test-structure.js`:
 
@@ -289,14 +291,14 @@ git commit -m "test: 브라우저 테스트 실행기와 개편 전 텍스트 �
 })()
 ```
 
-- [ ] **Step 2: 실패 확인**
+- [x] **Step 2: 실패 확인**
 
 ```bash
 tests/run.sh
 ```
 Expected: `❌ test-structure.js — FAIL: 상단 바: 0개 (기대 1) / …`
 
-- [ ] **Step 3: 생성 스크립트 작성 후 실행**
+- [x] **Step 3: 생성 스크립트 작성 후 실행**
 
 아래를 `/tmp/build-index.py`로 저장하고 실행한다. 현재 `index.html`을 읽어 같은 자리에 새 파일을 쓴다.
 
@@ -431,14 +433,14 @@ python3 /tmp/build-index.py
 ```
 Expected: `index.html 재작성: <숫자> 줄` (AssertionError가 나면 추출 패턴이 현재 파일과 안 맞는 것 — 메시지의 항목을 index.html에서 확인)
 
-- [ ] **Step 4: 구조 검사 통과 확인**
+- [x] **Step 4: 구조 검사 통과 확인**
 
 ```bash
 tests/run.sh
 ```
 Expected: `✅ test-structure.js — PASS`
 
-- [ ] **Step 4b: UI 문구 검사 생성**
+- [x] **Step 4b: UI 문구 검사 생성**
 
 이동한 UI 문구(매장명·슬로건·메뉴 제목·사이드 제목·접이식 라벨 4개·푸터 ©) 13개 언어 × 9그룹 = 117개를 자동 대조하는 검사를 만든다. 개편 전 `index.html`(커밋 `59bed54`)에서 문구를 뽑아 기대값으로 박아 넣는다.
 
@@ -513,11 +515,13 @@ tests/run.sh
 ```
 Expected: `✅ test-ui-strings.js — PASS (117 UI 문구 일치)`
 
-- [ ] **Step 5: 브라우저에서 눈으로 확인**
+> 이후 벨 안내 13문장(`bell` 그룹)은 이 생성 스크립트가 다루지 않는 신규 문구라 `tests/browser/test-ui-strings.js`에 손으로 추가했다(총 130개).
+
+- [x] **Step 5: 브라우저에서 눈으로 확인**
 
 http://127.0.0.1:8080 을 열면 상단 빨간 바, 노란 벨 띠, "메뉴 소개"·"사이드 메뉴" 제목(내용은 아직 비어 있음), 접이식 4개, 푸터가 보인다. 접이식을 누르면 기존 상세박스가 열린다. 제목 글자가 아주 작게 보이는 건 정상 — Task 4에서 CSS로 잡는다.
 
-- [ ] **Step 6: 커밋**
+- [x] **Step 6: 커밋**
 
 ```bash
 git add index.html tests/browser/test-structure.js
@@ -534,7 +538,7 @@ git commit -m "feat: index.html을 상단 바·벨 안내·카드 자리·접이
 - Create: `tests/browser/test-side-list.js`
 - Modify: `js/app.js` (전체 교체)
 
-- [ ] **Step 1: 실패하는 카드 검사 작성**
+- [x] **Step 1: 실패하는 카드 검사 작성**
 
 `tests/browser/test-course-cards.js`:
 
@@ -583,14 +587,14 @@ git commit -m "feat: index.html을 상단 바·벨 안내·카드 자리·접이
 })()
 ```
 
-- [ ] **Step 2: 실패 확인**
+- [x] **Step 2: 실패 확인**
 
 ```bash
 tests/run.sh
 ```
 Expected: `❌ test-course-cards.js — FAIL: 카드 0개 (기대 3)` 와 `❌ test-side-list.js — FAIL: pane 0개 (기대 13)`
 
-- [ ] **Step 3: render.js 작성**
+- [x] **Step 3: render.js 작성**
 
 `js/render.js`:
 
@@ -729,7 +733,7 @@ export function buildSideList(currentLang) {
 }
 ```
 
-- [ ] **Step 4: app.js 전체 교체**
+- [x] **Step 4: app.js 전체 교체**
 
 `js/app.js` — 기존 파일을 아래로 **통째로** 바꾼다. 바뀐 점: render.js 임포트와 renderMenu(), hidden-body/revealPage 제거, 상단 바 언어 이름 갱신, 접이식 aria-expanded 동기화. 상세박스 안의 ✕ 닫기 버튼은 접이식 헤더가 닫기를 맡으므로 없앴다(CLOSE_LABELS·close-detail 액션 삭제).
 
@@ -982,28 +986,28 @@ if (document.readyState === "loading") {
 }
 ```
 
-- [ ] **Step 5: 문법 검사**
+- [x] **Step 5: 문법 검사**
 
 ```bash
 for f in js/render.js js/app.js; do cp "$f" /tmp/chk.mjs && node --check /tmp/chk.mjs && echo "OK $f"; done; rm -f /tmp/chk.mjs
 ```
 Expected: `OK js/render.js` `OK js/app.js`
 
-- [ ] **Step 6: 검사 통과 확인**
+- [x] **Step 6: 검사 통과 확인**
 
 ```bash
 tests/run.sh
 ```
 Expected: `test-structure.js`, `test-course-cards.js`, `test-side-list.js` 모두 `✅ … PASS`
 
-- [ ] **Step 7: 콘솔 오류 확인**
+- [x] **Step 7: 콘솔 오류 확인**
 
 ```bash
 agent-browser --session kbbq-test open http://127.0.0.1:8080/ >/dev/null && agent-browser --session kbbq-test wait --load networkidle >/dev/null && agent-browser --session kbbq-test console 2>/dev/null | grep -iE "error|warn" || echo "콘솔 오류/경고 없음"
 ```
 Expected: `콘솔 오류/경고 없음` (`[render] 뼈대 불일치` 경고가 있으면 해당 블록을 `js/content.js`에서 확인 — 나오면 안 된다)
 
-- [ ] **Step 8: 커밋**
+- [x] **Step 8: 커밋**
 
 ```bash
 git add js/render.js js/app.js tests/browser/test-course-cards.js tests/browser/test-side-list.js
@@ -1018,7 +1022,7 @@ git commit -m "feat: content.js 블록을 잘라 코스 카드와 사이드 가�
 - Create: `tests/browser/test-styles.js`
 - Modify: `style.css` (끝에 추가)
 
-- [ ] **Step 1: 실패하는 스타일 검사 작성**
+- [x] **Step 1: 실패하는 스타일 검사 작성**
 
 `tests/browser/test-styles.js`:
 
@@ -1076,14 +1080,14 @@ git commit -m "feat: content.js 블록을 잘라 코스 카드와 사이드 가�
 })()
 ```
 
-- [ ] **Step 2: 실패 확인**
+- [x] **Step 2: 실패 확인**
 
 ```bash
 tests/run.sh 2>&1 | grep test-styles
 ```
 Expected: `❌ test-styles.js — FAIL: 상단 바가 sticky 아님 / …`
 
-- [ ] **Step 3: CSS 추가**
+- [x] **Step 3: CSS 추가**
 
 `style.css` **맨 끝**에 아래를 붙인다 (뒤에 올수록 이기므로 기존 규칙과의 충돌을 위치로 해결한다). 추가로 레거시 규칙 두 개도 이 자리에서 함께 고친다: 옛 `footer { line-height: 0.5 }`는 © 한 줄짜리 레이아웃용 꼼수였는데 슬로건 문단이 내려오며 글자가 겹쳤으므로 `1.6`으로, 옛 `body.fade-in { animation: fadeInPage 1.8s … }`는 QR 손님이 메뉴를 읽기까지 너무 오래 걸려 `0.6s`로 바꾼다.
 
@@ -1378,18 +1382,18 @@ footer .footer-brand {
 }
 ```
 
-- [ ] **Step 4: 검사 통과 확인**
+- [x] **Step 4: 검사 통과 확인**
 
 ```bash
 tests/run.sh
 ```
 Expected: 지금까지의 4개 검사 모두 `✅ … PASS`
 
-- [ ] **Step 5: 눈으로 확인**
+- [x] **Step 5: 눈으로 확인**
 
 http://127.0.0.1:8080 — 언어를 고른 뒤: 빨간 상단 바가 스크롤해도 붙어 있고, 노란 벨 띠, 흰 카드 3장(Full 만 빨간 테두리 + 칩), 사이드 가격표, 접이식 4개가 보인다. 카드 제목 앞에 🥩가 보인다. 제목 크기가 작지 않다.
 
-- [ ] **Step 6: 커밋**
+- [x] **Step 6: 커밋**
 
 ```bash
 git add style.css tests/browser/test-styles.js
@@ -1406,7 +1410,7 @@ git commit -m "style: 상단 바·벨 띠·코스 카드·사이드 표·접이�
 - Create: `tests/browser/test-accordion.js`
 - Create: `tests/browser/test-lang-switch.js`
 
-- [ ] **Step 1: 접이식 검사 작성**
+- [x] **Step 1: 접이식 검사 작성**
 
 `tests/browser/test-accordion.js`:
 
@@ -1443,7 +1447,7 @@ git commit -m "style: 상단 바·벨 띠·코스 카드·사이드 표·접이�
 })()
 ```
 
-- [ ] **Step 2: 언어 전환 검사 작성**
+- [x] **Step 2: 언어 전환 검사 작성**
 
 `tests/browser/test-lang-switch.js`:
 
@@ -1478,14 +1482,14 @@ git commit -m "style: 상단 바·벨 띠·코스 카드·사이드 표·접이�
 })()
 ```
 
-- [ ] **Step 3: 실행**
+- [x] **Step 3: 실행**
 
 ```bash
 tests/run.sh
 ```
 Expected: 6개 검사 모두 `✅ … PASS`. 실패하면 Task 3의 `app.js`(`setExpanded`, `applyLang`)와 Task 4의 CSS(`.course-head` flex)를 확인.
 
-- [ ] **Step 4: 커밋**
+- [x] **Step 4: 커밋**
 
 ```bash
 git add tests/browser/test-accordion.js tests/browser/test-lang-switch.js
@@ -1501,14 +1505,14 @@ git commit -m "test: 접이식 aria-expanded와 13개 언어 전환 검사"
 **Files:**
 - Modify: `style.css`
 
-- [ ] **Step 1: 삭제 전 규칙 수 기록**
+- [x] **Step 1: 삭제 전 규칙 수 기록**
 
 ```bash
 grep -c '{' style.css
 ```
 Expected: 숫자 하나 (예: 260대). 뒤에서 줄어드는지 본다.
 
-- [ ] **Step 2: 삭제 스크립트 실행**
+- [x] **Step 2: 삭제 스크립트 실행**
 
 아래를 `/tmp/prune-css.py`로 저장하고 실행한다.
 
@@ -1573,14 +1577,14 @@ python3 /tmp/prune-css.py
 ```
 Expected: `규칙 수: N → M` (M < N), 그리고 제거한 선택자 목록이 전부 죽은 이름(`DEAD` 접두사)으로 시작하거나 `EXACT_DEAD` 두 규칙 중 하나, 또는 `(빈 @블록)`이어야 한다. 그 외 이름이 하나라도 보이면 즉시 중단하고 `git checkout style.css`.
 
-- [ ] **Step 3: 남아야 할 규칙 확인**
+- [x] **Step 3: 남아야 할 규칙 확인**
 
 ```bash
 grep -nE '^\.usage-detail|^#gamasotDetailBox|^#ssamDetailBox|^\.detail-header|^\.modal|^\[hidden\]|^\.store-info|^\.topbar|^\.course-card' style.css | head -20
 ```
 Expected: 각 셀렉터가 최소 한 줄씩 나온다 (접이식 박스·가마솥/쌈 배경·모달·매장 안내·새 레이아웃은 살아 있어야 한다)
 
-- [ ] **Step 3½: 반드시 살아야 할 규칙 표 + 가격 칸 word-break 추가**
+- [x] **Step 3½: 반드시 살아야 할 규칙 표 + 가격 칸 word-break 추가**
 
 ```bash
 for s in '^\.usage-detail \{' '^\.usage-detail\.show' '^\.usage-detail:hover' '^\.usage-detail p \{' '^#gamasotDetailBox' '^#ssamDetailBox' '^\.modal-content \.close' '^\.detail-box\.is-open' '^\[hidden\]' '^\.store-info' '^body\.fade-in \{' '^@keyframes fadeInPage' '^footer \{' '^\.topbar \{' '^\.course-card \{' '^\.acc-head \{'; do
@@ -1599,14 +1603,14 @@ Expected: 전부 1 이상. `.usage-detail` 카드 룩(display:none·배경·테�
 - `.highlight-yellow { … }` — 참조 없음
 - `.active-menu { … }` — 참조 없음
 
-- [ ] **Step 4: 전체 검사 재실행**
+- [x] **Step 4: 전체 검사 재실행**
 
 ```bash
 tests/run.sh
 ```
 Expected: 6개 모두 `✅`. 실패하면 `git diff style.css`로 잘못 지워진 그룹을 찾아 되살린다.
 
-- [ ] **Step 5: 커밋**
+- [x] **Step 5: 커밋**
 
 ```bash
 git add style.css
@@ -1620,7 +1624,7 @@ git commit -m "style: 히어로·버튼 그리드·hidden-body 등 대상 요소
 **Files:**
 - Create: `tests/browser/test-fidelity.js`
 
-- [ ] **Step 1: 검사 작성**
+- [x] **Step 1: 검사 작성**
 
 `tests/browser/test-fidelity.js` — `BASELINE`은 `tests/run.sh`가 앞에 붙여 준다.
 
@@ -1667,7 +1671,7 @@ git commit -m "style: 히어로·버튼 그리드·hidden-body 등 대상 요소
 })()
 ```
 
-- [ ] **Step 2: 실행**
+- [x] **Step 2: 실행**
 
 ```bash
 tests/run.sh 2>&1 | grep fidelity
@@ -1676,14 +1680,14 @@ Expected: `✅ test-fidelity.js — PASS (104블록 기준선과 일치)`
 
 불일치가 나오면: 실패 메시지 자체에 `[+단어×n, -단어×n]` 형태로 어떤 단어가 늘고 줄었는지 나온다(순서만 다르면 `(순서 차이)`로 표시). 흔한 원인은 `splitCourseBlock`이 제목이나 가격 줄 노드를 빠뜨린 것.
 
-- [ ] **Step 3: content.js / prices.js 무변경 확인**
+- [x] **Step 3: content.js / prices.js 무변경 확인**
 
 ```bash
 git diff fix/site-audit-2026-09 -- js/content.js js/prices.js | wc -l
 ```
 Expected: `0`
 
-- [ ] **Step 4: 커밋**
+- [x] **Step 4: 커밋**
 
 ```bash
 git add tests/browser/test-fidelity.js
@@ -1698,7 +1702,7 @@ git commit -m "test: 13개 언어 x 8콘텐츠 렌더 텍스트를 개편 전 �
 - Create: `tests/browser/test-first-screen.js`
 - Modify: `README.md`
 
-- [ ] **Step 1: 첫 화면 검사 작성** (실행기 기본 뷰포트 390×844에서 돈다)
+- [x] **Step 1: 첫 화면 검사 작성** (실행기 기본 뷰포트 390×844에서 돈다)
 
 `tests/browser/test-first-screen.js`:
 
@@ -1720,14 +1724,14 @@ git commit -m "test: 13개 언어 x 8콘텐츠 렌더 텍스트를 개편 전 �
 })()
 ```
 
-- [ ] **Step 2: 모바일·데스크톱 양쪽에서 전체 검사**
+- [x] **Step 2: 모바일·데스크톱 양쪽에서 전체 검사**
 
 ```bash
 tests/run.sh && VIEWPORT_W=1280 VIEWPORT_H=900 tests/run.sh
 ```
 Expected: 두 번 모두 9개 검사 `✅`. (데스크톱에서 `test-first-screen`이 실패하면 카드 여백을 줄이기보다 먼저 390 결과를 우선한다 — 스펙의 기준은 390이다. 1280에서만 실패하면 그 검사는 통과로 간주하고 이유를 커밋 메시지에 적는다.)
 
-- [ ] **Step 3: 스크린샷 저장**
+- [x] **Step 3: 스크린샷 저장**
 
 ```bash
 mkdir -p docs/superpowers/screenshots
@@ -1742,7 +1746,7 @@ ls -la docs/superpowers/screenshots/
 ```
 Expected: png 2개. Read 도구로 열어 보고: 카드가 겹치거나 잘리지 않는지, 아랍어가 아니어도 가격이 오른쪽에 붙는지, 접이식 화살표가 보이는지 확인한다.
 
-- [ ] **Step 4: README 갱신**
+- [x] **Step 4: README 갱신**
 
 `README.md`의 "## 파일 구조" 블록을 아래로 바꾼다:
 
@@ -1777,7 +1781,7 @@ VIEWPORT_W=1280 tests/run.sh       # 데스크톱
 `tests/run.sh baseline` — 단, 이 명령은 **문구 변경이 의도된 경우에만** 실행한다.
 ~~~
 
-- [ ] **Step 5: 최종 커밋**
+- [x] **Step 5: 최종 커밋**
 
 ```bash
 git add tests/browser/test-first-screen.js README.md docs/superpowers/screenshots/
@@ -1786,19 +1790,19 @@ git log --oneline fix/site-audit-2026-09..HEAD
 ```
 Expected: Task 1~8 커밋 8~9개가 나열된다.
 
-- [ ] **Step 6: 스펙 합격 기준 대조**
+- [x] **Step 6: 스펙 합격 기준 대조**
 
 스펙 §6의 7개 항목을 하나씩 확인해 보고한다:
 
 | # | 기준 | 확인 방법 |
 |---|---|---|
-| 1 | 가격까지 0탭 | `test-first-screen.js` PASS |
-| 2 | 문구 무손실 | `test-fidelity.js` PASS (104블록) |
+| 1 | 가격까지 0탭 | `test-first-screen.js` PASS, A 가격 bottom 192px / Full 522px / 사이드 첫 행 802px (H 844) |
+| 2 | 문구 무손실 | `test-fidelity.js` PASS 104/104 |
 | 3 | 언어 전환·RTL | `test-lang-switch.js` PASS |
-| 4 | 접이식 키보드·단일 열림 | `test-accordion.js` PASS |
-| 5 | 첫 방문 모달 + 한국어 본문 / 재방문 무모달 | 브라우저에서 localStorage 지우고 열기 → 모달 뒤로 카드가 보인다; 언어 고른 뒤 새로고침 → 모달 없음 |
-| 6 | 콘솔 오류 0, 스크린샷 겹침 없음 | Task 3 Step 7 명령 재실행, Step 3 스크린샷 |
-| 7 | content.js·prices.js diff 없음 | Task 7 Step 3 |
+| 4 | 접이식 키보드·단일 열림 | `test-accordion.js` PASS (button 요소·aria·단일 열림; 실제 키 입력은 하네스 한계로 미검증) |
+| 5 | 첫 방문 모달 + 한국어 본문 / 재방문 무모달 | `test-styles.js` 첫 방문 + 수동: ja 선택 후 새로고침 → 모달 없음, lang=ja |
+| 6 | 콘솔 오류 0, 스크린샷 겹침 없음 | console 비어 있음, 스크린샷 3장 겹침 없음 |
+| 7 | content.js·prices.js diff 없음 | diff 0줄 |
 
 ---
 
