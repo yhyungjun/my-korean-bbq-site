@@ -172,7 +172,8 @@ body.fade-in {
 
 /* ===== 가마솥뚜껑 상세박스 (배경 어둡게 + 글씨 강조) ===== */
 #gamasotDetailBox {
-  background-image: url("images/gamasot.jpg"); /* 🔹 가마솥 배경 이미지 */
+  /* 사진 위에 어두운 막(55%)을 깔아 흰 글자 대비 확보 — 사진은 분위기로만 */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url("images/gamasot.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -189,20 +190,21 @@ body.fade-in {
 #gamasotDetailBox strong {
   color: #ffb700; /* 제목 강조 */
   font-size: 1.3rem;
-  text-shadow: 0 0 8px rgba(255, 183, 0, 0.7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 #gamasotDetailBox p {
   color: #fff4d6;
   font-size: 1.15rem;
   line-height: 1.9;
-  text-shadow: 0 0 10px rgba(255, 180, 50, 0.6), 0 0 20px rgba(255, 120, 0, 0.4), 0 2px 4px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   font-weight: 600;
 }
 
 /* ===== 한국식 쌈 상세박스 (밝은 흰색 텍스트 버전) ===== */
 #ssamDetailBox {
-  background-image: url("images/ssam.jpg");
+  /* 잎 사진이 밝아 가마솥보다 조금 더 진한 막(60%) */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("images/ssam.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -221,7 +223,7 @@ body.fade-in {
 #ssamDetailBox strong {
   color: #ffffff; /* 제목 강조 */
   font-size: 1.3rem;
-  text-shadow: 0 0 8px rgba(255, 183, 0, 0.7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 /* 본문 텍스트 (완전 흰색) */
@@ -230,10 +232,7 @@ body.fade-in {
   font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.9;
-  text-shadow:
-    0 0 10px rgba(255, 180, 50, 0.6),
-    0 0 20px rgba(255, 120, 0, 0.4),
-    0 2px 4px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 footer a {
