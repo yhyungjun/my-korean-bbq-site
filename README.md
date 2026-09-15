@@ -89,4 +89,7 @@ export const PRICES = {
 
 ## 배포
 
+`.nojekyll` 파일은 지우지 말 것 — GitHub Pages 가 Jekyll 을 건너뛰고 파일을 그대로 내보내게 한다.
+(없으면 docs/ 안 문서의 `{{…}}` 표기를 Jekyll 이 템플릿으로 읽다가 빌드가 실패한다.)
+
 `main` 브랜치에 push 하면 GitHub Pages가 자동 반영한다.
