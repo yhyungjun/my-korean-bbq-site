@@ -663,6 +663,8 @@ body.scroll-locked {
 .topbar-brand {
   margin: 0;                   /* h1 기본 여백 제거 */
   display: flex;
+  flex: 1;                     /* 좁은 화면: 언어 버튼 왼쪽 영역의 가운데 */
+  justify-content: center;
   align-items: center;
   gap: 8px;
   min-width: 0;
@@ -681,6 +683,21 @@ body.scroll-locked {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* 넓은 화면: 바 전체의 정중앙에 매장명, 오른쪽 끝에 언어 버튼 */
+@media (min-width: 640px) {
+  .topbar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+  .topbar-brand {
+    grid-column: 2;
+  }
+  .topbar-lang {
+    grid-column: 3;
+    justify-self: end;
+  }
 }
 
 .topbar-lang {
