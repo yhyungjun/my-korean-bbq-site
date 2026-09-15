@@ -686,6 +686,7 @@ body.scroll-locked {
 .topbar-lang {
   flex: none;
   margin: 0;
+  min-height: 40px;          /* 터치 영역 (Apple 권장 44px 에 가깝게, 상단 바는 56px) */
   padding: 6px 12px;
   border: 0;
   border-radius: 999px;
@@ -801,6 +802,7 @@ body.scroll-locked {
   font-size: 0.95rem;
   color: #333;
   word-break: keep-all;
+  overflow-wrap: anywhere;   /* 공백 없는 긴 재료 문자열(pt 등)이 320px 에서 넘치지 않게 */
 }
 
 .course-body .small-note {
@@ -826,6 +828,10 @@ body.scroll-locked {
   padding: 6px 0;
   border-bottom: 1px dashed #e8d3d7;
   font-size: 0.95rem;
+}
+
+.side-name {
+  overflow-wrap: anywhere;
 }
 
 .side-name .small-note {
