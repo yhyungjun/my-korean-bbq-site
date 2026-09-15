@@ -17,6 +17,7 @@
       if ([...p.querySelectorAll(".course-body span.small-note")].some((s) => s.textContent.trim() === "+")) errs.push(`${id}: + 구분자 미처리`);
     }
   }
-  if (!document.querySelector('.course-card[data-course="courseF"].is-featured > .course-chips')) errs.push("Full 카드 강조/칩 없음");
+  if (!document.querySelector('.course-card[data-course="courseF"].is-featured')) errs.push("Full 카드 강조 없음");
+  if (document.querySelector(".course-chips, .course-title[data-icon]")) errs.push("이모지 칩/아이콘이 남아 있음 (제거 결정)");
   return errs.length ? "FAIL: " + errs.slice(0, 6).join(" / ") : "PASS";
 })()

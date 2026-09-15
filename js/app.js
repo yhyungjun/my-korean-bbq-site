@@ -8,11 +8,11 @@ const RTL_LANGS = ["ar"];
 const SCROLL_OFFSET_PX = 80;
 const FADE_OUT_MS = 300;
 
-// 첫 화면에 항상 펼쳐 두는 코스 카드. 이모지는 언어와 무관한 시각 앵커.
+// 첫 화면에 항상 펼쳐 두는 코스 카드. Full 만 테두리로 강조한다.
 const COURSES = [
-  { key: "courseA", icon: "🥩" },
-  { key: "courseB", icon: "🥩" },
-  { key: "courseF", icon: "🥩", featured: true, chips: ["🍗", "🥤", "🍚", "🍜"] },
+  { key: "courseA" },
+  { key: "courseB" },
+  { key: "courseF", featured: true },
 ];
 
 const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';

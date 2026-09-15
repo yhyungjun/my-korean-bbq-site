@@ -768,10 +768,6 @@ body.scroll-locked {
   font-weight: 800;
 }
 
-.course-title[data-icon]::before {
-  content: attr(data-icon) " ";
-}
-
 .course-title .menu-subtitle {
   display: inline;
   font-size: inherit;
@@ -816,19 +812,6 @@ body.scroll-locked {
 /* .sep 의 " · " 텍스트는 js/render.js 가 이미 넣었다 — 여기서는 색만 준다. ::before 로 content 를 넣지 말 것(중복). */
 .course-body .sep {
   color: #c33;
-}
-
-.course-chips {
-  display: flex;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-.course-chips .chip {
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: #FFEDF0;
-  font-size: 0.95rem;
 }
 
 /* 사이드 가격표 */

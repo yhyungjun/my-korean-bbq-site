@@ -66,9 +66,9 @@ function markSeparators(root) {
  * 코스 카드 한 장. 13개 언어 pane 을 모두 넣고 현재 언어만 보인다.
  * @param {string} contentKey  "courseA" | "courseB" | "courseF"
  * @param {string} currentLang
- * @param {{icon?: string, featured?: boolean, chips?: string[]}} options
+ * @param {{featured?: boolean}} options
  */
-export function buildCourseCard(contentKey, currentLang, { icon = "", featured = false, chips = [] } = {}) {
+export function buildCourseCard(contentKey, currentLang, { featured = false } = {}) {
   const card = el("article", featured ? "course-card is-featured" : "course-card");
   card.dataset.course = contentKey;
 
@@ -88,7 +88,6 @@ export function buildCourseCard(contentKey, currentLang, { icon = "", featured =
         pane.innerHTML = html;
       } else {
         const title = el("div", "course-title", [parts.title]);
-        if (icon) title.dataset.icon = icon; // CSS ::before 로 그린다 (textContent 에 안 들어감)
         const head = el("div", "course-head", [title, el("div", "course-price", parts.priceLine)]);
         const body = el("div", "course-body", parts.body);
         markSeparators(body);
@@ -96,17 +95,6 @@ export function buildCourseCard(contentKey, currentLang, { icon = "", featured =
       }
     }
     card.appendChild(pane);
-  }
-
-  if (chips.length) {
-    const row = el("div", "course-chips");
-    row.setAttribute("aria-hidden", "true"); // 본문에 이미 글로 있는 정보의 시각 강조일 뿐
-    chips.forEach((c) => {
-      const chip = el("span", "chip");
-      chip.textContent = c;
-      row.appendChild(chip);
-    });
-    card.appendChild(row);
   }
   return card;
 }

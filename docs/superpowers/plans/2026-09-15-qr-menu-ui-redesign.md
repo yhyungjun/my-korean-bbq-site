@@ -1,6 +1,6 @@
 # QR 메뉴판 UI 개편 Implementation Plan
 
-> 상태: 완료 (2026-09-15) — 커밋 b8c3fdf … 마지막 커밋은 git log 참고.
+> 상태: 완료 (2026-09-15). 완료 후 변경: 사용자 결정으로 카드 이모지 앵커(🥩)와 Full 칩(🍗🥤🍚🍜) 제거 — COURSES 에서 icon/chips 삭제, render.js 옵션 정리, 관련 CSS 삭제, test-course-cards 는 "칩 없음" 확인으로 변경. — 커밋 b8c3fdf … 마지막 커밋은 git log 참고.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
