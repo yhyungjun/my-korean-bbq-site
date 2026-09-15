@@ -224,10 +224,19 @@ function onBackdropClick(event) {
   if (event.target === modal()) closeLangModal();
 }
 
+function watchTopbarShadow() {
+  const bar = document.querySelector(".topbar");
+  if (!bar) return;
+  const update = () => bar.classList.toggle("is-scrolled", window.scrollY > 0);
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
 function init() {
   document.addEventListener("click", onClick);
   document.addEventListener("keydown", onKeydown);
   modal()?.addEventListener("click", onBackdropClick);
+  watchTopbarShadow();
 
   const saved = readSavedLang();
   const startLang = saved || DEFAULT_LANG;
