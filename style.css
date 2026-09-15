@@ -902,6 +902,42 @@ body.scroll-locked {
 .acc .usage-detail {
   margin: 0 0 12px;
   max-width: none;
+  padding: 20px 18px;
+  text-align: start;         /* 본문은 왼쪽 정렬 — 가운데 정렬은 줄 시작점이 매번 달라져 읽기 어렵다 */
+}
+
+/* 접이식 본문 가독성: 행간 1.75, 자간 살짝 좁게, 한글 이탤릭 해제 */
+.acc .usage-detail p,
+#gamasotDetailBox p[data-lang],
+#ssamDetailBox p[data-lang] {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  text-align: start;
+  word-break: keep-all;
+}
+
+.acc .usage-detail p .small-note {
+  letter-spacing: 0;
+}
+
+.acc .usage-detail p em {
+  font-style: normal;
+}
+
+/* 사진 패널: 여백 축소, 제목만 가운데 */
+#gamasotDetailBox,
+#ssamDetailBox {
+  padding: 22px 20px;
+}
+
+#gamasotDetailBox p[data-lang] > strong:first-child,
+#ssamDetailBox p[data-lang] > strong:first-child {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 /* 옛 .usage-detail p:first-child / :nth-child(2) 규칙이 13개 언어 문단의 DOM 순서에 걸려
