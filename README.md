@@ -76,7 +76,7 @@ export const PRICES = {
 
 ### 매장 정보(주소·전화·영업시간) 바꾸기
 
-`index.html` 푸터의 `<div class="store-info">` 안에 지점별 `<address class="store">` 카드가 3개 있다. 해당 지점 카드만 고친다.
+`index.html` 푸터의 `<div class="store-info">` 안에 지점별 `<address class="store">` 카드가 2개 있다. 해당 지점 카드만 고친다.
 주소·전화·시간은 언어와 무관해서 한 번만 적혀 있고, 라벨(주소/전화/영업시간)만 언어별 `data-lang` 으로 바뀐다.
 같은 정보가 `<head>` 의 JSON-LD 에도 있으니 함께 맞춘다.
 

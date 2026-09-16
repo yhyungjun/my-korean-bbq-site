@@ -35,7 +35,7 @@
   need(".footer-branches", 0, "푸터 지점 링크 행(삭제돼야 함)");
   needLangs("footer .tagline [data-lang]", "푸터 슬로건");
   needLangs("footer .footer-brand [data-lang]", "푸터 ©");
-  need("footer .store-info .store", 3, "지점 카드");
+  need("footer .store-info .store", 2, "지점 카드");
   {
     const got = [...document.querySelectorAll("#langModal [data-lang-code]")].map((e) => e.dataset.langCode).sort().join(",");
     if (got !== WANT) errs.push(`언어 모달 버튼: 언어 집합 불일치 [${got}]`);
